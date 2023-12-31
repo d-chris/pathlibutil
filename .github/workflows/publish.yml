@@ -1,4 +1,4 @@
-name: Publish Python Package
+name: poetry-publish
 
 on:
  release:
@@ -24,4 +24,4 @@ jobs:
       run: |
         poetry version $(git describe --tags)
         poetry build
-        # poetry publish --username __token__ --password $PYPI_TOKEN
+        poetry publish --dry-run --username __token__ --password $PYPI_TOKEN
