@@ -4,7 +4,7 @@
 [![PyPI](https://img.shields.io/pypi/v/pathlibutil)](https://pypi.org/project/pathlibutil/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/pathlibutil)](https://pypi.org/project/pathlibutil/)
 [![PyPI - License](https://img.shields.io/pypi/l/pathlibutil)](./LICENSE)
-[![GitHub Workflow Test)](https://img.shields.io/github/actions/workflow/status/d-chris/pathlibutil/pytest.yml?logo=github&label=test)](https://github.com/d-chris/pathlibutil)
+[![GitHub Workflow Test)](https://img.shields.io/github/actions/workflow/status/d-chris/pathlibutil/pytest.yml?logo=github&label=pytest)](https://github.com/d-chris/pathlibutil/actions/workflows/pytest.yml)
 
 ---
 
@@ -48,9 +48,9 @@ print(f'File verification: {readme.verify("add3f48fded5e0829a8e3e025e44c2891542c
 
 ## Examples
 
-1. [Read file line by line to stdout](./example/example1.py)
+1. [Read file line by line to stdout](./examples/example1.py)
    > `Path().read_lines()`
-2. [Write calculated hash to file](./example/example2.py)
+2. [Write calculated hash to file](./examples/example2.py)
    > `Path().hexdigest()`
-3. [Read hashes from file for verification](./example/example3.py)
+3. [Read hashes from file for verification](./examples/example3.py)
    > `Path().verify()` and `contextmanager`
