@@ -15,7 +15,9 @@
 - `Path().size()` to get size in bytes of a file or directory
 - `Path().read_lines()` to yield over all lines from a file until EOF
 - `contextmanager` to change current working directory with `with` statement
-
+- `Path().copy()` copy a file or directory to a new path destination
+- `Path().delete()` delete a file or directory-tree
+  
 ## Installation
 
 ```bash
