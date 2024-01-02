@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pathlibutil"
-version = "0.1.0"
+version = "0.0.0"
 description = ""
 authors = ["Christoph Dörrer <d-chris@web.de>"]
 readme = "README.md"
@@ -47,4 +47,4 @@ commands = pytest --random-order
 [tool.pytest.ini_options]
 minversion = "6.0"
 testpaths = "tests"
-addopts = "--random-order --cov=pathlibutil --cov-report=term-missing:skip-covered --color=yes"
+addopts = "--random-order --cov=pathlibutil --cov-report=term-missing:skip-covered --color=yes --cov-append"

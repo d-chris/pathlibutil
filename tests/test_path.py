@@ -11,21 +11,6 @@ from pathlibutil import Path
 
 
 @pytest.fixture(scope='function')
-def cls() -> Path:
-    """return the same class for all test function"""
-
-    hash = Path.default_hash
-    yield Path
-    Path.default_hash = hash
-
-
-@pytest.fixture(scope='function')
-def file(cls) -> Path:
-    """new instance of Path for each test-function"""
-    return cls(__file__)
-
-
-@pytest.fixture(scope='function')
 def algorithm() -> str:
     """random hash algorithm for one test without shake"""
     return random.choice(
@@ -119,7 +104,7 @@ def test_read_lines(file: Path):
     p = file.read_lines()
 
     assert isinstance(p, GeneratorType)
-    assert "".join(p) == open(__file__).read()
+    assert "".join(p) == open(str(file)).read()
 
 
 def test_default_hash(file: Path):
@@ -164,10 +149,10 @@ def test_default_hash_classvar(cls: Path, algorithm: str):
         algorithm, open(__file__, 'rb').read()).hexdigest()
 
 
-def test_size(file: Path, tmp_path: pathlib.Path):
+def test_size(file: Path):
     assert hasattr(Path, 'size')
 
-    assert file.size() == os.stat(__file__).st_size
+    assert file.size() == os.stat(str(file)).st_size
 
 
 def test_size_dir(tmp_path: pathlib.Path):
