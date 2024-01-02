@@ -135,3 +135,18 @@ class Path(pathlib.Path):
                 raise e
 
             shutil.rmtree(self, **kwargs)
+
+    def move(self, dst: str) -> 'Path':
+        """
+            Moves the file or directory to a destination path.
+        """
+        src = self.resolve(strict=True)
+        dst = Path(dst).resolve()
+        dst.mkdir(parents=True, exist_ok=True)
+
+        try:
+            _path = shutil.move(str(src), str(dst))
+        except shutil.Error as e:
+            raise OSError(e)
+
+        return Path(_path)
