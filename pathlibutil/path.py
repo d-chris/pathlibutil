@@ -1,6 +1,7 @@
 import hashlib
 import os
 import pathlib
+import shutil
 import sys
 from typing import Generator, Set
 
@@ -89,3 +90,30 @@ class Path(pathlib.Path):
             return sum([p.size(**kwargs) for p in self.iterdir()])
 
         return self.stat(**kwargs).st_size
+
+    def copy(self, dst: str, exist_ok: bool = True, **kwargs) -> 'Path':
+        """
+            Copies the file or directory to a destination path.
+        """
+        try:
+            _path = shutil.copytree(
+                self,
+                dst,
+                dirs_exist_ok=exist_ok,
+                **kwargs
+            )
+        except NotADirectoryError:
+            dst = Path(dst, self.name)
+
+            if not exist_ok and dst.exists():
+                raise FileExistsError(f'{dst} already exists')
+
+            dst.parent.mkdir(parents=True, exist_ok=True)
+
+            _path = shutil.copy2(
+                self,
+                dst,
+                **kwargs
+            )
+
+        return Path(_path)
