@@ -13,8 +13,9 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
 ]
-keywords = ["pathlib", "hashlib"]
+keywords = ["pathlib", "hashlib", "shutil"]
 repository = "https://github.com/d-chris/pathlibutil"
+include = ["examples/*.py", "LICENSE"]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.13"
@@ -25,6 +26,15 @@ tox = "^4.11.4"
 pytest-random-order = "^1.1.0"
 pytest-cov = "^4.1.0"
 pytest-mock = "^3.12.0"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
+
+[[tool.poetry.source]]
+name = "testpypi"
+url = "https://test.pypi.org/legacy/"
+priority = "explicit"
 
 [build-system]
 requires = ["poetry-core"]
@@ -47,4 +57,11 @@ commands = pytest --random-order
 [tool.pytest.ini_options]
 minversion = "6.0"
 testpaths = "tests"
-addopts = "--random-order --cov=pathlibutil --cov-report=term-missing:skip-covered --color=yes --cov-append"
+addopts = [
+    "--random-order",
+    "--color=yes",
+    "--cov=pathlibutil",
+    "--cov-report=term-missing:skip-covered",
+    "--cov-append",
+    # "--cov-report=html",
+]

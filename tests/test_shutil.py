@@ -85,3 +85,45 @@ def test_delete_directory(tmp_dirpath: Path):
     tmp_dirpath.delete(recursive=True)
 
     assert not tmp_dirpath.exists()
+
+
+def test_move_dir(file: Path, tmp_path: pathlib.Path):
+
+    src = tmp_path.joinpath('src')
+    src.mkdir()
+
+    shutil.copy(file, src)
+
+    p = Path(src).move(tmp_path / 'dst')
+
+    assert p.is_dir()
+    assert p.parts[-1] == 'src'
+    assert p.joinpath(file.name).is_file()
+
+
+def test_move_file(file: Path, tmp_dirpath: Path):
+
+    src = tmp_dirpath / file.name
+
+    assert src.is_file(), 'setup failed'
+
+    dst = src.move(tmp_dirpath / 'dst')
+
+    assert src.is_file() == False
+    assert dst.is_file() == True
+
+    dst.move(tmp_dirpath)
+
+    assert src.is_file() == True
+    assert dst.is_file() == False
+
+
+def test_move_raises(file: Path, tmp_dirpath: Path):
+
+    with pytest.raises(FileNotFoundError):
+        Path('notexists').move(tmp_dirpath)
+
+    src = tmp_dirpath / file.name
+
+    with pytest.raises(OSError):
+        src.move(tmp_dirpath)

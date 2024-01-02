@@ -17,6 +17,7 @@
 - `contextmanager` to change current working directory with `with` statement
 - `Path().copy()` copy a file or directory to a new path destination
 - `Path().delete()` delete a file or directory-tree
+- `Path().move()` move a file or directory to a new path destination
   
 ## Installation
 
