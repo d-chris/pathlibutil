@@ -1,3 +1,4 @@
+import errno
 import hashlib
 import os
 import pathlib
@@ -117,3 +118,20 @@ class Path(pathlib.Path):
             )
 
         return Path(_path)
+
+    def delete(self, *, recursive: bool = False, missing_ok: bool = False, **kwargs) -> None:
+        """
+            Deletes the file or directory.
+        """
+        try:
+            self.rmdir()
+        except NotADirectoryError:
+            self.unlink(missing_ok)
+        except FileNotFoundError as e:
+            if not missing_ok:
+                raise e
+        except OSError as e:
+            if not recursive or e.errno != errno.ENOTEMPTY:
+                raise e
+
+            shutil.rmtree(self, **kwargs)

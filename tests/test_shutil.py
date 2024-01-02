@@ -1,7 +1,16 @@
 import pytest
+import shutil
 import pathlib
 
 from pathlibutil import Path
+
+
+@pytest.fixture
+def tmp_dirpath(file: Path, cls: Path, tmp_path: pathlib.Path):
+
+    shutil.copy(file, tmp_path)
+
+    yield cls(tmp_path)
 
 
 def test_copy_file(file: Path, tmp_path: pathlib.Path):
@@ -51,3 +60,28 @@ def test_copy_raises(file: Path, tmp_path: pathlib.Path):
 def test_copy_mkdir(file: Path, tmp_path: pathlib.Path):
     with pytest.raises(FileNotFoundError):
         file.copy(tmp_path / 'not-exists')
+
+
+def test_delete(file: Path, tmp_path: pathlib.Path):
+    assert hasattr(Path, 'delete')
+
+    p = file.copy(tmp_path)
+
+    p.delete()
+    assert not p.exists()
+
+    with pytest.raises(FileNotFoundError):
+        p.delete()
+
+
+def test_delete_directory(tmp_dirpath: Path):
+
+    with pytest.raises(OSError):
+        tmp_dirpath.delete()
+
+    with pytest.raises(TypeError):
+        tmp_dirpath.delete(True)
+
+    tmp_dirpath.delete(recursive=True)
+
+    assert not tmp_dirpath.exists()
