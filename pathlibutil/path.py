@@ -8,7 +8,10 @@ from typing import Generator, Set
 
 
 class Path(pathlib.Path):
+    """Path inherites from `pathlib.Path` and adds some methods to built-in python functions"""
+
     default_hash = 'md5'
+    """default hash algorithm for the class when no algorithm is specified for `hexdigest()` and `verify()`"""
 
     if sys.version_info < (3, 12):
         _flavour = pathlib._windows_flavour if os.name == 'nt' else pathlib._posix_flavour
@@ -16,13 +19,13 @@ class Path(pathlib.Path):
     @property
     def algorithms_available(self) -> Set[str]:
         """
-            Set of available algorithms that can be passed to hexdigest() method.
+            Set of available algorithms that can be passed to `hexdigest()` and `verify()` method.
         """
         return hashlib.algorithms_available
 
     def hexdigest(self, algorithm: str = None, /, **kwargs) -> str:
         """
-            Returns the hex digest of the file using the named algorithm (default: md5).
+            Returns the hexdigest of the file using the named algorithm (default: `default_hash`).
         """
         try:
             args = (kwargs.pop('length'),)
@@ -34,19 +37,19 @@ class Path(pathlib.Path):
             data=self.read_bytes(),
         ).hexdigest(*args)
 
-    def verify(self, hashdigest: str, algorithm: str = None, *, strict: bool = True, **kwargs) -> bool:
+    def verify(self, hexdigest: str, algorithm: str = None, *, strict: bool = True, **kwargs) -> bool:
         """
-            Verifies the hash of the file using the named algorithm (default: md5).
+            Verifies the hash of the file using the named algorithm (default: `default_hash`).
         """
         _hash = self.hexdigest(algorithm, **kwargs)
 
         if strict:
-            return _hash == hashdigest
+            return _hash == hexdigest
 
-        if len(hashdigest) < 7:
+        if len(hexdigest) < 7:
             raise ValueError('hashdigest must be at least 7 characters long')
 
-        for a, b in zip(_hash, hashdigest):
+        for a, b in zip(_hash, hexdigest):
             if a != b.lower():
                 return False
 
