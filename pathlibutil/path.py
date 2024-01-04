@@ -200,48 +200,46 @@ class Path(pathlib.Path):
         """
             Creates an archive file (eg. zip) and returns the path to the archive.
         """
-        archive = Path(archivename)
-        format = kwargs.pop('format', self._find_archive_format(archive))
+        _self = self.resolve(strict=True)
+        _archive = Path(archivename).resolve()
+        _format = kwargs.pop('format', self._find_archive_format(_archive))
 
-        loop = 2
-        while loop > 0:
-            loop -= 1
+        _ = kwargs.pop('root_dir', None)
+        _ = kwargs.pop('base_dir', None)
 
+        for _ in range(2):
             try:
                 _archive = shutil.make_archive(
-                    base_name=archive.stem,
-                    format=format,
-                    root_dir=kwargs.pop('root_dir', self.parent),
-                    base_dir=kwargs.pop('base_dir', self),
+                    base_name=_archive.parent.joinpath(_archive.stem),
+                    format=_format,
+                    root_dir=_self.parent,
+                    base_dir=_self.relative_to(_self.parent),
                     **kwargs
                 )
 
                 return Path(_archive)
             except ValueError:
-                self._register_format(format)
+                self._register_format(_format)
 
     def unpack_archive(self, extract_dir: str, **kwargs) -> 'Path':
         """
             Unpacks an archive file (eg. zip) and returns the path to the extracted files.
         """
 
-        format = kwargs.pop('format', self._find_archive_format(self))
+        _format = kwargs.pop('format', self._find_archive_format(self))
 
-        loop = 2
-        while loop > 0:
-            loop -= 1
-
+        for _ in range(2):
             try:
-                _extract = shutil.unpack_archive(
-                    self,
+                shutil.unpack_archive(
+                    self.resolve(strict=True),
                     extract_dir,
-                    format=format,
+                    format=_format,
                     **kwargs
                 )
 
-                return Path(_extract)
+                return Path(extract_dir)
             except ValueError:
-                self._register_format(format)
+                self._register_format(_format)
 
     @property
     def archive_formats(self) -> List[str]:

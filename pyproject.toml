@@ -56,6 +56,7 @@ envlist = py38,py39,py310,py311,py312
 
 [testenv]
 deps =
+    py7zr
     pytest
     pytest-random-order
     pytest-mock
@@ -69,8 +70,8 @@ testpaths = "tests"
 addopts = [
     "--random-order",
     "--color=yes",
-    "--cov=pathlibutil",
-    "--cov-report=term-missing:skip-covered",
-    "--cov-append",
+    # "--cov=pathlibutil",
+    # "--cov-report=term-missing:skip-covered",
+    # "--cov-append",
     # "--cov-report=html",
 ]
