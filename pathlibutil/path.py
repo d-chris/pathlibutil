@@ -4,7 +4,7 @@ import os
 import pathlib
 import shutil
 import sys
-from typing import Generator, Set
+from typing import Generator, List, Set
 
 
 class Path(pathlib.Path):
@@ -153,3 +153,99 @@ class Path(pathlib.Path):
             raise OSError(e)
 
         return Path(_path)
+
+    @staticmethod
+    def _find_archive_format(filname: 'Path') -> str:
+        """
+            Searches for a file the correct archive format.
+        """
+        ext = "".join(filname.suffixes)
+
+        for name, extensions, _ in shutil.get_unpack_formats():
+            if ext in extensions:
+                return name
+
+        return "".join(ext.split('.'))
+
+    @classmethod
+    def _register_format(cls, format: str) -> None:
+        """
+            Registers a archive format from `Path._register_<format>_format`.
+        """
+        try:
+            register_format = getattr(cls, f'_register_{format}_format')
+        except AttributeError:
+            raise ValueError(f"unknown archive format: '{format}'")
+        else:
+            register_format()
+
+    @staticmethod
+    def _register_7z_format() -> None:
+        """
+            Registers the 7z archive format.
+        """
+        try:
+            from py7zr import pack_7zarchive, unpack_7zarchive
+        except ModuleNotFoundError:
+            raise ModuleNotFoundError('pip install pathlibutil[7z]')
+        else:
+            shutil.register_archive_format(
+                '7z', pack_7zarchive, description='7zip archive'
+            )
+            shutil.register_unpack_format(
+                '7z', ['.7z'], unpack_7zarchive
+            )
+
+    def make_archive(self, archivename: str, **kwargs) -> 'Path':
+        """
+            Creates an archive file (eg. zip) and returns the path to the archive.
+        """
+        archive = Path(archivename)
+        format = kwargs.pop('format', self._find_archive_format(archive))
+
+        loop = 2
+        while loop > 0:
+            loop -= 1
+
+            try:
+                _archive = shutil.make_archive(
+                    base_name=archive.stem,
+                    format=format,
+                    root_dir=kwargs.pop('root_dir', self.parent),
+                    base_dir=kwargs.pop('base_dir', self),
+                    **kwargs
+                )
+
+                return Path(_archive)
+            except ValueError:
+                self._register_format(format)
+
+    def unpack_archive(self, extract_dir: str, **kwargs) -> 'Path':
+        """
+            Unpacks an archive file (eg. zip) and returns the path to the extracted files.
+        """
+
+        format = kwargs.pop('format', self._find_archive_format(self))
+
+        loop = 2
+        while loop > 0:
+            loop -= 1
+
+            try:
+                _extract = shutil.unpack_archive(
+                    self,
+                    extract_dir,
+                    format=format,
+                    **kwargs
+                )
+
+                return Path(_extract)
+            except ValueError:
+                self._register_format(format)
+
+    @property
+    def archive_formats(self) -> List[str]:
+        """
+            Returns a list of supported archive formats.
+        """
+        return [name for name, _ in shutil.get_archive_formats()]

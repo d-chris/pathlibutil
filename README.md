@@ -20,6 +20,7 @@
 - `Path().copy()` copy a file or directory to a new path destination
 - `Path().delete()` delete a file or directory-tree
 - `Path().move()` move a file or directory to a new path destination
+- `Path().make_archive()` create and `Path().unpack_archive()` an archive from a file or directory
   
 ## Installation
 
@@ -122,4 +123,41 @@ for i, cache in enumerate(Path('.').rglob('*/__pycache__/'), start=1):
             mem += cache_size
 
 print(f'{i} cache directories deleted, {mem / 2**20:.2f} MB freed.')
+```
+
+## Example 5
+
+Inherit from `pathlibutil.Path` to register new a archive format.
+> `Path().make_archive()` and `Path().move()`
+
+```python
+import shutil
+
+class Path(pathlibutil.Path):
+
+      @staticmethod
+      def _register_rar_format():
+      """ 
+            implement new register functions for given suffixes
+            as a staticmethod: `_register_<suffixes>_format()`
+
+            eg. achive.foo.bar as `_register_foobar_format()` 
+      """
+      try:
+            from pyunpack import Archive
+      except ModuleNotFoundError:
+            raise ModuleNotFoundError('pip install pyunpack')
+      else:
+            shutil.register_archive_format(
+                  'rar', Archive, description='rar archive'
+            )
+            shutil.register_unpack_format(
+                  'rar', ['.rar'], Archive
+            )
+
+archive = Path('README.md').make_archive('README.rar')
+
+backup = archive.move('./backup/')
+
+print(f'rar archive created: {archive.name} and moved to: {backup.parent}')
 ```
