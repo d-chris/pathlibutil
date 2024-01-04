@@ -1,9 +1,15 @@
-import shutil
-import pytest
-from zipfile import ZipFile
 import pathlib
+import shutil
+from pkgutil import iter_modules
+from zipfile import ZipFile
+
+import pytest
 
 from pathlibutil import Path
+
+
+def module_installed(module: str):
+    return module.lower() in [m.name.lower() for m in iter_modules()]
 
 
 def test_archive_file(tmp_file: Path, tmp_path: pathlib.Path):
@@ -28,12 +34,19 @@ def test_archive_raises(cls: Path, tmp_file: Path, tmp_path: pathlib.Path):
         cls('notexsist').make_archive(archive)
 
 
+@pytest.mark.skipif(not module_installed('py7zr'), reason='py7zr not installed, so a ModuleNotFoundError is expected')
 def test_archive_register(tmp_file: Path, tmp_path: pathlib.Path):
 
     archive = tmp_file.make_archive(tmp_path.joinpath('archive.7z'))
 
     assert archive.is_file()
     assert archive.suffix == '.7z'
+
+
+@pytest.mark.skipif(module_installed('py7zr'), reason='py7zr installed, so registering will succeed')
+def test_archive_register_failes(tmp_file: Path, tmp_path: pathlib.Path):
+    with pytest.raises(ModuleNotFoundError):
+        tmp_file.make_archive(tmp_path.joinpath('archive.7z'))
 
 
 def test_archive_format(cls: Path):

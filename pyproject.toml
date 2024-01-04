@@ -49,21 +49,6 @@ priority = "explicit"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-envlist = py38,py39,py310,py311,py312
-
-[testenv]
-deps =
-    py7zr
-    pytest
-    pytest-random-order
-    pytest-mock
-    pytest-cov
-commands = pytest --random-order
-"""
-
 [tool.pytest.ini_options]
 minversion = "6.0"
 testpaths = "tests"
