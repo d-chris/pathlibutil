@@ -5,6 +5,8 @@
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/pathlibutil)](https://pypi.org/project/pathlibutil/)
 [![PyPI - License](https://img.shields.io/pypi/l/pathlibutil)](https://raw.githubusercontent.com/d-chris/pathlibutil/main/LICENSE)
 [![GitHub Workflow Test)](https://img.shields.io/github/actions/workflow/status/d-chris/pathlibutil/pytest.yml?logo=github&label=pytest)](https://github.com/d-chris/pathlibutil/actions/workflows/pytest.yml)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpathlibutil&up_message=pdoc&logo=github&label=documentation)](https://d-chris.github.io/pathlibutil)
+[![GitHub tag (with filter)](https://img.shields.io/github/v/tag/d-chris/pathlibutil?logo=github&label=github)](https://github.com/d-chris/pathlibutil)
 
 ---
 
@@ -99,4 +101,25 @@ with file.parent as cwd:
             tag = 'ok' if verification else 'fail
 
       print(f'{tag.ljust(len(digest), ".")} *{filename}')
+```
+
+## Example 4
+
+Search all pycache directories and free the memory.
+> `Path().delete()` and `Path().size()`
+
+```python
+mem = 0
+i = 0
+
+for i, cache in enumerate(Path('.').rglob('*/__pycache__/'), start=1):
+      cache_size = cache.size()
+      try:
+            cache.delete(recursive=True)
+      except OSError:
+            print(f'Failed to delete {cache}')
+      else:
+            mem += cache_size
+
+print(f'{i} cache directories deleted, {mem / 2**20:.2f} MB freed.')
 ```
