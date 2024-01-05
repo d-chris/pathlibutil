@@ -171,7 +171,7 @@ class RegisterFooBarFormat(pathlibutil.Path, archive='foobar'):
                   'pip install <required_package_name>'
             )
 
-      def pack_foobar(base_name, base_dir, owner=None, group=None, dry_run=None, logger=None):
+      def pack_foobar(base_name, base_dir, owner=None, group=None, dry_run=None, logger=None) -> str:
             """callable that will be used to unpack archives.
 
             Args:
@@ -183,10 +183,13 @@ class RegisterFooBarFormat(pathlibutil.Path, archive='foobar'):
                         Defaults to None.
                   logger (`logging.Logger`, optional): as passed in `make_archive(*args, logger=None, **kwargs)`. 
                         Defaults to None.
+            
+            Returns:
+                  str: path of the new created archive
             """
             raise NotImplementedError('implement your own pack function')
 
-      def unpack_foobar(archive, path, filter=None, extra_args=None):
+      def unpack_foobar(archive, path, filter=None, extra_args=None) -> None:
             """callable that will be used to unpack archives. 
 
             Args:

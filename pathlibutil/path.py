@@ -5,7 +5,7 @@ import os
 import pathlib
 import shutil
 import sys
-from typing import Dict, Generator, List, Set, Callable
+from typing import Callable, Dict, Generator, List, Set
 
 
 class Path(pathlib.Path):

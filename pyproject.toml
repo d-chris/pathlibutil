@@ -12,6 +12,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
 ]
 keywords = ["pathlib", "hashlib", "shutil"]
 homepage = "https://d-chris.github.io"
@@ -56,8 +57,8 @@ testpaths = "tests"
 addopts = [
     "--random-order",
     "--color=yes",
-    # "--cov=pathlibutil",
-    # "--cov-report=term-missing:skip-covered",
-    # "--cov-append",
+    "--cov=pathlibutil",
+    "--cov-report=term-missing:skip-covered",
+    "--cov-append",
     # "--cov-report=html",
 ]
