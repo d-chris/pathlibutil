@@ -1,20 +1,36 @@
 import errno
 import hashlib
+import itertools
 import os
 import pathlib
 import shutil
 import sys
-from typing import Generator, Set
+from typing import Dict, Generator, List, Set
 
 
 class Path(pathlib.Path):
     """Path inherites from `pathlib.Path` and adds some methods to built-in python functions"""
+
+    _archive_formats: Dict[str, callable] = {}
+    """dict holding function to register shutil archive formats"""
 
     default_hash = 'md5'
     """default hash algorithm for the class when no algorithm is specified for `hexdigest()` and `verify()`"""
 
     if sys.version_info < (3, 12):
         _flavour = pathlib._windows_flavour if os.name == 'nt' else pathlib._posix_flavour
+
+    def __init_subclass__(cls, name, **kwargs) -> None:
+        """register archive formats from subclasses"""
+
+        super().__init_subclass__(**kwargs)
+
+        try:
+            cls._archive_formats[name] = getattr(
+                cls, '_register_archive_format'
+            )
+        except AttributeError:
+            pass
 
     @property
     def algorithms_available(self) -> Set[str]:
@@ -153,3 +169,130 @@ class Path(pathlib.Path):
             raise OSError(e)
 
         return Path(_path)
+
+    @staticmethod
+    def _find_archive_format(filname: 'Path') -> str:
+        """
+            Searches for a file the correct archive format.
+        """
+        ext = "".join(filname.suffixes)
+
+        for name, extensions, _ in shutil.get_unpack_formats():
+            if ext in extensions:
+                return name
+
+        return "".join(ext.split('.'))
+
+    @classmethod
+    def _register_format(cls, format: str) -> None:
+        """
+            Registers a archive format from `Path._register_<format>_format`.
+        """
+        try:
+            register_format = cls._archive_formats[format]
+        except KeyError:
+            raise ValueError(f"unknown archive format: '{format}'")
+        else:
+            register_format()
+
+    def make_archive(self, archivename: str, **kwargs) -> 'Path':
+        """
+            Creates an archive file (eg. zip) and returns the path to the archive.
+        """
+        _self = self.resolve(strict=True)
+        _archive = Path(archivename).resolve()
+        _format = kwargs.pop('format', self._find_archive_format(_archive))
+
+        _ = kwargs.pop('root_dir', None)
+        _ = kwargs.pop('base_dir', None)
+
+        for _ in range(2):
+            try:
+                _archive = shutil.make_archive(
+                    base_name=_archive.parent.joinpath(_archive.stem),
+                    format=_format,
+                    root_dir=_self.parent,
+                    base_dir=_self.relative_to(_self.parent),
+                    **kwargs
+                )
+
+                return Path(_archive)
+            except ValueError:
+                self._register_format(_format)
+
+    def unpack_archive(self, extract_dir: str, **kwargs) -> 'Path':
+        """
+            Unpacks an archive file (eg. zip) and returns the path to the extracted files.
+        """
+
+        _format = kwargs.pop('format', self._find_archive_format(self))
+
+        for _ in range(2):
+            try:
+                shutil.unpack_archive(
+                    self.resolve(strict=True),
+                    extract_dir,
+                    format=_format,
+                    **kwargs
+                )
+
+                return Path(extract_dir)
+            except ValueError:
+                self._register_format(_format)
+
+    @property
+    def archive_formats(self) -> List[str]:
+        """
+            Returns a list of supported archive formats.
+        """
+        formats = itertools.chain(
+            self._archive_formats.keys(),
+            [name for name, _ in shutil.get_archive_formats()]
+        )
+
+        return list(formats)
+
+
+class Register7zFormat(Path, name='7z'):
+    """
+        Register 7z archive format using `__init_subclass__` hook.
+
+        To register a new archive format create a subclass of `Path` and implement a `_register_archive_format()` method.
+
+        Example:
+        ```python
+        class Register7zArchive(Path, name='7z'):
+            @classmethod
+            def _register_archive_format(cls):
+
+                try:
+                    from py7zr import pack_7zarchive, unpack_7zarchive
+                except ModuleNotFoundError:
+                    raise ModuleNotFoundError('pip install pathlibutil[7z]')
+                else:
+                    shutil.register_archive_format(
+                        '7z', pack_7zarchive, description='7zip archive'
+                    )
+                    shutil.register_unpack_format(
+                        '7z', ['.7z'], unpack_7zarchive
+                    )
+        ```
+    """
+
+    @classmethod
+    def _register_archive_format(cls):
+        """
+            function to register 7z archive format
+        """
+
+        try:
+            from py7zr import pack_7zarchive, unpack_7zarchive
+        except ModuleNotFoundError:
+            raise ModuleNotFoundError('pip install pathlibutil[7z]')
+        else:
+            shutil.register_archive_format(
+                '7z', pack_7zarchive, description='7zip archive'
+            )
+            shutil.register_unpack_format(
+                '7z', ['.7z'], unpack_7zarchive
+            )

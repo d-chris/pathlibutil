@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pathlibutil"
 version = "0.0.0"
-description = ""
+description = "inherits from pathlib.Path with methods for hashing, copying, deleting and more"
 authors = ["Christoph Dörrer <d-chris@web.de>"]
 readme = "README.md"
 license = "MIT"
@@ -14,12 +14,17 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
 ]
 keywords = ["pathlib", "hashlib", "shutil"]
+homepage = "https://d-chris.github.io"
 repository = "https://github.com/d-chris/pathlibutil"
 documentation = "https://d-chris.github.io/pathlibutil"
 include = ["LICENSE"]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.13"
+py7zr = { version = "^0.20.2", optional = true }
+
+[tool.poetry.extras]
+7z = ["py7zr"]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
@@ -28,10 +33,9 @@ pytest-random-order = "^1.1.0"
 pytest-cov = "^4.1.0"
 pytest-mock = "^3.12.0"
 
-
 [tool.poetry.group.doc.dependencies]
-jinja2 = "^3.1.2"
 pdoc = "^14.3.0"
+click = "^8.1.7"
 
 [[tool.poetry.source]]
 name = "PyPI"
@@ -46,28 +50,14 @@ priority = "explicit"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-envlist = py38,py39,py310,py311,py312
-
-[testenv]
-deps =
-    pytest
-    pytest-random-order
-    pytest-mock
-    pytest-cov
-commands = pytest --random-order
-"""
-
 [tool.pytest.ini_options]
 minversion = "6.0"
 testpaths = "tests"
 addopts = [
     "--random-order",
     "--color=yes",
-    "--cov=pathlibutil",
-    "--cov-report=term-missing:skip-covered",
-    "--cov-append",
+    # "--cov=pathlibutil",
+    # "--cov-report=term-missing:skip-covered",
+    # "--cov-append",
     # "--cov-report=html",
 ]

@@ -5,14 +5,6 @@ import pathlib
 from pathlibutil import Path
 
 
-@pytest.fixture
-def tmp_dirpath(file: Path, cls: Path, tmp_path: pathlib.Path):
-
-    shutil.copy(file, tmp_path)
-
-    yield cls(tmp_path)
-
-
 def test_copy_file(file: Path, tmp_path: pathlib.Path):
     assert hasattr(Path, 'copy')
 
