@@ -1,20 +1,36 @@
 import errno
 import hashlib
+import itertools
 import os
 import pathlib
 import shutil
 import sys
-from typing import Generator, List, Set
+from typing import Dict, Generator, List, Set
 
 
 class Path(pathlib.Path):
     """Path inherites from `pathlib.Path` and adds some methods to built-in python functions"""
+
+    _archive_formats: Dict[str, callable] = {}
+    """dict holding function to register shutil archive formats"""
 
     default_hash = 'md5'
     """default hash algorithm for the class when no algorithm is specified for `hexdigest()` and `verify()`"""
 
     if sys.version_info < (3, 12):
         _flavour = pathlib._windows_flavour if os.name == 'nt' else pathlib._posix_flavour
+
+    def __init_subclass__(cls, name, **kwargs) -> None:
+        """register archive formats from subclasses"""
+
+        super().__init_subclass__(**kwargs)
+
+        try:
+            cls._archive_formats[name] = getattr(
+                cls, '_register_archive_format'
+            )
+        except AttributeError:
+            pass
 
     @property
     def algorithms_available(self) -> Set[str]:
@@ -173,28 +189,11 @@ class Path(pathlib.Path):
             Registers a archive format from `Path._register_<format>_format`.
         """
         try:
-            register_format = getattr(cls, f'_register_{format}_format')
-        except AttributeError:
+            register_format = cls._archive_formats[format]
+        except KeyError:
             raise ValueError(f"unknown archive format: '{format}'")
         else:
             register_format()
-
-    @staticmethod
-    def _register_7z_format() -> None:
-        """
-            Registers the 7z archive format.
-        """
-        try:
-            from py7zr import pack_7zarchive, unpack_7zarchive
-        except ModuleNotFoundError:
-            raise ModuleNotFoundError('pip install pathlibutil[7z]')
-        else:
-            shutil.register_archive_format(
-                '7z', pack_7zarchive, description='7zip archive'
-            )
-            shutil.register_unpack_format(
-                '7z', ['.7z'], unpack_7zarchive
-            )
 
     def make_archive(self, archivename: str, **kwargs) -> 'Path':
         """
@@ -246,4 +245,54 @@ class Path(pathlib.Path):
         """
             Returns a list of supported archive formats.
         """
-        return [name for name, _ in shutil.get_archive_formats()]
+        formats = itertools.chain(
+            self._archive_formats.keys(),
+            [name for name, _ in shutil.get_archive_formats()]
+        )
+
+        return list(formats)
+
+
+class Register7zFormat(Path, name='7z'):
+    """
+        Register 7z archive format using `__init_subclass__` hook.
+
+        To register a new archive format create a subclass of `Path` and implement a `_register_archive_format()` method.
+
+        Example:
+        ```python
+        class Register7zArchive(Path, name='7z'):
+            @classmethod
+            def _register_archive_format(cls):
+
+                try:
+                    from py7zr import pack_7zarchive, unpack_7zarchive
+                except ModuleNotFoundError:
+                    raise ModuleNotFoundError('pip install pathlibutil[7z]')
+                else:
+                    shutil.register_archive_format(
+                        '7z', pack_7zarchive, description='7zip archive'
+                    )
+                    shutil.register_unpack_format(
+                        '7z', ['.7z'], unpack_7zarchive
+                    )
+        ```
+    """
+
+    @classmethod
+    def _register_archive_format(cls):
+        """
+            function to register 7z archive format
+        """
+
+        try:
+            from py7zr import pack_7zarchive, unpack_7zarchive
+        except ModuleNotFoundError:
+            raise ModuleNotFoundError('pip install pathlibutil[7z]')
+        else:
+            shutil.register_archive_format(
+                '7z', pack_7zarchive, description='7zip archive'
+            )
+            shutil.register_unpack_format(
+                '7z', ['.7z'], unpack_7zarchive
+            )

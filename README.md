@@ -46,6 +46,8 @@ Read a file and print its content and some file information to stdout.
 > `Path().read_lines()`
 
 ```python
+from pathlib import Path
+
 readme = Path('README.md')
 
 print('File content'.center(80, '='))
@@ -62,6 +64,8 @@ Write a file with md5 checksums of all python files in the pathlibutil-directory
 > `Path().hexdigest()`
 
 ```python
+from pathlib import Path
+
 file = Path('pathlibutil.md5')
 
 algorithm = file.suffix[1:]
@@ -83,6 +87,8 @@ Read a file with md5 checksums and verify them.
 > `Path().verify()`, `Path.default_hash` and `contextmanager`
 
 ```python
+from pathlib import Path
+
 file = Path('pathlibutil.md5')
 
 Path.default_hash = file.suffix[1:]
@@ -112,6 +118,8 @@ Search all pycache directories and free the memory.
 > `Path().delete()` and `Path().size()`
 
 ```python
+from pathlib import Path
+
 mem = 0
 i = 0
 
@@ -130,34 +138,37 @@ print(f'{i} cache directories deleted, {mem / 2**20:.2f} MB freed.')
 ## Example 5
 
 Inherit from `pathlibutil.Path` to register new a archive format.
+Specify a `name` as keyword argument in the new subclass, which has to be the suffix of the archives.
+Implement a classmethod `_register_archive_format()` to register new archive formats.
 > `Path().make_archive()` and `Path().move()`
 
 ```python
 import shutil
+import pathlibutil
 
-class Path(pathlibutil.Path):
-
-      @staticmethod
-      def _register_rar_format():
+class RegisterRarFormat(pathlibutil.Path, name='rar'):
+      @classmethod
+      def _register_archive_format(cls):
       """ 
-            implement new register functions for given suffixes
-            as a staticmethod: `_register_<suffixes>_format()`
-
-            eg. achive.foo.bar as `_register_foobar_format()` 
+            implement new register functions for given `name`
       """
-      try:
-            from pyunpack import Archive
-      except ModuleNotFoundError:
-            raise ModuleNotFoundError('pip install pyunpack')
-      else:
-            shutil.register_archive_format(
-                  'rar', Archive, description='rar archive'
-            )
-            shutil.register_unpack_format(
-                  'rar', ['.rar'], Archive
-            )
+            try:
+                  from pyunpack import Archive
+            except ModuleNotFoundError:
+                  raise ModuleNotFoundError('pip install pyunpack')
+            else:
+                  shutil.register_archive_format(
+                        'rar', Archive, description='rar archive'
+                  )
+                  shutil.register_unpack_format(
+                        'rar', ['.rar'], Archive
+                  )
 
-archive = Path('README.md').make_archive('README.rar')
+file = pathlibutil.Path('README.md')
+
+print(f"available archive formats: {file.archive_formats}")
+
+archive = file.make_archive('README.rar')
 
 backup = archive.move('./backup/')
 

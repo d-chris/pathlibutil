@@ -59,6 +59,10 @@ def test_archive_format(cls: Path):
         assert name in format
 
 
+def test_archive_format_7z(file: Path):
+    assert '7z' in file.archive_formats
+
+
 def test_pack_unpack_directory(cls: Path, tmp_path: pathlib.Path):
     # create a test folder with 3 files using os functions
     files = [

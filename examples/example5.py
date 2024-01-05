@@ -10,14 +10,11 @@ def main():
 
     import shutil
 
-    class Path(pathlibutil.Path):
-        @staticmethod
-        def _register_rar_format():
+    class RegisterRarFormat(pathlibutil.Path, name='rar'):
+        @classmethod
+        def _register_archive_format(cls):
             """ 
-                implement new register functions for given suffixes
-                as a staticmethod: `_register_<suffixes>_format()`
-
-                eg. achive.foo.bar as `_register_foobar_format()` 
+                implement new register functions for given `name`
             """
             try:
                 from pyunpack import Archive
@@ -31,7 +28,11 @@ def main():
                     'rar', ['.rar'], Archive
                 )
 
-    archive = Path('README.md').make_archive('README.rar')
+    file = pathlibutil.Path('README.md')
+
+    print(f"available archive formats: {file.archive_formats}")
+
+    archive = file.make_archive('README.rar')
 
     backup = archive.move('./backup/')
 
