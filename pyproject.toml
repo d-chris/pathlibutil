@@ -35,6 +35,7 @@ pytest-mock = "^3.12.0"
 
 [tool.poetry.group.doc.dependencies]
 pdoc = "^14.3.0"
+click = "^8.1.7"
 
 [[tool.poetry.source]]
 name = "PyPI"
