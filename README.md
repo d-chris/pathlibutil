@@ -22,12 +22,24 @@
 - `Path().copy()` copy a file or directory to a new path destination
 - `Path().delete()` delete a file or directory-tree
 - `Path().move()` move a file or directory to a new path destination
-- `Path().make_archive()` create and `Path().unpack_archive()` an archive from a file or directory
+- `Path().make_archive()` creates and `Path().unpack_archive()` uncompresses an archive from a file or directory
+- `Path.archive_formats` to get all available archive formats
   
 ## Installation
 
 ```bash
 pip install pathlibutil
+```
+
+### 7zip support
+
+to handle 7zip archives, an extra package `py7zr>=0.20.2` is required!
+
+[![PyPI - Version](https://img.shields.io/pypi/v/py7zr?logo=python&logoColor=white&label=py7zr&color=FFFF33)](https://pypi.org/project/py7zr/)
+
+```bash
+# install as extra dependency
+pip install pathlibutil[7z]
 ```
 
 ## Usage
@@ -138,39 +150,69 @@ print(f'{i} cache directories deleted, {mem / 2**20:.2f} MB freed.')
 ## Example 5
 
 Inherit from `pathlibutil.Path` to register new a archive format.
-Specify a `name` as keyword argument in the new subclass, which has to be the suffix of the archives.
+Specify a `archive` as keyword argument in the new subclass, which has to be the suffix without `.` of the archives.
 Implement a classmethod `_register_archive_format()` to register new archive formats.
-> `Path().make_archive()` and `Path().move()`
+> `Path().make_archive()`, `Path.archive_formats` and `Path().move()`
 
 ```python
 import shutil
 import pathlibutil
 
-class RegisterRarFormat(pathlibutil.Path, name='rar'):
+class RegisterFooBarFormat(pathlibutil.Path, archive='foobar'):
       @classmethod
       def _register_archive_format(cls):
       """ 
-            implement new register functions for given `name`
+            implement new register functions for given `archive`
       """
-            try:
-                  from pyunpack import Archive
-            except ModuleNotFoundError:
-                  raise ModuleNotFoundError('pip install pyunpack')
-            else:
-                  shutil.register_archive_format(
-                        'rar', Archive, description='rar archive'
-                  )
-                  shutil.register_unpack_format(
-                        'rar', ['.rar'], Archive
-                  )
+      try:
+            import <required_package_name>
+      except ModuleNotFoundError:
+            raise ModuleNotFoundError(
+                  'pip install <required_package_name>'
+            )
+
+      def pack_foobar(base_name, base_dir, owner=None, group=None, dry_run=None, logger=None):
+            """callable that will be used to unpack archives.
+
+            Args:
+                  base_name (`str`): name of the file to create
+                  base_dir (`str`): directory to start archiving from, defaults to `os.curdir`
+                  owner (`Any`, optional): as passed in `make_archive(*args, owner=None, **kwargs)`. Defaults to None.
+                  group (`Any`, optional): as passed in `make_archive(*args, group=None, **kwargs)`. Defaults to None.
+                  dry_run (`Any`, optional): as passed in `make_archive(*args, dry_run=None, **kwargs)`. 
+                        Defaults to None.
+                  logger (`logging.Logger`, optional): as passed in `make_archive(*args, logger=None, **kwargs)`. 
+                        Defaults to None.
+            """
+            raise NotImplementedError('implement your own pack function')
+
+      def unpack_foobar(archive, path, filter=None, extra_args=None):
+            """callable that will be used to unpack archives. 
+
+            Args:
+                  archive (`str`): path of the archive
+                  path (`str`): directory the archive must be extracted to
+                  filter (`Any`, optional): as passed in `unpack_archive(*args, filter=None, **kwargs)`.
+                        Defaults to None.
+                  extra_args (`Sequence[Tuple[name, value]]`, optional): additional keyword arguments. 
+                        as passd in `register_unpack_format(*args, extra_args=None, **kwargs)`. Defaults to None.
+            """
+            raise NotImplementedError('implement your own unpack function')
+
+      shutil.register_archive_format(
+            'foobar', pack_foobar, description='foobar archives'
+      )
+      shutil.register_unpack_format(
+            'foobar', ['.foo.bar'], unpack_foobar
+      )
 
 file = pathlibutil.Path('README.md')
 
 print(f"available archive formats: {file.archive_formats}")
 
-archive = file.make_archive('README.rar')
+archive = file.make_archive('README.foo.bar')
 
 backup = archive.move('./backup/')
 
-print(f'rar archive created: {archive.name} and moved to: {backup.parent}')
+print(f'archive created: {archive.name} and moved to: {backup.parent}')
 ```

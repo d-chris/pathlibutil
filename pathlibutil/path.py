@@ -5,13 +5,13 @@ import os
 import pathlib
 import shutil
 import sys
-from typing import Dict, Generator, List, Set
+from typing import Dict, Generator, List, Set, Callable
 
 
 class Path(pathlib.Path):
     """Path inherites from `pathlib.Path` and adds some methods to built-in python functions"""
 
-    _archive_formats: Dict[str, callable] = {}
+    _archive_formats: Dict[str, Callable] = {}
     """dict holding function to register shutil archive formats"""
 
     default_hash = 'md5'
@@ -20,15 +20,18 @@ class Path(pathlib.Path):
     if sys.version_info < (3, 12):
         _flavour = pathlib._windows_flavour if os.name == 'nt' else pathlib._posix_flavour
 
-    def __init_subclass__(cls, name, **kwargs) -> None:
+    def __init_subclass__(cls, **kwargs) -> None:
         """register archive formats from subclasses"""
 
-        super().__init_subclass__(**kwargs)
+        super().__init_subclass__()
 
         try:
+            name = kwargs.pop('archive')
             cls._archive_formats[name] = getattr(
                 cls, '_register_archive_format'
             )
+        except KeyError:
+            pass
         except AttributeError:
             pass
 
@@ -253,7 +256,7 @@ class Path(pathlib.Path):
         return list(formats)
 
 
-class Register7zFormat(Path, name='7z'):
+class Register7zFormat(Path, archive='7z'):
     """
         Register 7z archive format using `__init_subclass__` hook.
 
@@ -261,7 +264,7 @@ class Register7zFormat(Path, name='7z'):
 
         Example:
         ```python
-        class Register7zArchive(Path, name='7z'):
+        class Register7zArchive(Path, archive='7z'):
             @classmethod
             def _register_archive_format(cls):
 

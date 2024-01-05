@@ -121,3 +121,20 @@ def test_unpack_archive_raises(tmp_path: pathlib.Path):
 
     with pytest.raises(ValueError):
         Path(__file__).unpack_archive(tmp_path, format='rar')
+
+
+def test_archive_register_hook(cls: Path):
+
+    class FooArchive(cls, archive='foo'):
+        @classmethod
+        def __register_archive_format(cls):
+            pass
+
+    assert 'foo' not in cls().archive_formats
+
+    class BarArchive(cls, archive='bar'):
+        @classmethod
+        def _register_archive_format(cls):
+            pass
+
+    assert 'bar' in cls().archive_formats

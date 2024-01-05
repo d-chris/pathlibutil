@@ -211,3 +211,16 @@ def test_verify_strict(file: Path, algorithm: str):
 
     with pytest.raises(ValueError):
         _ = file.verify(hashsum[:6], strict=False)
+
+
+def test_inheritance(cls):
+
+    class PathA(cls):
+        pass
+
+    assert issubclass(PathA, cls)
+
+    class PathB(cls, foo='bar'):
+        pass
+
+    assert issubclass(PathB, cls)
