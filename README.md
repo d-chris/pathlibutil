@@ -9,20 +9,19 @@
 [![GitHub tag (with filter)](https://img.shields.io/github/v/tag/d-chris/pathlibutil?logo=github&label=github)](https://github.com/d-chris/pathlibutil)
 [![Coverage](https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpathlibutil%2Fhtmlcov&up_message=available&down_message=missing&logo=codecov&label=coverage)](https://d-chris.github.io/pathlibutil/htmlcov)
 
-
 ---
 
-`pathlibutil.Path` inherits from  `pathlib.Path` with some useful built-in python functions.
+`pathlibutil.Path` inherits from  `pathlib.Path` with some useful built-in python functions from `shutil` and `hashlib`
 
-- `Path().hexdigest()` to calculate and `Path().verify()` for verification of hexdigest from a file
+- `Path.hexdigest()` to calculate and `Path.verify()` for verification of hexdigest from a file
 - `Path.default_hash` to configurate default hash algorithm for `Path` class (default: *'md5'*)
-- `Path().size()` to get size in bytes of a file or directory
-- `Path().read_lines()` to yield over all lines from a file until EOF
+- `Path.size()` to get size in bytes of a file or directory
+- `Path.read_lines()` to yield over all lines from a file until EOF
 - `contextmanager` to change current working directory with `with` statement
-- `Path().copy()` copy a file or directory to a new path destination
-- `Path().delete()` delete a file or directory-tree
-- `Path().move()` move a file or directory to a new path destination
-- `Path().make_archive()` creates and `Path().unpack_archive()` uncompresses an archive from a file or directory
+- `Path.copy()` copy a file or directory to a new path destination
+- `Path.delete()` delete a file or directory-tree
+- `Path.move()` move a file or directory to a new path destination
+- `Path.make_archive()` creates and `Path.unpack_archive()` uncompresses an archive from a file or directory
 - `Path.archive_formats` to get all available archive formats
   
 ## Installation
@@ -171,7 +170,7 @@ class RegisterFooBarFormat(pathlibutil.Path, archive='foobar'):
                   'pip install <required_package_name>'
             )
 
-      def pack_foobar(base_name, base_dir, owner=None, group=None, dry_run=None, logger=None):
+      def pack_foobar(base_name, base_dir, owner=None, group=None, dry_run=None, logger=None) -> str:
             """callable that will be used to unpack archives.
 
             Args:
@@ -183,10 +182,13 @@ class RegisterFooBarFormat(pathlibutil.Path, archive='foobar'):
                         Defaults to None.
                   logger (`logging.Logger`, optional): as passed in `make_archive(*args, logger=None, **kwargs)`. 
                         Defaults to None.
+            
+            Returns:
+                  str: path of the new created archive
             """
             raise NotImplementedError('implement your own pack function')
 
-      def unpack_foobar(archive, path, filter=None, extra_args=None):
+      def unpack_foobar(archive, path, filter=None, extra_args=None) -> None:
             """callable that will be used to unpack archives. 
 
             Args:

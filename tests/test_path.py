@@ -50,6 +50,14 @@ def mock_hexdigest(mocker) -> Mock:
     yield mock
 
 
+def test_hexdigest_directory_raises(tmp_path: pathlib.Path):
+    with pytest.raises(FileNotFoundError):
+        Path(tmp_path).hexdigest()
+
+    with pytest.raises(FileNotFoundError):
+        Path(tmp_path / 'notexists').hexdigest()
+
+
 def test_hexdigest_default(file: Path):
     assert hasattr(Path, 'hexdigest')
 
