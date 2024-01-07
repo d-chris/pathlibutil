@@ -51,10 +51,16 @@ class Path(pathlib.Path):
         except KeyError:
             args = ()
 
-        return hashlib.new(
-            name=algorithm or self.default_hash,
-            data=self.read_bytes(),
-        ).hexdigest(*args)
+        try:
+            return hashlib.new(
+                name=algorithm or self.default_hash,
+                data=self.read_bytes(),
+            ).hexdigest(*args)
+        except PermissionError as e:
+            if self.is_dir():
+                raise FileNotFoundError(f"'{self}' is a directory not a file")
+
+            raise e
 
     def verify(self, hexdigest: str, algorithm: str = None, *, strict: bool = True, **kwargs) -> bool:
         """
