@@ -75,21 +75,18 @@ class Path(pathlib.Path):
         Some hashes will raise `TypeError` if the `length` argument is missing, use
         `**kwargs` for this purpose.
         """
+        if not self.is_file():
+            raise FileNotFoundError(f"'{self}' is not an existing file")
+
         try:
             args = (kwargs.pop("length"),)
         except KeyError:
             args = ()
 
-        try:
-            return hashlib.new(
-                name=algorithm or self.default_hash,
-                data=self.read_bytes(),
-            ).hexdigest(*args)
-        except PermissionError as e:
-            if self.is_dir():
-                raise FileNotFoundError(f"'{self}' is a directory not a file")
-
-            raise e
+        return hashlib.new(
+            name=algorithm or self.default_hash,
+            data=self.read_bytes(),
+        ).hexdigest(*args)
 
     def verify(
         self, digest: str, algorithm: str = None, *, strict: bool = True, **kwargs
