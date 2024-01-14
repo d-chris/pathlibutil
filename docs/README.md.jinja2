@@ -1,0 +1,99 @@
+# pathlibutil
+
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pathlibutil)](https://pypi.org/project/pathlibutil/)
+[![PyPI](https://img.shields.io/pypi/v/pathlibutil)](https://pypi.org/project/pathlibutil/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/pathlibutil)](https://pypi.org/project/pathlibutil/)
+[![PyPI - License](https://img.shields.io/pypi/l/pathlibutil)](https://raw.githubusercontent.com/d-chris/pathlibutil/main/LICENSE)
+[![GitHub Workflow Test)](https://img.shields.io/github/actions/workflow/status/d-chris/pathlibutil/pytest.yml?logo=github&label=pytest)](https://github.com/d-chris/pathlibutil/actions/workflows/pytest.yml)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpathlibutil&up_message=pdoc&logo=github&label=documentation)](https://d-chris.github.io/pathlibutil)
+[![GitHub tag (with filter)](https://img.shields.io/github/v/tag/d-chris/pathlibutil?logo=github&label=github)](https://github.com/d-chris/pathlibutil)
+[![Coverage](https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpathlibutil%2Fhtmlcov&up_message=available&down_message=missing&logo=codecov&label=coverage)](https://d-chris.github.io/pathlibutil/htmlcov)
+
+---
+
+`pathlibutil.Path` inherits from  `pathlib.Path` with some useful built-in python functions from `shutil` and `hashlib`
+
+- `Path.hexdigest()` to calculate and `Path.verify()` for verification of hexdigest from a file
+- `Path.default_hash` to configurate default hash algorithm for `Path` class (default: *'md5'*)
+- `Path.size()` to get size in bytes of a file or directory
+- `Path.read_lines()` to yield over all lines from a file until EOF
+- `contextmanager` to change current working directory with `with` statement
+- `Path.copy()` copy a file or directory to a new path destination
+- `Path.delete()` delete a file or directory-tree
+- `Path.move()` move a file or directory to a new path destination
+- `Path.make_archive()` creates and `Path.unpack_archive()` uncompresses an archive from a file or directory
+- `Path.archive_formats` to get all available archive formats
+  
+## Installation
+
+```bash
+pip install pathlibutil
+```
+
+### 7zip support
+
+to handle 7zip archives, an extra package `py7zr>=0.20.2` is required!
+
+[![PyPI - Version](https://img.shields.io/pypi/v/py7zr?logo=python&logoColor=white&label=py7zr&color=FFFF33)](https://pypi.org/project/py7zr/)
+
+```bash
+# install as extra dependency
+pip install pathlibutil[7z]
+```
+
+## Usage
+
+```python
+from pathlibutil import Path
+
+readme = Path('README.md')
+
+print(f'File size: {readme.size()} Bytes')
+```
+
+## Example 1
+
+Read a file and print its content and some file information to stdout.
+> `Path.read_lines()`
+
+```python
+{% pdoc examples/example1.py:main:code.indent -%}
+```
+
+## Example 2
+
+Write a file with md5 checksums of all python files in the pathlibutil-directory.
+> `Path.hexdigest()`
+
+```python
+{% pdoc examples/example2.py:main:code.indent -%}
+```
+
+## Example 3
+
+Read a file with md5 checksums and verify them.
+> `Path.verify()`, `Path.default_hash` and `contextmanager`
+
+```python
+{% pdoc examples/example3.py:main:code.indent -%}
+```
+
+## Example 4
+
+Search all pycache directories and free the memory.
+> `Path.delete()` and `Path.size()`
+
+```python
+{% pdoc examples/example4.py:main:code.indent -%}
+```
+
+## Example 5
+
+Inherit from `pathlibutil.Path` to register new a archive format.
+Specify a `archive` as keyword argument in the new subclass, which has to be the suffix without `.` of the archives.
+Implement a classmethod `_register_archive_format()` to register new archive formats.
+> `Path.make_archive()`, `Path.archive_formats` and `Path.move()`
+
+```python
+{% pdoc examples/example5.py:main:code.indent -%}
+```
