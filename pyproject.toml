@@ -40,6 +40,7 @@ black = "^23.12.1"
 docformatter = "^1.7.5"
 
 [tool.poetry.group.doc.dependencies]
+jinja2-pdoc = "^0.2.0"
 pdoc = "^14.3.0"
 click = "^8.1.7"
 
