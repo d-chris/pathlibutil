@@ -5,7 +5,7 @@ import os
 import pathlib
 import shutil
 import sys
-from typing import Callable, Dict, Generator, List, Set
+from typing import Callable, Dict, Generator, Set
 
 
 class Path(pathlib.Path):
@@ -197,7 +197,7 @@ class Path(pathlib.Path):
 
         If `recursive` is `False` an `OSError` is raised if the directory is not empty.
 
-        If `recursive` is `True` the directory will be deleted with all its  content
+        If `recursive` is `True` the directory will be deleted with all its content
         (files and subdirectories).
         - `**kwargs` are passed on to `shutil.rmtree()`
         """
@@ -313,11 +313,12 @@ class Path(pathlib.Path):
                 self._register_format(_format)
 
     @property
-    def archive_formats(self) -> List[str]:
+    def archive_formats(self) -> Set[str]:
         """
-        Returns a list of supported archive formats.
+        Returns a set with names of the supported archive formats.
 
-        The list contains all built-in formats and all formats registered by subclasses
+        The set contains all built-in formats from `shutil.get_archive_formats()`
+        and all formats registered by subclasse
         (eg. pathlibutil.path.Register7zFormat).
         """
         formats = itertools.chain(
@@ -325,7 +326,7 @@ class Path(pathlib.Path):
             [name for name, _ in shutil.get_archive_formats()],
         )
 
-        return list(formats)
+        return set(formats)
 
 
 class Register7zFormat(Path, archive="7z"):

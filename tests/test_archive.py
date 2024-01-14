@@ -57,7 +57,7 @@ def test_archive_format(cls: Path):
     assert hasattr(cls, "archive_formats")
 
     format = cls().archive_formats
-    assert isinstance(format, list)
+    assert isinstance(format, set)
 
     for name, _ in shutil.get_archive_formats():
         assert name in format
