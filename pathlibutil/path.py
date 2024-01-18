@@ -5,7 +5,9 @@ import os
 import pathlib
 import shutil
 import sys
-from typing import Callable, Dict, Generator, Set
+from typing import Callable, Dict, Generator, Set, TypeVar
+
+_Path = TypeVar("_Path", bound="Path")
 
 
 class Path(pathlib.Path):
@@ -118,7 +120,7 @@ class Path(pathlib.Path):
 
         return True
 
-    def __enter__(self) -> "Path":
+    def __enter__(self) -> _Path:
         """
         Contextmanager to changes the current working directory.
         """
@@ -162,7 +164,7 @@ class Path(pathlib.Path):
 
         return self.stat(**kwargs).st_size
 
-    def copy(self, dst: str, exist_ok: bool = True, **kwargs) -> "Path":
+    def copy(self, dst: str, exist_ok: bool = True, **kwargs) -> _Path:
         """
         Copies the file or directory to a destination directory, if it is missing it
         will be created.
@@ -184,7 +186,7 @@ class Path(pathlib.Path):
 
             _path = shutil.copy2(self, dst, **kwargs)
 
-        return Path(_path)
+        return self.__class__(_path)
 
     def delete(
         self, *, recursive: bool = False, missing_ok: bool = False, **kwargs
@@ -214,7 +216,7 @@ class Path(pathlib.Path):
 
             shutil.rmtree(self, **kwargs)
 
-    def move(self, dst: str) -> "Path":
+    def move(self, dst: str) -> _Path:
         """
         Moves the file or directory into the destination directory.
 
@@ -231,7 +233,7 @@ class Path(pathlib.Path):
         except shutil.Error as e:
             raise OSError(e)
 
-        return Path(_path)
+        return self.__class__(_path)
 
     @staticmethod
     def _find_archive_format(filename: "Path") -> str:
@@ -258,7 +260,7 @@ class Path(pathlib.Path):
         else:
             register_format()
 
-    def make_archive(self, archivename: str, **kwargs) -> "Path":
+    def make_archive(self, archivename: str, **kwargs) -> _Path:
         """
         Creates an archive file (eg. zip) and returns the path to the archive.
 
@@ -285,11 +287,11 @@ class Path(pathlib.Path):
                     **kwargs,
                 )
 
-                return Path(_archive)
+                return self.__class__(_archive)
             except ValueError:
                 self._register_format(_format)
 
-    def unpack_archive(self, extract_dir: str, **kwargs) -> "Path":
+    def unpack_archive(self, extract_dir: str, **kwargs) -> _Path:
         """
         Unpacks an archive file (eg. zip) into a directory and returns the path to the
         extracted files.
@@ -308,7 +310,7 @@ class Path(pathlib.Path):
                     self.resolve(strict=True), extract_dir, format=_format, **kwargs
                 )
 
-                return Path(extract_dir)
+                return self.__class__(extract_dir)
             except ValueError:
                 self._register_format(_format)
 
