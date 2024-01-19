@@ -1,8 +1,9 @@
+import functools
 import re
 
 
 class ByteSize(int):
-    __regex = re.compile(r"(?P<unit>[kmgtpezy]i?b)", re.IGNORECASE)
+    __regex = re.compile(r"(?P<unit>[kmgtpezy]i?b)")
 
     __bytes = {
         "kb": 10**3,  # kilobyte
@@ -24,6 +25,9 @@ class ByteSize(int):
     }
 
     def __getattr__(self, name: str) -> float:
+        """
+        check if unknown attribute is a unit and convert self to that unit
+        """
         try:
             return float(self) / self.__bytes[name.lower()]
         except KeyError:
@@ -32,6 +36,9 @@ class ByteSize(int):
             )
 
     def __format__(self, __format_spec: str) -> str:
+        """
+        support formatting with with known units
+        """
         try:
             return super().__format__(__format_spec)
         except ValueError:
@@ -41,7 +48,18 @@ class ByteSize(int):
                 value = getattr(self, match["unit"])
             except TypeError:
                 raise ValueError(
-                    f"Invalid format specifier '{__format_spec}' for object of type '{self.__class__.__name__}'"
+                    f"Unknown format code '{__format_spec}' for object of type '{self.__class__.__name__}'"
                 )
 
             return value.__format__(self.__regex.sub("f", __format_spec, 1))
+
+
+def bytesize(func):
+    """wrapper to convert return value to ByteSize"""
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs) -> ByteSize:
+        size = func(*args, **kwargs)
+        return ByteSize(size)
+
+    return wrapper
