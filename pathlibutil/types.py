@@ -1,8 +1,22 @@
 import functools
 import re
+from typing import Set
 
 
 class ByteSize(int):
+    """
+    inherit from `int` with attributes to convert bytes to decimal or binary `units`
+    for measuring storage data. These attributes will return a `float`
+
+    >>> ByteSize(1234).kb
+    1.234
+
+    f-string formatting is also supported
+
+    >>> f"{ByteSize(6543210):.2mib} MiB"
+    '6.24 MiB'
+    """
+
     __regex = re.compile(r"(?P<unit>[kmgtpezy]i?b)")
 
     __bytes = {
@@ -23,6 +37,28 @@ class ByteSize(int):
         "zib": 2**70,  # zebibyte
         "yib": 2**80,  # yobibyte
     }
+
+    @property
+    def units(self) -> Set[str]:
+        """
+        `decimal` and `binary` units for measuring storage data.
+
+        - `kilobyte` and `kibibyte`
+        - `megabyte` and `mebibyte`
+        - `gigabyte` and `gibibyte`
+        - `terabyte` and `tebibyte`
+        - `petabyte` and `pebibyte`
+        - `exabyte` and `exbibyte`
+        - `zettabyte` and `zebibyte`
+        - `yottabyte` and `yobibyte`
+
+        >>> ByteSize().units
+        {
+            'mib', 'eb', 'kib', 'gb', 'yb', 'mb', 'gib', 'eib',
+            'zb', 'yib', 'tib', 'pb', 'zib', 'pib', 'tb', 'kb'
+        }
+        """
+        return set(self.__bytes.keys())
 
     def __getattr__(self, name: str) -> float:
         """
@@ -55,7 +91,17 @@ class ByteSize(int):
 
 
 def bytesize(func):
-    """wrapper to convert return value to ByteSize"""
+    """
+    decorator to convert a return value of  `int` to a `ByteSize` object
+
+    Example:
+
+    ```python
+    @bytesize
+    def randbytes(a, b) -> ByteSize:
+        return random.randint(a, b)
+    ```
+    """
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> ByteSize:
