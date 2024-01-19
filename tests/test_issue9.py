@@ -73,3 +73,17 @@ def test_size():
 
     assert type(p.size()) is ByteSize
     assert type(p.parent.size()) is ByteSize
+
+
+def test_unit_info():
+    assert hasattr(ByteSize, "info")
+    assert hasattr(ByteSize, "units")
+
+    for unit in ByteSize().units:
+        assert type(unit) is str
+
+        byte, name = ByteSize.info(unit)
+
+        assert type(byte) is int
+        assert byte >= 1000
+        assert type(name) is str
