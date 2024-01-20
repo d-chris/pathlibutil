@@ -1,29 +1,29 @@
-try:
-    import sys
-    sys.path.insert(0, '../pathlibutil')
-finally:
-    import pathlibutil
-
-
 def main():
-    """Example 5: Register new archive format."""
+    """
+    Inherit from `pathlibutil.Path` to register new a archive format. Specify a
+    `archive` as keyword argument in the new subclass, which has to be the suffix
+    without `.` of the archives. Implement a classmethod `_register_archive_format()`
+    to register new archive formats.
 
+    > Path.make_archive(), Path.archive_formats and Path.move()
+    """
+    import pathlibutil
     import shutil
 
-    class RegisterFooBarFormat(pathlibutil.Path, archive='foobar'):
+    class RegisterFooBarFormat(pathlibutil.Path, archive="foobar"):
         @classmethod
         def _register_archive_format(cls):
-            """ 
-                implement new register functions for given `archive`
+            """
+            implement new register functions for given `archive`
             """
             try:
                 import required_package_name
             except ModuleNotFoundError:
-                raise ModuleNotFoundError(
-                    'pip install <required_package_name>'
-                )
+                raise ModuleNotFoundError("pip install <required_package_name>")
 
-            def pack_foobar(base_name, base_dir, owner=None, group=None, dry_run=None, logger=None) -> str:
+            def pack_foobar(
+                base_name, base_dir, owner=None, group=None, dry_run=None, logger=None
+            ) -> str:
                 """callable that will be used to unpack archives.
 
                 Args:
@@ -37,10 +37,10 @@ def main():
                 Returns:
                     str: path of the new created archive
                 """
-                raise NotImplementedError('implement your own pack function')
+                raise NotImplementedError("implement your own pack function")
 
             def unpack_foobar(archive, path, filter=None, extra_args=None) -> None:
-                """callable that will be used to unpack archives. 
+                """callable that will be used to unpack archives.
 
                 Args:
                     archive (`str`): path of the archive
@@ -48,25 +48,23 @@ def main():
                     filter (`Any`, optional): as passed in `unpack_archive(*args, filter=None, **kwargs)`. Defaults to None.
                     extra_args (`Sequence[Tuple[name, value]]`, optional): additional keyword arguments, specified by `register_unpack_format(*args, extra_args=None, **kwargs)`. Defaults to None.
                 """
-                raise NotImplementedError('implement your own unpack function')
+                raise NotImplementedError("implement your own unpack function")
 
             shutil.register_archive_format(
-                'foobar', pack_foobar, description='foobar archives'
+                "foobar", pack_foobar, description="foobar archives"
             )
-            shutil.register_unpack_format(
-                'foobar', ['.foo.bar'], unpack_foobar
-            )
+            shutil.register_unpack_format("foobar", [".foo.bar"], unpack_foobar)
 
-    file = pathlibutil.Path('README.md')
+    file = pathlibutil.Path("README.md")
 
     print(f"available archive formats: {file.archive_formats}")
 
-    archive = file.make_archive('README.foo.bar')
+    archive = file.make_archive("README.foo.bar")
 
-    backup = archive.move('./backup/')
+    backup = archive.move("./backup/")
 
-    print(f'archive created: {archive.name} and moved to: {backup.parent}')
+    print(f"archive created: {archive.name} and moved to: {backup.parent}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

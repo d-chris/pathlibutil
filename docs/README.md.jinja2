@@ -53,8 +53,7 @@ print(f'File size: {readme.size()} Bytes')
 
 ## Example 1
 
-Read a file and print its content and some file information to stdout.
-> `Path.read_lines()`
+{% pdoc examples/example1:main:docstring %}
 
 ```python
 {% pdoc examples/example1.py:main:code.indent -%}
@@ -62,8 +61,7 @@ Read a file and print its content and some file information to stdout.
 
 ## Example 2
 
-Write a file with md5 checksums of all python files in the pathlibutil-directory.
-> `Path.hexdigest()`
+{% pdoc examples/example2:main:docstring %}
 
 ```python
 {% pdoc examples/example2.py:main:code.indent -%}
@@ -71,8 +69,7 @@ Write a file with md5 checksums of all python files in the pathlibutil-directory
 
 ## Example 3
 
-Read a file with md5 checksums and verify them.
-> `Path.verify()`, `Path.default_hash` and `contextmanager`
+{% pdoc examples/example3:main:docstring %}
 
 ```python
 {% pdoc examples/example3.py:main:code.indent -%}
@@ -80,8 +77,7 @@ Read a file with md5 checksums and verify them.
 
 ## Example 4
 
-Search all pycache directories and free the memory.
-> `Path.delete()` and `Path.size()`
+{% pdoc examples/example4:main:docstring %}
 
 ```python
 {% pdoc examples/example4.py:main:code.indent -%}
@@ -89,10 +85,7 @@ Search all pycache directories and free the memory.
 
 ## Example 5
 
-Inherit from `pathlibutil.Path` to register new a archive format.
-Specify a `archive` as keyword argument in the new subclass, which has to be the suffix without `.` of the archives.
-Implement a classmethod `_register_archive_format()` to register new archive formats.
-> `Path.make_archive()`, `Path.archive_formats` and `Path.move()`
+{% pdoc examples/example5:main:docstring %}
 
 ```python
 {% pdoc examples/example5.py:main:code.indent -%}

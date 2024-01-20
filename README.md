@@ -57,17 +57,19 @@ Read a file and print its content and some file information to stdout.
 > `Path.read_lines()`
 
 ```python
-readme = Path('README.md')
+from pathlibutil import Path
 
-print(f'File size: {readme.size()} Bytes')
+readme = Path("README.md")
+
+print(f"File size: {readme.size()} Bytes")
 print(f'File sha1: {readme.hexdigest("sha1")}')
 
-print('File content'.center(80, '='))
+print("File content".center(80, "="))
 
-for line in readme.read_lines(encoding='utf-8'):
-  print(line, end='')
+for line in readme.read_lines(encoding="utf-8"):
+  print(line, end="")
 
-print('EOF'.center(80, '='))
+print("EOF".center(80, "="))
 ```
 
 ## Example 2
@@ -76,17 +78,21 @@ Write a file with md5 checksums of all python files in the pathlibutil-directory
 > `Path.hexdigest()`
 
 ```python
-file = Path('pathlibutil.md5')
+from pathlibutil import Path
 
-with file.open('w') as f:
+file = Path("pathlibutil.md5")
+
+with file.open("w") as f:
   f.write(
-      '# MD5 checksums generated with pathlibutil (https://pypi.org/project/pathlibutil/)\n\n')
+      f"# MD5 checksums generated with pathlibutil "
+      "(https://pypi.org/project/pathlibutil/)\n\n"
+  )
 
   i = 0
-  for i, filename in enumerate(Path('./pathlibutil').glob('*.py'), start=1):
-    f.write(f'{filename.hexdigest()} *{filename}\n')
+  for i, filename in enumerate(Path("./pathlibutil").glob("*.py"), start=1):
+    f.write(f"{filename.hexdigest()} *{filename}\n")
 
-print(f'\nwritten: {i:>5} {file.default_hash}-hashes to: {file}')
+print(f"\nwritten: {i:>5} {file.default_hash}-hashes to: {file}")
 ```
 
 ## Example 3
@@ -95,11 +101,13 @@ Read a file with md5 checksums and verify them.
 > `Path.verify()`, `Path.default_hash` and `contextmanager`
 
 ```python
-file = Path('pathlibutil.md5')
+from pathlibutil import Path
+
+file = Path("pathlibutil.md5")
 
 
 def no_comment(line: str) -> bool:
-  return not line.startswith('#')
+  return not line.startswith("#")
 
 
 with file.parent as cwd:
@@ -109,72 +117,78 @@ with file.parent as cwd:
 
   for line in filter(no_comment, file.read_lines()):
     try:
-      digest, filename = line.strip().split(' *')
-      verification = Path(filename).verify(digest, 'md5')
+      digest, filename = line.strip().split(" *")
+      verification = Path(filename).verify(digest, "md5")
     except ValueError as split_failed:
       continue
     except FileNotFoundError as verify_failed:
-      tag = 'missing'
+      tag = "missing"
       miss += 1
     else:
       if verification:
-        tag = 'ok'
+        tag = "ok"
         ok += 1
       else:
-        tag = 'fail'
+        tag = "fail"
         fail += 1
 
     print(f'{tag.ljust(len(digest), ".")} *{filename}')
 
-  print(f'\nok: {ok:<5} fail: {fail:<5} missing: {miss}')
+  print(f"\nok: {ok:<5} fail: {fail:<5} missing: {miss}")
 ```
 
 ## Example 4
 
-Search all pycache directories and free the memory.
-> `Path.delete()` and `Path.size()`
+Search all pycache directories and free the memory and display the number of
+deleted directories and the amount of memory freed in MB.
+> `Path.delete()`, `Path.size()` and `ByteInt`
 
 ```python
-mem = 0
+from pathlibutil import Path, ByteInt
+
+mem = ByteInt(0)
 i = 0
 
-for i, cache in enumerate(Path('.').rglob('*/__pycache__/'), start=1):
+for i, cache in enumerate(Path(".").rglob("*/__pycache__/"), start=1):
   cache_size = cache.size()
   try:
     cache.delete(recursive=True)
   except OSError:
-    print(f'Failed to delete {cache}')
+    print(f"Failed to delete {cache}")
   else:
     mem += cache_size
 
-print(f'{i} cache directories deleted, {mem / 2**20:.2f} MB freed.')
+print(f"{i} cache directories deleted, {mem:.1mb} MB freed.")
 ```
 
 ## Example 5
 
-Inherit from `pathlibutil.Path` to register new a archive format.
-Specify a `archive` as keyword argument in the new subclass, which has to be the suffix without `.` of the archives.
-Implement a classmethod `_register_archive_format()` to register new archive formats.
-> `Path.make_archive()`, `Path.archive_formats` and `Path.move()`
+Inherit from `pathlibutil.Path` to register new a archive format. Specify a
+`archive` as keyword argument in the new subclass, which has to be the suffix
+without `.` of the archives. Implement a classmethod `_register_archive_format()`
+to register new archive formats.
+
+> Path.make_archive(), Path.archive_formats and Path.move()
 
 ```python
+import pathlibutil
 import shutil
 
 
-class RegisterFooBarFormat(pathlibutil.Path, archive='foobar'):
+class RegisterFooBarFormat(pathlibutil.Path, archive="foobar"):
   @classmethod
   def _register_archive_format(cls):
-    """ 
-        implement new register functions for given `archive`
+    """
+    implement new register functions for given `archive`
     """
     try:
       import required_package_name
     except ModuleNotFoundError:
-      raise ModuleNotFoundError(
-          'pip install <required_package_name>'
-      )
+      raise ModuleNotFoundError("pip install <required_package_name>")
 
-    def pack_foobar(base_name, base_dir, owner=None, group=None, dry_run=None, logger=None) -> str:
+    def pack_foobar(
+        base_name, base_dir, owner=None, group=None, dry_run=None, logger=None
+    ) -> str:
       """callable that will be used to unpack archives.
 
       Args:
@@ -188,10 +202,10 @@ class RegisterFooBarFormat(pathlibutil.Path, archive='foobar'):
       Returns:
           str: path of the new created archive
       """
-      raise NotImplementedError('implement your own pack function')
+      raise NotImplementedError("implement your own pack function")
 
     def unpack_foobar(archive, path, filter=None, extra_args=None) -> None:
-      """callable that will be used to unpack archives. 
+      """callable that will be used to unpack archives.
 
       Args:
           archive (`str`): path of the archive
@@ -199,23 +213,21 @@ class RegisterFooBarFormat(pathlibutil.Path, archive='foobar'):
           filter (`Any`, optional): as passed in `unpack_archive(*args, filter=None, **kwargs)`. Defaults to None.
           extra_args (`Sequence[Tuple[name, value]]`, optional): additional keyword arguments, specified by `register_unpack_format(*args, extra_args=None, **kwargs)`. Defaults to None.
       """
-      raise NotImplementedError('implement your own unpack function')
+      raise NotImplementedError("implement your own unpack function")
 
     shutil.register_archive_format(
-        'foobar', pack_foobar, description='foobar archives'
+        "foobar", pack_foobar, description="foobar archives"
     )
-    shutil.register_unpack_format(
-        'foobar', ['.foo.bar'], unpack_foobar
-    )
+    shutil.register_unpack_format("foobar", [".foo.bar"], unpack_foobar)
 
 
-file = pathlibutil.Path('README.md')
+file = pathlibutil.Path("README.md")
 
 print(f"available archive formats: {file.archive_formats}")
 
-archive = file.make_archive('README.foo.bar')
+archive = file.make_archive("README.foo.bar")
 
-backup = archive.move('./backup/')
+backup = archive.move("./backup/")
 
-print(f'archive created: {archive.name} and moved to: {backup.parent}')
+print(f"archive created: {archive.name} and moved to: {backup.parent}")
 ```
