@@ -7,7 +7,7 @@ import shutil
 import sys
 from typing import Callable, Dict, Generator, Set, TypeVar
 
-from pathlibutil.types import ByteSize, bytesize
+from pathlibutil.types import ByteInt, byteint
 
 _Path = TypeVar("_Path", bound="Path")
 
@@ -155,8 +155,8 @@ class Path(pathlib.Path):
         with self.open(**kwargs) as f:
             yield from iter(f.readline, "")
 
-    @bytesize
-    def size(self, **kwargs) -> ByteSize:
+    @byteint
+    def size(self, **kwargs) -> ByteInt:
         """
         Returns the size in bytes of a file or directory.
 

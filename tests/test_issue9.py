@@ -3,7 +3,7 @@ from random import randint
 import pytest
 
 from pathlibutil import Path
-from pathlibutil.types import ByteSize
+from pathlibutil.types import ByteInt
 
 
 @pytest.fixture(
@@ -31,7 +31,7 @@ def params(request):
 
 
 def test_class():
-    assert issubclass(ByteSize, int)
+    assert issubclass(ByteInt, int)
 
 
 def test_attributes(params):
@@ -39,19 +39,19 @@ def test_attributes(params):
 
     factor = randint(1, 1000)
 
-    assert getattr(ByteSize(factor * value), unit) == pytest.approx(factor * result)
+    assert getattr(ByteInt(factor * value), unit) == pytest.approx(factor * result)
 
 
 def test_attribute_raises():
     with pytest.raises(AttributeError):
-        ByteSize(1).bb
+        ByteInt(1).bb
 
     with pytest.raises(AttributeError):
-        ByteSize(1).bib
+        ByteInt(1).bib
 
 
 def test_format():
-    b = ByteSize(1)
+    b = ByteInt(1)
 
     assert f"{b:d}" == "1"
     assert f"{b:.0f}" == "1"
@@ -65,25 +65,63 @@ def test_format_params(params):
 
     result = randint(1, 1000)
 
-    assert ByteSize(value * result).__format__(f".1{unit}") == f"{result:.1f}"
+    assert ByteInt(value * result).__format__(f".1{unit}") == f"{result:.1f}"
 
 
 def test_size():
     p = Path(__file__)
 
-    assert type(p.size()) is ByteSize
-    assert type(p.parent.size()) is ByteSize
+    assert type(p.size()) is ByteInt
+    assert type(p.parent.size()) is ByteInt
 
 
 def test_unit_info():
-    assert hasattr(ByteSize, "info")
-    assert hasattr(ByteSize, "units")
+    assert hasattr(ByteInt, "info")
+    assert hasattr(ByteInt, "units")
 
-    for unit in ByteSize().units:
+    for unit in ByteInt().units:
         assert type(unit) is str
 
-        byte, name = ByteSize.info(unit)
+        byte, name = ByteInt.info(unit)
 
         assert type(byte) is int
         assert byte >= 1000
         assert type(name) is str
+
+
+def test_inplaceoperation():
+    a = ByteInt(1)
+
+    a += 1
+    assert type(a) is ByteInt
+
+    a -= 1
+    assert type(a) is ByteInt
+
+    a *= 2
+    assert type(a) is ByteInt
+
+    a //= 2
+    assert type(a) is ByteInt
+
+    a %= 1
+    assert type(a) is ByteInt
+
+
+def test_operation():
+    a = ByteInt(1)
+
+    c = a + 1
+    assert type(c) is ByteInt
+
+    c = a - 1
+    assert type(c) is ByteInt
+
+    c = a * 2
+    assert type(c) is ByteInt
+
+    c = a // 2
+    assert type(c) is ByteInt
+
+    c = a % 1
+    assert type(c) is ByteInt

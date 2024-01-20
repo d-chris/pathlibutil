@@ -1,19 +1,21 @@
 import functools
 import re
-from typing import Set, Tuple
+from typing import Set, Tuple, TypeVar
+
+_ByteInt = TypeVar("_ByteInt", bound="ByteInt")
 
 
-class ByteSize(int):
+class ByteInt(int):
     """
-    inherit from `int` with attributes to convert bytes to decimal or binary `units`
-    for measuring storage data. These attributes will return a `float`
+    Inherit from `int` with attributes to convert bytes to decimal or binary `units` for
+    measuring storage data. These attributes will return a `float`
 
-    >>> ByteSize(1234).kb
+    >>> ByteInt(1234).kb
     1.234
 
     f-string formatting is also supported
 
-    >>> f"{ByteSize(6543210):.2mib} MiB"
+    >>> f"{ByteInt(6543210):.2mib} MiB"
     '6.24 MiB'
     """
 
@@ -52,7 +54,7 @@ class ByteSize(int):
         - `zettabyte` and `zebibyte`
         - `yottabyte` and `yobibyte`
 
-        >>> ByteSize().units
+        >>> ByteInt().units
         {
             'mib', 'eb', 'kib', 'gb', 'yb', 'mb', 'gib', 'eib',
             'zb', 'yib', 'tib', 'pb', 'zib', 'pib', 'tb', 'kb'
@@ -63,19 +65,19 @@ class ByteSize(int):
     @classmethod
     def info(cls, unit: str) -> Tuple[int, str]:
         """
-        return a tuple containing `bytes` and `name` for a given `unit`
+        Return a tuple containing `bytes` and `name` for a given `unit`
 
-        >>> ByteSize.info("gib")
+        >>> ByteInt.info("gib")
         (1073741824, 'gibibyte')
         """
         return cls.__bytes[unit.lower()]
 
     def __getattr__(self, name: str) -> float:
         """
-        check if unknown attribute is a unit and convert self to that unit
+        Check if unknown attribute is a unit and convert self to that unit.
         """
         try:
-            return float(self) / self.__bytes[name.lower()][0]
+            return self / self.__bytes[name.lower()][0]
         except KeyError:
             raise AttributeError(
                 f"'{self.__class__.__name__}' object has no attribute '{name}'"
@@ -83,7 +85,7 @@ class ByteSize(int):
 
     def __format__(self, __format_spec: str) -> str:
         """
-        support formatting with known units
+        Support formatting with known units.
         """
         try:
             return super().__format__(__format_spec)
@@ -97,23 +99,83 @@ class ByteSize(int):
 
             return value.__format__(self.__regex.sub("f", __format_spec, 1))
 
+    def __add__(self, other: int) -> _ByteInt:
+        """
+        b + 1
+        """
+        return self.__class__(super().__add__(other))
 
-def bytesize(func):
+    def __iadd__(self, other: int) -> _ByteInt:
+        """
+        b += 1
+        """
+        return self.__add__(other)
+
+    def __sub__(self, other: int) -> _ByteInt:
+        """
+        b - 1
+        """
+        return self.__class__(super().__sub__(other))
+
+    def __isub__(self, other: int) -> _ByteInt:
+        """
+        b -=1
+        """
+        return self.__sub__(other)
+
+    def __mul__(self, other: int) -> _ByteInt:
+        """
+        b * 1
+        """
+        return self.__class__(super().__mul__(other))
+
+    def __imul__(self, other: int) -> _ByteInt:
+        """
+        b *= 1
+        """
+        return self.__mul__(other)
+
+    def __floordiv__(self, other: int) -> _ByteInt:
+        """
+        b // 1
+        """
+        return self.__class__(super().__floordiv__(other))
+
+    def __ifloordiv__(self, other: int) -> _ByteInt:
+        """
+        b //= 1
+        """
+        return self.__floordiv__(other)
+
+    def __mod__(self, other: int) -> _ByteInt:
+        """
+        b % 1
+        """
+        return self.__class__(super().__mod__(other))
+
+    def __imod__(self, other: int) -> _ByteInt:
+        """
+        b %= 1
+        """
+        return self.__mod__(other)
+
+
+def byteint(func):
     """
-    decorator to convert a return value of  `int` to a `ByteSize` object
+    Decorator to convert a return value of  `int` to a `ByteInt` object.
 
     Example:
 
     ```python
-    @bytesize
+    @byteint
     def randbytes(a: int, b: int) -> ByteSize:
         return random.randint(a, b)
     ```
     """
 
     @functools.wraps(func)
-    def wrapper(*args, **kwargs) -> ByteSize:
+    def wrapper(*args, **kwargs) -> ByteInt:
         size = func(*args, **kwargs)
-        return ByteSize(size)
+        return ByteInt(size)
 
     return wrapper
