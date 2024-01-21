@@ -137,3 +137,13 @@ def test_decorator():
         return hex(random.randint(0, 2**32))
 
     assert type(randhexbyte()) is str
+
+
+def test_string():
+    assert str(ByteInt(1)) == "1 b"
+    assert str(ByteInt(1234)) == "1.23 kb"
+    assert str(ByteInt(12345)) == "12.35 kb"
+    assert str(ByteInt(123456)) == "123.5 kb"
+
+    assert ByteInt(12345).string(False) == "12.06 kib"
+    assert ByteInt(123456).string(False) == "120.6 kib"

@@ -656,13 +656,13 @@ i18n = ["Babel (>=2.7)"]
 
 [[package]]
 name = "jinja2-pdoc"
-version = "0.2.1"
+version = "0.2.2"
 description = "jinja2 extension to embedd python code directly from module using pdoc"
 optional = false
 python-versions = ">=3.8.1,<3.13"
 files = [
-    {file = "jinja2_pdoc-0.2.1-py3-none-any.whl", hash = "sha256:c92cced760504ba2bd6090a58cea8d8cf0161a595138613b0cbea4b4eea5fa68"},
-    {file = "jinja2_pdoc-0.2.1.tar.gz", hash = "sha256:a90d0c86f13904ca807c7760424f44584203fb5f0f608f346f39ed4b485edf40"},
+    {file = "jinja2_pdoc-0.2.2-py3-none-any.whl", hash = "sha256:158de585abe2ff8db619abf25ed05e9f9e7946f10fbbe616b544a48765828d29"},
+    {file = "jinja2_pdoc-0.2.2.tar.gz", hash = "sha256:7ad24aef38c0c7f63234d788e070e8994ba42d62e14d8a7187785c5f0c646983"},
 ]
 
 [package.dependencies]

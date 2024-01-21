@@ -8,7 +8,7 @@ _ByteInt = TypeVar("_ByteInt", bound="ByteInt")
 class ByteInt(int):
     """
     Inherit from `int` with attributes to convert bytes to decimal or binary `units` for
-    measuring storage data. These attributes will return a `float`
+    measuring storage data. These attributes will return a `float`.
 
     >>> ByteInt(1234).kb
     1.234
@@ -17,6 +17,11 @@ class ByteInt(int):
 
     >>> f"{ByteInt(6543210):.2mib} mebibytes"
     '6.24 mebibytes'
+
+    String representation of `ByteInt` will return the most appropriate decimal unit.
+
+    >>> str(ByteInt(987654))
+    '987.7 kb'
     """
 
     __regex = re.compile(r"(?P<unit>[kmgtpezy]i?b)")
@@ -61,6 +66,36 @@ class ByteInt(int):
         }
         """
         return set(self.__bytes.keys())
+
+    def __str__(self) -> str:
+        return self.string()
+
+    def string(self, decimal=True) -> str:
+        """
+        Return a string representation of `self` in the most appropriate unit.
+
+        If `decimal` is `False` then binary units will be used instead of `decimal`.
+
+        >>> ByteInt(12346789).string(False)
+        '11.77 mib'
+        """
+
+        def _decimal(x):
+            return "i" not in x[0]
+
+        def _binary(x):
+            return x[0].endswith("ib")
+
+        query = _decimal if decimal else _binary
+
+        for unit, (byte, _) in filter(query, self.__bytes.items()):
+            value = self / byte
+
+            if 1 <= value < 1000:
+                dec = 2 if value < 100 else 1
+                return value.__format__(f".{dec}f") + f" {unit}"
+
+        return f"{int(self)} b"
 
     @classmethod
     def info(cls, unit: str) -> Tuple[int, str]:
