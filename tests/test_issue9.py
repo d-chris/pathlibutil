@@ -1,9 +1,9 @@
-from random import randint
+import random
 
 import pytest
 
 from pathlibutil import Path
-from pathlibutil.types import ByteInt
+from pathlibutil.types import ByteInt, byteint
 
 
 @pytest.fixture(
@@ -37,7 +37,7 @@ def test_class():
 def test_attributes(params):
     value, unit, result = params
 
-    factor = randint(1, 1000)
+    factor = random.randint(1, 1000)
 
     assert getattr(ByteInt(factor * value), unit) == pytest.approx(factor * result)
 
@@ -63,7 +63,7 @@ def test_format():
 def test_format_params(params):
     value, unit, _ = params
 
-    result = randint(1, 1000)
+    result = random.randint(1, 1000)
 
     assert ByteInt(value * result).__format__(f".1{unit}") == f"{result:.1f}"
 
@@ -125,3 +125,15 @@ def test_operation():
 
     c = a % 1
     assert type(c) is ByteInt
+
+
+def test_decorator():
+    randbyte = byteint(random.randint)
+
+    assert type(randbyte(0, 2**64)) is ByteInt
+
+    @byteint
+    def randhexbyte():
+        return hex(random.randint(0, 2**32))
+
+    assert type(randhexbyte()) is str

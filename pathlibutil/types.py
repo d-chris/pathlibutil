@@ -15,8 +15,8 @@ class ByteInt(int):
 
     f-string formatting is also supported
 
-    >>> f"{ByteInt(6543210):.2mib} MiB"
-    '6.24 MiB'
+    >>> f"{ByteInt(6543210):.2mib} mebibytes"
+    '6.24 mebibytes'
     """
 
     __regex = re.compile(r"(?P<unit>[kmgtpezy]i?b)")
@@ -162,20 +162,31 @@ class ByteInt(int):
 
 def byteint(func):
     """
-    Decorator to convert a return value of  `int` to a `ByteInt` object.
-
-    Example:
+    Decorator to convert a return value of  `int` to a `ByteInt` object. Other return
+    values are returned as is.
 
     ```python
+    randbyte = byteint(random.randint)
+
     @byteint
-    def randbytes(a: int, b: int) -> ByteSize:
-        return random.randint(a, b)
+    def randhexbyte():
+        return hex(random.randint(0, 2**32))
     ```
+
+    >>> type(randbyte(0, 2**32))
+    <class 'pathlibutil.types.ByteInt'>
+
+    >>> type(randhexbytes())
+    <class 'str'>
     """
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> ByteInt:
-        size = func(*args, **kwargs)
-        return ByteInt(size)
+        value = func(*args, **kwargs)
+
+        if isinstance(value, int):
+            return ByteInt(value)
+
+        return value
 
     return wrapper

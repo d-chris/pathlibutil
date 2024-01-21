@@ -66,6 +66,13 @@ class Path(pathlib.Path):
         Set of `hashlib.algorithms_available` that can be passed to `hexdigest()`,
         `verify()` method as `algorithm` parameter or to set the `default_hash`
         algorithm of the `__class__`.
+
+        >>> Path().algorithms_available
+        {
+            'sha384', 'sha3_512', 'blake2b', 'md5-sha1', 'sha3_256', 'sha3_384',
+            'sha512', 'sha512_256', 'sha3_224', 'sha1', 'md5', 'ripemd160', 'blake2s',
+            'sha256', 'shake_256', 'shake_128', 'sha224', 'sha512_224', 'sm3'
+        }
         """
         return hashlib.algorithms_available
 
@@ -325,6 +332,9 @@ class Path(pathlib.Path):
         The set contains all built-in formats from `shutil.get_archive_formats()`
         and all formats registered by subclasse
         (eg. pathlibutil.path.Register7zFormat).
+
+        >>> Path().archive_formats
+        {'xztar', 'bztar', 'gztar', 'zip', 'tar', '7z'}
         """
         formats = itertools.chain(
             self._archive_formats.keys(),

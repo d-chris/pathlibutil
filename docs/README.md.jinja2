@@ -23,6 +23,7 @@
 - `Path.move()` move a file or directory to a new path destination
 - `Path.make_archive()` creates and `Path.unpack_archive()` uncompresses an archive from a file or directory
 - `Path.archive_formats` to get all available archive formats
+- `byteint` function decorator to convert return value of `int` to a `ByteInt` object
   
 ## Installation
 
