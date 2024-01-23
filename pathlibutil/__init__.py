@@ -3,6 +3,6 @@
 """
 
 from pathlibutil.path import Path, Register7zFormat
-from pathlibutil.types import ByteInt, byteint
+from pathlibutil.types import ByteInt, TimeInt, byteint
 
-__all__ = ["Path", "Register7zFormat", "ByteInt", "byteint"]
+__all__ = ["Path", "Register7zFormat", "ByteInt", "byteint", "TimeInt"]

@@ -1,8 +1,11 @@
 import functools
+import os
 import re
+from datetime import datetime, tzinfo
 from typing import Set, Tuple, TypeVar
 
 _ByteInt = TypeVar("_ByteInt", bound="ByteInt")
+_stat_result = TypeVar("_stat_result", bound="os.stat_result")
 
 
 class ByteInt(int):
@@ -225,3 +228,102 @@ def byteint(func):
         return value
 
     return wrapper
+
+
+class TimeInt(float):
+    """
+    Inherit from `float` with attributes to convert seconds to `datetime` objects.
+
+    >>> TimeInt(0).datetime
+    datetime.datetime(1970, 1, 1, 1, 0)
+
+    >>> TimeInt(0).string('%d.%m.%Y')
+    '01.01.1970'
+
+    Return a string representation using `TimeInt.format`.
+
+    >>> str(TimeInt(0))
+    '1970-01-01 01:00:00'
+    """
+
+    format = "%Y-%m-%d %H:%M:%S"
+    """
+    Format string to which is uesed to convert `self` to a string. Default: 'isoformat'.
+    For more information see `datetime.datetime.strftime`.
+    """
+
+    def __new__(cls, value: int, tz: tzinfo = None) -> float:
+        """
+        Create a new instance from baseclass `int`.
+        """
+        return super().__new__(cls, value)
+
+    def __init__(self, value: int, tz: tzinfo = None) -> None:
+        """
+        Create a new instance from baseclass `int` with optional timezone info `tz`.
+        """
+        self._tz = tz
+
+    @functools.cached_property
+    def datetime(self) -> datetime:
+        """
+        property returns a `datetime.datetime` object.
+        """
+        return datetime.fromtimestamp(self, self._tz)
+
+    def __str__(self) -> str:
+        """
+        Return a string representation of `datetime` using `self.format`.
+        """
+        return self.string()
+
+    def string(self, _format: str = None) -> str:
+        """
+        Return a string representation of `datetime` using the `_format` string.
+
+        If `_format` is `None` then `TimeInt.format` is used.
+        """
+        return self.datetime.strftime(_format or self.format)
+
+
+class StatResult:
+    """
+    Wrapper class for `os.stat_result` object to convert `st_size` to `ByteInt` and
+    `st_atime`, `st_mtime`, `st_ctime` and `st_birthtime` to `TimeInt`.
+
+    Inheritance was not possible due `@final` decorator is applied to `os.stat_result`
+    to prevent subclassing.
+    """
+
+    def __init__(self, stat):
+        """
+        Save `os.stat_result` object.
+        """
+        self._obj = stat
+
+    def __getattr__(self, name):
+        """
+        Forward all unknown attributes to `self._obj`.
+        """
+        attr = getattr(self._obj, name)
+
+        if isinstance(attr, int):
+            if name == "st_size":
+                return ByteInt(attr)
+        elif isinstance(attr, float):
+            if name in ("st_atime", "st_mtime", "st_ctime", "st_birthtime"):
+                return TimeInt(attr)
+
+        return attr
+
+    def __str__(self) -> str:
+        """
+        Return a string of `os.stat_result` object.
+        """
+        return str(self._obj)
+
+    def __repr__(self) -> str:
+        """
+        Return representation of `os.stat_result` object.
+        """
+        return repr(self._obj)

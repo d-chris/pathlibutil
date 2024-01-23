@@ -7,7 +7,7 @@ import shutil
 import sys
 from typing import Callable, Dict, Generator, Set, TypeVar
 
-from pathlibutil.types import ByteInt, byteint
+from pathlibutil.types import ByteInt, StatResult, _stat_result, byteint
 
 _Path = TypeVar("_Path", bound="Path")
 
@@ -172,7 +172,7 @@ class Path(pathlib.Path):
         if self.is_dir():
             return sum([p.size(**kwargs) for p in self.iterdir()])
 
-        return self.stat(**kwargs).st_size
+        return super().stat(**kwargs).st_size
 
     def copy(self, dst: str, exist_ok: bool = True, **kwargs) -> _Path:
         """
@@ -342,6 +342,17 @@ class Path(pathlib.Path):
         )
 
         return set(formats)
+
+    def stat(self, **kwargs) -> _stat_result:
+        """
+        Returns wrapped `os.stat_result` object following attributes are modified:
+
+        - `st_size` is wrapped in `ByteInt`
+        - `st_atime`, `st_mtime`, `st_ctime`, `st_birthtime` are wrapped in `TimeInt`
+
+        For `**kwargs` see `pathlib.Path.stat()`.
+        """
+        return StatResult(super().stat(**kwargs))
 
 
 class Register7zFormat(Path, archive="7z"):
