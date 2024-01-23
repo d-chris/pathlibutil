@@ -1,6 +1,7 @@
 import random
 
 import pytest
+import exrex
 
 from pathlibutil import Path
 from pathlibutil.types import ByteInt, byteint
@@ -27,6 +28,7 @@ from pathlibutil.types import ByteInt, byteint
     ]
 )
 def params(request):
+    """returns a tuple of byte, unit and result"""
     return request.param
 
 
@@ -43,6 +45,7 @@ def params(request):
     ]
 )
 def decimal(request):
+    """returns a tuple of random int and its decimal string representation"""
     return request.param
 
 
@@ -59,6 +62,13 @@ def decimal(request):
     ]
 )
 def binary(request):
+    """returns a tuple of random int and its binary string representation"""
+    return request.param
+
+
+@pytest.fixture(params=exrex.generate(r"[zyeptgmk]i?b"))
+def unit(request):
+    """generate units from regex, eg. kb, kib, mb, mib, ..."""
     return request.param
 
 
@@ -101,24 +111,28 @@ def test_format_params(params):
 
 
 def test_size():
+    """check if size return ByteInt from file and directory"""
+
     p = Path(__file__)
 
     assert type(p.size()) is ByteInt
     assert type(p.parent.size()) is ByteInt
 
 
-def test_unit_info():
-    assert hasattr(ByteInt, "info")
-    assert hasattr(ByteInt, "units")
+def test_unit(unit):
+    """check if unit is in ByteInt.units"""
 
-    for unit in ByteInt().units:
-        assert type(unit) is str
+    assert unit in ByteInt().units
 
-        byte, name = ByteInt.info(unit)
 
-        assert type(byte) is int
-        assert byte >= 1000
-        assert type(name) is str
+def test_info(unit):
+    """generate units from regex and check if info returns correct types"""
+
+    b, u = ByteInt.info(unit)
+
+    assert type(b) is int
+    assert b >= 1000
+    assert type(u) is str
 
 
 @pytest.mark.parametrize(
@@ -141,9 +155,9 @@ def test_operations(func):
 
     b = ByteInt(2)
 
-    attr = getattr(b, func)
+    operation = getattr(b, func)
 
-    assert type(attr(1)) is ByteInt
+    assert type(operation(1)) is ByteInt
 
 
 def test_decorator():
@@ -169,11 +183,11 @@ def test_string_decimal(decimal):
     """check decimal string reprensentation"""
 
     arg, result = decimal
-    assert str(ByteInt(arg).string()) == result
+    assert ByteInt(arg).string() == result
 
 
 def test_string_binary(binary):
     """check binary string reprensentation"""
 
     arg, result = binary
-    assert str(ByteInt(arg).string(False)) == result
+    assert ByteInt(arg).string(False) == result
