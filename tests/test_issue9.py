@@ -30,6 +30,38 @@ def params(request):
     return request.param
 
 
+@pytest.fixture(
+    params=[
+        (0, "0 b"),
+        (1, "1 b"),
+        (12, "12 b"),
+        (123, "123 b"),
+        (1234, "1.23 kb"),
+        (12345, "12.35 kb"),
+        (123456, "123.5 kb"),
+        (1234567, "1.23 mb"),
+    ]
+)
+def decimal(request):
+    return request.param
+
+
+@pytest.fixture(
+    params=[
+        (0, "0 b"),
+        (1, "1 b"),
+        (12, "12 b"),
+        (123, "123 b"),
+        (1234, "1.21 kib"),
+        (12345, "12.06 kib"),
+        (123456, "120.6 kib"),
+        (1234567, "1.18 mib"),
+    ]
+)
+def binary(request):
+    return request.param
+
+
 def test_class():
     assert issubclass(ByteInt, int)
 
@@ -89,42 +121,29 @@ def test_unit_info():
         assert type(name) is str
 
 
-def test_inplaceoperation():
-    a = ByteInt(1)
+@pytest.mark.parametrize(
+    "func",
+    [
+        "__add__",
+        "__sub__",
+        "__mul__",
+        "__floordiv__",
+        "__mod__",
+        "__iadd__",
+        "__isub__",
+        "__imul__",
+        "__ifloordiv__",
+        "__imod__",
+    ],
+)
+def test_operations(func):
+    """check if result is a ByteInt object of operation functions"""
 
-    a += 1
-    assert type(a) is ByteInt
+    b = ByteInt(2)
 
-    a -= 1
-    assert type(a) is ByteInt
+    attr = getattr(b, func)
 
-    a *= 2
-    assert type(a) is ByteInt
-
-    a //= 2
-    assert type(a) is ByteInt
-
-    a %= 1
-    assert type(a) is ByteInt
-
-
-def test_operation():
-    a = ByteInt(1)
-
-    c = a + 1
-    assert type(c) is ByteInt
-
-    c = a - 1
-    assert type(c) is ByteInt
-
-    c = a * 2
-    assert type(c) is ByteInt
-
-    c = a // 2
-    assert type(c) is ByteInt
-
-    c = a % 1
-    assert type(c) is ByteInt
+    assert type(attr(1)) is ByteInt
 
 
 def test_decorator():
@@ -139,11 +158,22 @@ def test_decorator():
     assert type(randhexbyte()) is str
 
 
-def test_string():
-    assert str(ByteInt(1)) == "1 b"
-    assert str(ByteInt(1234)) == "1.23 kb"
-    assert str(ByteInt(12345)) == "12.35 kb"
-    assert str(ByteInt(123456)) == "123.5 kb"
+def test_string(decimal):
+    """check decimal str() representation"""
 
-    assert ByteInt(12345).string(False) == "12.06 kib"
-    assert ByteInt(123456).string(False) == "120.6 kib"
+    arg, result = decimal
+    assert str(ByteInt(arg)) == result
+
+
+def test_string_decimal(decimal):
+    """check decimal string reprensentation"""
+
+    arg, result = decimal
+    assert str(ByteInt(arg).string()) == result
+
+
+def test_string_binary(binary):
+    """check binary string reprensentation"""
+
+    arg, result = binary
+    assert str(ByteInt(arg).string(False)) == result
