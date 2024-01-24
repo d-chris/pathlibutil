@@ -3,7 +3,7 @@ import hashlib
 import itertools
 import os
 import shutil
-from typing import Callable, Dict, Generator, Set
+from typing import Callable, Dict, Generator, List, Set, Union
 
 from pathlibutil.base import BasePath, _Path
 from pathlibutil.types import ByteInt, StatResult, _stat_result, byteint
@@ -345,6 +345,42 @@ class Path(BasePath):
         For `**kwargs` see `pathlib.Path.stat()`.
         """
         return StatResult(super().stat(**kwargs))
+
+    def with_suffix(self, suffix: Union[str, List[str]]) -> _Path:
+        """
+        Return a new `Path` with changed suffix or remove it when its an empty
+        string.
+
+        >>> Path('test.a.b').with_suffix('.c')
+        Path('test.a.c')
+
+        >>> Path('test.a.b').with_suffix('')
+        Path('test.a')
+
+        Multiple suffixes can now be changed at once by passing a list of suffixes.
+        With a empty list all suffixes will be removed.
+
+        >>> Path('test.a.b').with_suffix(['.c', '.d'])
+        Path('test.c.d')
+
+        >>> Path('test.a.b').with_suffix([])
+        Path('test')
+        """
+        try:
+            return super().with_suffix(suffix)
+        except (AttributeError, TypeError):
+            if isinstance(suffix, list) and not suffix:
+                suffix = ""
+            elif all(str(s).startswith(".") for s in suffix):
+                suffix = "".join(suffix)
+            elif all(not s for s in suffix):
+                suffix = ""
+            else:
+                raise ValueError(f"Invalid suffix '{suffix}'")
+
+            name = self.name.split(".")[0]
+            stem = self.parent.joinpath(name)
+            return super(Path, stem).with_suffix(suffix)
 
 
 class Register7zFormat(Path, archive="7z"):
