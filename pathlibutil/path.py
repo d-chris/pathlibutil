@@ -2,17 +2,14 @@ import errno
 import hashlib
 import itertools
 import os
-import pathlib
 import shutil
-import sys
-from typing import Callable, Dict, Generator, Set, TypeVar
+from typing import Callable, Dict, Generator, Set
 
+from pathlibutil.base import BasePath, _Path
 from pathlibutil.types import ByteInt, StatResult, _stat_result, byteint
 
-_Path = TypeVar("_Path", bound="Path")
 
-
-class Path(pathlib.Path):
+class Path(BasePath):
     """
     Path inherites from `pathlib.Path` and adds some methods to built-in python
     functions.
@@ -39,11 +36,6 @@ class Path(pathlib.Path):
     If no `algorithm` parameter is specified with `hexdigest()` or `verify()` this will
     be the default
     """
-
-    if sys.version_info < (3, 12):
-        _flavour = (
-            pathlib._windows_flavour if os.name == "nt" else pathlib._posix_flavour
-        )
 
     def __init_subclass__(cls, **kwargs) -> None:
         """
