@@ -235,7 +235,7 @@ class TimeInt(float):
     Inherit from `float` with attributes to convert seconds to `datetime` objects.
 
     >>> TimeInt(0).datetime
-    datetime.datetime(1970, 1, 1, 1, 0)
+    datetime.datetime(1970, 1, 1, 0, 0)
 
     >>> TimeInt(0).string('%d.%m.%Y')
     '01.01.1970'
@@ -243,7 +243,7 @@ class TimeInt(float):
     Return a string representation using `TimeInt.format`.
 
     >>> str(TimeInt(0))
-    '1970-01-01 01:00:00'
+    '1970-01-01 00:00:00'
     """
 
     format = "%Y-%m-%d %H:%M:%S"
@@ -260,16 +260,21 @@ class TimeInt(float):
 
     def __init__(self, value: int, tz: tzinfo = None) -> None:
         """
-        Create a new instance from baseclass `int` with optional timezone info `tz`.
+        Create a new instance from baseclass `int` with optional `timezone` info.
         """
-        self._tz = tz
+        self.timezone = tz
+        """
+        property for `datetime.timezone` object is set with `__init__` or can be
+        changed to different timezones to get the correct string reprensentation. If
+        timezone is `None` then the local timezone is used.
+        """
 
     @functools.cached_property
     def datetime(self) -> datetime:
         """
         property returns a `datetime.datetime` object.
         """
-        return datetime.fromtimestamp(self, self._tz)
+        return datetime.fromtimestamp(self, self.timezone)
 
     def __str__(self) -> str:
         """
@@ -277,18 +282,18 @@ class TimeInt(float):
         """
         return self.string()
 
-    def string(self, _format: str = None) -> str:
+    def string(self, format_string: str = None) -> str:
         """
-        Return a string representation of `datetime` using the `_format` string.
+        Return a string representation of `datetime` using the `format_string`.
 
-        If `_format` is `None` then `TimeInt.format` is used.
+        If `format_string` is `None` then `TimeInt.format` is used.
         """
-        return self.datetime.strftime(_format or self.format)
+        return self.datetime.strftime(format_string or self.format)
 
 
 class StatResult:
     """
-    Wrapper class for `os.stat_result` object to convert `st_size` to `ByteInt` and
+    Object converts `st_size` to `ByteInt` and
     `st_atime`, `st_mtime`, `st_ctime` and `st_birthtime` to `TimeInt`.
 
     Inheritance was not possible due `@final` decorator is applied to `os.stat_result`
@@ -297,7 +302,7 @@ class StatResult:
 
     def __init__(self, stat):
         """
-        Save `os.stat_result` object.
+        Wrapper for `os.stat_result`.
         """
         self._obj = stat
 

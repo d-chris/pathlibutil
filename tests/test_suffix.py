@@ -30,7 +30,7 @@ def test_with_suffixes(file, suffix, result):
 
 
 @pytest.mark.parametrize(
-    "suffix", ["a", ["a"], [".a", "b"], [".a", ".b", ""], [1, ".a"]]
+    "suffix", ["a", ["a"], [".a", "b"], [".a", ".b", ""], ["a", ".b"]]
 )
 def test_with_suffix_raises(suffix):
     with pytest.raises(ValueError):
