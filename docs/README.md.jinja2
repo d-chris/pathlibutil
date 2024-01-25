@@ -16,6 +16,7 @@
 - `Path.hexdigest()` to calculate and `Path.verify()` for verification of hexdigest from a file
 - `Path.default_hash` to configurate default hash algorithm for `Path` class (default: *'md5'*)
 - `Path.size()` to get size in bytes of a file or directory
+  - `byteint` function decorator converts the return value of `int` to a `ByteInt` object
 - `Path.read_lines()` to yield over all lines from a file until EOF
 - `contextmanager` to change current working directory with `with` statement
 - `Path.copy()` copy a file or directory to a new path destination
@@ -23,8 +24,10 @@
 - `Path.move()` move a file or directory to a new path destination
 - `Path.make_archive()` creates and `Path.unpack_archive()` uncompresses an archive from a file or directory
 - `Path.archive_formats` to get all available archive formats
-- `byteint` function decorator to convert return value of `int` to a `ByteInt` object
-  
+- `Path.stat()` returns a `StatResult` object to get file or directory information containing
+  - `TimeInt` objects for `atime`, `ctime`, `mtime` and `birthtime`
+  - `ByteInt` object for `size`
+
 ## Installation
 
 ```bash

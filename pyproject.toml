@@ -33,6 +33,7 @@ tox = "^4.11.4"
 pytest-random-order = "^1.1.0"
 pytest-cov = "^4.1.0"
 pytest-mock = "^3.12.0"
+exrex = "^0.11.0"
 
 [tool.poetry.group.code.dependencies]
 flake8 = "^7.0.0"
@@ -63,8 +64,9 @@ testpaths = "tests"
 addopts = [
     "--random-order",
     "--color=yes",
-    "--cov=pathlibutil",
-    "--cov-report=term-missing:skip-covered",
-    "--cov-append",
+    "-s",
+    # "--cov=pathlibutil",
+    # "--cov-report=term-missing:skip-covered",
+    # "--cov-append",
     # "--cov-report=html",
 ]

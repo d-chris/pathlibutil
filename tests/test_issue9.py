@@ -1,6 +1,7 @@
 import random
 
 import pytest
+import exrex
 
 from pathlibutil import Path
 from pathlibutil.types import ByteInt, byteint
@@ -27,6 +28,47 @@ from pathlibutil.types import ByteInt, byteint
     ]
 )
 def params(request):
+    """returns a tuple of byte, unit and result"""
+    return request.param
+
+
+@pytest.fixture(
+    params=[
+        (0, "0 b"),
+        (1, "1 b"),
+        (12, "12 b"),
+        (123, "123 b"),
+        (1234, "1.23 kb"),
+        (12345, "12.35 kb"),
+        (123456, "123.5 kb"),
+        (1234567, "1.23 mb"),
+    ]
+)
+def decimal(request):
+    """returns a tuple of random int and its decimal string representation"""
+    return request.param
+
+
+@pytest.fixture(
+    params=[
+        (0, "0 b"),
+        (1, "1 b"),
+        (12, "12 b"),
+        (123, "123 b"),
+        (1234, "1.21 kib"),
+        (12345, "12.06 kib"),
+        (123456, "120.6 kib"),
+        (1234567, "1.18 mib"),
+    ]
+)
+def binary(request):
+    """returns a tuple of random int and its binary string representation"""
+    return request.param
+
+
+@pytest.fixture(params=exrex.generate(r"[zyeptgmk]i?b"))
+def unit(request):
+    """generate units from regex, eg. kb, kib, mb, mib, ..."""
     return request.param
 
 
@@ -69,62 +111,53 @@ def test_format_params(params):
 
 
 def test_size():
+    """check if size return ByteInt from file and directory"""
+
     p = Path(__file__)
 
     assert type(p.size()) is ByteInt
     assert type(p.parent.size()) is ByteInt
 
 
-def test_unit_info():
-    assert hasattr(ByteInt, "info")
-    assert hasattr(ByteInt, "units")
+def test_unit(unit):
+    """check if unit is in ByteInt.units"""
 
-    for unit in ByteInt().units:
-        assert type(unit) is str
-
-        byte, name = ByteInt.info(unit)
-
-        assert type(byte) is int
-        assert byte >= 1000
-        assert type(name) is str
+    assert unit in ByteInt().units
 
 
-def test_inplaceoperation():
-    a = ByteInt(1)
+def test_info(unit):
+    """generate units from regex and check if info returns correct types"""
 
-    a += 1
-    assert type(a) is ByteInt
+    b, u = ByteInt.info(unit)
 
-    a -= 1
-    assert type(a) is ByteInt
-
-    a *= 2
-    assert type(a) is ByteInt
-
-    a //= 2
-    assert type(a) is ByteInt
-
-    a %= 1
-    assert type(a) is ByteInt
+    assert type(b) is int
+    assert b >= 1000
+    assert type(u) is str
 
 
-def test_operation():
-    a = ByteInt(1)
+@pytest.mark.parametrize(
+    "func",
+    [
+        "__add__",
+        "__sub__",
+        "__mul__",
+        "__floordiv__",
+        "__mod__",
+        "__iadd__",
+        "__isub__",
+        "__imul__",
+        "__ifloordiv__",
+        "__imod__",
+    ],
+)
+def test_operations(func):
+    """check if result is a ByteInt object of operation functions"""
 
-    c = a + 1
-    assert type(c) is ByteInt
+    b = ByteInt(2)
 
-    c = a - 1
-    assert type(c) is ByteInt
+    operation = getattr(b, func)
 
-    c = a * 2
-    assert type(c) is ByteInt
-
-    c = a // 2
-    assert type(c) is ByteInt
-
-    c = a % 1
-    assert type(c) is ByteInt
+    assert type(operation(1)) is ByteInt
 
 
 def test_decorator():
@@ -137,3 +170,24 @@ def test_decorator():
         return hex(random.randint(0, 2**32))
 
     assert type(randhexbyte()) is str
+
+
+def test_string(decimal):
+    """check decimal str() representation"""
+
+    arg, result = decimal
+    assert str(ByteInt(arg)) == result
+
+
+def test_string_decimal(decimal):
+    """check decimal string reprensentation"""
+
+    arg, result = decimal
+    assert ByteInt(arg).string() == result
+
+
+def test_string_binary(binary):
+    """check binary string reprensentation"""
+
+    arg, result = binary
+    assert ByteInt(arg).string(False) == result

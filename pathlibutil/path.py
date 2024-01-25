@@ -2,17 +2,14 @@ import errno
 import hashlib
 import itertools
 import os
-import pathlib
 import shutil
-import sys
-from typing import Callable, Dict, Generator, Set, TypeVar
+from typing import Callable, Dict, Generator, List, Set, Union
 
-from pathlibutil.types import ByteInt, byteint
-
-_Path = TypeVar("_Path", bound="Path")
+from pathlibutil.base import BasePath, _Path
+from pathlibutil.types import ByteInt, StatResult, _stat_result, byteint
 
 
-class Path(pathlib.Path):
+class Path(BasePath):
     """
     Path inherites from `pathlib.Path` and adds some methods to built-in python
     functions.
@@ -39,11 +36,6 @@ class Path(pathlib.Path):
     If no `algorithm` parameter is specified with `hexdigest()` or `verify()` this will
     be the default
     """
-
-    if sys.version_info < (3, 12):
-        _flavour = (
-            pathlib._windows_flavour if os.name == "nt" else pathlib._posix_flavour
-        )
 
     def __init_subclass__(cls, **kwargs) -> None:
         """
@@ -172,7 +164,7 @@ class Path(pathlib.Path):
         if self.is_dir():
             return sum([p.size(**kwargs) for p in self.iterdir()])
 
-        return self.stat(**kwargs).st_size
+        return super().stat(**kwargs).st_size
 
     def copy(self, dst: str, exist_ok: bool = True, **kwargs) -> _Path:
         """
@@ -246,11 +238,11 @@ class Path(pathlib.Path):
         return self.__class__(_path)
 
     @staticmethod
-    def _find_archive_format(filename: "Path") -> str:
+    def _find_archive_format(filename: _Path) -> str:
         """
         Searches for a file the correct archive format.
         """
-        ext = ".".join(filename.suffixes)
+        ext = "".join(filename.suffixes)
 
         for name, extensions, _ in shutil.get_unpack_formats():
             if ext in extensions:
@@ -270,19 +262,61 @@ class Path(pathlib.Path):
         else:
             register_format()
 
-    def make_archive(self, archivename: str, **kwargs) -> _Path:
+    def make_archive(
+        self, archivename: str, *, exists_ok: bool = False, **kwargs
+    ) -> _Path:
         """
         Creates an archive file (eg. zip) and returns the path to the archive.
+
+        If `exists_ok` is `False` a `FileExistsError` is raised if the archive file
+        already exists.
+
+        If `exists_ok` is `True` the existing archive file will be deleted before
+        creating the new one.
 
         For `**kwargs` see `shutil.make_archive()`.
         - `root_dir` and `base_dir` will be resolved automatically
         - `format` will be determined by the file suffix
         - It can be overwritten with an `format` keyword-argument.
         - a `ValueError` is raised if the `format` is unknown.
+
+        >>> Path(__file__).make_archive('test.tar.gz')
+        Path('test.tar.gz')
+
+        >>> Path(__file__).make_archive('test.zpy', format='zip')
+        Path('test.zpy')
         """
+
+        def _archive_exists(file: str, exists_ok: bool) -> _Path:
+            """
+            Returns a `Path` object of the archive file or raises a `FileExistsError`
+            If `exists_ok` is `True` the file will be deleted.
+            """
+            file = self.__class__(file).resolve()
+
+            if file.exists():
+                if not exists_ok:
+                    raise FileExistsError(f"{file} already exists")
+
+                file.unlink()
+
+            return file
+
+        def _archive_filename(expect: Path, real: str) -> _Path:
+            """
+            Check if the expected archive filename matches the real filename.
+            If not try to rename the real filename.
+            """
+            file = self.__class__(real).resolve(True)
+
+            if file.suffixes != expect.suffixes:
+                return file.rename(expect)
+
+            return file
+
         _self = self.resolve(strict=True)
-        _archive = Path(archivename).resolve()
-        _format = kwargs.pop("format", self._find_archive_format(_archive))
+        _filename = _archive_exists(archivename, exists_ok)
+        _format = kwargs.pop("format", self._find_archive_format(_filename))
 
         _ = kwargs.pop("root_dir", None)
         _ = kwargs.pop("base_dir", None)
@@ -290,16 +324,18 @@ class Path(pathlib.Path):
         for _ in range(2):
             try:
                 _archive = shutil.make_archive(
-                    base_name=_archive.parent.joinpath(_archive.stem),
+                    base_name=_filename.with_suffix([]),
                     format=_format,
                     root_dir=_self.parent,
                     base_dir=_self.relative_to(_self.parent),
                     **kwargs,
                 )
 
-                return self.__class__(_archive)
+                break
             except ValueError:
                 self._register_format(_format)
+
+        return _archive_filename(_filename, _archive)
 
     def unpack_archive(self, extract_dir: str, **kwargs) -> _Path:
         """
@@ -310,6 +346,12 @@ class Path(pathlib.Path):
         - `format` will be determined by the file suffix
         - It can be overwritten with an `format` keyword-argument.
         - a `ValueError` is raised if the `format` is unknown.
+
+        >>> Path('test.tar.gz').unpack_archive('test')
+        Path('test')
+
+        >>> Path('test.zpy').unpack_archive('test', format='zip')
+        Path('test')
         """
 
         _format = kwargs.pop("format", self._find_archive_format(self))
@@ -342,6 +384,55 @@ class Path(pathlib.Path):
         )
 
         return set(formats)
+
+    def stat(self, **kwargs) -> _stat_result:
+        """
+        Returns a `StatResult` object which modifies following attributes:
+
+        - `st_size` is wrapped in `ByteInt`
+        - `st_atime`, `st_mtime`, `st_ctime`, `st_birthtime` are wrapped in `TimeInt`
+
+        For `**kwargs` see `pathlib.Path.stat()`.
+        """
+        return StatResult(super().stat(**kwargs))
+
+    def with_suffix(self, suffix: Union[str, List[str]]) -> _Path:
+        """
+        Return a new `Path` with changed suffix or remove it when its an empty
+        string.
+
+        >>> Path('test.a.b').with_suffix('.c')
+        Path('test.a.c')
+
+        >>> Path('test.a.b').with_suffix('')
+        Path('test.a')
+
+        Multiple suffixes can be changed at once by passing a list of suffixes.
+        With a empty list all suffixes will be removed.
+
+        >>> Path('test.a.b').with_suffix(['.c', '.d'])
+        Path('test.c.d')
+
+        >>> Path('test.a.b').with_suffix([])
+        Path('test')
+        """
+
+        try:
+            return super().with_suffix(suffix)
+        except (AttributeError, TypeError):
+            if isinstance(suffix, list) and not suffix:
+                suffix = ""
+            elif all(s.startswith(".") for s in suffix):
+                suffix = "".join(suffix)
+            elif all(not s for s in suffix):
+                suffix = ""
+            else:
+                raise ValueError(f"Invalid suffix '{suffix}'")
+
+            end = -1 * len(self.suffixes) or None
+            name = self.name.split(".")[0:end]
+            stem = self.parent.joinpath("".join(name))
+            return super(Path, stem).with_suffix(suffix)
 
 
 class Register7zFormat(Path, archive="7z"):

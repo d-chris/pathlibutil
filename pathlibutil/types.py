@@ -1,14 +1,17 @@
 import functools
+import os
 import re
+from datetime import datetime, tzinfo
 from typing import Set, Tuple, TypeVar
 
 _ByteInt = TypeVar("_ByteInt", bound="ByteInt")
+_stat_result = TypeVar("_stat_result", bound="os.stat_result")
 
 
 class ByteInt(int):
     """
     Inherit from `int` with attributes to convert bytes to decimal or binary `units` for
-    measuring storage data. These attributes will return a `float`
+    measuring storage data. These attributes will return a `float`.
 
     >>> ByteInt(1234).kb
     1.234
@@ -17,6 +20,11 @@ class ByteInt(int):
 
     >>> f"{ByteInt(6543210):.2mib} mebibytes"
     '6.24 mebibytes'
+
+    String representation of `ByteInt` will return the most appropriate decimal unit.
+
+    >>> str(ByteInt(987654))
+    '987.7 kb'
     """
 
     __regex = re.compile(r"(?P<unit>[kmgtpezy]i?b)")
@@ -61,6 +69,36 @@ class ByteInt(int):
         }
         """
         return set(self.__bytes.keys())
+
+    def __str__(self) -> str:
+        return self.string()
+
+    def string(self, decimal=True) -> str:
+        """
+        Return a string representation of `self` in the most appropriate unit.
+
+        If `decimal` is `False` then binary units will be used instead of `decimal`.
+
+        >>> ByteInt(12346789).string(False)
+        '11.77 mib'
+        """
+
+        def _decimal(x):
+            return "i" not in x[0]
+
+        def _binary(x):
+            return x[0].endswith("ib")
+
+        query = _decimal if decimal else _binary
+
+        for unit, (byte, _) in filter(query, self.__bytes.items()):
+            value = self / byte
+
+            if 1 <= value < 1000:
+                dec = 2 if value < 100 else 1
+                return value.__format__(f".{dec}f") + f" {unit}"
+
+        return f"{int(self)} b"
 
     @classmethod
     def info(cls, unit: str) -> Tuple[int, str]:
@@ -190,3 +228,107 @@ def byteint(func):
         return value
 
     return wrapper
+
+
+class TimeInt(float):
+    """
+    Inherit from `float` with attributes to convert seconds to `datetime` objects.
+
+    >>> TimeInt(0).datetime
+    datetime.datetime(1970, 1, 1, 0, 0)
+
+    >>> TimeInt(0).string('%d.%m.%Y')
+    '01.01.1970'
+
+    Return a string representation using `TimeInt.format`.
+
+    >>> str(TimeInt(0))
+    '1970-01-01 00:00:00'
+    """
+
+    format = "%Y-%m-%d %H:%M:%S"
+    """
+    Format string to which is uesed to convert `self` to a string. Default: 'isoformat'.
+    For more information see `datetime.datetime.strftime`.
+    """
+
+    def __new__(cls, value: int, tz: tzinfo = None) -> float:
+        """
+        Create a new instance from baseclass `int`.
+        """
+        return super().__new__(cls, value)
+
+    def __init__(self, value: int, tz: tzinfo = None) -> None:
+        """
+        Create a new instance from baseclass `int` with optional `timezone` info.
+        """
+        self.timezone = tz
+        """
+        property for `datetime.timezone` object is set with `__init__` or can be
+        changed to different timezones to get the correct string reprensentation. If
+        timezone is `None` then the local timezone is used.
+        """
+
+    @functools.cached_property
+    def datetime(self) -> datetime:
+        """
+        property returns a `datetime.datetime` object.
+        """
+        return datetime.fromtimestamp(self, self.timezone)
+
+    def __str__(self) -> str:
+        """
+        Return a string representation of `datetime` using `self.format`.
+        """
+        return self.string()
+
+    def string(self, format_string: str = None) -> str:
+        """
+        Return a string representation of `datetime` using the `format_string`.
+
+        If `format_string` is `None` then `TimeInt.format` is used.
+        """
+        return self.datetime.strftime(format_string or self.format)
+
+
+class StatResult:
+    """
+    Object converts `st_size` to `ByteInt` and
+    `st_atime`, `st_mtime`, `st_ctime` and `st_birthtime` to `TimeInt`.
+
+    Inheritance was not possible due `@final` decorator is applied to `os.stat_result`
+    to prevent subclassing.
+    """
+
+    def __init__(self, stat):
+        """
+        Wrapper for `os.stat_result`.
+        """
+        self._obj = stat
+
+    def __getattr__(self, name):
+        """
+        Forward all unknown attributes to `self._obj`.
+        """
+        attr = getattr(self._obj, name)
+
+        if isinstance(attr, int):
+            if name == "st_size":
+                return ByteInt(attr)
+        elif isinstance(attr, float):
+            if name in ("st_atime", "st_mtime", "st_ctime", "st_birthtime"):
+                return TimeInt(attr)
+
+        return attr
+
+    def __str__(self) -> str:
+        """
+        Return a string of `os.stat_result` object.
+        """
+        return str(self._obj)
+
+    def __repr__(self) -> str:
+        """
+        Return representation of `os.stat_result` object.
+        """
+        return repr(self._obj)
