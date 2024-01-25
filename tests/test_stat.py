@@ -49,9 +49,7 @@ def test_stat_time(arg):
     assert type(getattr(s, arg)) == TimeInt
 
 
-@pytest.mark.skipif(
-    os.name != "posix", reason="st_birthtime is not available on Windows"
-)
+@pytest.mark.xfail(reason="Attribute not always available")
 def test_stat_birthtime():
     """check if the result for st_birthtime is a TimeInt object"""
 
