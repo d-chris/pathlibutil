@@ -40,22 +40,13 @@ def test_stat_attr_result(arg):
         pytest.skip(f"{arg} is callable and not tested")
 
 
-@pytest.mark.parametrize("arg", ["st_atime", "st_mtime", "st_ctime"])
-def test_stat_time(arg):
+@pytest.mark.parametrize("time", [t for t in dir(os.stat_result) if t.endswith("time")])
+def test_stat_time(time):
     """check if the results for times are TimeInt objects"""
 
     s = Path(__file__).stat()
 
-    assert type(getattr(s, arg)) == TimeInt
-
-
-@pytest.mark.xfail(reason="Attribute not always available")
-def test_stat_birthtime():
-    """check if the result for st_birthtime is a TimeInt object"""
-
-    s = Path(__file__).stat()
-
-    assert type(s.st_birthtime) == TimeInt
+    assert type(getattr(s, time)) == TimeInt
 
 
 def test_stat_size():
@@ -66,7 +57,7 @@ def test_stat_size():
     assert type(s.st_size) == ByteInt
 
 
-@pytest.mark.parametrize("cast", [str, repr])
+@pytest.mark.parametrize("cast", [str, repr, dir, len])
 def test_stat_functions(cast):
     s = Path(__file__).stat()
     o = os.stat(__file__)

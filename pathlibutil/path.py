@@ -432,7 +432,7 @@ class Path(BasePath):
             end = -1 * len(self.suffixes) or None
             name = self.name.split(".")[0:end]
             stem = self.parent.joinpath("".join(name))
-            return super(Path, stem).with_suffix(suffix)
+            return super(self.__class__, stem).with_suffix(suffix)
 
 
 class Register7zFormat(Path, archive="7z"):
