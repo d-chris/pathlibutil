@@ -63,3 +63,11 @@ def test_stat_functions(cast):
     o = os.stat(__file__)
 
     assert cast(s) == cast(o)
+
+
+def test_stat_result():
+    """check if the result for st_result is a StatResult object"""
+
+    s = Path(__file__).stat()
+
+    assert type(s.stat_result) == os.stat_result
