@@ -401,14 +401,14 @@ class Path(BasePath):
         Return a new `Path` with changed suffix or remove it when its an empty
         string.
 
+        Multiple suffixes can be changed at once by passing a list of suffixes.
+        With a empty list all suffixes will be removed.
+
         >>> Path('test.a.b').with_suffix('.c')
         Path('test.a.c')
 
         >>> Path('test.a.b').with_suffix('')
         Path('test.a')
-
-        Multiple suffixes can be changed at once by passing a list of suffixes.
-        With a empty list all suffixes will be removed.
 
         >>> Path('test.a.b').with_suffix(['.c', '.d'])
         Path('test.c.d')
@@ -432,7 +432,48 @@ class Path(BasePath):
             end = -1 * len(self.suffixes) or None
             name = self.name.split(".")[0:end]
             stem = self.parent.joinpath("".join(name))
-            return super(Path, stem).with_suffix(suffix)
+            return super(self.__class__, stem).with_suffix(suffix)
+
+    def relative_to(
+        self, *other: Union[str, _Path], walk_up: Union[bool, int] = False
+    ) -> _Path:
+        """
+        Return the relative path to another path identified by the passed
+        arguments.  If the operation is not possible (because this is not
+        related to the other path), raise `ValueError`.
+
+        The `walk_up` parameter controls whether `..` may be used to resolve
+        the path.
+
+        If `walk_up` is a integer it specifies the maximum number of `..` to resolve, if
+        max is reached a `ValueError` is raised.
+
+        >>> Path('a/b/c/d').relative_to('a/b')
+        Path('c/d')
+
+        >>> Path('a/b/c/d').relative_to('a/b/e/f/g', walk_up=True)
+        Path('../../../c/d')
+
+        >>> Path('a/b/c/d').relative_to('a/b/e/f/g', walk_up=2)
+        ValueError: '../../../c/d' is outside of the relative deepth of '2'
+        """
+        if not walk_up:
+            return super().relative_to(*other)
+
+        try:
+            relative = super().relative_to(*other, walk_up=walk_up)
+        except TypeError:
+            relative = self.__class__(os.path.relpath(self, Path(*other)))
+
+        if type(walk_up) is not int:
+            return relative
+
+        if relative.parts.count("..") > walk_up:
+            raise ValueError(
+                f"'{relative}' is outside of the relative deepth of '{walk_up}'"
+            )
+
+        return relative
 
 
 class Register7zFormat(Path, archive="7z"):

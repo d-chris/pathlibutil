@@ -2,7 +2,7 @@ import functools
 import os
 import re
 from datetime import datetime, tzinfo
-from typing import Set, Tuple, TypeVar
+from typing import Set, Tuple, TypeVar, Iterable
 
 _ByteInt = TypeVar("_ByteInt", bound="ByteInt")
 _stat_result = TypeVar("_stat_result", bound="os.stat_result")
@@ -332,3 +332,22 @@ class StatResult:
         Return representation of `os.stat_result` object.
         """
         return repr(self._obj)
+
+    def __dir__(self) -> Iterable[str]:
+        """
+        Return a list of attributes of `os.stat_result` object.
+        """
+        return dir(self._obj)
+
+    def __len__(self) -> int:
+        """
+        Return length of `os.stat_result` object.
+        """
+        return len(self._obj)
+
+    @property
+    def stat_result(self) -> os.stat_result:
+        """
+        Return the wrapped `os.stat_result` object.
+        """
+        return self._obj

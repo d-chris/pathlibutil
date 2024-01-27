@@ -45,7 +45,7 @@ def test_copy_raises(file: Path, tmp_path: pathlib.Path):
         Path("notexists").copy(tmp_path)
 
 
-@pytest.mark.xfail(reason="dst directory will be created when copy a file")
+@pytest.mark.xfail(reason="dst directory will be created when copy a file", strict=True)
 def test_copy_mkdir(file: Path, tmp_path: pathlib.Path):
     with pytest.raises(FileNotFoundError):
         file.copy(tmp_path / "not-exists")
