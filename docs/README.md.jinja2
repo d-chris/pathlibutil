@@ -27,6 +27,7 @@
 - `Path.stat()` returns a `StatResult` object to get file or directory information containing
   - `TimeInt` objects for `atime`, `ctime`, `mtime` and `birthtime`
   - `ByteInt` object for `size`
+- `Path.relative_to()` to get relative path from a file or directory, `walk_up` to walk up the directory tree.
 
 ## Installation
 

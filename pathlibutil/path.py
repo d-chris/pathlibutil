@@ -401,14 +401,14 @@ class Path(BasePath):
         Return a new `Path` with changed suffix or remove it when its an empty
         string.
 
+        Multiple suffixes can be changed at once by passing a list of suffixes.
+        With a empty list all suffixes will be removed.
+
         >>> Path('test.a.b').with_suffix('.c')
         Path('test.a.c')
 
         >>> Path('test.a.b').with_suffix('')
         Path('test.a')
-
-        Multiple suffixes can be changed at once by passing a list of suffixes.
-        With a empty list all suffixes will be removed.
 
         >>> Path('test.a.b').with_suffix(['.c', '.d'])
         Path('test.c.d')
