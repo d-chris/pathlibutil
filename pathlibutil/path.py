@@ -3,7 +3,8 @@ import hashlib
 import itertools
 import os
 import shutil
-from typing import Callable, Dict, Generator, List, Set, Union
+import sys
+from typing import Callable, Dict, Generator, List, Literal, Set, Union
 
 from pathlibutil.base import BasePath, _Path
 from pathlibutil.types import ByteInt, StatResult, _stat_result, byteint
@@ -474,6 +475,24 @@ class Path(BasePath):
             )
 
         return relative
+
+    @classmethod
+    def cwd(cls, *, frozen: Literal[True, False, "_MEIPASS"] = False) -> _Path:
+        """
+        Return a `Path` object representing the current working directory.
+
+        When the script is bundled into a single executable file, e.g. with pyinstaller
+        and `frozen` is `True` the directory of the executable will be returned.
+        If `frozen` is a string, it returns a `Path`object of the of the corresponding
+        `sys` attribute.
+        """
+        if hasattr(sys, "frozen"):
+            if frozen is True:
+                return cls(sys.executable).parent
+            elif isinstance(frozen, str):
+                return cls(getattr(sys, frozen))
+
+        return super().cwd()
 
 
 class Register7zFormat(Path, archive="7z"):
