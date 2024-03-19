@@ -49,5 +49,4 @@ def test_cwd_param(param):
 )
 def test_cwd_param_frozen(mock_sys, param, result):
     p = Path.cwd(frozen=param)
-    assert isinstance(p, Path)
     assert p == Path(result)

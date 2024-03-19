@@ -481,12 +481,14 @@ class Path(BasePath):
         """
         Return a `Path` object representing the current working directory.
 
-        When the script is bundled into a single executable file, e.g. with pyinstaller
-        and `frozen` is `True` the directory of the executable will be returned.
-        If `frozen` is a string, it returns a `Path`object of the of the corresponding
-        `sys` attribute.
+        The `frozen` parameter takes only effect when the script is bundled to a
+        executable, e.g. with `pyinstaller`.
+
+        - `False`: Returns the current working directory, this is the default.
+        - `True`: Returns the directory of the executable.
+        - `"_MEIPASS"`: Returns the directory of the bundled resources.
         """
-        if hasattr(sys, "frozen"):
+        if getattr(sys, "frozen", False):
             if frozen is True:
                 return cls(sys.executable).parent
             elif isinstance(frozen, str):
