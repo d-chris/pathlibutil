@@ -44,6 +44,7 @@ docformatter = "^1.7.5"
 jinja2-pdoc = "^0.2.0"
 pdoc = "^14.3.0"
 click = "^8.1.7"
+pyinstaller = "^6.5.0"
 
 [[tool.poetry.source]]
 name = "PyPI"

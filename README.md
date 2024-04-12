@@ -28,6 +28,9 @@
   - `TimeInt` objects for `atime`, `ctime`, `mtime` and `birthtime`
   - `ByteInt` object for `size`
 - `Path.relative_to()` to get relative path from a file or directory, `walk_up` to walk up the directory tree.
+- `Path.with_suffix()` to change the multiple suffixes of a file
+- `Path.cwd()` to get the current working directory or executable path when script is bundled, e.g. with `pyinstaller`
+- `Path.resolve()` to resolve a unc path to a mapped windows drive.
 
 ## Installation
 
@@ -235,4 +238,41 @@ archive = file.make_archive("README.foo.bar")
 backup = archive.move("./backup/")
 
 print(f"archive created: {archive.name} and moved to: {backup.parent}")
+```
+
+## Example 6
+
+Access the current working directory with optional parameter `frozen` to determine
+different directories when script is bundled to an executable,
+e.g. with `pyinstaller`.
+> `Path.cwd()`
+
+```cmd
+>>> poetry run examples/example6.py -b
+Building frozen: K:/pathlibutil/examples/example6.exe
+Build succeeded: 0
+
+>>> poetry run examples/example6.py
+we are                          not frozen
+
+bundle dir is                   K:/pathlibutil/examples
+sys.argv[0] is                  K:/pathlibutil/examples/example6.py
+sys.executable is               K:/pathlibutil/.venv/Scripts/python.exe
+os.getcwd is                    K:/pathlibutil
+
+Path.cwd(frozen=True) is        K:/pathlibutil
+Path.cwd(frozen=False) is       K:/pathlibutil
+Path.cwd(frozen=_MEIPASS) is    K:/pathlibutil
+
+>>> examples/example6.exe
+we are                          ever so frozen
+
+bundle dir is                   C:/Users/CHRIST~1.DOE/AppData/Local/Temp/_MEI106042
+sys.argv[0] is                  examples/example6.exe
+sys.executable is               K:/pathlibutil/examples/example6.exe
+os.getcwd is                    K:/pathlibutil
+
+Path.cwd(frozen=True) is        K:/pathlibutil/examples
+Path.cwd(frozen=False) is       K:/pathlibutil
+Path.cwd(frozen=_MEIPASS) is    C:/Users/CHRIST~1.DOE/AppData/Local/Temp/_MEI106042
 ```
