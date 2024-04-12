@@ -42,7 +42,6 @@ def test_cwd_param(param):
 @pytest.mark.parametrize(
     "param, result",
     [
-        (False, os.getcwd()),
         (True, "/path/"),
         ("_MEIPASS", "/path/_MEIPASS"),
     ],
@@ -50,3 +49,8 @@ def test_cwd_param(param):
 def test_cwd_param_frozen(mock_sys, param, result):
     p = Path.cwd(frozen=param)
     assert p == Path(result)
+
+
+def test_cwd_param_frozen_false(mock_sys):
+    p = Path.cwd(frozen=False)
+    assert p == Path(os.getcwd())
