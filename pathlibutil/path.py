@@ -2,7 +2,9 @@ import errno
 import hashlib
 import itertools
 import os
+import re
 import shutil
+import subprocess
 import sys
 from typing import Callable, Dict, Generator, List, Literal, Set, Union
 
@@ -495,6 +497,75 @@ class Path(BasePath):
                 return cls(getattr(sys, frozen))
 
         return super().cwd()
+
+    @classmethod
+    def _net_use(cls) -> Dict[str, str]:
+        """
+        Return a dictionary of mapped network drives. Keys are UNC paths and values
+        are drive letters.
+        """
+
+        def run(cmd: str) -> str:
+            """execute `command` and return stdout with cp850 encoding."""
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                shell=True,
+                encoding="cp850",
+            )
+
+            return result.stdout
+
+        try:
+            mapped_drives = re.finditer(
+                r"^OK\s+(?P<drive>[A-Z]):\s+(?P<unc>\S+)",
+                run("net use"),
+                re.IGNORECASE | re.MULTILINE,
+            )
+            return {
+                match.group("unc") + "\\": match.group("drive") + ":\\"
+                for match in mapped_drives
+            }
+        except Exception:
+            return {}
+
+    def _resolve_unc(self) -> _Path:
+        """
+        Resolve UNC paths to mapped network drives.
+        """
+        if not hasattr(self.__class__, "_netuse"):
+            self.__class__._netuse = self._net_use()
+
+        try:
+            drive = self._netuse[self.anchor]
+            return self.__class__(drive).joinpath(self.relative_to(self.anchor))
+        except KeyError:
+            return self
+
+    def resolve(self, strict: bool = False, unc: bool = True) -> _Path:
+        """
+        Make the path absolute, resolving all symlinks on the way and also normalizing
+        it.
+
+        If `strict` is `True`, a `FileNotFoundError` will be raised if the path does
+        not exist.
+
+        On Windows if `unc` is `False`, UNC paths will be resolved to mapped network
+        drives.
+
+        >>> Path("T:/file.txt").resolve()
+        Path("\\\\server\\temp\\file.txt")
+
+        >>> Path("//server/temp/file.txt").resolve(unc=False)
+        Path("T:\\file.txt")
+        """
+
+        p = super().resolve(strict)
+
+        if unc is True or os.name != "nt":
+            return p
+
+        return p._resolve_unc()
 
 
 class Register7zFormat(Path, archive="7z"):

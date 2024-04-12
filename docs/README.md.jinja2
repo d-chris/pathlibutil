@@ -30,6 +30,7 @@
 - `Path.relative_to()` to get relative path from a file or directory, `walk_up` to walk up the directory tree.
 - `Path.with_suffix()` to change the multiple suffixes of a file
 - `Path.cwd()` to get the current working directory or executable path when script is bundled, e.g. with `pyinstaller`
+- `Path.resolve()` to resolve a unc path to a mapped windows drive.
 
 ## Installation
 
