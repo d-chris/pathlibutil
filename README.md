@@ -31,6 +31,8 @@
 - `Path.with_suffix()` to change the multiple suffixes of a file
 - `Path.cwd()` to get the current working directory or executable path when script is bundled, e.g. with `pyinstaller`
 - `Path.resolve()` to resolve a unc path to a mapped windows drive.
+- `Path.walk()` to walk over a directory tree like `os.walk()`
+- `Path.iterdir()` with `recursive` all files from the directory tree will be yielded.
 
 ## Installation
 

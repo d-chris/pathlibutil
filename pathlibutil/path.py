@@ -6,7 +6,7 @@ import re
 import shutil
 import subprocess
 import sys
-from typing import Callable, Dict, Generator, List, Literal, Set, Union
+from typing import Callable, Dict, Generator, List, Literal, Set, Tuple, Union
 
 from pathlibutil.base import BasePath, _Path
 from pathlibutil.types import ByteInt, StatResult, _stat_result, byteint
@@ -512,6 +512,7 @@ class Path(BasePath):
                 capture_output=True,
                 shell=True,
                 encoding="cp850",
+                check=True,
             )
 
             return result.stdout
@@ -523,7 +524,7 @@ class Path(BasePath):
                 re.IGNORECASE | re.MULTILINE,
             )
             return {
-                match.group("unc") + "\\": match.group("drive") + ":\\"
+                match.group("unc") + "\\": cls(match.group("drive") + ":\\")
                 for match in mapped_drives
             }
         except Exception:
@@ -538,7 +539,7 @@ class Path(BasePath):
 
         try:
             drive = self._netuse[self.anchor]
-            return self.__class__(drive).joinpath(self.relative_to(self.anchor))
+            return drive.joinpath(self.relative_to(self.anchor))
         except KeyError:
             return self
 
@@ -566,6 +567,46 @@ class Path(BasePath):
             return p
 
         return p._resolve_unc()
+
+    def walk(
+        self,
+        top_down: bool = True,
+        on_error: Callable[[OSError], object] = None,
+        follow_symlinks: bool = False,
+    ) -> Generator[Tuple[_Path, List[str], List[str]], None, None]:
+        """
+        Walks the directory tree and yields a 3-tuple of (dirpath, dirnames, filenames).
+        """
+        try:
+            yield from super().walk(
+                top_down,
+                on_error,
+                follow_symlinks,
+            )
+        except AttributeError:
+            for dirpath, dirnames, filenames in os.walk(
+                self,
+                top_down,
+                on_error,
+                follow_symlinks,
+            ):
+                yield self.__class__(dirpath), dirnames, filenames
+
+    def iterdir(
+        self, resursive: bool = False, **kwargs
+    ) -> Generator[_Path, None, None]:
+        """
+        Iterates over the files in the directory.
+
+        If `recursive` is `True` all files from the directory tree will be yielded.
+
+        For `**kwargs` see `os.walk()`
+        """
+        if resursive is True:
+            for root, _, files in self.walk(**kwargs):
+                yield from (root.joinpath(file) for file in files)
+        else:
+            yield from super().iterdir()
 
 
 class Register7zFormat(Path, archive="7z"):
