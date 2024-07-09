@@ -593,16 +593,15 @@ class Path(BasePath):
                 yield self.__class__(dirpath), dirnames, filenames
 
     def iterdir(
-        self, resursive: bool = False, **kwargs
+        self, *, recursive: bool = False, **kwargs
     ) -> Generator[_Path, None, None]:
         """
         Iterates over the files in the directory.
 
-        If `recursive` is `True` all files from the directory tree will be yielded.
-
-        For `**kwargs` see `os.walk()`
+        If `recursive` is `True` all files from the directory tree will be yielded and
+        optional` **kwargs` are passed to `Path.walk()`.
         """
-        if resursive is True:
+        if recursive is True:
             for root, _, files in self.walk(**kwargs):
                 yield from (root.joinpath(file) for file in files)
         else:
