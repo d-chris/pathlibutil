@@ -34,6 +34,10 @@
 - `Path.walk()` to walk over a directory tree like `os.walk()`
 - `Path.iterdir()` with `recursive` all files from the directory tree will be yielded.
 
+JSON serialization of `Path` objects is supported in `pathlibutil.json`.
+
+- `pathlibutil.json.dumps()` and `pathlibutil.json.dump()` to serialize `Path` objects as posix paths.
+
 ## Installation
 
 ```bash
