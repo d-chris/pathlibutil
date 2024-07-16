@@ -11,7 +11,7 @@ def cli():
 
 
 @cli.command()
-@click.argument('root', type=click.Path(file_okay=False))
+@click.argument("root", type=click.Path(file_okay=False))
 def erase(root: str) -> None:
     """remove a directry tree"""
 
@@ -19,7 +19,7 @@ def erase(root: str) -> None:
     root = Path(root).resolve()
 
     if self == root:
-        raise click.UsageError('Invalid value for ROOT: cannot delete itself')
+        raise click.UsageError("Invalid value for ROOT: cannot delete itself")
 
     try:
         root.delete(recursive=True, missing_ok=True)
@@ -28,9 +28,11 @@ def erase(root: str) -> None:
 
 
 @cli.command()
-@click.argument('src', type=click.Path(exists=True, file_okay=False))
-@click.argument('dst', type=click.Path(file_okay=False))
-@click.option('-u', '--unignore', is_flag=True, help='remove gitignore files in destination')
+@click.argument("src", type=click.Path(exists=True, file_okay=False))
+@click.argument("dst", type=click.Path(file_okay=False))
+@click.option(
+    "-u", "--unignore", is_flag=True, help="remove gitignore files in destination"
+)
 def copy(src: str, dst: str, unignore=True) -> None:
     """copy directory from src to dst and remove any gitignore files"""
 
@@ -40,9 +42,9 @@ def copy(src: str, dst: str, unignore=True) -> None:
         sys.exit(1)
 
     if unignore:
-        for file in dest.rglob('.gitignore'):
+        for file in dest.rglob(".gitignore"):
             file.unlink()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()

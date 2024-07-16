@@ -3,7 +3,7 @@ import os
 import pytest
 
 from pathlibutil.path import Path
-from pathlibutil.types import StatResult, TimeInt, ByteInt
+from pathlibutil.types import ByteInt, StatResult, TimeInt
 
 
 def test_stat():

@@ -2,7 +2,7 @@ import functools
 import os
 import re
 from datetime import datetime, tzinfo
-from typing import Set, Tuple, TypeVar, Iterable
+from typing import Iterable, Set, Tuple, TypeVar
 
 _ByteInt = TypeVar("_ByteInt", bound="ByteInt")
 _stat_result = TypeVar("_stat_result", bound="os.stat_result")

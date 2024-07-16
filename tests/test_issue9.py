@@ -1,7 +1,7 @@
 import random
 
-import pytest
 import exrex
+import pytest
 
 from pathlibutil import Path
 from pathlibutil.types import ByteInt, byteint

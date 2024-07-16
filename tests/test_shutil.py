@@ -1,6 +1,7 @@
-import pytest
-import shutil
 import pathlib
+import shutil
+
+import pytest
 
 from pathlibutil import Path
 

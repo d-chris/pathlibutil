@@ -1,6 +1,5 @@
 import functools
 import importlib
-import os
 import pathlib
 
 json = importlib.import_module("json")

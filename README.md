@@ -154,7 +154,7 @@ deleted directories and the amount of memory freed in MB.
 > `Path.delete()`, `Path.size()` and `ByteInt`
 
 ```python
-from pathlibutil import Path, ByteInt
+from pathlibutil import ByteInt, Path
 
 mem = ByteInt(0)
 i = 0
@@ -181,8 +181,9 @@ to register new archive formats.
 > Path.make_archive(), Path.archive_formats and Path.move()
 
 ```python
-import pathlibutil
 import shutil
+
+import pathlibutil
 
 
 class RegisterFooBarFormat(pathlibutil.Path, archive="foobar"):

@@ -5,7 +5,7 @@ def main():
     > `Path.delete()`, `Path.size()` and `ByteInt`
     """
 
-    from pathlibutil import Path, ByteInt
+    from pathlibutil import ByteInt, Path
 
     mem = ByteInt(0)
     i = 0

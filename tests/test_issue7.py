@@ -2,6 +2,7 @@ import pathlib
 from typing import Any
 
 import pytest
+
 from pathlibutil import Path, Register7zFormat
 
 
