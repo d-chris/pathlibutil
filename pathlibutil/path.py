@@ -22,8 +22,8 @@ class Path(BasePath):
 
     - Contextmanger lets you change the current working directory.
     ```python
-    with Path('path/to/directory') as cwd:
-        print(f'current working directory: {cwd}')
+    with Path("path/to/directory") as cwd:
+        print(f"current working directory: {cwd}")
     ```
     """
 
@@ -623,20 +623,18 @@ class Register7zFormat(Path, archive="7z"):
 
     Example:
     ```python
-    class Register7zArchive(pathlibutil.Path, archive='7z'):
+    class Register7zArchive(pathlibutil.Path, archive="7z"):
         @classmethod
         def _register_archive_format(cls):
             try:
                 from py7zr import pack_7zarchive, unpack_7zarchive
             except ModuleNotFoundError:
-                raise ModuleNotFoundError('pip install pathlibutil[7z]')
+                raise ModuleNotFoundError("pip install pathlibutil[7z]")
             else:
                 shutil.register_archive_format(
-                    '7z', pack_7zarchive, description='7zip archive'
+                    "7z", pack_7zarchive, description="7zip archive"
                 )
-                shutil.register_unpack_format(
-                    '7z', ['.7z'], unpack_7zarchive
-                )
+                shutil.register_unpack_format("7z", [".7z"], unpack_7zarchive)
     ```
     """
 

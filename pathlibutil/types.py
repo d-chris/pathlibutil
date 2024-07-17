@@ -206,6 +206,7 @@ def byteint(func):
     ```python
     randbyte = byteint(random.randint)
 
+
     @byteint
     def randhexbyte():
         return hex(random.randint(0, 2**32))
