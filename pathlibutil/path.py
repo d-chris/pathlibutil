@@ -84,15 +84,20 @@ class Path(BasePath):
         if not self.is_file():
             raise FileNotFoundError(f"'{self}' is not an existing file")
 
-        try:
-            args = (kwargs.pop("length"),)
-        except KeyError:
-            args = ()
-
-        return hashlib.new(
+        hash = hashlib.new(
             name=algorithm or self.default_hash,
             data=self.read_bytes(),
-        ).hexdigest(*args)
+        )
+
+        try:
+            return hash.hexdigest()
+        except TypeError as e:
+            try:
+                length = kwargs["length"]
+            except KeyError:
+                raise e
+
+        return hash.hexdigest(length)
 
     def verify(
         self, digest: str, algorithm: str = None, *, strict: bool = True, **kwargs

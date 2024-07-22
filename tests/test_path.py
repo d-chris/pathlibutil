@@ -32,18 +32,6 @@ def length() -> int:
     return random.randint(8, 16)
 
 
-@pytest.fixture(autouse=True)
-def mock_hexdigest(mocker) -> Mock:
-    mock_hashlib_new = mocker.patch("hashlib.new")
-
-    mock = Mock()
-    mock.hexdigest.return_value = "0123456789abcdef"
-
-    mock_hashlib_new.return_value = mock
-
-    yield mock
-
-
 def test_hexdigest_directory_raises(tmp_path: pathlib.Path):
     with pytest.raises(FileNotFoundError):
         Path(tmp_path).hexdigest()
@@ -52,8 +40,10 @@ def test_hexdigest_directory_raises(tmp_path: pathlib.Path):
         Path(tmp_path / "notexists").hexdigest()
 
 
-def test_hexdigest_default(file: Path):
+def test_hexdigest_default(mocked_file: Path):
     assert hasattr(Path, "hexdigest")
+
+    file = mocked_file
 
     p = file.hexdigest()
 
@@ -61,7 +51,7 @@ def test_hexdigest_default(file: Path):
     assert p == hashlib.new("md5", open(__file__, "rb").read()).hexdigest()
 
 
-def test_hexdigest_hash(file: Path, algorithm: str):
+def test_hexdigest_hash(mocked_file: Path, algorithm: str):
     hash = hashlib.new(
         algorithm,
         open(
@@ -70,6 +60,8 @@ def test_hexdigest_hash(file: Path, algorithm: str):
         ).read(),
     ).hexdigest()
 
+    file = mocked_file
+
     file.default_hash = algorithm
 
     p = file.hexdigest()
@@ -77,15 +69,24 @@ def test_hexdigest_hash(file: Path, algorithm: str):
     assert p == hash
 
 
-def test_hexdigest_random(file: Path, algorithm: str):
-    p = file.hexdigest(algorithm)
+def test_hexdigest_random(mocked_file: Path, algorithm: str):
+    p = mocked_file.hexdigest(algorithm)
 
     assert p == hashlib.new(algorithm, open(__file__, "rb").read()).hexdigest()
 
 
-def test_hexdigest_length(file: Path, shake: str, length: int):
+def test_hexdigest_length(cls: Path, shake: str, length: int):
+
+    file = cls(__file__)
+
     with pytest.raises(TypeError):
         _ = file.hexdigest(shake, length)
+
+    with pytest.raises(TypeError):
+        _ = file.hexdigest(shake)
+
+    with pytest.raises(TypeError):
+        _ = file.hexdigest(shake, len=length)
 
     p = file.hexdigest(shake, length=length)
 
@@ -174,8 +175,10 @@ def test_size_raises(tmp_path: pathlib.Path):
         _ = Path(tmp_path / "nonexistent").size()
 
 
-def test_verify(file: Path, algorithm: str):
+def test_verify(mocked_file: Path, algorithm: str):
     assert hasattr(Path, "verify")
+
+    file = mocked_file
 
     hashsum = hashlib.new(algorithm, open(__file__, "rb").read()).hexdigest()
 
@@ -192,8 +195,10 @@ def test_verify(file: Path, algorithm: str):
         _ = file.verify(None, strict=False)
 
 
-def test_verify_classvar(file: Path):
+def test_verify_classvar(mocked_file: Path):
     hashsum = hashlib.new("md5", open(__file__, "rb").read()).hexdigest()
+
+    file = mocked_file
 
     assert file.verify(hashsum) == True
     assert file.verify(hashsum[:8], strict=False) == True
@@ -201,8 +206,10 @@ def test_verify_classvar(file: Path):
     assert file.verify(hashsum[:4] + hashsum[:4], strict=False) == False
 
 
-def test_verify_strict(file: Path, algorithm: str):
+def test_verify_strict(mocked_file: Path, algorithm: str):
     hashsum = hashlib.new(algorithm, open(__file__, "rb").read()).hexdigest()
+
+    file = mocked_file
 
     with pytest.raises(TypeError):
         _ = file.verify(hashsum, algorithm, False)
