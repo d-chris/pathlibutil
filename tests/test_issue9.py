@@ -25,7 +25,8 @@ from pathlibutil.types import ByteInt, byteint
         (2**60, "eib", 1),
         (2**70, "zib", 1),
         (2**80, "yib", 1),
-    ]
+    ],
+    ids=lambda param: param[1],
 )
 def params(request):
     """returns a tuple of byte, unit and result"""
@@ -42,7 +43,8 @@ def params(request):
         (12345, "12.35 kb"),
         (123456, "123.5 kb"),
         (1234567, "1.23 mb"),
-    ]
+    ],
+    ids=lambda param: param[1],
 )
 def decimal(request):
     """returns a tuple of random int and its decimal string representation"""
@@ -59,14 +61,18 @@ def decimal(request):
         (12345, "12.06 kib"),
         (123456, "120.6 kib"),
         (1234567, "1.18 mib"),
-    ]
+    ],
+    ids=lambda param: param[1],
 )
 def binary(request):
     """returns a tuple of random int and its binary string representation"""
     return request.param
 
 
-@pytest.fixture(params=exrex.generate(r"[zyeptgmk]i?b"))
+@pytest.fixture(
+    params=exrex.generate(r"[zyeptgmk]i?b"),
+    ids=lambda param: param,
+)
 def unit(request):
     """generate units from regex, eg. kb, kib, mb, mib, ..."""
     return request.param

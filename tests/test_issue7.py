@@ -14,7 +14,10 @@ class DummyPath(Register7zFormat):
     pass
 
 
-@pytest.fixture(params=[Path, Register7zFormat, DummyPath])
+@pytest.fixture(
+    params=[Path, Register7zFormat, DummyPath],
+    ids=lambda params: params.__name__,
+)
 def cls(request: pytest.FixtureRequest):
     return request.param
 
