@@ -96,13 +96,13 @@ def test_move_file(file: Path, tmp_dirpath: Path):
 
     dst = src.move(tmp_dirpath / "dst")
 
-    assert src.is_file() == False
-    assert dst.is_file() == True
+    assert src.is_file() is False
+    assert dst.is_file() is True
 
     dst.move(tmp_dirpath)
 
-    assert src.is_file() == True
-    assert dst.is_file() == False
+    assert src.is_file() is True
+    assert dst.is_file() is False
 
 
 def test_move_raises(file: Path, tmp_dirpath: Path):

@@ -11,7 +11,7 @@ def test_stat():
 
     s = Path(__file__).stat()
 
-    assert type(s) == StatResult
+    assert type(s) is StatResult
 
 
 @pytest.mark.parametrize("arg", [a for a in dir(os.stat_result) if a.startswith("__")])
@@ -54,7 +54,7 @@ def test_stat_size():
 
     s = Path(__file__).stat()
 
-    assert type(s.st_size) == ByteInt
+    assert type(s.st_size) is ByteInt
 
 
 @pytest.mark.parametrize("cast", [str, repr, dir, len])
@@ -70,4 +70,4 @@ def test_stat_result():
 
     s = Path(__file__).stat()
 
-    assert type(s.stat_result) == os.stat_result
+    assert type(s.stat_result) is os.stat_result

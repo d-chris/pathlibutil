@@ -79,20 +79,20 @@ def test_pack_unpack_directory(cls: Path, tmp_path: pathlib.Path):
     archive = tmp_path.joinpath("archive.zip")
     root = tmp_path.joinpath("test")
 
-    assert archive.exists() == False
-    assert root.is_dir() == True
+    assert archive.exists() is False
+    assert root.is_dir() is True
 
     cls(root).make_archive(archive)
     shutil.rmtree(str(root))
 
-    assert root.exists() == False
-    assert archive.is_file() == True
+    assert root.exists() is False
+    assert archive.is_file() is True
 
     cls(archive).unpack_archive(tmp_path)
     archive.unlink()
 
-    assert archive.exists() == False
-    assert root.is_dir() == True
+    assert archive.exists() is False
+    assert root.is_dir() is True
 
 
 def test_pack_unpack_file(cls: Path, tmp_file: Path, tmp_path: pathlib.Path):
@@ -104,14 +104,14 @@ def test_pack_unpack_file(cls: Path, tmp_file: Path, tmp_path: pathlib.Path):
     # create zip and delete tmp_file
     zip = tmp_file.make_archive(archive)
     tmp_file.unlink()
-    assert tmp_file.is_file() == False
+    assert tmp_file.is_file() is False
     assert zip.is_file()
 
     # restore tmp_file from hip and delete zip
     zip.unpack_archive(tmp_path)
     zip.unlink()
-    assert zip.is_file() == False
-    assert tmp_file.is_file() == True
+    assert zip.is_file() is False
+    assert tmp_file.is_file() is True
 
 
 def test_unpack_archive_raises(tmp_path: pathlib.Path):
