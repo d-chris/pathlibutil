@@ -611,7 +611,8 @@ class Path(BasePath):
         be yielded if it is an `integer` files are yielded to this max. directory depth
         optional` **kwargs` are passed to `Path.walk()`.
 
-        When recursing, folders can be excluded by passing a callable for `exclude_dirs`, e.g.
+        When recursing, folders can be excluded by passing a callable for
+        `exclude_dirs`, e.g.
 
         ```python
         def exclude_version_control(dirpath: _Path) -> bool:
@@ -622,7 +623,7 @@ class Path(BasePath):
             if exclude_dirs and not callable(exclude_dirs):
                 raise TypeError("exclude_dirs must be a callable")
 
-            depth = recursive if type(recursive) == int else None
+            depth = recursive if type(recursive) is int else None
 
             for root, dirs, files in self.walk(**kwargs):
                 if depth is not None and len(root.relative_to(self).parts) >= depth:
