@@ -14,7 +14,7 @@ from pathlibutil import Path
 def algorithm() -> str:
     """random hash algorithm for one test without shake"""
     return random.choice(
-        [a for a in hashlib.algorithms_available if not a.startswith("shake")]
+        [a for a in hashlib.algorithms_guaranteed if not a.startswith("shake")]
     )
 
 
@@ -22,7 +22,7 @@ def algorithm() -> str:
 def shake() -> str:
     """random shake algorithm for one test"""
     return random.choice(
-        [a for a in hashlib.algorithms_available if a.startswith("shake")]
+        [a for a in hashlib.algorithms_guaranteed if a.startswith("shake")]
     )
 
 
