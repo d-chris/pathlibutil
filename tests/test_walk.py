@@ -43,9 +43,38 @@ def test_iderdir_recursive_raises():
         Path().iterdir(True)
 
 
-def test_iterdir_recursive(test_dir):
+@pytest.mark.parametrize(
+    "recursive, result",
+    [
+        (True, 4),
+        (0, 1),
+        (1, 3),
+        (2, 4),
+        (123, 4),
+    ],
+)
+def test_iterdir_recursive(test_dir, recursive, result):
 
     p = Path(test_dir)
-    result = p.iterdir(recursive=True)
 
-    assert all(p.is_file() for p in result)
+    files = list(p.iterdir(recursive=recursive))
+
+    assert len(files) == result
+    assert all(p.is_file() for p in files)
+
+
+def test_iterdir_exclude(test_dir):
+    p = Path(test_dir)
+
+    files = list(
+        p.iterdir(recursive=True, exclude_dirs=lambda p: p.name.startswith("sub"))
+    )
+
+    assert len(files) == 1
+
+
+def test_iterdir_exclude_raises(test_dir):
+    p = Path(test_dir)
+
+    with pytest.raises(TypeError):
+        list(p.iterdir(recursive=True, exclude_dirs=["subdir1"]))

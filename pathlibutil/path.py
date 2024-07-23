@@ -598,16 +598,38 @@ class Path(BasePath):
                 yield self.__class__(dirpath), dirnames, filenames
 
     def iterdir(
-        self, *, recursive: bool = False, **kwargs
+        self,
+        *,
+        recursive: Union[bool, int] = False,
+        exclude_dirs: Callable[[_Path], bool] = None,
+        **kwargs,
     ) -> Generator[_Path, None, None]:
         """
         Iterates over the files in the directory.
 
-        If `recursive` is `True` all files from the directory tree will be yielded and
+        If `recursive` is `True` all files from the directory tree will
+        be yielded if it is an `integer` files are yielded to this max. directory depth
         optional` **kwargs` are passed to `Path.walk()`.
+
+        When recursing folders can be excluded by passing a callable for `exclude_dirs`.
+
+        ```python
+        def exclude_version_control(dirpath: _Path) -> bool:
+            return dirpath.name in (".git", ".svn", ".hg", ".bzr", "CVS")
+        ```
         """
-        if recursive is True:
-            for root, _, files in self.walk(**kwargs):
+        if recursive is not False:
+            if exclude_dirs and not callable(exclude_dirs):
+                raise TypeError("exclude_dirs must be a callable")
+
+            depth = recursive if type(recursive) == int else None
+
+            for root, dirs, files in self.walk(**kwargs):
+                if depth is not None and len(root.relative_to(self).parts) >= depth:
+                    dirs[:] = []
+                elif exclude_dirs:
+                    dirs[:] = [d for d in dirs if not exclude_dirs(root.joinpath(d))]
+
                 yield from (root.joinpath(file) for file in files)
         else:
             yield from super().iterdir()
