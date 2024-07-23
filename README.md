@@ -8,6 +8,7 @@
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpathlibutil&up_message=pdoc&logo=github&label=documentation)](https://d-chris.github.io/pathlibutil)
 [![GitHub tag (with filter)](https://img.shields.io/github/v/tag/d-chris/pathlibutil?logo=github&label=github)](https://github.com/d-chris/pathlibutil)
 [![Coverage](https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpathlibutil%2Fhtmlcov&up_message=available&down_message=missing&logo=codecov&label=coverage)](https://d-chris.github.io/pathlibutil/htmlcov)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
 ---
 
@@ -31,6 +32,12 @@
 - `Path.with_suffix()` to change the multiple suffixes of a file
 - `Path.cwd()` to get the current working directory or executable path when script is bundled, e.g. with `pyinstaller`
 - `Path.resolve()` to resolve a unc path to a mapped windows drive.
+- `Path.walk()` to walk over a directory tree like `os.walk()`
+- `Path.iterdir()` with `recursive` all files from the directory tree will be yielded and `exclude_dirs` via callable.
+
+JSON serialization of `Path` objects is supported in `pathlibutil.json`.
+
+- `pathlibutil.json.dumps()` and `pathlibutil.json.dump()` to serialize `Path` objects as posix paths.
 
 ## Installation
 
@@ -152,7 +159,7 @@ deleted directories and the amount of memory freed in MB.
 > `Path.delete()`, `Path.size()` and `ByteInt`
 
 ```python
-from pathlibutil import Path, ByteInt
+from pathlibutil import ByteInt, Path
 
 mem = ByteInt(0)
 i = 0
@@ -179,8 +186,9 @@ to register new archive formats.
 > Path.make_archive(), Path.archive_formats and Path.move()
 
 ```python
-import pathlibutil
 import shutil
+
+import pathlibutil
 
 
 class RegisterFooBarFormat(pathlibutil.Path, archive="foobar"):

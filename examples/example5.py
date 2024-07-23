@@ -7,8 +7,9 @@ def main():
 
     > Path.make_archive(), Path.archive_formats and Path.move()
     """
-    import pathlibutil
     import shutil
+
+    import pathlibutil
 
     class RegisterFooBarFormat(pathlibutil.Path, archive="foobar"):
         @classmethod

@@ -8,7 +8,8 @@ from pathlibutil import Path
         ("a/b/c", "a/c/d", "../../b/c"),
         ("a/b/c/d", "a/b/e/f", "../../c/d"),
         ("a/b/c", "d/e/f", "../../../a/b/c"),
-    ]
+    ],
+    ids=lambda param: "-".join(param),
 )
 def relative_up(request):
     return request.param
@@ -22,7 +23,8 @@ def relative_up(request):
         ("a/b/c", "a", "b/c"),
         ("a/b/c", ".", "a/b/c"),
         ("a/b/c", "", "a/b/c"),
-    ]
+    ],
+    ids=lambda param: "-".join(param),
 )
 def relative_down(request):
     return request.param

@@ -2,6 +2,7 @@ import pathlib
 from typing import Any
 
 import pytest
+
 from pathlibutil import Path, Register7zFormat
 
 
@@ -13,7 +14,10 @@ class DummyPath(Register7zFormat):
     pass
 
 
-@pytest.fixture(params=[Path, Register7zFormat, DummyPath])
+@pytest.fixture(
+    params=[Path, Register7zFormat, DummyPath],
+    ids=lambda params: params.__name__,
+)
 def cls(request: pytest.FixtureRequest):
     return request.param
 

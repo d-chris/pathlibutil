@@ -6,7 +6,7 @@ import re
 import shutil
 import subprocess
 import sys
-from typing import Callable, Dict, Generator, List, Literal, Set, Union
+from typing import Callable, Dict, Generator, List, Literal, Set, Tuple, Union
 
 from pathlibutil.base import BasePath, _Path
 from pathlibutil.types import ByteInt, StatResult, _stat_result, byteint
@@ -22,8 +22,8 @@ class Path(BasePath):
 
     - Contextmanger lets you change the current working directory.
     ```python
-    with Path('path/to/directory') as cwd:
-        print(f'current working directory: {cwd}')
+    with Path("path/to/directory") as cwd:
+        print(f"current working directory: {cwd}")
     ```
     """
 
@@ -84,15 +84,20 @@ class Path(BasePath):
         if not self.is_file():
             raise FileNotFoundError(f"'{self}' is not an existing file")
 
-        try:
-            args = (kwargs.pop("length"),)
-        except KeyError:
-            args = ()
-
-        return hashlib.new(
+        hash = hashlib.new(
             name=algorithm or self.default_hash,
             data=self.read_bytes(),
-        ).hexdigest(*args)
+        )
+
+        try:
+            return hash.hexdigest()
+        except TypeError as e:
+            try:
+                length = kwargs["length"]
+            except KeyError:
+                raise e
+
+        return hash.hexdigest(length)
 
     def verify(
         self, digest: str, algorithm: str = None, *, strict: bool = True, **kwargs
@@ -512,6 +517,7 @@ class Path(BasePath):
                 capture_output=True,
                 shell=True,
                 encoding="cp850",
+                check=True,
             )
 
             return result.stdout
@@ -523,7 +529,7 @@ class Path(BasePath):
                 re.IGNORECASE | re.MULTILINE,
             )
             return {
-                match.group("unc") + "\\": match.group("drive") + ":\\"
+                match.group("unc") + "\\": cls(match.group("drive") + ":\\")
                 for match in mapped_drives
             }
         except Exception:
@@ -538,7 +544,7 @@ class Path(BasePath):
 
         try:
             drive = self._netuse[self.anchor]
-            return self.__class__(drive).joinpath(self.relative_to(self.anchor))
+            return drive.joinpath(self.relative_to(self.anchor))
         except KeyError:
             return self
 
@@ -567,6 +573,67 @@ class Path(BasePath):
 
         return p._resolve_unc()
 
+    def walk(
+        self,
+        top_down: bool = True,
+        on_error: Callable[[OSError], object] = None,
+        follow_symlinks: bool = False,
+    ) -> Generator[Tuple[_Path, List[str], List[str]], None, None]:
+        """
+        Walks the directory tree and yields a 3-tuple of (dirpath, dirnames, filenames).
+        """
+        try:
+            yield from super().walk(
+                top_down,
+                on_error,
+                follow_symlinks,
+            )
+        except AttributeError:
+            for dirpath, dirnames, filenames in os.walk(
+                self,
+                top_down,
+                on_error,
+                follow_symlinks,
+            ):
+                yield self.__class__(dirpath), dirnames, filenames
+
+    def iterdir(
+        self,
+        *,
+        recursive: Union[bool, int] = False,
+        exclude_dirs: Callable[[_Path], bool] = None,
+        **kwargs,
+    ) -> Generator[_Path, None, None]:
+        """
+        Iterates over the files in the directory.
+
+        If `recursive` is `True` all files from the directory tree will
+        be yielded if it is an `integer` files are yielded to this max. directory depth
+        optional` **kwargs` are passed to `Path.walk()`.
+
+        When recursing, folders can be excluded by passing a callable for `exclude_dirs`, e.g.
+
+        ```python
+        def exclude_version_control(dirpath: _Path) -> bool:
+            return dirpath.name in (".git", ".svn", ".hg", ".bzr", "CVS")
+        ```
+        """
+        if recursive is not False:
+            if exclude_dirs and not callable(exclude_dirs):
+                raise TypeError("exclude_dirs must be a callable")
+
+            depth = recursive if type(recursive) == int else None
+
+            for root, dirs, files in self.walk(**kwargs):
+                if depth is not None and len(root.relative_to(self).parts) >= depth:
+                    dirs[:] = []
+                elif exclude_dirs:
+                    dirs[:] = [d for d in dirs if not exclude_dirs(root.joinpath(d))]
+
+                yield from (root.joinpath(file) for file in files)
+        else:
+            yield from super().iterdir()
+
 
 class Register7zFormat(Path, archive="7z"):
     """
@@ -583,20 +650,18 @@ class Register7zFormat(Path, archive="7z"):
 
     Example:
     ```python
-    class Register7zArchive(pathlibutil.Path, archive='7z'):
+    class Register7zArchive(pathlibutil.Path, archive="7z"):
         @classmethod
         def _register_archive_format(cls):
             try:
                 from py7zr import pack_7zarchive, unpack_7zarchive
             except ModuleNotFoundError:
-                raise ModuleNotFoundError('pip install pathlibutil[7z]')
+                raise ModuleNotFoundError("pip install pathlibutil[7z]")
             else:
                 shutil.register_archive_format(
-                    '7z', pack_7zarchive, description='7zip archive'
+                    "7z", pack_7zarchive, description="7zip archive"
                 )
-                shutil.register_unpack_format(
-                    '7z', ['.7z'], unpack_7zarchive
-                )
+                shutil.register_unpack_format("7z", [".7z"], unpack_7zarchive)
     ```
     """
 
