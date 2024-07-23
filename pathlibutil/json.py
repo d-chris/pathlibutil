@@ -1,9 +1,6 @@
 import functools
-import importlib
+import json
 import pathlib
-
-json = importlib.import_module("json")
-
 from json import load, loads
 
 
@@ -23,3 +20,6 @@ def dump(obj, fp, *, cls=PathEncoder, **kwargs):
 @functools.wraps(json.dumps)
 def dumps(obj, *, cls=PathEncoder, **kwargs):
     return json.dumps(obj, cls=cls, **kwargs)
+
+
+__all__ = ["load", "loads", "dump", "dumps"]
