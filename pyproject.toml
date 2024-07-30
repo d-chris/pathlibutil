@@ -68,9 +68,7 @@ testpaths = "tests"
 addopts = [
   "--random-order",
   "--color=yes",
-  "-s",
-  # "--cov=pathlibutil",
-  # "--cov-report=term-missing:skip-covered",
-  # "--cov-append",
-  # "--cov-report=html",
+  "--cov=pathlibutil",
+  "--cov-report=term-missing:skip-covered",
+  "--cov-report=xml",
 ]
