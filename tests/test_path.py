@@ -3,7 +3,6 @@ import os
 import pathlib
 import random
 from types import GeneratorType
-from unittest.mock import Mock
 
 import pytest
 
@@ -182,11 +181,11 @@ def test_verify(mocked_file: Path, algorithm: str):
 
     hashsum = hashlib.new(algorithm, open(__file__, "rb").read()).hexdigest()
 
-    assert file.verify(hashsum, algorithm) == True
-    assert file.verify(hashsum, algorithm=algorithm, strict=True) == True
+    assert file.verify(hashsum, algorithm) is True
+    assert file.verify(hashsum, algorithm=algorithm, strict=True) is True
 
-    assert file.verify(hashsum.upper(), algorithm) == False
-    assert file.verify(hashsum[: len(hashsum) - 1], algorithm) == False
+    assert file.verify(hashsum.upper(), algorithm) is False
+    assert file.verify(hashsum[: len(hashsum) - 1], algorithm) is False
 
     with pytest.raises(ValueError):
         _ = file.verify("", strict=False)
@@ -200,10 +199,10 @@ def test_verify_classvar(mocked_file: Path):
 
     file = mocked_file
 
-    assert file.verify(hashsum) == True
-    assert file.verify(hashsum[:8], strict=False) == True
+    assert file.verify(hashsum) is True
+    assert file.verify(hashsum[:8], strict=False) is True
 
-    assert file.verify(hashsum[:4] + hashsum[:4], strict=False) == False
+    assert file.verify(hashsum[:4] + hashsum[:4], strict=False) is False
 
 
 def test_verify_strict(mocked_file: Path, algorithm: str):
@@ -214,9 +213,9 @@ def test_verify_strict(mocked_file: Path, algorithm: str):
     with pytest.raises(TypeError):
         _ = file.verify(hashsum, algorithm, False)
 
-    assert file.verify(hashsum.upper(), algorithm, strict=False) == True
+    assert file.verify(hashsum.upper(), algorithm, strict=False) is True
 
-    assert file.verify(hashsum[:7], algorithm, strict=False) == True
+    assert file.verify(hashsum[:7], algorithm, strict=False) is True
 
     with pytest.raises(ValueError):
         _ = file.verify(hashsum[:6], strict=False)

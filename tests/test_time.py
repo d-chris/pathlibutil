@@ -22,7 +22,7 @@ def test_timeint(cast):
     arg = cast(random.uniform(0, 2**32))
 
     t = TimeInt(arg)
-    assert type(t) == TimeInt
+    assert type(t) is TimeInt
 
 
 def test_epoch():

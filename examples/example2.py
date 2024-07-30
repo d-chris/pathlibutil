@@ -10,7 +10,7 @@ def main():
 
     with file.open("w") as f:
         f.write(
-            f"# MD5 checksums generated with pathlibutil "
+            "# MD5 checksums generated with pathlibutil "
             "(https://pypi.org/project/pathlibutil/)\n\n"
         )
 
