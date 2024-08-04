@@ -15,7 +15,7 @@ jobs:
           python-version: 3.12
       - name: Install dependencies
         run: |
-          poetry install --only doc
+          poetry install --only main,docs
       - name: Build Documentation
         run: |
           poetry run jinja2pdoc --force docs/README.md.jinja2

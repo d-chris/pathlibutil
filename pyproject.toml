@@ -1,9 +1,7 @@
 [build-system]
 build-backend = "poetry.core.masonry.api"
 
-requires = [
-  "poetry-core",
-]
+requires = [ "poetry-core" ]
 
 [tool.poetry]
 name = "pathlibutil"
@@ -45,7 +43,7 @@ pytest-cov = "^4.1.0"
 pytest-mock = "^3.12.0"
 exrex = "^0.11.0"
 
-[tool.poetry.group.doc.dependencies]
+[tool.poetry.group.docs.dependencies]
 pdoc = "^14.3.0"
 jinja2-pdoc = "^0.2.0"
 
