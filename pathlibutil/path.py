@@ -6,10 +6,11 @@ import re
 import shutil
 import subprocess
 import sys
+from datetime import datetime, timedelta
 from typing import Callable, Dict, Generator, List, Literal, Set, Tuple, Union
 
 from pathlibutil.base import BasePath, _Path
-from pathlibutil.types import ByteInt, StatResult, _stat_result, byteint
+from pathlibutil.types import ByteInt, StatResult, TimeInt, _stat_result, byteint
 
 
 class Path(BasePath):
@@ -634,6 +635,25 @@ class Path(BasePath):
                 yield from (root.joinpath(file) for file in files)
         else:
             yield from super().iterdir()
+
+    def is_expired(self, *, stat="st_mtime", **kwargs) -> bool:
+        """
+        Returns `True` if the time of the file is greater than a given threshold.
+
+        For `**kwargs` see `datetime.timedelta`.
+
+        >>> Path(__file__).is_expired(hours=12)
+        False
+        """
+        try:
+            attr: TimeInt = getattr(self.stat(), stat)
+            diff = datetime.now() - attr.datetime
+        except AttributeError as e:
+            raise ValueError(
+                f"{stat=} is not from (st_atime, st_mtime, st_ctime, st_birthtime)"
+            ) from e
+
+        return diff > timedelta(**kwargs)
 
 
 class Register7zFormat(Path, archive="7z"):

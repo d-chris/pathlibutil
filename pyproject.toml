@@ -56,6 +56,9 @@ name = "testpypi"
 url = "https://test.pypi.org/legacy/"
 priority = "explicit"
 
+[tool.isort]
+profile = "black"
+
 [tool.pytest.ini_options]
 minversion = "6.0"
 testpaths = "tests"

@@ -34,6 +34,7 @@
 - `Path.resolve()` to resolve a unc path to a mapped windows drive.
 - `Path.walk()` to walk over a directory tree like `os.walk()`
 - `Path.iterdir()` with `recursive` all files from the directory tree will be yielded and `exclude_dirs` via callable.
+- `Path.is_expired()` to check if a file is expired by a given `timedelta`
 
 JSON serialization of `Path` objects is supported in `pathlibutil.json`.
 
