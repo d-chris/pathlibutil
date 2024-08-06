@@ -7,7 +7,7 @@ import shutil
 import subprocess
 import sys
 from datetime import datetime, timedelta
-from typing import Callable, Dict, Generator, List, Literal, Set, Tuple, Union
+from typing import Callable, Dict, Generator, Iterable, List, Literal, Set, Tuple, Union
 
 from pathlibutil.base import BasePath, _Path
 from pathlibutil.types import ByteInt, StatResult, TimeInt, _stat_result, byteint
@@ -654,6 +654,11 @@ class Path(BasePath):
             ) from e
 
         return diff > timedelta(**kwargs)
+
+    @classmethod
+    def expand(cls, *files: Iterable[str]) -> Generator[_Path, None, None]:
+        for file in files:
+            yield from super().expand(file)
 
 
 class Register7zFormat(Path, archive="7z"):
