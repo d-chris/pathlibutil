@@ -1,3 +1,7 @@
+<!--
+filename: ./README.md
+-->
+
 # pathlibutil
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pathlibutil)](https://pypi.org/project/pathlibutil/)

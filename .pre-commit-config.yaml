@@ -4,6 +4,7 @@ repos:
     hooks:
       - id: check-yaml
       - id: end-of-file-fixer
+        exclude: \.md$
       - id: trailing-whitespace
       - id: check-toml
   - repo: https://github.com/tox-dev/pyproject-fmt
@@ -36,20 +37,17 @@ repos:
     hooks:
       - id: poetry-check
       - id: poetry-lock
-  - repo: http://github.com/google/yamlfmt
+  - repo: https://github.com/google/yamlfmt
     rev: v0.13.0
     hooks:
       - id: yamlfmt
   - repo: https://github.com/PyCQA/flake8
-    rev: 7.1.0
+    rev: 7.1.1
     hooks:
       - id: flake8
         args: ["--max-line-length", "88", "--exclude=examples/**"]
-  - repo: local
+  - repo: https://github.com/d-chris/jinja2_pdoc
+    rev: v1.1.0
     hooks:
       - id: jinja2pdoc
-        name: jinja2pdoc
-        entry: poetry run jinja2pdoc
-        language: system
-        args: ["--force"]
-        files: docs/README.md.jinja2
+        files: docs/README\.jinja2$

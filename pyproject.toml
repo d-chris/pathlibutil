@@ -45,7 +45,7 @@ exrex = "^0.11.0"
 
 [tool.poetry.group.docs.dependencies]
 pdoc = "^14.3.0"
-jinja2-pdoc = "^0.2.0"
+jinja2-pdoc = "^1.1.0"
 
 [[tool.poetry.source]]
 name = "PyPI"
