@@ -22,7 +22,7 @@ def test_timeint(cast):
     arg = cast(random.uniform(0, 2**32))
 
     t = TimeInt(arg)
-    assert type(t) == TimeInt
+    assert type(t) is TimeInt
 
 
 def test_epoch():
@@ -49,3 +49,20 @@ def test_format(timeint):
     TimeInt.format = "%H:%M Uhr %d.%m.%Y"
 
     assert str(timeint) == "00:00 Uhr 01.01.1970"
+
+
+def test_expired(file):
+
+    assert isinstance(file.is_expired(), bool)
+
+
+def test_expired_raises(file):
+
+    with pytest.raises(ValueError):
+        file.is_expired(stat="invalid")
+
+
+def test_expired_statraises(file):
+
+    with pytest.raises(TypeError):
+        file.is_expired("st_mtime")

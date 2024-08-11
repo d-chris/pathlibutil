@@ -1,5 +1,5 @@
 .vscode
-docs/pathlibutil/
+docs/public
 *.exe
 
 # Byte-compiled / optimized / DLL files
