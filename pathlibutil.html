@@ -1,0 +1,1632 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="pdoc 14.6.0"/>
+    <title>pathlibutil API documentation</title>
+
+    <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
+    <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#49483e}.pdoc-code{background:#272822; color:#f8f8f2}.pdoc-code .c{color:#75715e}.pdoc-code .err{color:#960050; background-color:#1e0010}.pdoc-code .esc{color:#f8f8f2}.pdoc-code .g{color:#f8f8f2}.pdoc-code .k{color:#66d9ef}.pdoc-code .l{color:#ae81ff}.pdoc-code .n{color:#f8f8f2}.pdoc-code .o{color:#f92672}.pdoc-code .x{color:#f8f8f2}.pdoc-code .p{color:#f8f8f2}.pdoc-code .ch{color:#75715e}.pdoc-code .cm{color:#75715e}.pdoc-code .cp{color:#75715e}.pdoc-code .cpf{color:#75715e}.pdoc-code .c1{color:#75715e}.pdoc-code .cs{color:#75715e}.pdoc-code .gd{color:#f92672}.pdoc-code .ge{color:#f8f8f2; font-style:italic}.pdoc-code .gr{color:#f8f8f2}.pdoc-code .gh{color:#f8f8f2}.pdoc-code .gi{color:#a6e22e}.pdoc-code .go{color:#66d9ef}.pdoc-code .gp{color:#f92672; font-weight:bold}.pdoc-code .gs{color:#f8f8f2; font-weight:bold}.pdoc-code .gu{color:#75715e}.pdoc-code .gt{color:#f8f8f2}.pdoc-code .kc{color:#66d9ef}.pdoc-code .kd{color:#66d9ef}.pdoc-code .kn{color:#f92672}.pdoc-code .kp{color:#66d9ef}.pdoc-code .kr{color:#66d9ef}.pdoc-code .kt{color:#66d9ef}.pdoc-code .ld{color:#e6db74}.pdoc-code .m{color:#ae81ff}.pdoc-code .s{color:#e6db74}.pdoc-code .na{color:#a6e22e}.pdoc-code .nb{color:#f8f8f2}.pdoc-code .nc{color:#a6e22e}.pdoc-code .no{color:#66d9ef}.pdoc-code .nd{color:#a6e22e}.pdoc-code .ni{color:#f8f8f2}.pdoc-code .ne{color:#a6e22e}.pdoc-code .nf{color:#a6e22e}.pdoc-code .nl{color:#f8f8f2}.pdoc-code .nn{color:#f8f8f2}.pdoc-code .nx{color:#a6e22e}.pdoc-code .py{color:#f8f8f2}.pdoc-code .nt{color:#f92672}.pdoc-code .nv{color:#f8f8f2}.pdoc-code .ow{color:#f92672}.pdoc-code .w{color:#f8f8f2}.pdoc-code .mb{color:#ae81ff}.pdoc-code .mf{color:#ae81ff}.pdoc-code .mh{color:#ae81ff}.pdoc-code .mi{color:#ae81ff}.pdoc-code .mo{color:#ae81ff}.pdoc-code .sa{color:#e6db74}.pdoc-code .sb{color:#e6db74}.pdoc-code .sc{color:#e6db74}.pdoc-code .dl{color:#e6db74}.pdoc-code .sd{color:#e6db74}.pdoc-code .s2{color:#e6db74}.pdoc-code .se{color:#ae81ff}.pdoc-code .sh{color:#e6db74}.pdoc-code .si{color:#e6db74}.pdoc-code .sx{color:#e6db74}.pdoc-code .sr{color:#e6db74}.pdoc-code .s1{color:#e6db74}.pdoc-code .ss{color:#e6db74}.pdoc-code .bp{color:#f8f8f2}.pdoc-code .fm{color:#a6e22e}.pdoc-code .vc{color:#f8f8f2}.pdoc-code .vg{color:#f8f8f2}.pdoc-code .vi{color:#f8f8f2}.pdoc-code .vm{color:#f8f8f2}</style>
+    <style>/*! theme.css */:root{--pdoc-background:#212529;}.pdoc{--text:#f7f7f7;--muted:#9d9d9d;--link:#58a6ff;--link-hover:#3989ff;--code:#333;--active:#555;--accent:#343434;--accent2:#555;--nav-hover:rgba(0, 0, 0, 0.1);--name:#77C1FF;--def:#0cdd0c;--annotation:#00c037;}</style>
+    <style>/*! layout.css */html, body{width:100%;height:100%;}html, main{scroll-behavior:smooth;}body{background-color:var(--pdoc-background);}@media (max-width:769px){#navtoggle{cursor:pointer;position:absolute;width:50px;height:40px;top:1rem;right:1rem;border-color:var(--text);color:var(--text);display:flex;opacity:0.8;z-index:999;}#navtoggle:hover{opacity:1;}#togglestate + div{display:none;}#togglestate:checked + div{display:inherit;}main, header{padding:2rem 3vw;}header + main{margin-top:-3rem;}.git-button{display:none !important;}nav input[type="search"]{max-width:77%;}nav input[type="search"]:first-child{margin-top:-6px;}nav input[type="search"]:valid ~ *{display:none !important;}}@media (min-width:770px){:root{--sidebar-width:clamp(12.5rem, 28vw, 22rem);}nav{position:fixed;overflow:auto;height:100vh;width:var(--sidebar-width);}main, header{padding:3rem 2rem 3rem calc(var(--sidebar-width) + 3rem);width:calc(54rem + var(--sidebar-width));max-width:100%;}header + main{margin-top:-4rem;}#navtoggle{display:none;}}#togglestate{position:absolute;height:0;opacity:0;}nav.pdoc{--pad:clamp(0.5rem, 2vw, 1.75rem);--indent:1.5rem;background-color:var(--accent);border-right:1px solid var(--accent2);box-shadow:0 0 20px rgba(50, 50, 50, .2) inset;padding:0 0 0 var(--pad);overflow-wrap:anywhere;scrollbar-width:thin; scrollbar-color:var(--accent2) transparent; z-index:1}nav.pdoc::-webkit-scrollbar{width:.4rem; }nav.pdoc::-webkit-scrollbar-thumb{background-color:var(--accent2); }nav.pdoc > div{padding:var(--pad) 0;}nav.pdoc .module-list-button{display:inline-flex;align-items:center;color:var(--text);border-color:var(--muted);margin-bottom:1rem;}nav.pdoc .module-list-button:hover{border-color:var(--text);}nav.pdoc input[type=search]{display:block;outline-offset:0;width:calc(100% - var(--pad));}nav.pdoc .logo{max-width:calc(100% - var(--pad));max-height:35vh;display:block;margin:0 auto 1rem;transform:translate(calc(-.5 * var(--pad)), 0);}nav.pdoc ul{list-style:none;padding-left:0;}nav.pdoc > div > ul{margin-left:calc(0px - var(--pad));}nav.pdoc li a{padding:.2rem 0 .2rem calc(var(--pad) + var(--indent));}nav.pdoc > div > ul > li > a{padding-left:var(--pad);}nav.pdoc li{transition:all 100ms;}nav.pdoc li:hover{background-color:var(--nav-hover);}nav.pdoc a, nav.pdoc a:hover{color:var(--text);}nav.pdoc a{display:block;}nav.pdoc > h2:first-of-type{margin-top:1.5rem;}nav.pdoc .class:before{content:"class ";color:var(--muted);}nav.pdoc .function:after{content:"()";color:var(--muted);}nav.pdoc footer:before{content:"";display:block;width:calc(100% - var(--pad));border-top:solid var(--accent2) 1px;margin-top:1.5rem;padding-top:.5rem;}nav.pdoc footer{font-size:small;}</style>
+    <style>/*! content.css */.pdoc{color:var(--text);box-sizing:border-box;line-height:1.5;background:none;}.pdoc .pdoc-button{cursor:pointer;display:inline-block;border:solid black 1px;border-radius:2px;font-size:.75rem;padding:calc(0.5em - 1px) 1em;transition:100ms all;}.pdoc .alert{padding:1rem 1rem 1rem calc(1.5rem + 24px);border:1px solid transparent;border-radius:.25rem;background-repeat:no-repeat;background-position:.75rem center;margin-bottom:1rem;}.pdoc .alert > em{display:none;}.pdoc .alert > *:last-child{margin-bottom:0;}.pdoc .alert.note {color:#084298;background-color:#cfe2ff;border-color:#b6d4fe;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23084298%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2016A8%208%200%201%200%208%200a8%208%200%200%200%200%2016zm.93-9.412-1%204.705c-.07.34.029.533.304.533.194%200%20.487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703%200-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381%202.29-.287zM8%205.5a1%201%200%201%201%200-2%201%201%200%200%201%200%202z%22/%3E%3C/svg%3E");}.pdoc .alert.warning{color:#664d03;background-color:#fff3cd;border-color:#ffecb5;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23664d03%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8.982%201.566a1.13%201.13%200%200%200-1.96%200L.165%2013.233c-.457.778.091%201.767.98%201.767h13.713c.889%200%201.438-.99.98-1.767L8.982%201.566zM8%205c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%205.995A.905.905%200%200%201%208%205zm.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2z%22/%3E%3C/svg%3E");}.pdoc .alert.danger{color:#842029;background-color:#f8d7da;border-color:#f5c2c7;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23842029%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5.52.359A.5.5%200%200%201%206%200h4a.5.5%200%200%201%20.474.658L8.694%206H12.5a.5.5%200%200%201%20.395.807l-7%209a.5.5%200%200%201-.873-.454L6.823%209.5H3.5a.5.5%200%200%201-.48-.641l2.5-8.5z%22/%3E%3C/svg%3E");}.pdoc .visually-hidden{position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;margin:-1px !important;overflow:hidden !important;clip:rect(0, 0, 0, 0) !important;white-space:nowrap !important;border:0 !important;}.pdoc h1, .pdoc h2, .pdoc h3{font-weight:300;margin:.3em 0;padding:.2em 0;}.pdoc > section:not(.module-info) h1{font-size:1.5rem;font-weight:500;}.pdoc > section:not(.module-info) h2{font-size:1.4rem;font-weight:500;}.pdoc > section:not(.module-info) h3{font-size:1.3rem;font-weight:500;}.pdoc > section:not(.module-info) h4{font-size:1.2rem;}.pdoc > section:not(.module-info) h5{font-size:1.1rem;}.pdoc a{text-decoration:none;color:var(--link);}.pdoc a:hover{color:var(--link-hover);}.pdoc blockquote{margin-left:2rem;}.pdoc pre{border-top:1px solid var(--accent2);border-bottom:1px solid var(--accent2);margin-top:0;margin-bottom:1em;padding:.5rem 0 .5rem .5rem;overflow-x:auto;background-color:var(--code);}.pdoc code{color:var(--text);padding:.2em .4em;margin:0;font-size:85%;background-color:var(--accent);border-radius:6px;}.pdoc a > code{color:inherit;}.pdoc pre > code{display:inline-block;font-size:inherit;background:none;border:none;padding:0;}.pdoc > section:not(.module-info){margin-bottom:1.5rem;}.pdoc .modulename{margin-top:0;font-weight:bold;}.pdoc .modulename a{color:var(--link);transition:100ms all;}.pdoc .git-button{float:right;border:solid var(--link) 1px;}.pdoc .git-button:hover{background-color:var(--link);color:var(--pdoc-background);}.view-source-toggle-state,.view-source-toggle-state ~ .pdoc-code{display:none;}.view-source-toggle-state:checked ~ .pdoc-code{display:block;}.view-source-button{display:inline-block;float:right;font-size:.75rem;line-height:1.5rem;color:var(--muted);padding:0 .4rem 0 1.3rem;cursor:pointer;text-indent:-2px;}.view-source-button > span{visibility:hidden;}.module-info .view-source-button{float:none;display:flex;justify-content:flex-end;margin:-1.2rem .4rem -.2rem 0;}.view-source-button::before{position:absolute;content:"View Source";display:list-item;list-style-type:disclosure-closed;}.view-source-toggle-state:checked ~ .attr .view-source-button::before,.view-source-toggle-state:checked ~ .view-source-button::before{list-style-type:disclosure-open;}.pdoc .docstring{margin-bottom:1.5rem;}.pdoc section:not(.module-info) .docstring{margin-left:clamp(0rem, 5vw - 2rem, 1rem);}.pdoc .docstring .pdoc-code{margin-left:1em;margin-right:1em;}.pdoc h1:target,.pdoc h2:target,.pdoc h3:target,.pdoc h4:target,.pdoc h5:target,.pdoc h6:target,.pdoc .pdoc-code > pre > span:target{background-color:var(--active);box-shadow:-1rem 0 0 0 var(--active);}.pdoc .pdoc-code > pre > span:target{display:block;}.pdoc div:target > .attr,.pdoc section:target > .attr,.pdoc dd:target > a{background-color:var(--active);}.pdoc *{scroll-margin:2rem;}.pdoc .pdoc-code .linenos{user-select:none;}.pdoc .attr:hover{filter:contrast(0.95);}.pdoc section, .pdoc .classattr{position:relative;}.pdoc .headerlink{--width:clamp(1rem, 3vw, 2rem);position:absolute;top:0;left:calc(0rem - var(--width));transition:all 100ms ease-in-out;opacity:0;}.pdoc .headerlink::before{content:"#";display:block;text-align:center;width:var(--width);height:2.3rem;line-height:2.3rem;font-size:1.5rem;}.pdoc .attr:hover ~ .headerlink,.pdoc *:target > .headerlink,.pdoc .headerlink:hover{opacity:1;}.pdoc .attr{display:block;margin:.5rem 0 .5rem;padding:.4rem .4rem .4rem 1rem;background-color:var(--accent);overflow-x:auto;}.pdoc .classattr{margin-left:2rem;}.pdoc .name{color:var(--name);font-weight:bold;}.pdoc .def{color:var(--def);font-weight:bold;}.pdoc .signature{background-color:transparent;}.pdoc .param, .pdoc .return-annotation{white-space:pre;}.pdoc .signature.multiline .param{display:block;}.pdoc .signature.condensed .param{display:inline-block;}.pdoc .annotation{color:var(--annotation);}.pdoc .view-value-toggle-state,.pdoc .view-value-toggle-state ~ .default_value{display:none;}.pdoc .view-value-toggle-state:checked ~ .default_value{display:inherit;}.pdoc .view-value-button{font-size:.5rem;vertical-align:middle;border-style:dashed;margin-top:-0.1rem;}.pdoc .view-value-button:hover{background:white;}.pdoc .view-value-button::before{content:"show";text-align:center;width:2.2em;display:inline-block;}.pdoc .view-value-toggle-state:checked ~ .view-value-button::before{content:"hide";}.pdoc .inherited{margin-left:2rem;}.pdoc .inherited dt{font-weight:700;}.pdoc .inherited dt, .pdoc .inherited dd{display:inline;margin-left:0;margin-bottom:.5rem;}.pdoc .inherited dd:not(:last-child):after{content:", ";}.pdoc .inherited .class:before{content:"class ";}.pdoc .inherited .function a:after{content:"()";}.pdoc .search-result .docstring{overflow:auto;max-height:25vh;}.pdoc .search-result.focused > .attr{background-color:var(--active);}.pdoc .attribution{margin-top:2rem;display:block;opacity:0.5;transition:all 200ms;filter:grayscale(100%);}.pdoc .attribution:hover{opacity:1;filter:grayscale(0%);}.pdoc .attribution img{margin-left:5px;height:35px;vertical-align:middle;width:70px;transition:all 200ms;}.pdoc table{display:block;width:max-content;max-width:100%;overflow:auto;margin-bottom:1rem;}.pdoc table th{font-weight:600;}.pdoc table th, .pdoc table td{padding:6px 13px;border:1px solid var(--accent2);}</style>
+    <style>/*! custom.css */</style></head>
+<body>
+    <nav class="pdoc">
+        <label id="navtoggle" for="togglestate" class="pdoc-button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke-linecap='round' stroke="currentColor" stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg></label>
+        <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
+        <div><!-- Remove pdoc-button -->
+
+
+
+            <h2>Contents</h2>
+            <ul>
+  <li><a href="#pathlibutil">pathlibutil</a>
+  <ul>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#example-1">Example 1</a></li>
+    <li><a href="#example-2">Example 2</a></li>
+    <li><a href="#example-3">Example 3</a></li>
+    <li><a href="#example-4">Example 4</a></li>
+    <li><a href="#example-5">Example 5</a></li>
+    <li><a href="#example-6">Example 6</a></li>
+  </ul></li>
+</ul>
+
+
+
+            <h2>API Documentation</h2>
+                <ul class="memberlist">
+            <li>
+                    <a class="class" href="#Path">Path</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Path.default_hash">default_hash</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Path.algorithms_available">algorithms_available</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.hexdigest">hexdigest</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.verify">verify</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.read_lines">read_lines</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.size">size</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.copy">copy</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.delete">delete</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.move">move</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.make_archive">make_archive</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.unpack_archive">unpack_archive</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Path.archive_formats">archive_formats</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.stat">stat</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.with_suffix">with_suffix</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.relative_to">relative_to</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.cwd">cwd</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.resolve">resolve</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.walk">walk</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.iterdir">iterdir</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.is_expired">is_expired</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.expand">expand</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Register7zFormat">Register7zFormat</a>
+                            <ul class="memberlist">
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ByteInt">ByteInt</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ByteInt.units">units</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#ByteInt.string">string</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#ByteInt.info">info</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="function" href="#byteint">byteint</a>
+            </li>
+            <li>
+                    <a class="class" href="#TimeInt">TimeInt</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#TimeInt.__init__">TimeInt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeInt.format">format</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeInt.timezone">timezone</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeInt.datetime">datetime</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#TimeInt.string">string</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#StatResult">StatResult</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#StatResult.__init__">StatResult</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#StatResult.stat_result">stat_result</a>
+                        </li>
+                </ul>
+
+            </li>
+    </ul>
+
+
+
+        <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
+            built with <span class="visually-hidden">pdoc</span><img
+                alt="pdoc logo"
+                src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20role%3D%22img%22%20aria-label%3D%22pdoc%20logo%22%20width%3D%22300%22%20height%3D%22150%22%20viewBox%3D%22-1%200%2060%2030%22%3E%3Ctitle%3Epdoc%3C/title%3E%3Cpath%20d%3D%22M29.621%2021.293c-.011-.273-.214-.475-.511-.481a.5.5%200%200%200-.489.503l-.044%201.393c-.097.551-.695%201.215-1.566%201.704-.577.428-1.306.486-2.193.182-1.426-.617-2.467-1.654-3.304-2.487l-.173-.172a3.43%203.43%200%200%200-.365-.306.49.49%200%200%200-.286-.196c-1.718-1.06-4.931-1.47-7.353.191l-.219.15c-1.707%201.187-3.413%202.131-4.328%201.03-.02-.027-.49-.685-.141-1.763.233-.721.546-2.408.772-4.076.042-.09.067-.187.046-.288.166-1.347.277-2.625.241-3.351%201.378-1.008%202.271-2.586%202.271-4.362%200-.976-.272-1.935-.788-2.774-.057-.094-.122-.18-.184-.268.033-.167.052-.339.052-.516%200-1.477-1.202-2.679-2.679-2.679-.791%200-1.496.352-1.987.9a6.3%206.3%200%200%200-1.001.029c-.492-.564-1.207-.929-2.012-.929-1.477%200-2.679%201.202-2.679%202.679A2.65%202.65%200%200%200%20.97%206.554c-.383.747-.595%201.572-.595%202.41%200%202.311%201.507%204.29%203.635%205.107-.037.699-.147%202.27-.423%203.294l-.137.461c-.622%202.042-2.515%208.257%201.727%2010.643%201.614.908%203.06%201.248%204.317%201.248%202.665%200%204.492-1.524%205.322-2.401%201.476-1.559%202.886-1.854%206.491.82%201.877%201.393%203.514%201.753%204.861%201.068%202.223-1.713%202.811-3.867%203.399-6.374.077-.846.056-1.469.054-1.537zm-4.835%204.313c-.054.305-.156.586-.242.629-.034-.007-.131-.022-.307-.157-.145-.111-.314-.478-.456-.908.221.121.432.25.675.355.115.039.219.051.33.081zm-2.251-1.238c-.05.33-.158.648-.252.694-.022.001-.125-.018-.307-.157-.217-.166-.488-.906-.639-1.573.358.344.754.693%201.198%201.036zm-3.887-2.337c-.006-.116-.018-.231-.041-.342.635.145%201.189.368%201.599.625.097.231.166.481.174.642-.03.049-.055.101-.067.158-.046.013-.128.026-.298.004-.278-.037-.901-.57-1.367-1.087zm-1.127-.497c.116.306.176.625.12.71-.019.014-.117.045-.345.016-.206-.027-.604-.332-.986-.695.41-.051.816-.056%201.211-.031zm-4.535%201.535c.209.22.379.47.358.598-.006.041-.088.138-.351.234-.144.055-.539-.063-.979-.259a11.66%2011.66%200%200%200%20.972-.573zm.983-.664c.359-.237.738-.418%201.126-.554.25.237.479.548.457.694-.006.042-.087.138-.351.235-.174.064-.694-.105-1.232-.375zm-3.381%201.794c-.022.145-.061.29-.149.401-.133.166-.358.248-.69.251h-.002c-.133%200-.306-.26-.45-.621.417.091.854.07%201.291-.031zm-2.066-8.077a4.78%204.78%200%200%201-.775-.584c.172-.115.505-.254.88-.378l-.105.962zm-.331%202.302a10.32%2010.32%200%200%201-.828-.502c.202-.143.576-.328.984-.49l-.156.992zm-.45%202.157l-.701-.403c.214-.115.536-.249.891-.376a11.57%2011.57%200%200%201-.19.779zm-.181%201.716c.064.398.194.702.298.893-.194-.051-.435-.162-.736-.398.061-.119.224-.3.438-.495zM8.87%204.141c0%20.152-.123.276-.276.276s-.275-.124-.275-.276.123-.276.276-.276.275.124.275.276zm-.735-.389a1.15%201.15%200%200%200-.314.783%201.16%201.16%200%200%200%201.162%201.162c.457%200%20.842-.27%201.032-.653.026.117.042.238.042.362a1.68%201.68%200%200%201-1.679%201.679%201.68%201.68%200%200%201-1.679-1.679c0-.843.626-1.535%201.436-1.654zM5.059%205.406A1.68%201.68%200%200%201%203.38%207.085a1.68%201.68%200%200%201-1.679-1.679c0-.037.009-.072.011-.109.21.3.541.508.935.508a1.16%201.16%200%200%200%201.162-1.162%201.14%201.14%200%200%200-.474-.912c.015%200%20.03-.005.045-.005.926.001%201.679.754%201.679%201.68zM3.198%204.141c0%20.152-.123.276-.276.276s-.275-.124-.275-.276.123-.276.276-.276.275.124.275.276zM1.375%208.964c0-.52.103-1.035.288-1.52.466.394%201.06.64%201.717.64%201.144%200%202.116-.725%202.499-1.738.383%201.012%201.355%201.738%202.499%201.738.867%200%201.631-.421%202.121-1.062.307.605.478%201.267.478%201.942%200%202.486-2.153%204.51-4.801%204.51s-4.801-2.023-4.801-4.51zm24.342%2019.349c-.985.498-2.267.168-3.813-.979-3.073-2.281-5.453-3.199-7.813-.705-1.315%201.391-4.163%203.365-8.423.97-3.174-1.786-2.239-6.266-1.261-9.479l.146-.492c.276-1.02.395-2.457.444-3.268a6.11%206.11%200%200%200%201.18.115%206.01%206.01%200%200%200%202.536-.562l-.006.175c-.802.215-1.848.612-2.021%201.25-.079.295.021.601.274.837.219.203.415.364.598.501-.667.304-1.243.698-1.311%201.179-.02.144-.022.507.393.787.213.144.395.26.564.365-1.285.521-1.361.96-1.381%201.126-.018.142-.011.496.427.746l.854.489c-.473.389-.971.914-.999%201.429-.018.278.095.532.316.713.675.556%201.231.721%201.653.721.059%200%20.104-.014.158-.02.207.707.641%201.64%201.513%201.64h.013c.8-.008%201.236-.345%201.462-.626.173-.216.268-.457.325-.692.424.195.93.374%201.372.374.151%200%20.294-.021.423-.068.732-.27.944-.704.993-1.021.009-.061.003-.119.002-.179.266.086.538.147.789.147.15%200%20.294-.021.423-.069.542-.2.797-.489.914-.754.237.147.478.258.704.288.106.014.205.021.296.021.356%200%20.595-.101.767-.229.438.435%201.094.992%201.656%201.067.106.014.205.021.296.021a1.56%201.56%200%200%200%20.323-.035c.17.575.453%201.289.866%201.605.358.273.665.362.914.362a.99.99%200%200%200%20.421-.093%201.03%201.03%200%200%200%20.245-.164c.168.428.39.846.68%201.068.358.273.665.362.913.362a.99.99%200%200%200%20.421-.093c.317-.148.512-.448.639-.762.251.157.495.257.726.257.127%200%20.25-.024.37-.071.427-.17.706-.617.841-1.314.022-.015.047-.022.068-.038.067-.051.133-.104.196-.159-.443%201.486-1.107%202.761-2.086%203.257zM8.66%209.925a.5.5%200%201%200-1%200c0%20.653-.818%201.205-1.787%201.205s-1.787-.552-1.787-1.205a.5.5%200%201%200-1%200c0%201.216%201.25%202.205%202.787%202.205s2.787-.989%202.787-2.205zm4.4%2015.965l-.208.097c-2.661%201.258-4.708%201.436-6.086.527-1.542-1.017-1.88-3.19-1.844-4.198a.4.4%200%200%200-.385-.414c-.242-.029-.406.164-.414.385-.046%201.249.367%203.686%202.202%204.896.708.467%201.547.7%202.51.7%201.248%200%202.706-.392%204.362-1.174l.185-.086a.4.4%200%200%200%20.205-.527c-.089-.204-.326-.291-.527-.206zM9.547%202.292c.093.077.205.114.317.114a.5.5%200%200%200%20.318-.886L8.817.397a.5.5%200%200%200-.703.068.5.5%200%200%200%20.069.703l1.364%201.124zm-7.661-.065c.086%200%20.173-.022.253-.068l1.523-.893a.5.5%200%200%200-.506-.863l-1.523.892a.5.5%200%200%200-.179.685c.094.158.261.247.432.247z%22%20transform%3D%22matrix%28-1%200%200%201%2058%200%29%22%20fill%3D%22%233bb300%22/%3E%3Cpath%20d%3D%22M.3%2021.86V10.18q0-.46.02-.68.04-.22.18-.5.28-.54%201.34-.54%201.06%200%201.42.28.38.26.44.78.76-1.04%202.38-1.04%201.64%200%203.1%201.54%201.46%201.54%201.46%203.58%200%202.04-1.46%203.58-1.44%201.54-3.08%201.54-1.64%200-2.38-.92v4.04q0%20.46-.04.68-.02.22-.18.5-.14.3-.5.42-.36.12-.98.12-.62%200-1-.12-.36-.12-.52-.4-.14-.28-.18-.5-.02-.22-.02-.68zm3.96-9.42q-.46.54-.46%201.18%200%20.64.46%201.18.48.52%201.2.52.74%200%201.24-.52.52-.52.52-1.18%200-.66-.48-1.18-.48-.54-1.26-.54-.76%200-1.22.54zm14.741-8.36q.16-.3.54-.42.38-.12%201-.12.64%200%201.02.12.38.12.52.42.16.3.18.54.04.22.04.68v11.94q0%20.46-.04.7-.02.22-.18.5-.3.54-1.7.54-1.38%200-1.54-.98-.84.96-2.34.96-1.8%200-3.28-1.56-1.48-1.58-1.48-3.66%200-2.1%201.48-3.68%201.5-1.58%203.28-1.58%201.48%200%202.3%201v-4.2q0-.46.02-.68.04-.24.18-.52zm-3.24%2010.86q.52.54%201.26.54.74%200%201.22-.54.5-.54.5-1.18%200-.66-.48-1.22-.46-.56-1.26-.56-.8%200-1.28.56-.48.54-.48%201.2%200%20.66.52%201.2zm7.833-1.2q0-2.4%201.68-3.96%201.68-1.56%203.84-1.56%202.16%200%203.82%201.56%201.66%201.54%201.66%203.94%200%201.66-.86%202.96-.86%201.28-2.1%201.9-1.22.6-2.54.6-1.32%200-2.56-.64-1.24-.66-2.1-1.92-.84-1.28-.84-2.88zm4.18%201.44q.64.48%201.3.48.66%200%201.32-.5.66-.5.66-1.48%200-.98-.62-1.46-.62-.48-1.34-.48-.72%200-1.34.5-.62.5-.62%201.48%200%20.96.64%201.46zm11.412-1.44q0%20.84.56%201.32.56.46%201.18.46.64%200%201.18-.36.56-.38.9-.38.6%200%201.46%201.06.46.58.46%201.04%200%20.76-1.1%201.42-1.14.8-2.8.8-1.86%200-3.58-1.34-.82-.64-1.34-1.7-.52-1.08-.52-2.36%200-1.3.52-2.34.52-1.06%201.34-1.7%201.66-1.32%203.54-1.32.76%200%201.48.22.72.2%201.06.4l.32.2q.36.24.56.38.52.4.52.92%200%20.5-.42%201.14-.72%201.1-1.38%201.1-.38%200-1.08-.44-.36-.34-1.04-.34-.66%200-1.24.48-.58.48-.58%201.34z%22%20fill%3D%22green%22/%3E%3C/svg%3E"/>
+        </a>
+</div>
+    </nav>
+    <main class="pdoc">
+            <section class="module-info">
+                    <h1 class="modulename">
+pathlibutil    </h1>
+
+                        <div class="docstring"><!--
+filename: ./README.md
+-->
+
+<h1 id="pathlibutil">pathlibutil</h1>
+
+<p><a href="https://pypi.org/project/pathlibutil/"><img src="https://img.shields.io/pypi/pyversions/pathlibutil" alt="PyPI - Python Version" /></a>
+<a href="https://pypi.org/project/pathlibutil/"><img src="https://img.shields.io/pypi/v/pathlibutil" alt="PyPI - Version" /></a>
+<a href="https://pypi.org/project/pathlibutil/"><img src="https://img.shields.io/pypi/dm/pathlibutil" alt="PyPI - Downloads" /></a>
+<a href="https://raw.githubusercontent.com/d-chris/pathlibutil/main/LICENSE"><img src="https://img.shields.io/pypi/l/pathlibutil" alt="PyPI - License" /></a>
+<a href="https://github.com/d-chris/pathlibutil/actions/workflows/pytest.yml"><img src="https://img.shields.io/github/actions/workflow/status/d-chris/pathlibutil/pytest.yml?logo=github&label=pytest" alt="GitHub - Pytest" /></a>
+<a href="https://d-chris.github.io/pathlibutil"><img src="https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpathlibutil&up_message=pdoc&logo=github&label=documentation" alt="GitHub - Page" /></a>
+<a href="https://github.com/d-chris/pathlibutil"><img src="https://img.shields.io/github/v/tag/d-chris/pathlibutil?logo=github&label=github" alt="GitHub - Release" /></a>
+<a href="https://codecov.io/gh/d-chris/pathlibutil"><img src="https://codecov.io/gh/d-chris/pathlibutil/graph/badge.svg?token=U7I9FYMRSR" alt="codecov" /></a>
+<a href="https://raw.githubusercontent.com/d-chris/pathlibutil/main/.pre-commit-config.yaml"><img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit" alt="pre-commit" /></a></p>
+
+<hr />
+
+<p><code><a href="#Path">Path</a></code> inherits from  <code><a href="pathlib.html#Path">pathlib.Path</a></code> with some useful built-in python functions from <code><a href="shutil.html">shutil</a></code> and <code><a href="hashlib.html">hashlib</a></code></p>
+
+<ul>
+<li><code><a href="#Path.hexdigest">Path.hexdigest()</a></code> to calculate and <code><a href="#Path.verify">Path.verify()</a></code> for verification of hexdigest from a file</li>
+<li><code><a href="#Path.default_hash">Path.default_hash</a></code> to configurate default hash algorithm for <code><a href="#Path">Path</a></code> class (default: <em>'md5'</em>)</li>
+<li><code><a href="#Path.size">Path.size()</a></code> to get size in bytes of a file or directory
+<ul>
+<li><code><a href="#byteint">byteint</a></code> function decorator converts the return value of <code>int</code> to a <code><a href="#ByteInt">ByteInt</a></code> object</li>
+</ul></li>
+<li><code><a href="#Path.read_lines">Path.read_lines()</a></code> to yield over all lines from a file until EOF</li>
+<li><code>contextmanager</code> to change current working directory with <code>with</code> statement</li>
+<li><code><a href="#Path.copy">Path.copy()</a></code> copy a file or directory to a new path destination</li>
+<li><code><a href="#Path.delete">Path.delete()</a></code> delete a file or directory-tree</li>
+<li><code><a href="#Path.move">Path.move()</a></code> move a file or directory to a new path destination</li>
+<li><code><a href="#Path.make_archive">Path.make_archive()</a></code> creates and <code><a href="#Path.unpack_archive">Path.unpack_archive()</a></code> uncompresses an archive from a file or directory</li>
+<li><code><a href="#Path.archive_formats">Path.archive_formats</a></code> to get all available archive formats</li>
+<li><code><a href="#Path.stat">Path.stat()</a></code> returns a <code><a href="#StatResult">StatResult</a></code> object to get file or directory information containing
+<ul>
+<li><code><a href="#TimeInt">TimeInt</a></code> objects for <code>atime</code>, <code>ctime</code>, <code>mtime</code> and <code>birthtime</code></li>
+<li><code><a href="#ByteInt">ByteInt</a></code> object for <code>size</code></li>
+</ul></li>
+<li><code><a href="#Path.relative_to">Path.relative_to()</a></code> to get relative path from a file or directory, <code>walk_up</code> to walk up the directory tree.</li>
+<li><code><a href="#Path.with_suffix">Path.with_suffix()</a></code> to change the multiple suffixes of a file</li>
+<li><code><a href="#Path.cwd">Path.cwd()</a></code> to get the current working directory or executable path when script is bundled, e.g. with <code>pyinstaller</code></li>
+<li><code><a href="#Path.resolve">Path.resolve()</a></code> to resolve a unc path to a mapped windows drive.</li>
+<li><code><a href="#Path.walk">Path.walk()</a></code> to walk over a directory tree like <code><a href="os.html#walk">os.walk()</a></code></li>
+<li><code><a href="#Path.iterdir">Path.iterdir()</a></code> with <code>recursive</code> all files from the directory tree will be yielded and <code>exclude_dirs</code> via callable.</li>
+<li><code><a href="#Path.is_expired">Path.is_expired()</a></code> to check if a file is expired by a given <code><a href="datetime.html#timedelta">datetime.timedelta</a></code></li>
+<li><code><a href="#Path.expand">Path.expand()</a></code> yields file paths for multiple file patterns if they exsits.</li>
+</ul>
+
+<p>JSON serialization of <code><a href="#Path">Path</a></code> objects is supported in <code><a href="pathlibutil/json.html">pathlibutil.json</a></code>.</p>
+
+<ul>
+<li><code><a href="pathlibutil/json.html#dumps">pathlibutil.json.dumps()</a></code> and <code><a href="pathlibutil/json.html#dump">pathlibutil.json.dump()</a></code> to serialize <code><a href="#Path">Path</a></code> objects as posix paths.</li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pathlibutil
+</code></pre>
+</div>
+
+<h3 id="7zip-support">7zip support</h3>
+
+<p>to handle 7zip archives, an extra package <code>py7zr&gt;=0.20.2</code> is required!</p>
+
+<p><a href="https://pypi.org/project/py7zr/"><img src="https://img.shields.io/pypi/v/py7zr?logo=python&logoColor=white&label=py7zr&color=FFFF33" alt="PyPI - Version" /></a></p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="c1"># install as extra dependency</span>
+pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class="o">[</span>7z<span class="o">]</span>
+</code></pre>
+</div>
+
+<h2 id="usage">Usage</h2>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlibutil</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">readme</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File size: </span><span class="si">{</span><span class="n">readme</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s1"> Bytes&#39;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="example-1">Example 1</h2>
+
+<p>Read a file and print its content and some file information to stdout.</p>
+
+<blockquote>
+  <p><code><a href="#Path.read_lines">Path.read_lines()</a></code></p>
+</blockquote>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlibutil</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">readme</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File size: </span><span class="si">{</span><span class="n">readme</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s2"> Bytes&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File sha1: </span><span class="si">{</span><span class="n">readme</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="s2">&quot;sha1&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File content&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">readme</span><span class="o">.</span><span class="n">read_lines</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EOF&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<h2 id="example-2">Example 2</h2>
+
+<p>Write a file with md5 checksums of all python files in the pathlibutil-directory.</p>
+
+<blockquote>
+  <p><code><a href="#Path.hexdigest">Path.hexdigest()</a></code></p>
+</blockquote>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlibutil</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;pathlibutil.md5&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+      <span class="s2">&quot;# MD5 checksums generated with pathlibutil &quot;</span>
+      <span class="s2">&quot;(https://pypi.org/project/pathlibutil/)</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+  <span class="p">)</span>
+
+  <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./pathlibutil&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.py&quot;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span><span class="si">}</span><span class="s2"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">written: </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">&gt;5</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">default_hash</span><span class="si">}</span><span class="s2">-hashes to: </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="example-3">Example 3</h2>
+
+<p>Read a file with md5 checksums and verify them.</p>
+
+<blockquote>
+  <p><code><a href="#Path.verify">Path.verify()</a></code>, <code><a href="#Path.default_hash">Path.default_hash</a></code> and <code>contextmanager</code></p>
+</blockquote>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlibutil</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;pathlibutil.md5&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">no_comment</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+  <span class="k">return</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
+
+
+<span class="k">with</span> <span class="n">file</span><span class="o">.</span><span class="n">parent</span> <span class="k">as</span> <span class="n">cwd</span><span class="p">:</span>
+  <span class="n">miss</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">ok</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">fail</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">no_comment</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">read_lines</span><span class="p">()):</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">digest</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; *&quot;</span><span class="p">)</span>
+      <span class="n">verification</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="s2">&quot;md5&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">split_failed</span><span class="p">:</span>
+      <span class="k">continue</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">verify_failed</span><span class="p">:</span>
+      <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;missing&quot;</span>
+      <span class="n">miss</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">verification</span><span class="p">:</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;ok&quot;</span>
+        <span class="n">ok</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;fail&quot;</span>
+        <span class="n">fail</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">tag</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">digest</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">ok: </span><span class="si">{</span><span class="n">ok</span><span class="si">:</span><span class="s2">&lt;5</span><span class="si">}</span><span class="s2"> fail: </span><span class="si">{</span><span class="n">fail</span><span class="si">:</span><span class="s2">&lt;5</span><span class="si">}</span><span class="s2"> missing: </span><span class="si">{</span><span class="n">miss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="example-4">Example 4</h2>
+
+<p>Search all pycache directories and free the memory and display the number of
+deleted directories and the amount of memory freed in MB.</p>
+
+<blockquote>
+  <p><code><a href="#Path.delete">Path.delete()</a></code>, <code><a href="#Path.size">Path.size()</a></code> and <code><a href="#ByteInt">ByteInt</a></code></p>
+</blockquote>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlibutil</span> <span class="kn">import</span> <span class="n">ByteInt</span><span class="p">,</span> <span class="n">Path</span>
+
+<span class="n">mem</span> <span class="o">=</span> <span class="n">ByteInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cache</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*/__pycache__/&quot;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+  <span class="n">cache_size</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">cache</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to delete </span><span class="si">{</span><span class="n">cache</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">mem</span> <span class="o">+=</span> <span class="n">cache_size</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> cache directories deleted, </span><span class="si">{</span><span class="n">mem</span><span class="si">:</span><span class="s2">.1mb</span><span class="si">}</span><span class="s2"> MB freed.&quot;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="example-5">Example 5</h2>
+
+<p>Inherit from <code><a href="#Path">Path</a></code> to register new a archive format. Specify a
+<code>archive</code> as keyword argument in the new subclass, which has to be the suffix
+without <code>.</code> of the archives. Implement a classmethod <code>_register_archive_format()</code>
+to register new archive formats.</p>
+
+<blockquote>
+  <p><a href="#Path.make_archive">Path.make_archive()</a>, <a href="#Path.archive_formats">Path.archive_formats</a> and <a href="#Path.move">Path.move()</a></p>
+</blockquote>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="kn">import</span> <span class="nn">pathlibutil</span>
+
+
+<span class="k">class</span> <span class="nc">RegisterFooBarFormat</span><span class="p">(</span><span class="n"><a href="#Path">Path</a></span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">):</span>
+  <span class="nd">@classmethod</span>
+  <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    implement new register functions for given `archive`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="kn">import</span> <span class="nn">required_package_name</span>
+    <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s2">&quot;pip install &lt;required_package_name&gt;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pack_foobar</span><span class="p">(</span>
+        <span class="n">base_name</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives.</span>
+
+<span class="sd">      Args:</span>
+<span class="sd">          base_name (`str`): name of the file to create</span>
+<span class="sd">          base_dir (`str`): directory to start archiving from, defaults to `<a href="os.html#curdir">os.curdir</a>`</span>
+<span class="sd">          owner (`Any`, optional): as passed in `make_archive(*args, owner=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">          group (`Any`, optional): as passed in `make_archive(*args, group=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">          dry_run (`Any`, optional): as passed in `make_archive(*args, dry_run=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">          logger (`logging.Logger`, optional): as passed in `make_archive(*args, logger=None, **kwargs)`. Defaults to None.</span>
+
+<span class="sd">      Returns:</span>
+<span class="sd">          str: path of the new created archive</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;implement your own pack function&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">unpack_foobar</span><span class="p">(</span><span class="n">archive</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives.</span>
+
+<span class="sd">      Args:</span>
+<span class="sd">          archive (`str`): path of the archive</span>
+<span class="sd">          path (`str`): directory the archive must be extracted to</span>
+<span class="sd">          filter (`Any`, optional): as passed in `unpack_archive(*args, filter=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">          extra_args (`Sequence[Tuple[name, value]]`, optional): additional keyword arguments, specified by `register_unpack_format(*args, extra_args=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;implement your own unpack function&quot;</span><span class="p">)</span>
+
+    <span class="n"><a href="shutil.html#register_archive_format">shutil.register_archive_format</a></span><span class="p">(</span>
+        <span class="s2">&quot;foobar&quot;</span><span class="p">,</span> <span class="n">pack_foobar</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;foobar archives&quot;</span>
+    <span class="p">)</span>
+    <span class="n"><a href="shutil.html#register_unpack_format">shutil.register_unpack_format</a></span><span class="p">(</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;.foo.bar&quot;</span><span class="p">],</span> <span class="n">unpack_foobar</span><span class="p">)</span>
+
+
+<span class="n">file</span> <span class="o">=</span> <span class="n"><a href="#Path">Path</a></span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;available archive formats: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">archive_formats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">archive</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s2">&quot;README.foo.bar&quot;</span><span class="p">)</span>
+
+<span class="n">backup</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s2">&quot;./backup/&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;archive created: </span><span class="si">{</span><span class="n">archive</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> and moved to: </span><span class="si">{</span><span class="n">backup</span><span class="o">.</span><span class="n">parent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="example-6">Example 6</h2>
+
+<p>Access the current working directory with optional parameter <code>frozen</code> to determine
+different directories when script is bundled to an executable,
+e.g. with <code>pyinstaller</code>.</p>
+
+<blockquote>
+  <p><code><a href="#Path.cwd">Path.cwd()</a></code></p>
+</blockquote>
+
+<pre><code>&gt;&gt;&gt; poetry run examples/example6.py -b
+Building frozen: K:/pathlibutil/examples/example6.exe
+Build succeeded: 0
+
+&gt;&gt;&gt; poetry run examples/example6.py
+we are                          not frozen
+
+bundle dir is                   K:/pathlibutil/examples
+sys.argv[0] is                  K:/pathlibutil/examples/example6.py
+sys.executable is               K:/pathlibutil/.venv/Scripts/python.exe
+<a href="os.html#getcwd">os.getcwd</a> is                    K:/pathlibutil
+
+<a href="#Path.cwd">Path.cwd</a>(frozen=True) is        K:/pathlibutil
+<a href="#Path.cwd">Path.cwd</a>(frozen=False) is       K:/pathlibutil
+<a href="#Path.cwd">Path.cwd</a>(frozen=_MEIPASS) is    K:/pathlibutil
+
+&gt;&gt;&gt; examples/example6.exe
+we are                          ever so frozen
+
+bundle dir is                   C:/Users/CHRIST~1.DOE/AppData/Local/Temp/_MEI106042
+sys.argv[0] is                  examples/example6.exe
+sys.executable is               K:/pathlibutil/examples/example6.exe
+<a href="os.html#getcwd">os.getcwd</a> is                    K:/pathlibutil
+
+<a href="#Path.cwd">Path.cwd</a>(frozen=True) is        K:/pathlibutil/examples
+<a href="#Path.cwd">Path.cwd</a>(frozen=False) is       K:/pathlibutil
+<a href="#Path.cwd">Path.cwd</a>(frozen=_MEIPASS) is    C:/Users/CHRIST~1.DOE/AppData/Local/Temp/_MEI106042
+</code></pre>
+</div>
+
+                
+                
+                
+            </section>
+                <section id="Path">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Path</span><wbr>(<span class="base">pathlibutil.base.BasePath</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Path"></a>
+    
+            <div class="docstring"><p>Path inherites from <code><a href="pathlib.html#Path">pathlib.Path</a></code> and adds some methods to built-in python
+functions.</p>
+
+<ul>
+<li><p>To Register new archive formats for <code><a href="#Path.make_archive">make_archive</a></code> and <code><a href="#Path.unpack_archive">unpack_archive</a></code> see
+example <code><a href="#Register7zFormat">Register7zFormat</a></code></p></li>
+<li><p>Contextmanger lets you change the current working directory.</p></li>
+</ul>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="k">with</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;path/to/directory&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">cwd</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;current working directory: </span><span class="si">{</span><span class="n">cwd</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            <div id="Path.default_hash" class="classattr">
+                                <div class="attr variable">
+            <span class="name">default_hash</span><span class="annotation">: str</span>        =
+<span class="default_value">&#39;md5&#39;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.default_hash"></a>
+    
+            <div class="docstring"><p>Default hash algorithm for <code>__class__</code>.</p>
+
+<p>If no <code>algorithm</code> parameter is specified with <code><a href="#Path.hexdigest">hexdigest()</a></code> or <code><a href="#Path.verify">verify()</a></code> this will
+be the default</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.algorithms_available" class="classattr">
+                                <div class="attr variable">
+            <span class="name">algorithms_available</span><span class="annotation">: Set[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.algorithms_available"></a>
+    
+            <div class="docstring"><p>Set of <code><a href="hashlib.html#algorithms_available">hashlib.algorithms_available</a></code> that can be passed to <code><a href="#Path.hexdigest">hexdigest()</a></code>,
+<code><a href="#Path.verify">verify()</a></code> method as <code>algorithm</code> parameter or to set the <code><a href="#Path.default_hash">default_hash</a></code>
+algorithm of the <code>__class__</code>.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">algorithms_available</span>
+<span class="go">{</span>
+<span class="go">    &#39;sha384&#39;, &#39;sha3_512&#39;, &#39;blake2b&#39;, &#39;md5-sha1&#39;, &#39;sha3_256&#39;, &#39;sha3_384&#39;,</span>
+<span class="go">    &#39;sha512&#39;, &#39;sha512_256&#39;, &#39;sha3_224&#39;, &#39;sha1&#39;, &#39;md5&#39;, &#39;ripemd160&#39;, &#39;blake2s&#39;,</span>
+<span class="go">    &#39;sha256&#39;, &#39;shake_256&#39;, &#39;shake_128&#39;, &#39;sha224&#39;, &#39;sha512_224&#39;, &#39;sm3&#39;</span>
+<span class="go">}</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.hexdigest" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">hexdigest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.hexdigest"></a>
+    
+            <div class="docstring"><p>Returns the hexdigest of the file using the named algorithm (default:
+<code><a href="#Path.default_hash">default_hash</a></code>).</p>
+
+<p>A <code>FileNotFoundError</code> is raised if the file does not exist or its a directory.</p>
+
+<p>Some hashes will raise <code>TypeError</code> if the <code>length</code> argument is missing, use
+<code>**kwargs</code> for this purpose.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.verify" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">verify</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">digest</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.verify"></a>
+    
+            <div class="docstring"><p>Verifies the hash of the file using the named algorithm (default:
+<code><a href="#Path.default_hash">default_hash</a></code>).</p>
+
+<p>If <code>strict</code> is <code>True</code> the hash must match exactly.</p>
+
+<p>If <code>strict</code> is <code>False</code> the hash is compared character by character until
+<code>digest</code> is exhausted.</p>
+
+<ul>
+<li>a <code>ValueError</code> is raised if <code>digest</code> is shorter than 7 characters.</li>
+<li>comparison is case-insensitive</li>
+</ul>
+
+<p>For <code>**kwargs</code> see <code><a href="#Path.hexdigest">hexdigest()</a></code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.read_lines" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">read_lines</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.read_lines"></a>
+    
+            <div class="docstring"><p>Iterates over all lines of the file until EOF is reached.</p>
+
+<p>For <code>**kwargs</code> see <code><a href="#Path.open">Path.open()</a></code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.size" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator">@byteint</div>
+
+        <span class="def">def</span>
+        <span class="name">size</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#ByteInt">ByteInt</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.size"></a>
+    
+            <div class="docstring"><p>Returns the size in bytes of a file or directory.</p>
+
+<p>For <code>**kwargs</code> see <code><a href="pathlib.html#Path.stat">pathlib.Path.stat()</a></code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.copy" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">exist_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.copy"></a>
+    
+            <div class="docstring"><p>Copies the file or directory to a destination directory, if it is missing it
+will be created.</p>
+
+<p>If <code>exist_ok</code> is <code>False</code> and <code>dst</code> already exists a <code>FileExistsError</code> is raised.</p>
+
+<p>For <code>**kwargs</code> see <code><a href="shutil.html#copy2">shutil.copy2()</a></code> for files and <code><a href="shutil.html#copytree">shutil.copytree()</a></code> for
+directories.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.delete" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">delete</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">recursive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">missing_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.delete"></a>
+    
+            <div class="docstring"><p>Deletes the file or directory.</p>
+
+<p>If <code>missing_ok</code> is <code>False</code> a <code>FileNotFoundError</code> is raised if the file or
+directory does not exist.</p>
+
+<p>If <code>recursive</code> is <code>False</code> an <code>OSError</code> is raised if the directory is not empty.</p>
+
+<p>If <code>recursive</code> is <code>True</code> the directory will be deleted with all its content
+(files and subdirectories).</p>
+
+<ul>
+<li><code>**kwargs</code> are passed on to <code><a href="shutil.html#rmtree">shutil.rmtree()</a></code></li>
+</ul>
+</div>
+
+
+                            </div>
+                            <div id="Path.move" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">move</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.move"></a>
+    
+            <div class="docstring"><p>Moves the file or directory into the destination directory.</p>
+
+<p>If <code>dst</code> does not exist it will be created.</p>
+
+<p>An <code>OSError</code> is raised if <code><a href="shutil.html#move">shutil.move()</a></code> fails.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.make_archive" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">make_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">archivename</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">exists_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.make_archive"></a>
+    
+            <div class="docstring"><p>Creates an archive file (eg. zip) and returns the path to the archive.</p>
+
+<p>If <code>exists_ok</code> is <code>False</code> a <code>FileExistsError</code> is raised if the archive file
+already exists.</p>
+
+<p>If <code>exists_ok</code> is <code>True</code> the existing archive file will be deleted before
+creating the new one.</p>
+
+<p>For <code>**kwargs</code> see <code><a href="shutil.html#make_archive">shutil.make_archive()</a></code>.</p>
+
+<ul>
+<li><code>root_dir</code> and <code>base_dir</code> will be resolved automatically</li>
+<li><code>format</code> will be determined by the file suffix</li>
+<li>It can be overwritten with an <code>format</code> keyword-argument.</li>
+<li>a <code>ValueError</code> is raised if the <code>format</code> is unknown.</li>
+</ul>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s1">&#39;test.tar.gz&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test.tar.gz&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s1">&#39;test.zpy&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test.zpy&#39;)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.unpack_archive" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">unpack_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">extract_dir</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.unpack_archive"></a>
+    
+            <div class="docstring"><p>Unpacks an archive file (eg. zip) into a directory and returns the path to the
+extracted files.</p>
+
+<p>For <code>**kwargs</code> see <code><a href="shutil.html#unpack_archive">shutil.unpack_archive()</a></code>.</p>
+
+<ul>
+<li><code>format</code> will be determined by the file suffix</li>
+<li>It can be overwritten with an <code>format</code> keyword-argument.</li>
+<li>a <code>ValueError</code> is raised if the <code>format</code> is unknown.</li>
+</ul>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.tar.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.zpy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test&#39;)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.archive_formats" class="classattr">
+                                <div class="attr variable">
+            <span class="name">archive_formats</span><span class="annotation">: Set[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.archive_formats"></a>
+    
+            <div class="docstring"><p>Returns a set with names of the supported archive formats.</p>
+
+<p>The set contains all built-in formats from <code><a href="shutil.html#get_archive_formats">shutil.get_archive_formats()</a></code>
+and all formats registered by subclasse
+(eg. <a href="#Register7zFormat">Register7zFormat</a>).</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">archive_formats</span>
+<span class="go">{&#39;xztar&#39;, &#39;bztar&#39;, &#39;gztar&#39;, &#39;zip&#39;, &#39;tar&#39;, &#39;7z&#39;}</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.stat" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">stat</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_stat_result</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.stat"></a>
+    
+            <div class="docstring"><p>Returns a <code><a href="#StatResult">StatResult</a></code> object which modifies following attributes:</p>
+
+<ul>
+<li><code>st_size</code> is wrapped in <code><a href="#ByteInt">ByteInt</a></code></li>
+<li><code>st_atime</code>, <code>st_mtime</code>, <code>st_ctime</code>, <code>st_birthtime</code> are wrapped in <code><a href="#TimeInt">TimeInt</a></code></li>
+</ul>
+
+<p>For <code>**kwargs</code> see <code><a href="pathlib.html#Path.stat">pathlib.Path.stat()</a></code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.with_suffix" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">with_suffix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">suffix</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.with_suffix"></a>
+    
+            <div class="docstring"><p>Return a new <code><a href="#Path">Path</a></code> with changed suffix or remove it when its an empty
+string.</p>
+
+<p>Multiple suffixes can be changed at once by passing a list of suffixes.
+With a empty list all suffixes will be removed.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.a.b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.c&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test.a.c&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.a.b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test.a&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.a.b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">([</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span> <span class="s1">&#39;.d&#39;</span><span class="p">])</span>
+<span class="go">Path(&#39;test.c.d&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.a.b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">([])</span>
+<span class="go">Path(&#39;test&#39;)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.relative_to" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">relative_to</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="o">*</span><span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">~</span><span class="n">_Path</span><span class="p">]</span>,</span><span class="param">	<span class="n">walk_up</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.relative_to"></a>
+    
+            <div class="docstring"><p>Return the relative path to another path identified by the passed
+arguments.  If the operation is not possible (because this is not
+related to the other path), raise <code>ValueError</code>.</p>
+
+<p>The <code>walk_up</code> parameter controls whether <code>..</code> may be used to resolve
+the path.</p>
+
+<p>If <code>walk_up</code> is a integer it specifies the maximum number of <code>..</code> to resolve, if
+max is reached a <code>ValueError</code> is raised.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;a/b/c/d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="s1">&#39;a/b&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;c/d&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;a/b/c/d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="s1">&#39;a/b/e/f/g&#39;</span><span class="p">,</span> <span class="n">walk_up</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">Path(&#39;../../../c/d&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;a/b/c/d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="s1">&#39;a/b/e/f/g&#39;</span><span class="p">,</span> <span class="n">walk_up</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">ValueError: &#39;../../../c/d&#39; is outside of the relative deepth of &#39;2&#39;</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.cwd" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">cwd</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">frozen</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;_MEIPASS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.cwd"></a>
+    
+            <div class="docstring"><p>Return a <code><a href="#Path">Path</a></code> object representing the current working directory.</p>
+
+<p>The <code>frozen</code> parameter takes only effect when the script is bundled to a
+executable, e.g. with <code>pyinstaller</code>.</p>
+
+<ul>
+<li><code>False</code>: Returns the current working directory, this is the default.</li>
+<li><code>True</code>: Returns the directory of the executable.</li>
+<li><code>"_MEIPASS"</code>: Returns the directory of the bundled resources.</li>
+</ul>
+</div>
+
+
+                            </div>
+                            <div id="Path.resolve" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">resolve</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>, </span><span class="param"><span class="n">unc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.resolve"></a>
+    
+            <div class="docstring"><p>Make the path absolute, resolving all symlinks on the way and also normalizing
+it.</p>
+
+<p>If <code>strict</code> is <code>True</code>, a <code>FileNotFoundError</code> will be raised if the path does
+not exist.</p>
+
+<p>On Windows if <code>unc</code> is <code>False</code>, UNC paths will be resolved to mapped network
+drives.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;T:/file.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="go">Path(&quot;\\server\temp\file.txt&quot;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;//server/temp/file.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">unc</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">Path(&quot;T:\file.txt&quot;)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.walk" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">walk</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">top_down</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>,</span><span class="param">	<span class="n">on_error</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="ne">OSError</span><span class="p">],</span> <span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">follow_symlinks</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="o">~</span><span class="n">_Path</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.walk"></a>
+    
+            <div class="docstring"><p>Walks the directory tree and yields a 3-tuple of (dirpath, dirnames, filenames).</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.iterdir" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">iterdir</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">recursive</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">exclude_dirs</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="o">~</span><span class="n">_Path</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="o">~</span><span class="n">_Path</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.iterdir"></a>
+    
+            <div class="docstring"><p>Iterates over the files in the directory.</p>
+
+<p>If <code>recursive</code> is <code>True</code> all files from the directory tree will
+be yielded if it is an <code>integer</code> files are yielded to this max. directory depth
+optional<code>**kwargs</code> are passed to <code><a href="#Path.walk">Path.walk()</a></code>.</p>
+
+<p>When recursing, folders can be excluded by passing a callable for
+<code>exclude_dirs</code>, e.g.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="k">def</span> <span class="nf">exclude_version_control</span><span class="p">(</span><span class="n">dirpath</span><span class="p">:</span> <span class="n">_Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">dirpath</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;.git&quot;</span><span class="p">,</span> <span class="s2">&quot;.svn&quot;</span><span class="p">,</span> <span class="s2">&quot;.hg&quot;</span><span class="p">,</span> <span class="s2">&quot;.bzr&quot;</span><span class="p">,</span> <span class="s2">&quot;CVS&quot;</span><span class="p">)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.is_expired" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_expired</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;st_mtime&#39;</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.is_expired"></a>
+    
+            <div class="docstring"><p>Returns <code>True</code> if the time of the file is greater than a given threshold.</p>
+
+<p>For <code>**kwargs</code> see <code><a href="datetime.html#timedelta">datetime.timedelta</a></code>.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_expired</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">9999</span><span class="p">)</span>
+<span class="go">False</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.expand" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">expand</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">cls</span>,</span><span class="param">	<span class="o">*</span><span class="n">files</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">duplicates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="o">~</span><span class="n">_Path</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.expand"></a>
+    
+            <div class="docstring"><p>Yields only Path object of file names that exists. Supports glob patterns in
+filename as wildcards.</p>
+
+<p>If <code>duplicates</code> is <code>False</code> only one instance of each file is yielded.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n"><a href="#Path.expand">Path.expand</a></span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">,</span> <span class="s2">&quot;*.md&quot;</span><span class="p">,</span> <span class="n">duplicates</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="go">[Path(&#39;README.md&#39;)]</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="pathlib.html#Path">pathlib.Path</a></dt>
+                                <dd id="Path.home" class="function"><a href="pathlib.html#Path.home">home</a></dd>
+                <dd id="Path.samefile" class="function"><a href="pathlib.html#Path.samefile">samefile</a></dd>
+                <dd id="Path.glob" class="function"><a href="pathlib.html#Path.glob">glob</a></dd>
+                <dd id="Path.rglob" class="function"><a href="pathlib.html#Path.rglob">rglob</a></dd>
+                <dd id="Path.absolute" class="function"><a href="pathlib.html#Path.absolute">absolute</a></dd>
+                <dd id="Path.owner" class="function"><a href="pathlib.html#Path.owner">owner</a></dd>
+                <dd id="Path.group" class="function"><a href="pathlib.html#Path.group">group</a></dd>
+                <dd id="Path.open" class="function"><a href="pathlib.html#Path.open">open</a></dd>
+                <dd id="Path.read_bytes" class="function"><a href="pathlib.html#Path.read_bytes">read_bytes</a></dd>
+                <dd id="Path.read_text" class="function"><a href="pathlib.html#Path.read_text">read_text</a></dd>
+                <dd id="Path.write_bytes" class="function"><a href="pathlib.html#Path.write_bytes">write_bytes</a></dd>
+                <dd id="Path.write_text" class="function"><a href="pathlib.html#Path.write_text">write_text</a></dd>
+                <dd id="Path.readlink" class="function"><a href="pathlib.html#Path.readlink">readlink</a></dd>
+                <dd id="Path.touch" class="function"><a href="pathlib.html#Path.touch">touch</a></dd>
+                <dd id="Path.mkdir" class="function"><a href="pathlib.html#Path.mkdir">mkdir</a></dd>
+                <dd id="Path.chmod" class="function"><a href="pathlib.html#Path.chmod">chmod</a></dd>
+                <dd id="Path.lchmod" class="function"><a href="pathlib.html#Path.lchmod">lchmod</a></dd>
+                <dd id="Path.unlink" class="function"><a href="pathlib.html#Path.unlink">unlink</a></dd>
+                <dd id="Path.rmdir" class="function"><a href="pathlib.html#Path.rmdir">rmdir</a></dd>
+                <dd id="Path.lstat" class="function"><a href="pathlib.html#Path.lstat">lstat</a></dd>
+                <dd id="Path.rename" class="function"><a href="pathlib.html#Path.rename">rename</a></dd>
+                <dd id="Path.replace" class="function"><a href="pathlib.html#Path.replace">replace</a></dd>
+                <dd id="Path.symlink_to" class="function"><a href="pathlib.html#Path.symlink_to">symlink_to</a></dd>
+                <dd id="Path.hardlink_to" class="function"><a href="pathlib.html#Path.hardlink_to">hardlink_to</a></dd>
+                <dd id="Path.link_to" class="function"><a href="pathlib.html#Path.link_to">link_to</a></dd>
+                <dd id="Path.exists" class="function"><a href="pathlib.html#Path.exists">exists</a></dd>
+                <dd id="Path.is_dir" class="function"><a href="pathlib.html#Path.is_dir">is_dir</a></dd>
+                <dd id="Path.is_file" class="function"><a href="pathlib.html#Path.is_file">is_file</a></dd>
+                <dd id="Path.is_mount" class="function"><a href="pathlib.html#Path.is_mount">is_mount</a></dd>
+                <dd id="Path.is_symlink" class="function"><a href="pathlib.html#Path.is_symlink">is_symlink</a></dd>
+                <dd id="Path.is_block_device" class="function"><a href="pathlib.html#Path.is_block_device">is_block_device</a></dd>
+                <dd id="Path.is_char_device" class="function"><a href="pathlib.html#Path.is_char_device">is_char_device</a></dd>
+                <dd id="Path.is_fifo" class="function"><a href="pathlib.html#Path.is_fifo">is_fifo</a></dd>
+                <dd id="Path.is_socket" class="function"><a href="pathlib.html#Path.is_socket">is_socket</a></dd>
+                <dd id="Path.expanduser" class="function"><a href="pathlib.html#Path.expanduser">expanduser</a></dd>
+
+            </div>
+            <div><dt><a href="pathlib.html#PurePath">pathlib.PurePath</a></dt>
+                                <dd id="Path.as_posix" class="function"><a href="pathlib.html#PurePath.as_posix">as_posix</a></dd>
+                <dd id="Path.as_uri" class="function"><a href="pathlib.html#PurePath.as_uri">as_uri</a></dd>
+                <dd id="Path.drive" class="variable"><a href="pathlib.html#PurePath.drive">drive</a></dd>
+                <dd id="Path.root" class="variable"><a href="pathlib.html#PurePath.root">root</a></dd>
+                <dd id="Path.anchor" class="variable"><a href="pathlib.html#PurePath.anchor">anchor</a></dd>
+                <dd id="Path.name" class="variable"><a href="pathlib.html#PurePath.name">name</a></dd>
+                <dd id="Path.suffix" class="variable"><a href="pathlib.html#PurePath.suffix">suffix</a></dd>
+                <dd id="Path.suffixes" class="variable"><a href="pathlib.html#PurePath.suffixes">suffixes</a></dd>
+                <dd id="Path.stem" class="variable"><a href="pathlib.html#PurePath.stem">stem</a></dd>
+                <dd id="Path.with_name" class="function"><a href="pathlib.html#PurePath.with_name">with_name</a></dd>
+                <dd id="Path.with_stem" class="function"><a href="pathlib.html#PurePath.with_stem">with_stem</a></dd>
+                <dd id="Path.is_relative_to" class="function"><a href="pathlib.html#PurePath.is_relative_to">is_relative_to</a></dd>
+                <dd id="Path.parts" class="variable"><a href="pathlib.html#PurePath.parts">parts</a></dd>
+                <dd id="Path.joinpath" class="function"><a href="pathlib.html#PurePath.joinpath">joinpath</a></dd>
+                <dd id="Path.parent" class="variable"><a href="pathlib.html#PurePath.parent">parent</a></dd>
+                <dd id="Path.parents" class="variable"><a href="pathlib.html#PurePath.parents">parents</a></dd>
+                <dd id="Path.is_absolute" class="function"><a href="pathlib.html#PurePath.is_absolute">is_absolute</a></dd>
+                <dd id="Path.is_reserved" class="function"><a href="pathlib.html#PurePath.is_reserved">is_reserved</a></dd>
+                <dd id="Path.match" class="function"><a href="pathlib.html#PurePath.match">match</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="Register7zFormat">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Register7zFormat</span><wbr>(<span class="base"><a href="#Path">pathlibutil.Path</a></span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Register7zFormat"></a>
+    
+            <div class="docstring"><p>Register 7z archive format using <code>__init_subclass__</code> hook.</p>
+
+<p>To register a new archive format just inherit a subclass from <code><a href="#Path">Path</a></code> with an
+argument of <code>archive</code> specifying the suffix of the archive without any dots (eg.
+filename: <strong>archive.foo.bar</strong> -> argument: <code>archive='foobar'</code>) and implement a
+<code>_register_archive_format()</code> method using <code><a href="shutil.html#register_archive_format">shutil.register_archive_format()</a></code> and
+<code><a href="shutil.html#register_unpack_format">shutil.register_unpack_format()</a></code> functions.</p>
+
+<p>The <code>_register_archive_format()</code> method will be called automatically with the first
+call of <code><a href="#Register7zFormat.make_archive">make_archive()</a></code> or <code><a href="#Register7zFormat.unpack_archive">unpack_archive()</a></code>.</p>
+
+<p>Example:</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="k">class</span> <span class="nc">Register7zArchive</span><span class="p">(</span><span class="n"><a href="#Path">Path</a></span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s2">&quot;7z&quot;</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">py7zr</span> <span class="kn">import</span> <span class="n">pack_7zarchive</span><span class="p">,</span> <span class="n">unpack_7zarchive</span>
+        <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s2">&quot;pip install pathlibutil[7z]&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n"><a href="shutil.html#register_archive_format">shutil.register_archive_format</a></span><span class="p">(</span>
+                <span class="s2">&quot;7z&quot;</span><span class="p">,</span> <span class="n">pack_7zarchive</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;7zip archive&quot;</span>
+            <span class="p">)</span>
+            <span class="n"><a href="shutil.html#register_unpack_format">shutil.register_unpack_format</a></span><span class="p">(</span><span class="s2">&quot;7z&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;.7z&quot;</span><span class="p">],</span> <span class="n">unpack_7zarchive</span><span class="p">)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#Path">Path</a></dt>
+                                <dd id="Register7zFormat.default_hash" class="variable"><a href="#Path.default_hash">default_hash</a></dd>
+                <dd id="Register7zFormat.algorithms_available" class="variable"><a href="#Path.algorithms_available">algorithms_available</a></dd>
+                <dd id="Register7zFormat.hexdigest" class="function"><a href="#Path.hexdigest">hexdigest</a></dd>
+                <dd id="Register7zFormat.verify" class="function"><a href="#Path.verify">verify</a></dd>
+                <dd id="Register7zFormat.read_lines" class="function"><a href="#Path.read_lines">read_lines</a></dd>
+                <dd id="Register7zFormat.size" class="function"><a href="#Path.size">size</a></dd>
+                <dd id="Register7zFormat.copy" class="function"><a href="#Path.copy">copy</a></dd>
+                <dd id="Register7zFormat.delete" class="function"><a href="#Path.delete">delete</a></dd>
+                <dd id="Register7zFormat.move" class="function"><a href="#Path.move">move</a></dd>
+                <dd id="Register7zFormat.make_archive" class="function"><a href="#Path.make_archive">make_archive</a></dd>
+                <dd id="Register7zFormat.unpack_archive" class="function"><a href="#Path.unpack_archive">unpack_archive</a></dd>
+                <dd id="Register7zFormat.archive_formats" class="variable"><a href="#Path.archive_formats">archive_formats</a></dd>
+                <dd id="Register7zFormat.stat" class="function"><a href="#Path.stat">stat</a></dd>
+                <dd id="Register7zFormat.with_suffix" class="function"><a href="#Path.with_suffix">with_suffix</a></dd>
+                <dd id="Register7zFormat.relative_to" class="function"><a href="#Path.relative_to">relative_to</a></dd>
+                <dd id="Register7zFormat.cwd" class="function"><a href="#Path.cwd">cwd</a></dd>
+                <dd id="Register7zFormat.resolve" class="function"><a href="#Path.resolve">resolve</a></dd>
+                <dd id="Register7zFormat.walk" class="function"><a href="#Path.walk">walk</a></dd>
+                <dd id="Register7zFormat.iterdir" class="function"><a href="#Path.iterdir">iterdir</a></dd>
+                <dd id="Register7zFormat.is_expired" class="function"><a href="#Path.is_expired">is_expired</a></dd>
+                <dd id="Register7zFormat.expand" class="function"><a href="#Path.expand">expand</a></dd>
+
+            </div>
+            <div><dt><a href="pathlib.html#Path">pathlib.Path</a></dt>
+                                <dd id="Register7zFormat.home" class="function"><a href="pathlib.html#Path.home">home</a></dd>
+                <dd id="Register7zFormat.samefile" class="function"><a href="pathlib.html#Path.samefile">samefile</a></dd>
+                <dd id="Register7zFormat.glob" class="function"><a href="pathlib.html#Path.glob">glob</a></dd>
+                <dd id="Register7zFormat.rglob" class="function"><a href="pathlib.html#Path.rglob">rglob</a></dd>
+                <dd id="Register7zFormat.absolute" class="function"><a href="pathlib.html#Path.absolute">absolute</a></dd>
+                <dd id="Register7zFormat.owner" class="function"><a href="pathlib.html#Path.owner">owner</a></dd>
+                <dd id="Register7zFormat.group" class="function"><a href="pathlib.html#Path.group">group</a></dd>
+                <dd id="Register7zFormat.open" class="function"><a href="pathlib.html#Path.open">open</a></dd>
+                <dd id="Register7zFormat.read_bytes" class="function"><a href="pathlib.html#Path.read_bytes">read_bytes</a></dd>
+                <dd id="Register7zFormat.read_text" class="function"><a href="pathlib.html#Path.read_text">read_text</a></dd>
+                <dd id="Register7zFormat.write_bytes" class="function"><a href="pathlib.html#Path.write_bytes">write_bytes</a></dd>
+                <dd id="Register7zFormat.write_text" class="function"><a href="pathlib.html#Path.write_text">write_text</a></dd>
+                <dd id="Register7zFormat.readlink" class="function"><a href="pathlib.html#Path.readlink">readlink</a></dd>
+                <dd id="Register7zFormat.touch" class="function"><a href="pathlib.html#Path.touch">touch</a></dd>
+                <dd id="Register7zFormat.mkdir" class="function"><a href="pathlib.html#Path.mkdir">mkdir</a></dd>
+                <dd id="Register7zFormat.chmod" class="function"><a href="pathlib.html#Path.chmod">chmod</a></dd>
+                <dd id="Register7zFormat.lchmod" class="function"><a href="pathlib.html#Path.lchmod">lchmod</a></dd>
+                <dd id="Register7zFormat.unlink" class="function"><a href="pathlib.html#Path.unlink">unlink</a></dd>
+                <dd id="Register7zFormat.rmdir" class="function"><a href="pathlib.html#Path.rmdir">rmdir</a></dd>
+                <dd id="Register7zFormat.lstat" class="function"><a href="pathlib.html#Path.lstat">lstat</a></dd>
+                <dd id="Register7zFormat.rename" class="function"><a href="pathlib.html#Path.rename">rename</a></dd>
+                <dd id="Register7zFormat.replace" class="function"><a href="pathlib.html#Path.replace">replace</a></dd>
+                <dd id="Register7zFormat.symlink_to" class="function"><a href="pathlib.html#Path.symlink_to">symlink_to</a></dd>
+                <dd id="Register7zFormat.hardlink_to" class="function"><a href="pathlib.html#Path.hardlink_to">hardlink_to</a></dd>
+                <dd id="Register7zFormat.link_to" class="function"><a href="pathlib.html#Path.link_to">link_to</a></dd>
+                <dd id="Register7zFormat.exists" class="function"><a href="pathlib.html#Path.exists">exists</a></dd>
+                <dd id="Register7zFormat.is_dir" class="function"><a href="pathlib.html#Path.is_dir">is_dir</a></dd>
+                <dd id="Register7zFormat.is_file" class="function"><a href="pathlib.html#Path.is_file">is_file</a></dd>
+                <dd id="Register7zFormat.is_mount" class="function"><a href="pathlib.html#Path.is_mount">is_mount</a></dd>
+                <dd id="Register7zFormat.is_symlink" class="function"><a href="pathlib.html#Path.is_symlink">is_symlink</a></dd>
+                <dd id="Register7zFormat.is_block_device" class="function"><a href="pathlib.html#Path.is_block_device">is_block_device</a></dd>
+                <dd id="Register7zFormat.is_char_device" class="function"><a href="pathlib.html#Path.is_char_device">is_char_device</a></dd>
+                <dd id="Register7zFormat.is_fifo" class="function"><a href="pathlib.html#Path.is_fifo">is_fifo</a></dd>
+                <dd id="Register7zFormat.is_socket" class="function"><a href="pathlib.html#Path.is_socket">is_socket</a></dd>
+                <dd id="Register7zFormat.expanduser" class="function"><a href="pathlib.html#Path.expanduser">expanduser</a></dd>
+
+            </div>
+            <div><dt><a href="pathlib.html#PurePath">pathlib.PurePath</a></dt>
+                                <dd id="Register7zFormat.as_posix" class="function"><a href="pathlib.html#PurePath.as_posix">as_posix</a></dd>
+                <dd id="Register7zFormat.as_uri" class="function"><a href="pathlib.html#PurePath.as_uri">as_uri</a></dd>
+                <dd id="Register7zFormat.drive" class="variable"><a href="pathlib.html#PurePath.drive">drive</a></dd>
+                <dd id="Register7zFormat.root" class="variable"><a href="pathlib.html#PurePath.root">root</a></dd>
+                <dd id="Register7zFormat.anchor" class="variable"><a href="pathlib.html#PurePath.anchor">anchor</a></dd>
+                <dd id="Register7zFormat.name" class="variable"><a href="pathlib.html#PurePath.name">name</a></dd>
+                <dd id="Register7zFormat.suffix" class="variable"><a href="pathlib.html#PurePath.suffix">suffix</a></dd>
+                <dd id="Register7zFormat.suffixes" class="variable"><a href="pathlib.html#PurePath.suffixes">suffixes</a></dd>
+                <dd id="Register7zFormat.stem" class="variable"><a href="pathlib.html#PurePath.stem">stem</a></dd>
+                <dd id="Register7zFormat.with_name" class="function"><a href="pathlib.html#PurePath.with_name">with_name</a></dd>
+                <dd id="Register7zFormat.with_stem" class="function"><a href="pathlib.html#PurePath.with_stem">with_stem</a></dd>
+                <dd id="Register7zFormat.is_relative_to" class="function"><a href="pathlib.html#PurePath.is_relative_to">is_relative_to</a></dd>
+                <dd id="Register7zFormat.parts" class="variable"><a href="pathlib.html#PurePath.parts">parts</a></dd>
+                <dd id="Register7zFormat.joinpath" class="function"><a href="pathlib.html#PurePath.joinpath">joinpath</a></dd>
+                <dd id="Register7zFormat.parent" class="variable"><a href="pathlib.html#PurePath.parent">parent</a></dd>
+                <dd id="Register7zFormat.parents" class="variable"><a href="pathlib.html#PurePath.parents">parents</a></dd>
+                <dd id="Register7zFormat.is_absolute" class="function"><a href="pathlib.html#PurePath.is_absolute">is_absolute</a></dd>
+                <dd id="Register7zFormat.is_reserved" class="function"><a href="pathlib.html#PurePath.is_reserved">is_reserved</a></dd>
+                <dd id="Register7zFormat.match" class="function"><a href="pathlib.html#PurePath.match">match</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="ByteInt">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ByteInt</span><wbr>(<span class="base"><a href="builtins.html#int">builtins.int</a></span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ByteInt"></a>
+    
+            <div class="docstring"><p>Inherit from <code>int</code> with attributes to convert bytes to decimal or binary <code><a href="#ByteInt.units">units</a></code> for
+measuring storage data. These attributes will return a <code>float</code>.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span><span class="o">.</span><span class="n">kb</span>
+<span class="go">1.234</span>
+</code></pre>
+</div>
+
+<p>f-string formatting is also supported</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">6543210</span><span class="p">)</span><span class="si">:</span><span class="s2">.2mib</span><span class="si">}</span><span class="s2"> mebibytes&quot;</span>
+<span class="go">&#39;6.24 mebibytes&#39;</span>
+</code></pre>
+</div>
+
+<p>String representation of <code><a href="#ByteInt">ByteInt</a></code> will return the most appropriate decimal unit.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">987654</span><span class="p">))</span>
+<span class="go">&#39;987.7 kb&#39;</span>
+</code></pre>
+</div>
+</div>
+
+
+                            <div id="ByteInt.units" class="classattr">
+                                <div class="attr variable">
+            <span class="name">units</span><span class="annotation">: Set[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ByteInt.units"></a>
+    
+            <div class="docstring"><p><code>decimal</code> and <code>binary</code> units for measuring storage data.</p>
+
+<ul>
+<li><code>kilobyte</code> and <code>kibibyte</code></li>
+<li><code>megabyte</code> and <code>mebibyte</code></li>
+<li><code>gigabyte</code> and <code>gibibyte</code></li>
+<li><code>terabyte</code> and <code>tebibyte</code></li>
+<li><code>petabyte</code> and <code>pebibyte</code></li>
+<li><code>exabyte</code> and <code>exbibyte</code></li>
+<li><code>zettabyte</code> and <code>zebibyte</code></li>
+<li><code>yottabyte</code> and <code>yobibyte</code></li>
+</ul>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">ByteInt</span><span class="p">()</span><span class="o">.</span><span class="n">units</span>
+<span class="go">{</span>
+<span class="go">    &#39;mib&#39;, &#39;eb&#39;, &#39;kib&#39;, &#39;gb&#39;, &#39;yb&#39;, &#39;mb&#39;, &#39;gib&#39;, &#39;eib&#39;,</span>
+<span class="go">    &#39;zb&#39;, &#39;yib&#39;, &#39;tib&#39;, &#39;pb&#39;, &#39;zib&#39;, &#39;pib&#39;, &#39;tb&#39;, &#39;kb&#39;</span>
+<span class="go">}</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="ByteInt.string" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">string</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">decimal</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#ByteInt.string"></a>
+    
+            <div class="docstring"><p>Return a string representation of <code>self</code> in the most appropriate unit.</p>
+
+<p>If <code>decimal</code> is <code>False</code> then binary units will be used instead of <code>decimal</code>.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">12346789</span><span class="p">)</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;11.77 mib&#39;</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="ByteInt.info" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">info</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">unit</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#ByteInt.info"></a>
+    
+            <div class="docstring"><p>Return a tuple containing <code>bytes</code> and <code>name</code> for a given <code>unit</code></p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n"><a href="#ByteInt.info">ByteInt.info</a></span><span class="p">(</span><span class="s2">&quot;gib&quot;</span><span class="p">)</span>
+<span class="go">(1073741824, &#39;gibibyte&#39;)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="builtins.html#int">builtins.int</a></dt>
+                                <dd id="ByteInt.conjugate" class="function"><a href="builtins.html#int.conjugate">conjugate</a></dd>
+                <dd id="ByteInt.bit_length" class="function"><a href="builtins.html#int.bit_length">bit_length</a></dd>
+                <dd id="ByteInt.bit_count" class="function"><a href="builtins.html#int.bit_count">bit_count</a></dd>
+                <dd id="ByteInt.to_bytes" class="function"><a href="builtins.html#int.to_bytes">to_bytes</a></dd>
+                <dd id="ByteInt.from_bytes" class="function"><a href="builtins.html#int.from_bytes">from_bytes</a></dd>
+                <dd id="ByteInt.as_integer_ratio" class="function"><a href="builtins.html#int.as_integer_ratio">as_integer_ratio</a></dd>
+                <dd id="ByteInt.real" class="variable"><a href="builtins.html#int.real">real</a></dd>
+                <dd id="ByteInt.imag" class="variable"><a href="builtins.html#int.imag">imag</a></dd>
+                <dd id="ByteInt.numerator" class="variable"><a href="builtins.html#int.numerator">numerator</a></dd>
+                <dd id="ByteInt.denominator" class="variable"><a href="builtins.html#int.denominator">denominator</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="byteint">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">byteint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">func</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#byteint"></a>
+    
+            <div class="docstring"><p>Decorator to convert a return value of  <code>int</code> to a <code><a href="#ByteInt">ByteInt</a></code> object. Other return
+values are returned as is.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="n">randbyte</span> <span class="o">=</span> <span class="n">byteint</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">)</span>
+
+
+<span class="nd">@byteint</span>
+<span class="k">def</span> <span class="nf">randhexbyte</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">hex</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">randbyte</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">))</span>
+<span class="go">&lt;class &#39;<a href="#ByteInt">ByteInt</a>&#39;&gt;</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">randhexbytes</span><span class="p">())</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</code></pre>
+</div>
+</div>
+
+
+                </section>
+                <section id="TimeInt">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TimeInt</span><wbr>(<span class="base"><a href="builtins.html#float">builtins.float</a></span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt"></a>
+    
+            <div class="docstring"><p>Inherit from <code>float</code> with attributes to convert seconds to <code><a href="#TimeInt.datetime">datetime</a></code> objects.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">TimeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">datetime</span>
+<span class="go"><a href="datetime.html#datetime">datetime.datetime</a>(1970, 1, 1, 0, 0)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">TimeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">.%m.%Y&#39;</span><span class="p">)</span>
+<span class="go">&#39;01.01.1970&#39;</span>
+</code></pre>
+</div>
+
+<p>Return a string representation using <code><a href="#TimeInt.format">TimeInt.format</a></code>.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">TimeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="go">&#39;1970-01-01 00:00:00&#39;</span>
+</code></pre>
+</div>
+</div>
+
+
+                            <div id="TimeInt.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">TimeInt</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">int</span>, </span><span class="param"><span class="n">tz</span><span class="p">:</span> <span class="n"><a href="datetime.html#tzinfo">datetime.tzinfo</a></span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.__init__"></a>
+    
+            <div class="docstring"><p>Create a new instance from baseclass <code>int</code> with optional <code><a href="#TimeInt.timezone">timezone</a></code> info.</p>
+</div>
+
+
+                            </div>
+                            <div id="TimeInt.format" class="classattr">
+                                <div class="attr variable">
+            <span class="name">format</span>        =
+<span class="default_value">&#39;%Y-%m-%d %H:%M:%S&#39;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.format"></a>
+    
+            <div class="docstring"><p>Format string to which is uesed to convert <code>self</code> to a string. Default: 'isoformat'.
+For more information see <code><a href="datetime.html#datetime.strftime">datetime.datetime.strftime</a></code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="TimeInt.timezone" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timezone</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.timezone"></a>
+    
+            <div class="docstring"><p>property for <code><a href="datetime.html#timezone">datetime.timezone</a></code> object is set with <code><a href="#TimeInt.__init__">__init__</a></code> or can be
+changed to different timezones to get the correct string reprensentation. If
+timezone is <code>None</code> then the local timezone is used.</p>
+</div>
+
+
+                            </div>
+                            <div id="TimeInt.datetime" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datetime</span><span class="annotation">: <a href="datetime.html#datetime">datetime.datetime</a></span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.datetime"></a>
+    
+            <div class="docstring"><p>property returns a <code><a href="datetime.html#datetime">datetime.datetime</a></code> object.</p>
+</div>
+
+
+                            </div>
+                            <div id="TimeInt.string" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">string</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">format_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.string"></a>
+    
+            <div class="docstring"><p>Return a string representation of <code><a href="#TimeInt.datetime">datetime</a></code> using the <code>format_string</code>.</p>
+
+<p>If <code>format_string</code> is <code>None</code> then <code><a href="#TimeInt.format">TimeInt.format</a></code> is used.</p>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="builtins.html#float">builtins.float</a></dt>
+                                <dd id="TimeInt.conjugate" class="function"><a href="builtins.html#float.conjugate">conjugate</a></dd>
+                <dd id="TimeInt.as_integer_ratio" class="function"><a href="builtins.html#float.as_integer_ratio">as_integer_ratio</a></dd>
+                <dd id="TimeInt.fromhex" class="function"><a href="builtins.html#float.fromhex">fromhex</a></dd>
+                <dd id="TimeInt.hex" class="function"><a href="builtins.html#float.hex">hex</a></dd>
+                <dd id="TimeInt.is_integer" class="function"><a href="builtins.html#float.is_integer">is_integer</a></dd>
+                <dd id="TimeInt.real" class="variable"><a href="builtins.html#float.real">real</a></dd>
+                <dd id="TimeInt.imag" class="variable"><a href="builtins.html#float.imag">imag</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="StatResult">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">StatResult</span>:
+
+        
+    </div>
+    <a class="headerlink" href="#StatResult"></a>
+    
+            <div class="docstring"><p>Object converts <code>st_size</code> to <code><a href="#ByteInt">ByteInt</a></code> and
+<code>st_atime</code>, <code>st_mtime</code>, <code>st_ctime</code> and <code>st_birthtime</code> to <code><a href="#TimeInt">TimeInt</a></code>.</p>
+
+<p>Inheritance was not possible due <code>@final</code> decorator is applied to <code><a href="os.html#stat_result">os.stat_result</a></code>
+to prevent subclassing.</p>
+</div>
+
+
+                            <div id="StatResult.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">StatResult</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">stat</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatResult.__init__"></a>
+    
+            <div class="docstring"><p>Wrapper for <code><a href="os.html#stat_result">os.stat_result</a></code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="StatResult.stat_result" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stat_result</span><span class="annotation">: <a href="os.html#stat_result">os.stat_result</a></span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatResult.stat_result"></a>
+    
+            <div class="docstring"><p>Return the wrapped <code><a href="os.html#stat_result">os.stat_result</a></code> object.</p>
+</div>
+
+
+                            </div>
+                </section>
+    </main>
+</body>
+</html>
