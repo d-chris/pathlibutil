@@ -27,7 +27,7 @@ def file(cls) -> Path:
 def prj_path() -> pathlib.Path:
     """return the root path of the project"""
 
-    return pathlib.Path(__file__).joinpath("../../")
+    return pathlib.Path(__file__).parent.joinpath("../").resolve()
 
 
 @pytest.fixture
