@@ -33,9 +33,12 @@ def main() -> int:
     """
 
     try:
+        from jinja2_pdoc import jinja2pdoc
         from pdoc import pdoc, render
 
         from pathlibutil import Path
+
+        jinja2pdoc("docs/README.md.jinja2", silent=False, frontmatter=False)
 
         with Path(__file__).parent as cwd:
             print(f"\nrunning docs in {cwd=}...")
