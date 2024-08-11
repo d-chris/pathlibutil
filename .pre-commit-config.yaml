@@ -50,4 +50,4 @@ repos:
     rev: v1.1.0
     hooks:
       - id: jinja2pdoc
-        files: docs/README\.jinja2$
+        files: docs/README\.md\.jinja2$

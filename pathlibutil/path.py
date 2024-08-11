@@ -7,7 +7,7 @@ import shutil
 import subprocess
 import sys
 from datetime import datetime, timedelta
-from typing import Callable, Dict, Generator, Iterable, List, Literal, Set, Tuple, Union
+from typing import Callable, Dict, Generator, List, Literal, Set, Tuple, Union
 
 from pathlibutil.base import BasePath, _Path
 from pathlibutil.types import ByteInt, StatResult, TimeInt, _stat_result, byteint
@@ -642,23 +642,45 @@ class Path(BasePath):
 
         For `**kwargs` see `datetime.timedelta`.
 
-        >>> Path(__file__).is_expired(hours=12)
+        >>> Path("README.md").is_expired(weeks=9999)
         False
         """
         try:
             attr: TimeInt = getattr(self.stat(), stat)
             diff = datetime.now() - attr.datetime
         except AttributeError as e:
-            raise ValueError(
-                f"{stat=} is not from (st_atime, st_mtime, st_ctime, st_birthtime)"
-            ) from e
+            stats = [attr for attr in dir(os.stat_result) if attr.endswith("time")]
+
+            raise ValueError(f"{stat=} is not from {stats}") from e
 
         return diff > timedelta(**kwargs)
 
     @classmethod
-    def expand(cls, *files: Iterable[str]) -> Generator[_Path, None, None]:
-        for file in files:
-            yield from super().expand(file)
+    def expand(
+        cls,
+        *files: str,
+        duplicates: bool = True,
+    ) -> Generator[_Path, None, None]:
+        """
+        Yields only Path object of file names that exists. Supports glob patterns in
+        filename as wildcards.
+
+        If `duplicates` is `False` only one instance of each file is yielded.
+
+        >>> list(Path.expand("README.md", "*.md", duplicates=False))
+        [Path('README.md')]
+        """
+        if duplicates:
+            for file in files:
+                yield from super().expand(file)
+        else:
+            seen = set()
+
+            for file in files:
+                for item in super().expand(file):
+                    if item not in seen:
+                        seen.add(item)
+                        yield item
 
 
 class Register7zFormat(Path, archive="7z"):

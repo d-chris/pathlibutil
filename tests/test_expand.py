@@ -35,3 +35,12 @@ def test_expand_missing():
     gen = Path.expand("missing*.txt", __file__)
 
     assert list(gen) == [Path(__file__)]
+
+
+def test_expand_duplicates():
+
+    files = [__file__] * 3
+
+    gen = Path.expand(*files, duplicates=False)
+
+    assert list(gen) == [Path(__file__)]

@@ -36,9 +36,7 @@ class BasePath(pathlib.Path):
         file = cls(file)
         try:
             file.resolve(True)
-        except FileNotFoundError:
-            pass
-        except OSError:
+        except (OSError, FileNotFoundError):
             parent, pattern = file.parent, file.name
 
             yield from parent.glob(pattern)
