@@ -39,6 +39,7 @@ filename: ./README.md
 - `Path.walk()` to walk over a directory tree like `os.walk()`
 - `Path.iterdir()` with `recursive` all files from the directory tree will be yielded and `exclude_dirs` via callable.
 - `Path.is_expired()` to check if a file is expired by a given `datetime.timedelta`
+- `Path.expand()` yields file paths for multiple file patterns if they exsits.
 
 JSON serialization of `Path` objects is supported in `pathlibutil.json`.
 

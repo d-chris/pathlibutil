@@ -8,7 +8,7 @@ import pytest
 from pathlibutil import Path
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def cls() -> Generator[Path, Any, Any]:
     """return the same class for all test function"""
 
@@ -17,10 +17,17 @@ def cls() -> Generator[Path, Any, Any]:
     Path.default_hash = hash
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def file(cls) -> Path:
     """new instance of Path for each test-function"""
     return cls(__file__)
+
+
+@pytest.fixture
+def prj_path() -> pathlib.Path:
+    """return the root path of the project"""
+
+    return pathlib.Path(__file__).joinpath("../../")
 
 
 @pytest.fixture

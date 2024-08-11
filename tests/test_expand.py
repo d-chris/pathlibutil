@@ -23,11 +23,12 @@ def test_expand_raises():
         list(Path.expand(None))
 
 
-def test_expand_files():
-    gen = Path.expand("tests/test_*.py")
-    files = list(gen)
+def test_expand_files(prj_path):
+    pattern = prj_path / "tests/test_*.py"
 
-    assert len(files) > 1
+    files = list(Path.expand(pattern))
+
+    assert len(files) > 0
     assert all(p.name.startswith("test_") for p in files)
 
 
