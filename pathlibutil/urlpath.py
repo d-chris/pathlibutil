@@ -1,6 +1,5 @@
 import pathlib
 import urllib.parse as up
-from copy import copy
 from dataclasses import asdict, dataclass, field
 from functools import wraps
 from typing import Any, Dict, Optional, TypeVar, Union
@@ -42,7 +41,7 @@ class UrlNetloc:
         return netloc
 
     @classmethod
-    def from_netloc(cls, netloc: str, normalized: bool = False) -> "UrlNetloc":
+    def from_netloc(cls, netloc: str, normalize: bool = False) -> "UrlNetloc":
         """Parse a netloc string into a `UrlNetloc` object"""
 
         username = None
@@ -62,7 +61,7 @@ class UrlNetloc:
         else:
             hostname = netloc
 
-        if normalized:
+        if normalize:
             hostname = hostname.lower()
 
         return cls(hostname=hostname, port=port, username=username, password=password)
@@ -135,10 +134,10 @@ def normalize_url(
 
 def urlpath(func):
     @wraps(func)
-    def wrapper(*args, **kwargs):
-        result = func(*args, **kwargs)
+    def wrapper(self, *args, **kwargs):
+        result = func(self, *args, **kwargs)
 
-        return UrlPath(result.geturl(), **result._kwargs)
+        return UrlPath(result.geturl(), **self._kwargs)
 
     return wrapper
 
@@ -255,7 +254,6 @@ class UrlPath(up.ParseResult):
         """
         return self._replace(fragment=fragment)
 
-    @urlpath
     def with_port(self, port: int) -> _UrlPath:
         """
         change the port in the netloc of the URL.
