@@ -86,7 +86,7 @@ _UrlPath = TypeVar("_UrlPath", bound="UrlPath")
 
 
 def normalize_url(
-    url: Union[str, up.ParseResult],
+    url: str,
     ports: Dict[str, int] = None,
     sort: bool = True,
 ) -> str:
@@ -98,38 +98,7 @@ def normalize_url(
     'https://www.example.com/Path?a=1&b=2'
     """
 
-    if not isinstance(url, up.ParseResult):
-        url = up.urlparse(url)
-
-    # Convert scheme and host to lowercase
-    scheme = url.scheme.lower()
-    netloc = url.netloc.lower()
-
-    if ports is not None:
-        try:
-            if netloc.endswith(f":{ports[scheme]}"):
-                netloc = netloc.rsplit(":", 1)[0]
-        except KeyError:
-            pass
-
-    # Ensure the path is properly encoded
-    path = up.quote(up.unquote(url.path))
-    if path != "/" and path.endswith("/"):
-        path = path.rstrip("/")
-
-    query = up.urlencode(sorted(up.parse_qsl(url.query))) if sort else url.query
-
-    # Reconstruct the URL
-    return up.urlunparse(
-        (
-            scheme,
-            netloc,
-            path,
-            url.params,
-            query,
-            url.fragment,
-        )
-    )
+    return UrlPath(url).normalize(sort=sort, ports=ports)
 
 
 def urlpath(func):
@@ -187,9 +156,40 @@ class UrlPath(up.ParseResult):
         default ports are removed and query parameters are sorted.
         """
         if normalize:
-            return normalize_url(self, ports=self._default_ports, sort=True)
+            return self.normalize()
 
         return super().geturl()
+
+    def normalize(self, sort: bool = True, **kwargs) -> str:
+        """
+        Normalize the URL by converting the scheme and host to lowercase, removing the
+        default port if present, and sorting the query parameters.
+        """
+
+        ports = kwargs.get("ports", self._default_ports)
+
+        scheme = self.scheme.lower()
+        netloc = UrlNetloc.from_netloc(self.netloc, normalize=True).netloc
+
+        try:
+            if netloc.endswith(f":{ports[scheme]}"):
+                netloc = netloc.rsplit(":", 1)[0]
+        except KeyError:
+            pass
+
+        path = up.quote(up.unquote(self.path))
+        query = up.urlencode(sorted(up.parse_qsl(self.query))) if sort else self.query
+
+        return up.urlunparse(
+            (
+                scheme,
+                netloc,
+                path,
+                self.params,
+                query,
+                self.fragment,
+            )
+        )
 
     def __getattr__(self, attr: str) -> Any:
 

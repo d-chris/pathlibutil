@@ -1,6 +1,6 @@
 import pytest
 
-from pathlibutil.urlpath import UrlNetloc, UrlPath
+from pathlibutil.urlpath import UrlNetloc, UrlPath, normalize_url
 
 
 @pytest.fixture
@@ -84,6 +84,19 @@ def test_urlpath_wrapper(url, wrapper, attr):
     assert hasattr(result, attr)
 
 
+@pytest.mark.parametrize(
+    "property",
+    [
+        "name",
+        "suffix",
+        "stem",
+        "parent",
+    ],
+)
+def test_urlpath_property(url, property):
+    assert getattr(url, property)
+
+
 def test_urlpath_geturl_normalize(urls):
     url, result = urls
 
@@ -157,3 +170,19 @@ def test_urlnetloc_dict_prune():
     del data["password"]
 
     assert netloc.to_dict(True) == data
+
+
+def test_normalize_url():
+
+    result = normalize_url(
+        "https://www.ExamplE.com:443/Path?b=2&a=1", ports={"https": 443}
+    )
+
+    assert result == "https://www.example.com/Path?a=1&b=2"
+
+
+def test_normalize_url_no_ports():
+
+    result = normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1", ports={})
+
+    assert result == "https://www.example.com:443/Path?a=1&b=2"
