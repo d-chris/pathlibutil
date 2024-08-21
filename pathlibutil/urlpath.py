@@ -9,6 +9,11 @@ from typing import Any, Dict, Optional, TypeVar, Union
 class UrlNetloc:
     """
     A dataclass to represent the netloc part of a URL.
+
+    >>> url = UrlNetloc.from_netloc("www.example.com:443")
+    >>> url.port = None
+    >>> str(url)
+    'www.example.com'
     """
 
     hostname: str
@@ -21,7 +26,7 @@ class UrlNetloc:
 
     @property
     def netloc(self) -> str:
-        """return the netloc string"""
+        """netloc string representation of the `dataclass`"""
 
         netloc = ""
 
@@ -102,6 +107,10 @@ def normalize_url(
 
 
 def urlpath(func):
+    """
+    decorator to return a `UrlPath` object from a `urllib.parse.ParseResult` object
+    """
+
     @wraps(func)
     def wrapper(self, *args, **kwargs):
         result = func(self, *args, **kwargs)
@@ -208,6 +217,9 @@ class UrlPath(up.ParseResult):
 
     @urlpath
     def with_scheme(self, scheme: str) -> _UrlPath:
+        """
+        Change the scheme of the URL.
+        """
         return self._replace(scheme=scheme)
 
     @urlpath
@@ -290,3 +302,10 @@ class UrlPath(up.ParseResult):
         netloc.password = password
 
         return self.with_netloc(netloc)
+
+
+__all__ = [
+    "UrlNetloc",
+    "UrlPath",
+    "normalize_url",
+]
