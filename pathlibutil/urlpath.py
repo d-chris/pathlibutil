@@ -1,4 +1,5 @@
 import pathlib
+import re
 import urllib.parse as up
 from dataclasses import asdict, dataclass, field
 from functools import wraps
@@ -38,7 +39,10 @@ class UrlNetloc:
 
             netloc += "@"
 
-        netloc += self.hostname
+        if ":" in self.hostname:
+            netloc += f"[{self.hostname}]"
+        else:
+            netloc += self.hostname
 
         if self.port:
             netloc += f":{self.port:d}"
@@ -49,27 +53,26 @@ class UrlNetloc:
     def from_netloc(cls, netloc: str, normalize: bool = False) -> "UrlNetloc":
         """Parse a netloc string into a `UrlNetloc` object"""
 
-        username = None
-        password = None
-        port = None
+        if not netloc.startswith("//"):
+            netloc = f"//{netloc}"
 
-        if "@" in netloc:
-            userinfo, netloc = netloc.split("@", 1)
-            if ":" in userinfo:
-                username, password = userinfo.split(":", 1)
-            else:
-                username = userinfo
+        url = up.urlparse(netloc)
 
-        if ":" in netloc:
-            hostname, port = netloc.split(":", 1)
-            port = int(port)
-        else:
-            hostname = netloc
+        hostname = url.hostname
 
-        if normalize:
-            hostname = hostname.lower()
+        if normalize is False:
+            try:
+                pattern = re.escape(url.hostname)
+                hostname = re.search(pattern, netloc, re.IGNORECASE).group()
+            except AttributeError:
+                pass
 
-        return cls(hostname=hostname, port=port, username=username, password=password)
+        return cls(
+            hostname=hostname,
+            port=url.port,
+            username=url.username,
+            password=url.password,
+        )
 
     def to_dict(self, prune: bool = False) -> Dict[str, Any]:
         """

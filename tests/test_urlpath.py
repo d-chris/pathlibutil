@@ -26,6 +26,10 @@ def attr(request):
         ("https://www.ExamplE.com:443", "https://www.example.com"),
         ("http://Foo@www.ExamplE.com:80", "http://Foo@www.example.com"),
         ("http://Foo:baR@www.Example.cOm:8080", "http://Foo:baR@www.example.com:8080"),
+        (
+            "http://[::FFFF:129.144.52.38]:80/index.html",
+            "http://[::ffff:129.144.52.38]/index.html",
+        ),
     ],
     ids=lambda x: x[0],
 )
@@ -38,6 +42,10 @@ def urls(request):
         ("www.ExamplE.com:443", "www.example.com:443"),
         ("Foo@www.ExamplE.com", "Foo@www.example.com"),
         ("Foo:baR@www.Example.cOm:8080", "Foo:baR@www.example.com:8080"),
+        (
+            "-.~_!$&'()*+,;=:%40:80%2f::::::@eXample.com:80",
+            "-.~_!$&'()*+,;=:%40:80%2f::::::@example.com:80",
+        ),
     ],
     ids=lambda x: x[0],
 )
