@@ -45,7 +45,6 @@ JSON serialization of `Path` objects is supported in `pathlibutil.json`.
 
 - `pathlibutil.json.dumps()` and `pathlibutil.json.dump()` to serialize `Path` objects as posix paths.
 
-
 Parse and modify URLs with `pathlibutil.urlpath`.
 
 - `pathlibutil.urlpath.UrlPath()` modify URL and easy access the `path` of the url like a `pathlib.PurePosixPath` object.

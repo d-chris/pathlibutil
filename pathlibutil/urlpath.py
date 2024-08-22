@@ -95,18 +95,25 @@ _UrlPath = TypeVar("_UrlPath", bound="UrlPath")
 
 def normalize_url(
     url: str,
-    ports: Dict[str, int] = None,
+    port: bool = False,
     sort: bool = True,
 ) -> str:
     """
-    Normalize a URL by converting the scheme and host to lowercase, removing the default
+    Function to normalize a URL by converting the scheme and host to lowercase, removing
     port if present, and sorting the query parameters.
 
-    >>> normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1", ports={"https": 443})
+    >>> normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1")
     'https://www.example.com/Path?a=1&b=2'
     """
 
-    return UrlPath(url).normalize(sort=sort, ports=ports)
+    url = UrlPath(url)
+
+    if port is False:
+        ports = {url.scheme.lower(): url.port}
+    else:
+        ports = {}
+
+    return url.normalize(sort=sort, ports=ports)
 
 
 def urlpath(func):
@@ -163,7 +170,7 @@ class UrlPath(up.ParseResult):
         self._path = pathlib.PurePosixPath(up.unquote(self.path))
 
     def __str__(self) -> str:
-        return self.geturl(normalize=True)
+        return self.normalize()
 
     def geturl(self, normalize: bool = False) -> str:
         """
@@ -210,7 +217,12 @@ class UrlPath(up.ParseResult):
 
     def __getattr__(self, attr: str) -> Any:
 
-        attr = getattr(self._path, attr)
+        try:
+            attr = getattr(self._path, attr)
+        except AttributeError as e:
+            raise AttributeError(
+                f"'{self.__class__.__name__}' object has no attribute '{attr}'"
+            ) from e
 
         if not callable(attr):
             return attr

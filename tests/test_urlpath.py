@@ -178,18 +178,16 @@ def test_urlnetloc_dict_prune():
     assert netloc.to_dict(True) == data
 
 
-def test_normalize_url():
+def test_normalize_url_remove_ports():
 
-    result = normalize_url(
-        "https://www.ExamplE.com:443/Path?b=2&a=1", ports={"https": 443}
-    )
+    result = normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1")
 
     assert result == "https://www.example.com/Path?a=1&b=2"
 
 
-def test_normalize_url_no_ports():
+def test_normalize_url_with_ports():
 
-    result = normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1", ports={})
+    result = normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1", port=True)
 
     assert result == "https://www.example.com:443/Path?a=1&b=2"
 
