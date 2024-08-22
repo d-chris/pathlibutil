@@ -6,7 +6,7 @@ from functools import wraps
 from typing import Any, Dict, Optional, TypeVar, Union
 
 
-@dataclass(kw_only=True)
+@dataclass
 class UrlNetloc:
     """
     A dataclass to represent the netloc part of a URL.
@@ -111,7 +111,7 @@ def normalize_url(
 
 def urlpath(func):
     """
-    decorator to return a `UrlPath` object from a `urllib.parse.ParseResult` object
+    decorator to return a `UrlPath` object from a `urllib.parse.ParseResult` object.
     """
 
     @wraps(func)
@@ -150,6 +150,11 @@ class UrlPath(up.ParseResult):
         scheme: str = "",
         allow_fragments: bool = True,
     ) -> None:
+        """
+        Initialize the `UrlPath` object with a URL string.
+
+        A `ValueError` is raised if the URL is not valid.
+        """
         self._url = url
         self._kwargs = {
             "scheme": scheme,
@@ -164,7 +169,7 @@ class UrlPath(up.ParseResult):
         """
         Return a re-combined version of the URL.
 
-        If `normalize` is `True` schem and netloc is converted  to lowercase,
+        If `normalize` is `True` scheme and netloc is converted  to lowercase,
         default ports are removed and query parameters are sorted.
         """
         if normalize:
@@ -181,11 +186,11 @@ class UrlPath(up.ParseResult):
         ports = kwargs.get("ports", self._default_ports)
 
         scheme = self.scheme.lower()
-        netloc = UrlNetloc.from_netloc(self.netloc, normalize=True).netloc
+        netloc = UrlNetloc.from_netloc(self.netloc, normalize=True)
 
         try:
-            if netloc.endswith(f":{ports[scheme]}"):
-                netloc = netloc.rsplit(":", 1)[0]
+            if ports[scheme] == netloc.port:
+                netloc.port = None
         except KeyError:
             pass
 
@@ -195,7 +200,7 @@ class UrlPath(up.ParseResult):
         return up.urlunparse(
             (
                 scheme,
-                netloc,
+                str(netloc),
                 path,
                 self.params,
                 query,

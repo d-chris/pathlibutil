@@ -1,12 +1,14 @@
+import pathlib
+
 import pytest
 
 from pathlibutil.urlpath import UrlNetloc, UrlPath, normalize_url
 
 
 @pytest.fixture
-def url():
+def urlpath():
     return UrlPath(
-        "hTTps://Foo:Bar@www.ExamplE.com:443/Path/file.txt;params?b=2&a=1#section1"
+        "https://Foo:Bar@www.ExamplE.com:443/Path/file.txt;params?b=2&a=1#section1"
     )
 
 
@@ -67,9 +69,9 @@ def netlocs(request):
         "with_credentials",
     ],
 )
-def test_urlpath_with(url, method, attr):
+def test_urlpath_with(urlpath, method, attr):
 
-    func = getattr(url, method)
+    func = getattr(urlpath, method)
 
     result = func("")
 
@@ -78,14 +80,10 @@ def test_urlpath_with(url, method, attr):
 
 @pytest.mark.parametrize(
     "wrapper",
-    [
-        "with_suffix",
-        "with_name",
-        "with_stem",
-    ],
+    [w for w in dir(pathlib.PurePosixPath) if w.startswith("with_")],
 )
-def test_urlpath_wrapper(url, wrapper, attr):
-    func = getattr(url, wrapper)
+def test_urlpath_wrapper(urlpath, wrapper, attr):
+    func = getattr(urlpath, wrapper)
 
     result = func(".test")
 
@@ -101,8 +99,8 @@ def test_urlpath_wrapper(url, wrapper, attr):
         "parent",
     ],
 )
-def test_urlpath_property(url, property):
-    assert getattr(url, property)
+def test_urlpath_property(urlpath, property):
+    assert getattr(urlpath, property)
 
 
 def test_urlpath_geturl_normalize(urls):
@@ -194,3 +192,9 @@ def test_normalize_url_no_ports():
     result = normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1", ports={})
 
     assert result == "https://www.example.com:443/Path?a=1&b=2"
+
+
+def test_urlpath_validate(urlpath: UrlPath):
+
+    with pytest.raises(ValueError):
+        urlpath.with_hostname("[www.example.com")
