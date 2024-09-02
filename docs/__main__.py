@@ -62,7 +62,9 @@ def main() -> int:
             modules = [
                 "pathlibutil",
                 "pathlibutil.json",
+                "pathlibutil.urlpath",
                 "pathlib",
+                "urllib.parse",
                 "shutil",
                 "hashlib",
                 "builtins",
