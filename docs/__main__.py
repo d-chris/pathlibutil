@@ -65,6 +65,7 @@ def main() -> int:
                 "pathlibutil.urlpath",
                 "pathlib",
                 "urllib.parse",
+                "urllib.request",
                 "shutil",
                 "hashlib",
                 "builtins",
