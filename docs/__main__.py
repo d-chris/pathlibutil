@@ -65,6 +65,7 @@ def main() -> int:
                 "pathlibutil.urlpath",
                 "pathlib",
                 "urllib.parse",
+                "urllib.request",
                 "shutil",
                 "hashlib",
                 "builtins",
@@ -103,4 +104,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    SystemExit(main())
+    raise SystemExit(main())
