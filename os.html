@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 14.6.0"/>
+    <meta name="generator" content="pdoc 14.7.0"/>
     <title>os API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
@@ -1358,16 +1358,16 @@ os    </h1>
 <ul>
 <li>all functions from posix or nt, e.g. unlink, stat, etc.</li>
 <li>os.path is either posixpath or ntpath</li>
-<li><a href="#name">name</a> is either 'posix' or 'nt'</li>
-<li><a href="#curdir">curdir</a> is a string representing the current directory (always '.')</li>
-<li><a href="#pardir">pardir</a> is a string representing the parent directory (always '..')</li>
-<li><a href="#sep">sep</a> is the (or a most common) pathname separator ('/' or '\')</li>
-<li><a href="#extsep">extsep</a> is the extension separator (always '.')</li>
-<li><a href="#altsep">altsep</a> is the alternate pathname separator (None or '/')</li>
-<li><a href="#pathsep">pathsep</a> is the component separator used in $PATH etc</li>
-<li><a href="#linesep">linesep</a> is the line separator in text files ('\r' or '\n' or '\r\n')</li>
-<li><a href="#defpath">defpath</a> is the default search path for executables</li>
-<li><a href="#devnull">devnull</a> is the file path of the null device ('/dev/null', etc.)</li>
+<li><a href="#name">os.name</a> is either 'posix' or 'nt'</li>
+<li><a href="#curdir">os.curdir</a> is a string representing the current directory (always '.')</li>
+<li><a href="#pardir">os.pardir</a> is a string representing the parent directory (always '..')</li>
+<li><a href="#sep">os.sep</a> is the (or a most common) pathname separator ('/' or '\')</li>
+<li><a href="#extsep">os.extsep</a> is the extension separator (always '.')</li>
+<li><a href="#altsep">os.altsep</a> is the alternate pathname separator (None or '/')</li>
+<li><a href="#pathsep">os.pathsep</a> is the component separator used in $PATH etc</li>
+<li><a href="#linesep">os.linesep</a> is the line separator in text files ('\r' or '\n' or '\r\n')</li>
+<li><a href="#defpath">os.defpath</a> is the default search path for executables</li>
+<li><a href="#devnull">os.devnull</a> is the file path of the null device ('/dev/null', etc.)</li>
 </ul>
 
 <p>Programs that import and use 'os' stand a better chance of being
@@ -1575,7 +1575,7 @@ Windows, use 'strict' error handler if the file system encoding is
 named executable (similar to a shell) when launching a process.</p>
 
 <p><em>env</em> must be an environment variable dict or None.  If <em>env</em> is None,
-<a href="#environ">environ</a> will be used.</p>
+<a href="#environ">os.environ</a> will be used.</p>
 </div>
 
 
@@ -3768,7 +3768,7 @@ respectively for offset_dst.</p>
 
 <p>This number is not equivalent to the number of CPUs the current process can
 use.  The number of usable CPUs can be obtained with
-<code>len(<a href="#sched_getaffinity">sched_getaffinity</a>(0))</code></p>
+<code>len(<a href="#sched_getaffinity">os.sched_getaffinity</a>(0))</code></p>
 </div>
 
 
@@ -3960,7 +3960,7 @@ env
             <div class="docstring"><p>Change to the directory of the given file descriptor.</p>
 
 <p>fd must be opened on a directory, not a file.
-Equivalent to <a href="#chdir">chdir</a>(fd).</p>
+Equivalent to <a href="#chdir">os.chdir</a>(fd).</p>
 </div>
 
 
@@ -3977,7 +3977,7 @@ Equivalent to <a href="#chdir">chdir</a>(fd).</p>
     
             <div class="docstring"><p>Change the access permissions of the file given by file descriptor fd.</p>
 
-<p>Equivalent to <a href="#chmod">chmod</a>(fd, mode).</p>
+<p>Equivalent to <a href="#chmod">os.chmod</a>(fd, mode).</p>
 </div>
 
 
@@ -3994,7 +3994,7 @@ Equivalent to <a href="#chdir">chdir</a>(fd).</p>
     
             <div class="docstring"><p>Change the owner and group id of the file specified by file descriptor.</p>
 
-<p>Equivalent to <a href="#chown">chown</a>(fd, uid, gid).</p>
+<p>Equivalent to <a href="#chown">os.chown</a>(fd, uid, gid).</p>
 </div>
 
 
@@ -4100,7 +4100,7 @@ types raise a TypeError.</p>
             <div class="docstring"><p>Perform a stat system call on the given file descriptor.</p>
 
 <p>Like stat(), but for an open file descriptor.
-Equivalent to <a href="#stat">stat</a>(fd).</p>
+Equivalent to <a href="#stat">os.stat</a>(fd).</p>
 </div>
 
 
@@ -4206,7 +4206,7 @@ is thrown.</p>
 available for this system.</p>
 
 <p><a href="shutil.html#get_terminal_size">shutil.get_terminal_size</a> is the high-level function which should
-normally be used, <a href="#get_terminal_size">get_terminal_size</a> is the low-level implementation.</p>
+normally be used, <a href="#get_terminal_size">os.get_terminal_size</a> is the low-level implementation.</p>
 </div>
 
 
@@ -4608,7 +4608,7 @@ connected to the slave end of a terminal.</p>
             <div class="docstring"><p>Change the owner and group id of path to the numeric uid and gid.</p>
 
 <p>This function will not follow symbolic links.
-Equivalent to <a href="#chown">chown</a>(path, uid, gid, follow_symlinks=False).</p>
+Equivalent to <a href="#chown">os.chown</a>(path, uid, gid, follow_symlinks=False).</p>
 </div>
 
 
@@ -4861,7 +4861,7 @@ at path.  mode specifies both the permissions to use and the
 type of node to be created, being combined (bitwise OR) with one of
 S_IFREG, S_IFCHR, S_IFBLK, and S_IFIFO.  If S_IFCHR or S_IFBLK is set on mode,
 device defines the newly created device special file (probably using
-<a href="#makedev">makedev()</a>).  Otherwise device is ignored.</p>
+<a href="#makedev">os.makedev()</a>).  Otherwise device is ignored.</p>
 
 <p>If dir_fd is not None, it should be a file descriptor open to a directory,
   and path should be relative; path will then be relative to that directory.
@@ -6040,7 +6040,7 @@ or via the attributes st_mode, st_ino, st_dev, st_nlink, st_uid, and so on.</p>
 <p>Posix/windows: If your platform supports st_blksize, st_blocks, st_rdev,
 or st_flags, they are available as attributes only.</p>
 
-<p>See <a href="#stat">stat</a> for more information.</p>
+<p>See <a href="#stat">os.stat</a> for more information.</p>
 </div>
 
 
@@ -6334,7 +6334,7 @@ On some platforms, path may also be specified as an open file descriptor.
   (bsize, frsize, blocks, bfree, bavail, files, ffree, favail, flag, namemax),
 or via the attributes f_bsize, f_frsize, f_blocks, f_bfree, and so on.</p>
 
-<p>See <a href="#statvfs">statvfs</a> for more information.</p>
+<p>See <a href="#statvfs">os.statvfs</a> for more information.</p>
 </div>
 
 
@@ -6750,14 +6750,14 @@ All fields are floating point numbers.</p>
     </div>
     <a class="headerlink" href="#times_result"></a>
     
-            <div class="docstring"><p>times_result: Result from <a href="#times">times()</a>.</p>
+            <div class="docstring"><p>times_result: Result from <a href="#times">os.times()</a>.</p>
 
 <p>This object may be accessed either as a tuple of
   (user, system, children_user, children_system, elapsed),
 or via the attributes user, system, children_user, children_system,
 and elapsed.</p>
 
-<p>See <a href="#times">times</a> for more information.</p>
+<p>See <a href="#times">os.times</a> for more information.</p>
 </div>
 
 
@@ -6952,13 +6952,13 @@ and elapsed.</p>
     </div>
     <a class="headerlink" href="#uname_result"></a>
     
-            <div class="docstring"><p>uname_result: Result from <a href="#uname">uname()</a>.</p>
+            <div class="docstring"><p>uname_result: Result from <a href="#uname">os.uname()</a>.</p>
 
 <p>This object may be accessed either as a tuple of
   (sysname, nodename, release, version, machine),
 or via the attributes sysname, nodename, release, version, and machine.</p>
 
-<p>See <a href="#uname">uname</a> for more information.</p>
+<p>See <a href="#uname">os.uname</a> for more information.</p>
 </div>
 
 
@@ -7257,7 +7257,7 @@ no children in a waitable state.</p>
   (si_pid, si_uid, si_signo, si_status, si_code),
 or via the attributes si_pid, si_uid, and so on.</p>
 
-<p>See <a href="#waitid">waitid</a> for more information.</p>
+<p>See <a href="#waitid">os.waitid</a> for more information.</p>
 </div>
 
 
@@ -7550,20 +7550,20 @@ subdirectories (directories are generated bottom up).</p>
 (e.g., via del or slice assignment), and walk will only recurse into the
 subdirectories whose names remain in dirnames; this can be used to prune the
 search, or to impose a specific order of visiting.  Modifying dirnames when
-topdown is false has no effect on the behavior of <a href="#walk">walk()</a>, since the
+topdown is false has no effect on the behavior of <a href="#walk">os.walk()</a>, since the
 directories in dirnames have already been generated by the time dirnames
 itself is generated. No matter the value of topdown, the list of
 subdirectories is retrieved before the tuples for the directory and its
 subdirectories are generated.</p>
 
-<p>By default errors from the <a href="#scandir">scandir()</a> call are ignored.  If
+<p>By default errors from the <a href="#scandir">os.scandir()</a> call are ignored.  If
 optional arg 'onerror' is specified, it should be a function; it
 will be called with one argument, an OSError instance.  It can
 report the error to continue with the walk, or raise the exception
 to abort the walk.  Note that the filename is available as the
 filename attribute of the exception object.</p>
 
-<p>By default, <a href="#walk">walk</a> does not follow symbolic links to subdirectories on
+<p>By default, <a href="#walk">os.walk</a> does not follow symbolic links to subdirectories on
 systems that support them.  In order to get this functionality, set the
 optional argument 'followlinks' to true.</p>
 
@@ -7576,7 +7576,7 @@ either.</p>
 
 <p>import os
 from os.path import join, getsize
-for root, dirs, files in <a href="#walk">walk</a>('python/Lib/email'):
+for root, dirs, files in <a href="#walk">os.walk</a>('python/Lib/email'):
     print(root, "consumes", end="")
     print(sum(getsize(join(root, name)) for name in files), end="")
     print("bytes in", len(files), "non-directory files")
@@ -7621,9 +7621,9 @@ for a longer period.</p>
 <p>Example:</p>
 
 <p>import os
-for root, dirs, files, rootfd in <a href="#fwalk">fwalk</a>('python/Lib/email'):
+for root, dirs, files, rootfd in <a href="#fwalk">os.fwalk</a>('python/Lib/email'):
     print(root, "consumes", end="")
-    print(sum(<a href="#stat">stat</a>(name, dir_fd=rootfd).st_size for name in files),
+    print(sum(<a href="#stat">os.stat</a>(name, dir_fd=rootfd).st_size for name in files),
           end="")
     print("bytes in", len(files), "non-directory files")
     if 'CVS' in dirs:

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 14.6.0"/>
+    <meta name="generator" content="pdoc 14.7.0"/>
     <title>pathlibutil API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
@@ -199,7 +199,7 @@ filename: ./README.md
 
 <hr />
 
-<p><code><a href="#Path">Path</a></code> inherits from  <code><a href="pathlib.html#Path">pathlib.Path</a></code> with some useful built-in python functions from <code><a href="shutil.html">shutil</a></code> and <code><a href="hashlib.html">hashlib</a></code></p>
+<p><code><a href="#Path">pathlibutil.Path</a></code> inherits from  <code><a href="pathlib.html#Path">pathlib.Path</a></code> with some useful built-in python functions from <code><a href="shutil.html">shutil</a></code> and <code><a href="hashlib.html">hashlib</a></code></p>
 
 <ul>
 <li><code><a href="#Path.hexdigest">Path.hexdigest()</a></code> to calculate and <code><a href="#Path.verify">Path.verify()</a></code> for verification of hexdigest from a file</li>
@@ -402,7 +402,7 @@ deleted directories and the amount of memory freed in MB.</p>
 
 <h2 id="example-5">Example 5</h2>
 
-<p>Inherit from <code><a href="#Path">Path</a></code> to register new a archive format. Specify a
+<p>Inherit from <code><a href="#Path">pathlibutil.Path</a></code> to register new a archive format. Specify a
 <code>archive</code> as keyword argument in the new subclass, which has to be the suffix
 without <code>.</code> of the archives. Implement a classmethod <code>_register_archive_format()</code>
 to register new archive formats.</p>
@@ -417,7 +417,7 @@ to register new archive formats.</p>
 <span class="kn">import</span> <span class="nn">pathlibutil</span>
 
 
-<span class="k">class</span> <span class="nc">RegisterFooBarFormat</span><span class="p">(</span><span class="n"><a href="#Path">Path</a></span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">RegisterFooBarFormat</span><span class="p">(</span><span class="n"><a href="#Path">pathlibutil.Path</a></span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">):</span>
   <span class="nd">@classmethod</span>
   <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -463,7 +463,7 @@ to register new archive formats.</p>
     <span class="n"><a href="shutil.html#register_unpack_format">shutil.register_unpack_format</a></span><span class="p">(</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;.foo.bar&quot;</span><span class="p">],</span> <span class="n">unpack_foobar</span><span class="p">)</span>
 
 
-<span class="n">file</span> <span class="o">=</span> <span class="n"><a href="#Path">Path</a></span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n"><a href="#Path">pathlibutil.Path</a></span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;available archive formats: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">archive_formats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
@@ -649,7 +649,7 @@ algorithm of the <code>__class__</code>.</p>
     
             <div class="docstring"><p>Iterates over all lines of the file until EOF is reached.</p>
 
-<p>For <code>**kwargs</code> see <code><a href="#Path.open">Path.open()</a></code>.</p>
+<p>For <code>**kwargs</code> see <code><a href="#Path.open">pathlib.Path.open()</a></code>.</p>
 </div>
 
 
@@ -829,7 +829,7 @@ extracted files.</p>
 
 <p>The set contains all built-in formats from <code><a href="shutil.html#get_archive_formats">shutil.get_archive_formats()</a></code>
 and all formats registered by subclasse
-(eg. <a href="#Register7zFormat">Register7zFormat</a>).</p>
+(eg. <a href="#Register7zFormat">pathlibutil.path.Register7zFormat</a>).</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">archive_formats</span>
@@ -1186,7 +1186,7 @@ call of <code><a href="#Register7zFormat.make_archive">make_archive()</a></code>
 <p>Example:</p>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="k">class</span> <span class="nc">Register7zArchive</span><span class="p">(</span><span class="n"><a href="#Path">Path</a></span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s2">&quot;7z&quot;</span><span class="p">):</span>
+<pre><span></span><code><span class="k">class</span> <span class="nc">Register7zArchive</span><span class="p">(</span><span class="n"><a href="#Path">pathlibutil.Path</a></span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s2">&quot;7z&quot;</span><span class="p">):</span>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
@@ -1452,7 +1452,7 @@ values are returned as is.</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">randbyte</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">))</span>
-<span class="go">&lt;class &#39;<a href="#ByteInt">ByteInt</a>&#39;&gt;</span>
+<span class="go">&lt;class &#39;<a href="#ByteInt">pathlibutil.types.ByteInt</a>&#39;&gt;</span>
 </code></pre>
 </div>
 
