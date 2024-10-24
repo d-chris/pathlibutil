@@ -95,29 +95,6 @@ class UrlNetloc:
 _UrlPath = TypeVar("_UrlPath", bound="UrlPath")
 
 
-def normalize_url(
-    url: str,
-    port: bool = False,
-    sort: bool = True,
-) -> str:
-    """
-    Function to normalize a URL by converting the scheme and host to lowercase, removing
-    port if present, and sorting the query parameters.
-
-    >>> normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1")
-    'https://www.example.com/Path?a=1&b=2'
-    """
-
-    url = UrlPath(url)
-
-    if port is False:
-        ports = {url.scheme.lower(): url.port}
-    else:
-        ports = {}
-
-    return url.normalize(sort=sort, ports=ports)
-
-
 def urlpath(func):
     """
     decorator to return a `UrlPath` object from a `urllib.parse.ParseResult` object.
@@ -173,6 +150,9 @@ class UrlPath(up.ParseResult):
 
     def __str__(self) -> str:
         return self.normalize()
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.geturl()!r})"
 
     def geturl(self, normalize: bool = False) -> str:
         """
@@ -387,18 +367,110 @@ class UrlPath(up.ParseResult):
 
         For `kwargs` see `urllib.request.urlopen`.
         """
+        url = self.geturl()
+
         try:
-            with urllib.request.urlopen(self.normalize(False), **kwargs) as response:
+            with urllib.request.urlopen(url, **kwargs) as response:
                 return response.status == 200
         except Exception as e:
             if errors is not False:
-                raise e
+                raise FileNotFoundError(url) from e
 
         return False
+
+
+def url_from(
+    uncpath: str,
+    hostname: str,
+    *,
+    strict: bool = False,
+    **kwargs,
+) -> UrlPath:
+    """
+    Convert a UNC path to an URL.
+
+    Args:
+        uncpath (str): The UNC path to convert.
+        hostname (str): The hostname to replace server and root from the UNC path.
+        strict (bool, optional): Check if the uncpath and URL exists.
+            Defaults to False.
+        **kwargs: Additional keyword arguments for `UrlPath.with_anchor()`.
+
+    Returns:
+        UrlPath: The converted URL.
+
+    Raises:
+        FileNotFoundError: If uncpath or URL does not exits and strict is True.
+
+    Examples:
+        >>> url_from(r"\\\\server\\root\\path\\readme.pdf", "https://www.server.com")
+        UrlPath('https://www.server.com/path/readme.pdf')
+    """
+    filename = pathlib.Path(uncpath).resolve(strict=strict)
+
+    url: UrlPath = UrlPath(filename.as_posix()).with_anchor(hostname, **kwargs)
+
+    if strict:
+        url.exists(errors=True)
+
+    return url
+
+
+def normalize(
+    url: str,
+    port: bool = False,
+    sort: bool = True,
+) -> str:
+    """
+    Normalize a URL by converting the scheme and host to lowercase, optionally removing
+    the port, and sorting the query parameters.
+
+    Args:
+        url (str): The URL to normalize.
+        port (bool, optional): If False, remove the port from the URL.
+            Defaults to False.
+        sort (bool, optional): If True, sort the query parameters. Defaults to True.
+
+    Returns:
+        str: The normalized URL.
+
+    Examples:
+        >>> normalize("https://www.ExamplE.com:443/Path?b=2&a=1")
+        'https://www.example.com/Path?a=1&b=2'
+    """
+
+    url: UrlPath = UrlPath(url)
+
+    if port is False:
+        ports = {url.scheme.lower(): url.port}
+    else:
+        ports = {}
+
+    return url.normalize(sort=sort, ports=ports)
+
+
+def normalize_url(*args, **kwargs) -> str:
+    """@private
+    Deprecated function, use `pathlibutil.urlpath.normalize()` instead.
+
+    Will be removed in the future.
+    """
+
+    import warnings
+
+    warnings.warn(
+        "normalize_url() is deprecated, use normalize() instead.\n"
+        + "Will be removed in the future.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
+
+    return normalize(*args, **kwargs)
 
 
 __all__ = [
     "UrlNetloc",
     "UrlPath",
-    "normalize_url",
+    "normalize",
+    "url_from",
 ]

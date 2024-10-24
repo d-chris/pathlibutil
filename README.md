@@ -49,7 +49,8 @@ Parse and modify URLs with `pathlibutil.urlpath`.
 
 - `pathlibutil.urlpath.UrlPath()` modify URL and easy access the `path` of the url like a `pathlib.PurePosixPath` object.
 - `pathlibutil.urlpath.UrlNetloc()` to parse and modify the `netloc` part of a URL.
-- `pathlibutil.urlpath.normalize_url()` to normalize a URL string.
+- `pathlibutil.urlpath.normalize()` to normalize a URL string.
+- `pathlibutil.urlpath.url_from()` to create a URL from an UNC path object.
 
 
 ## Installation

@@ -2,7 +2,7 @@ import pathlib
 
 import pytest
 
-from pathlibutil.urlpath import UrlNetloc, UrlPath, normalize_url
+from pathlibutil.urlpath import UrlNetloc, UrlPath, normalize, url_from
 
 
 @pytest.fixture
@@ -178,16 +178,16 @@ def test_urlnetloc_dict_prune():
     assert netloc.to_dict(True) == data
 
 
-def test_normalize_url_remove_ports():
+def test_normalize_remove_ports():
 
-    result = normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1")
+    result = normalize("https://www.ExamplE.com:443/Path?b=2&a=1")
 
     assert result == "https://www.example.com/Path?a=1&b=2"
 
 
-def test_normalize_url_with_ports():
+def test_normalize_with_ports():
 
-    result = normalize_url("https://www.ExamplE.com:443/Path?b=2&a=1", port=True)
+    result = normalize("https://www.ExamplE.com:443/Path?b=2&a=1", port=True)
 
     assert result == "https://www.example.com:443/Path?a=1&b=2"
 
@@ -196,3 +196,94 @@ def test_urlpath_validate(urlpath: UrlPath):
 
     with pytest.raises(ValueError):
         urlpath.with_hostname("[www.example.com")
+
+
+@pytest.fixture(
+    params=[200, 404],
+)
+def mock_openurl(request, mocker):
+    status = request.param
+
+    mock_response = mocker.Mock()
+    mock_response.status = status
+
+    mock = mocker.MagicMock()
+    mock.return_value = mock_response
+    mock.__enter__.return_value = mock_response
+
+    mocker.patch("urllib.request.urlopen", return_value=mock)
+
+    return status
+
+
+def test_exists(mock_openurl):
+    url = UrlPath("http://example.com/file.txt")
+
+    result = mock_openurl == 200
+
+    assert url.exists() is result
+
+
+def test_exists_raises(mocker):
+    mocker.patch("urllib.request.urlopen", side_effect=Exception)
+
+    url = UrlPath("http://example.com/file.txt")
+
+    with pytest.raises(FileNotFoundError):
+        url.exists(errors=True)
+
+
+def test_exists_notraises(mocker):
+    mocker.patch("urllib.request.urlopen", side_effect=Exception)
+
+    url = UrlPath("http://example.com/file.txt")
+
+    assert url.exists(errors=False) is False
+
+
+def test_with_path_raises():
+    url = UrlPath("http://example.com/file.txt")
+
+    with pytest.raises(TypeError):
+        url.with_path(1)
+
+
+def test_getattr_raises():
+    url = UrlPath("http://example.com/file.txt")
+
+    with pytest.raises(AttributeError):
+        url.__getattr__("not_a_method")
+
+
+def test_repr():
+    url = UrlPath("http://example.com/file.txt")
+
+    assert repr(url) == "UrlPath('http://example.com/file.txt')"
+
+
+def test_url_from():
+    url = url_from("//server/root/path/readme.pdf", "https://www.server.com")
+
+    print(str(url))
+    assert str(url) == "https://www.server.com/path/readme.pdf"
+
+
+def test_anchor():
+    url = UrlPath("//server/root/path/readme.pdf")
+
+    assert url.anchor == "//server/root"
+
+
+def test_with_anchor():
+    url = UrlPath("//server/root/path/readme.pdf")
+
+    assert (
+        url.with_anchor("//fubar", root=True).__str__()
+        == "//fubar/root/path/readme.pdf"
+    )
+
+
+def test_fubar_anchor():
+    url = UrlPath("//server/root/path/readme.pdf")
+
+    assert url.with_anchor("//fubar").__str__() == "//fubar/path/readme.pdf"

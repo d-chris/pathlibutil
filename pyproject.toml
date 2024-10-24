@@ -70,3 +70,8 @@ addopts = [
   "--cov-report=term-missing:skip-covered",
   "--cov-report=xml",
 ]
+
+[tool.coverage.report]
+exclude_lines = [
+  "^def normalize_url",
+]
