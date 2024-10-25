@@ -367,7 +367,7 @@ class UrlPath(up.ParseResult):
 
         For `kwargs` see `urllib.request.urlopen`.
         """
-        url = self.geturl()
+        url = self.normalize()
 
         try:
             with urllib.request.urlopen(url, **kwargs) as response:
