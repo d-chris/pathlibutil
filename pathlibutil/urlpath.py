@@ -189,6 +189,10 @@ class UrlPath(up.ParseResult):
     }
 
     def __new__(cls, url, **kwargs) -> _UrlPath:
+        url = (
+            f"//{url[1:]}" if url.startswith("/") and not url.startswith("//") else url
+        )
+
         parsed_url = up.urlparse(url, **kwargs)
         return super().__new__(cls, *parsed_url)
 
