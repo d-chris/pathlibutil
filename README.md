@@ -49,7 +49,8 @@ Parse and modify URLs with `pathlibutil.urlpath`.
 
 - `pathlibutil.urlpath.UrlPath()` modify URL and easy access the `path` of the url like a `pathlib.PurePosixPath` object.
 - `pathlibutil.urlpath.UrlNetloc()` to parse and modify the `netloc` part of a URL.
-- `pathlibutil.urlpath.normalize_url()` to normalize a URL string.
+- `pathlibutil.urlpath.normalize()` to normalize a URL string.
+- `pathlibutil.urlpath.url_from()` to create a URL from an UNC path object.
 
 
 ## Installation
@@ -296,4 +297,92 @@ os.getcwd is                    K:/pathlibutil
 Path.cwd(frozen=True) is        K:/pathlibutil/examples
 Path.cwd(frozen=False) is       K:/pathlibutil
 Path.cwd(frozen=_MEIPASS) is    C:/Users/CHRIST~1.DOE/AppData/Local/Temp/_MEI106042
+```
+
+## Example 7
+
+Console application to convert UNC paths to intranet URLs.
+
+By default, it checks if the filename and URL are available and copies the
+normalized URL to the clipboard.
+
+> `pathlibutil.urlpath.url_from()`
+
+```python
+import argparse
+import sys
+
+try:
+    import pyperclip
+
+    import pathlibutil.urlpath as up
+except ModuleNotFoundError as e:
+    raise ModuleNotFoundError(f"pip install {e.name.split('.')[0]}") from e
+
+
+def intranet_from(uncpath: str, check: bool = True) -> str:
+    """
+    Return the intranet URL for the given UNC path.
+    """
+
+    url = up.url_from(
+        uncpath,
+        hostname="http://intranet.example.de",
+        strict=check,
+    )
+
+    return url.normalize()
+
+
+def cli():
+
+    parser = argparse.ArgumentParser(
+        description=intranet_from.__doc__,
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+
+    parser.add_argument(
+        "filename",
+        nargs="*",
+        help="The UNC path to the file.",
+    )
+    parser.add_argument(
+        "-c",
+        "--no-check",
+        action="store_false",
+        dest="check",
+        help="Don't check if filename and url is available.",
+    )
+    parser.add_argument(
+        "-s",
+        "--silent",
+        action="store_true",
+        help="Do not print the url to stdout.",
+    )
+    parser.add_argument(
+        "-n",
+        "--no-clip",
+        action="store_false",
+        dest="clip",
+        help="Don't copy the url to the clipboard.",
+    )
+
+    args = parser.parse_args()
+    filename = " ".join(args.filename)
+
+    url = intranet_from(filename, check=args.check)
+
+    if not args.silent:
+        print(url)
+
+    if args.clip:
+        pyperclip.copy(url)
+
+
+if __name__ == "__main__":
+    try:
+        cli()
+    except Exception as e:
+        print(e, file=sys.stderr)
+        sys.exit(1)
 ```

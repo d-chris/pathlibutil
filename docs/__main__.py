@@ -57,6 +57,7 @@ def main() -> int:
                 "template_directory": cwd / "dark-mode",
                 "show_source": False,
                 "search": False,
+                "docformat": "google",
             }
 
             modules = [
