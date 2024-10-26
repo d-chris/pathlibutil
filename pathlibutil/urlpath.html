@@ -109,7 +109,10 @@
 
             </li>
             <li>
-                    <a class="function" href="#normalize_url">normalize_url</a>
+                    <a class="function" href="#normalize">normalize</a>
+            </li>
+            <li>
+                    <a class="function" href="#url_from">url_from</a>
             </li>
     </ul>
 
@@ -145,13 +148,26 @@
     
             <div class="docstring"><p>A dataclass to represent the netloc part of a URL.</p>
 
-<div class="pdoc-code codehilite">
+<h6 id="attributes">Attributes:</h6>
+
+<ul>
+<li><strong>hostname (str):</strong>  The hostname of the URL.</li>
+<li><strong>port (Optional[int]):</strong>  The port number of the URL. Defaults to None.</li>
+<li><strong>username (Optional[str]):</strong>  The username for authentication. Defaults to None.</li>
+<li><strong>password (Optional[str]):</strong>  The password for authentication. Defaults to None.</li>
+</ul>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n"><a href="#UrlNetloc.from_netloc">UrlNetloc.from_netloc</a></span><span class="p">(</span><span class="s2">&quot;www.example.com:443&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="go">&#39;www.example.com&#39;</span>
 </code></pre>
-</div>
+  </div>
+</blockquote>
 </div>
 
 
@@ -175,7 +191,15 @@
     </div>
     <a class="headerlink" href="#UrlNetloc.hostname"></a>
     
-    
+            <div class="docstring"><p>The hostname of the URL.</p>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <p>'www.example.com'</p>
+</blockquote>
+</div>
+
 
                             </div>
                             <div id="UrlNetloc.port" class="classattr">
@@ -187,7 +211,9 @@
     </div>
     <a class="headerlink" href="#UrlNetloc.port"></a>
     
-    
+            <div class="docstring"><p>The port number of the URL. Defaults to None.</p>
+</div>
+
 
                             </div>
                             <div id="UrlNetloc.username" class="classattr">
@@ -199,7 +225,9 @@
     </div>
     <a class="headerlink" href="#UrlNetloc.username"></a>
     
-    
+            <div class="docstring"><p>The username for authentication. Defaults to None</p>
+</div>
+
 
                             </div>
                             <div id="UrlNetloc.password" class="classattr">
@@ -211,7 +239,9 @@
     </div>
     <a class="headerlink" href="#UrlNetloc.password"></a>
     
-    
+            <div class="docstring"><p>The password for authentication. Defaults to None.</p>
+</div>
+
 
                             </div>
                             <div id="UrlNetloc.netloc" class="classattr">
@@ -222,7 +252,23 @@
     </div>
     <a class="headerlink" href="#UrlNetloc.netloc"></a>
     
-            <div class="docstring"><p>netloc string representation of the <code>dataclass</code></p>
+            <div class="docstring"><p>Return the netloc string representation of the <code>dataclass</code>.</p>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>str: The netloc string representation.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">UrlNetloc</span><span class="p">(</span><span class="s2">&quot;www.example.de&quot;</span><span class="p">,</span> <span class="mi">433</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;pass&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span>
+<span class="go">&#39;user:pass@www.example.de:433&#39;</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -238,7 +284,29 @@
     </div>
     <a class="headerlink" href="#UrlNetloc.from_netloc"></a>
     
-            <div class="docstring"><p>Parse a netloc string into a <code><a href="#UrlNetloc">UrlNetloc</a></code> object</p>
+            <div class="docstring"><p>Parse a netloc string into a <code><a href="#UrlNetloc">UrlNetloc</a></code> object.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>netloc (str):</strong>  The netloc string to parse.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlNetloc">UrlNetloc</a></code>: An instance of <code><a href="#UrlNetloc">UrlNetloc</a></code> with the parsed components.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n"><a href="#UrlNetloc.from_netloc">UrlNetloc.from_netloc</a></span><span class="p">(</span><span class="s2">&quot;user:pass@example.de:433&quot;</span><span class="p">)</span>
+<span class="go">UrlNetloc(hostname=&#39;example.de&#39;, port=433, username=&#39;user&#39;, password=&#39;pass&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -253,10 +321,41 @@
     </div>
     <a class="headerlink" href="#UrlNetloc.to_dict"></a>
     
-            <div class="docstring"><p>Convert the <code><a href="#UrlNetloc">UrlNetloc</a></code> object to a dictionary</p>
+            <div class="docstring"><p>Convert the <code><a href="#UrlNetloc">UrlNetloc</a></code> object to a dictionary.</p>
 
-<p>If <code>prune</code> is <code>True</code>, remove all key-value pairs from the dict where the value
-is <code>None</code>.</p>
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>prune (bool):</strong>  If True, removes key-value pairs where the value is <code>None</code>.
+Defaults to False.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>dict: A dictionary representation of the <code><a href="#UrlNetloc">UrlNetloc</a></code> object.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">loc</span> <span class="o">=</span> <span class="n">UrlNetloc</span><span class="p">(</span><span class="s2">&quot;example.de&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">)</span>
+</code></pre>
+  </div>
+  
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">loc</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="go">{&#39;hostname&#39;: &#39;example.de&#39;, &#39;port&#39;: 80, &#39;username&#39;: &#39;user&#39;, &#39;password&#39;: None}</span>
+</code></pre>
+  </div>
+  
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">loc</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">prune</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">{&#39;hostname&#39;: &#39;www.example.de&#39;, &#39;port&#39;: 80, &#39;username&#39;: &#39;user&#39;}</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -274,14 +373,30 @@ is <code>None</code>.</p>
     
             <div class="docstring"><p>Class to manipulate URLs to change the scheme, netloc, path, query, and fragment.</p>
 
-<p>Wrap the <code><a href="../pathlib.html#PurePosixPath">pathlib.PurePosixPath</a></code> methods to return a new <code><a href="#UrlPath">UrlPath</a></code> object</p>
+<p>This class wraps <code><a href="../pathlib.html#PurePosixPath">pathlib.PurePosixPath</a></code> methods to return a new <code><a href="#UrlPath">UrlPath</a></code> object.
+Attributes and methods from <code>PurePosixPath</code>, such as <code>name</code> and <code>with_suffix</code>,
+are available.</p>
 
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;https://www.example.com/path/to/file&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.txt&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="go">&#39;https://www.example.com/path/to/file.txt&#39;</span>
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;https://www.example.com/path/file.txt&quot;</span><span class="p">)</span>
 </code></pre>
-</div>
+  </div>
+  
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;file.txt&#39;</span>
+</code></pre>
+  </div>
+  
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.html&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;https://www.example.com/path/file.html&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -296,7 +411,31 @@ is <code>None</code>.</p>
     
             <div class="docstring"><p>Initialize the <code><a href="#UrlPath">UrlPath</a></code> object with a URL string.</p>
 
-<p>A <code>ValueError</code> is raised if the URL is not valid.</p>
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>url (str):</strong>  The URL string to initialize the <code><a href="#UrlPath">UrlPath</a></code> object.</li>
+<li><strong>scheme (str, optional):</strong>  The scheme to use if not present in the URL.
+Defaults to an empty string.</li>
+<li><strong>allow_fragments (bool, optional):</strong>  Whether to allow fragments in the URL.
+Defaults to True.</li>
+</ul>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If the URL is not valid.</li>
+</ul>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;http://example.com/path/file.txt&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;http://example.com/path/file.txt&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -313,8 +452,41 @@ is <code>None</code>.</p>
     
             <div class="docstring"><p>Return a re-combined version of the URL.</p>
 
-<p>If <code><a href="#UrlPath.normalize">normalize</a></code> is <code>True</code> scheme and netloc is converted  to lowercase,
-default ports are removed and query parameters are sorted.</p>
+<p>If <code><a href="#UrlPath.normalize">normalize</a></code> is <code>True</code>, the scheme and netloc are converted to lowercase,
+default ports are removed, and query parameters are sorted.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>normalize (bool):</strong>  If True, normalizes the URL. Defaults to False.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>str: The re-combined URL.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;HTTP://Example.COM:80/path/file name.txt?b=2&amp;a=1&quot;</span><span class="p">)</span>
+</code></pre>
+  </div>
+  
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;http://example.com/path/file%20name.txt?a=1&amp;b=2&#39;</span>
+</code></pre>
+  </div>
+  
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span>
+<span class="go">&#39;http://Example.COM:80/path/file name.txt?b=2&amp;a=1&#39;</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -331,6 +503,30 @@ default ports are removed and query parameters are sorted.</p>
     
             <div class="docstring"><p>Normalize the URL by converting the scheme and host to lowercase, removing the
 default port if present, and sorting the query parameters.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>sort (bool):</strong>  If True, sorts the query parameters. Defaults to True.</li>
+<li><strong>**kwargs:</strong>  Additional arguments, such as custom port mappings.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>str: The normalized URL.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;HTTP://Example.COM:80/path/file name.txt?b=2&amp;a=1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+<span class="go">&#39;http://example.com/path/file%20name.txt?a=1&amp;b=2&#39;</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -346,7 +542,30 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_scheme"></a>
     
-            <div class="docstring"><p>Change the scheme of the URL.</p>
+            <div class="docstring"><p>Add or Change the <code><a href="#UrlPath.scheme">UrlPath.scheme</a></code> of the URL.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>scheme (str):</strong>  The new scheme to set in the URL.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated scheme.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;http://example.com/path/file.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_port</span><span class="p">(</span><span class="mi">990</span><span class="p">)</span><span class="o">.</span><span class="n">with_scheme</span><span class="p">(</span><span class="s2">&quot;ftp&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;ftp://example.com:990/path/file.txt&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -362,7 +581,31 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_netloc"></a>
     
-            <div class="docstring"><p>Change the netloc of the URL.</p>
+            <div class="docstring"><p>Add or Change the <code><a href="#UrlPath.netloc">UrlPath.netloc</a></code> of the URL.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>netloc (Union[str, UrlNetloc]):</strong>  The new netloc to set in the URL. It can be
+a string or an instance of <code><a href="#UrlNetloc">UrlNetloc</a></code>.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated netloc.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;http://www.oldhost.com/path/file.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_netloc</span><span class="p">(</span><span class="s2">&quot;example.com&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;http://example.com/path/file.txt&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -378,7 +621,36 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_path"></a>
     
-            <div class="docstring"><p>Change the path of the URL.</p>
+            <div class="docstring"><p>Add or Change the <code><a href="#UrlPath.path">UrlPath.path</a></code> of the URL.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>path (Union[str, <a href="../pathlib.html#PurePosixPath">pathlib.PurePosixPath</a>]):</strong>  The new path to set in the URL.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated path.</p>
+</blockquote>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>TypeError:</strong>  If the provided path is of the wrong type</li>
+</ul>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;http://example.com/oldpath&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_path</span><span class="p">(</span><span class="s2">&quot;/path/file.txt&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;http://example.com/path/file.txt&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -394,7 +666,30 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_params"></a>
     
-            <div class="docstring"><p>Change the parameters of the URL.</p>
+            <div class="docstring"><p>Change the <code><a href="#UrlPath.params">UrlPath.params</a></code> of the URL.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>params (str):</strong>  The new parameters to set in the URL.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated parameters.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;http://example.com/path&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_params</span><span class="p">(</span><span class="s2">&quot;param1=value1;param2=value2&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;http://example.com/path;param1=value1;param2=value2&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -410,7 +705,30 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_query"></a>
     
-            <div class="docstring"><p>Change the query of the URL.</p>
+            <div class="docstring"><p>Add or Change the <code><a href="#UrlPath.query">UrlPath.query</a></code> of the URL.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>query (str):</strong>  The new query string to set in the URL.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated query string.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;http://example.com/path&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_query</span><span class="p">(</span><span class="s2">&quot;key=value&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;http://example.com/path?key=value&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -426,7 +744,30 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_fragment"></a>
     
-            <div class="docstring"><p>Change the fragment of the URL.</p>
+            <div class="docstring"><p>Add or Change the <code><a href="#UrlPath.fragment">UrlPath.fragment</a></code> of the URL.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>fragment (str):</strong>  The new fragment to set in the URL.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated fragment.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;http://example.com/path&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_fragment</span><span class="p">(</span><span class="s2">&quot;section1&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;http://example.com/path#section1&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -441,9 +782,32 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_port"></a>
     
-            <div class="docstring"><p>change the port in the netloc of the URL.</p>
+            <div class="docstring"><p>Add or Change the <code><a href="#UrlPath.port">UrlPath.port</a></code> in the netloc of the URL.</p>
 
 <p>If <code><a href="#UrlPath.port">port</a></code> is <code>None</code>, the port is removed.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>port (int):</strong>  The new port to set in the URL.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated port.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;http://example.de/path/file.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_port</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;http://example.de:8080/path/file.txt&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -458,7 +822,30 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_hostname"></a>
     
-            <div class="docstring"><p>change the hostname in the netloc of the URL</p>
+            <div class="docstring"><p>Change the <code><a href="#UrlPath.hostname">UrlPath.hostname</a></code> in the netloc of the URL.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>hostname (str):</strong>  The new hostname to set in the URL.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated hostname.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;http://example.de/path/file.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_hostname</span><span class="p">(</span><span class="s2">&quot;www.server.com&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;http://www.server.com/path/file.txt&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -473,11 +860,35 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_credentials"></a>
     
-            <div class="docstring"><p>change the username and password in the netloc of the URL</p>
+            <div class="docstring"><p>Add or change the username and password in the netloc of the URL.</p>
 
-<p>to change only <code><a href="#UrlPath.username">username</a></code> the <code><a href="#UrlPath.password">password</a></code> must also be provided.</p>
+<p>To change only <code><a href="#UrlPath.username">username</a></code>, the <code><a href="#UrlPath.password">password</a></code> must also be provided.
+If <code><a href="#UrlPath.username">username</a></code> is <code>None</code>, the credentials are removed.</p>
 
-<p>If <code><a href="#UrlPath.username">username</a></code> is <code>None</code>, the credentials are removed.</p>
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>username (str):</strong>  The new username to set in the URL.</li>
+<li><strong>password (str, optional):</strong>  The new password to set in the URL.
+Defaults to None.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated credentials.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;ftp://example.com/path&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_credentials</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;pass&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;ftp://user:pass@example.com/path&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -490,7 +901,23 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.parts"></a>
     
-            <div class="docstring"><p>return the parts of the path without any '/'.</p>
+            <div class="docstring"><p>Returns the parts of the path without any leading '/'.</p>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Tuple[str, ...]: A tuple containing the parts of the path.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;//server/root/path/file.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span>
+<span class="go">(&#39;root&#39;, &#39;path&#39;, &#39;file.txt&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -503,13 +930,23 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.anchor"></a>
     
-            <div class="docstring"><p>The concatenation of the netloc and root of the path.</p>
+            <div class="docstring"><p>Concatenates the netloc and root of the path.</p>
 
-<div class="pdoc-code codehilite">
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>str: The combined netloc and root of the path.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;//server/root/path/file.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">anchor</span>
 <span class="go">&#39;//server/root&#39;</span>
 </code></pre>
-</div>
+  </div>
+</blockquote>
 </div>
 
 
@@ -524,16 +961,45 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.with_anchor"></a>
     
-            <div class="docstring"><p>Change the anchor of the URL.</p>
+            <div class="docstring"><p>Change the <code><a href="#UrlPath.anchor">UrlPath.anchor</a></code> of the URL.</p>
 
 <p>If <code>root</code> is <code>True</code>, the root of the path will not be removed.</p>
 
-<div class="pdoc-code codehilite">
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>anchor (str):</strong>  The new anchor to set for the URL.</li>
+<li><strong>root (bool):</strong>  If <code>True</code>, the root of the path will not be removed.
+Defaults to <code>False</code>.</li>
+<li><strong>**kwargs:</strong>  Additional arguments to pass to the UrlPath class constructor.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p><code><a href="#UrlPath">UrlPath</a></code>: A new URL with the updated anchor.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="n">UrlPath</span><span class="p">(</span><span class="s2">&quot;//server/root/path/file.txt&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_anchor</span><span class="p">(</span><span class="s2">&quot;https://www.server.com&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span>
-<span class="go">&#39;https://www.server.com/path/file.txt&#39;</span>
 </code></pre>
-</div>
+  </div>
+  
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_anchor</span><span class="p">(</span><span class="s2">&quot;https://www.server.com&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;https://www.server.com/path/file.txt&#39;)</span>
+</code></pre>
+  </div>
+  
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span><span class="o">.</span><span class="n">with_anchor</span><span class="p">(</span><span class="s2">&quot;https://www.server.com&quot;</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;https://www.server.com/root/path/file.txt&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 
@@ -548,11 +1014,27 @@ default port if present, and sorting the query parameters.</p>
     </div>
     <a class="headerlink" href="#UrlPath.exists"></a>
     
-            <div class="docstring"><p>Check if the URL returns a 200 status code.</p>
+            <div class="docstring"><p>Check if the URL exists by making an HTTP request.</p>
 
-<p>If <code>errors</code> is <code>False</code>, exceptions are suppressed and <code>False</code> is returned.</p>
+<h6 id="arguments">Arguments:</h6>
 
-<p>For <code>kwargs</code> see <code><a href="../urllib/request.html#urlopen">urllib.request.urlopen</a></code>.</p>
+<ul>
+<li><strong>errors (bool):</strong>  If True, raises a FileNotFoundError when the URL does
+not exist. Defaults to False.</li>
+<li><strong>**kwargs:</strong>  Additional arguments to pass to <code><a href="../urllib/request.html#urlopen">urllib.request.urlopen</a></code>.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>bool: True if the URL exists (HTTP status 200), False otherwise.</p>
+</blockquote>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>FileNotFoundError:</strong>  If <code>errors</code> is True and the URL does not exist.</li>
+</ul>
 </div>
 
 
@@ -588,24 +1070,90 @@ default port if present, and sorting the query parameters.</p>
                                 </dl>
                             </div>
                 </section>
-                <section id="normalize_url">
+                <section id="normalize">
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">normalize_url</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">url</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">port</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>, </span><span class="param"><span class="n">sort</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+        <span class="name">normalize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">url</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">port</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>, </span><span class="param"><span class="n">sort</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
 
         
     </div>
-    <a class="headerlink" href="#normalize_url"></a>
+    <a class="headerlink" href="#normalize"></a>
     
-            <div class="docstring"><p>Function to normalize a URL by converting the scheme and host to lowercase, removing
-port if present, and sorting the query parameters.</p>
+            <div class="docstring"><p>Normalize a URL by converting the scheme and host to lowercase, optionally removing
+the port, and sorting the query parameters.</p>
 
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">normalize_url</span><span class="p">(</span><span class="s2">&quot;https://www.ExamplE.com:443/Path?b=2&amp;a=1&quot;</span><span class="p">)</span>
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>url (str):</strong>  The URL to normalize.</li>
+<li><strong>port (bool, optional):</strong>  If False, remove the port from the URL.
+Defaults to False.</li>
+<li><strong>sort (bool, optional):</strong>  If True, sort the query parameters. Defaults to True.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>str: The normalized URL.</p>
+</blockquote>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">normalize</span><span class="p">(</span><span class="s2">&quot;https://www.ExamplE.com:443/Path?b=2&amp;a=1&quot;</span><span class="p">)</span>
 <span class="go">&#39;https://www.example.com/Path?a=1&amp;b=2&#39;</span>
 </code></pre>
+  </div>
+</blockquote>
 </div>
+
+
+                </section>
+                <section id="url_from">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">url_from</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">uncpath</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#UrlPath">UrlPath</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#url_from"></a>
+    
+            <div class="docstring"><p>Convert a UNC path to an URL.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>uncpath (str):</strong>  The UNC path to convert.</li>
+<li><strong>hostname (str):</strong>  The hostname to replace server and root from the UNC path.</li>
+<li><strong>strict (bool, optional):</strong>  Check if the uncpath and URL exists.
+Defaults to False.</li>
+<li><strong>**kwargs:</strong>  Additional keyword arguments for <code><a href="#UrlPath.with_anchor">UrlPath.with_anchor()</a></code>.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>UrlPath: The converted URL.</p>
+</blockquote>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>FileNotFoundError:</strong>  If uncpath or URL does not exits and strict is True.</li>
+</ul>
+
+<h6 id="examples">Examples:</h6>
+
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">url_from</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">server\root\path\readme.pdf&quot;</span><span class="p">,</span> <span class="s2">&quot;https://www.server.com&quot;</span><span class="p">)</span>
+<span class="go">UrlPath(&#39;https://www.server.com/path/readme.pdf&#39;)</span>
+</code></pre>
+  </div>
+</blockquote>
 </div>
 
 

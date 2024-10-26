@@ -188,20 +188,22 @@ the zlib module.</p>
 <p>Choose your hash function wisely.  Some have known collision weaknesses.
 sha384 and sha512 will be slow on 32 bit platforms.</p>
 
-<p>Hash objects have these methods:</p>
+<h6 id="hash-objects-have-these-methods">Hash objects have these methods:</h6>
 
-<ul>
-<li>update(data): Update the hash object with the bytes in data. Repeated calls
-are equivalent to a single call with the concatenation of all
-the arguments.</li>
-<li>digest():     Return the digest of the bytes passed to the update() method
-so far as a bytes object.</li>
-<li>hexdigest():  Like digest() except the digest is returned as a string
-of double length, containing only hexadecimal digits.</li>
-<li>copy():       Return a copy (clone) of the hash object. This can be used to
-efficiently compute the digests of datas that share a common
-initial substring.</li>
-</ul>
+<blockquote>
+  <ul>
+  <li>update(data): Update the hash object with the bytes in data. Repeated calls
+  are equivalent to a single call with the concatenation of all
+  the arguments.</li>
+  <li>digest():     Return the digest of the bytes passed to the update() method
+  so far as a bytes object.</li>
+  <li>hexdigest():  Like digest() except the digest is returned as a string
+  of double length, containing only hexadecimal digits.</li>
+  <li>copy():       Return a copy (clone) of the hash object. This can be used to
+  efficiently compute the digests of datas that share a common
+  initial substring.</li>
+  </ul>
+</blockquote>
 
 <p>For example, to obtain the digest of the byte string 'Nobody inspects the
 spammish repetition':</p>
@@ -214,11 +216,15 @@ spammish repetition':</p>
 b'\xbbd\x9c\x83\xdd\x1e\xa5\xc9\xd9\xde\xc9\xa1\x8d\xf0\xff\xe9'
 </code></pre>
 
-<p>More condensed:</p>
+<h6 id="more-condensed">More condensed:</h6>
 
-<pre><code>&gt;&gt;&gt; <a href="#sha224">hashlib.sha224</a>(b"Nobody inspects the spammish repetition").hexdigest()
-'a4337bc45a8fc544c03f52dc550cd6e1e87021bc896588bd79e901e2'
+<blockquote>
+  <div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n"><a href="#sha224">hashlib.sha224</a></span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Nobody inspects the spammish repetition&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="go">&#39;a4337bc45a8fc544c03f52dc550cd6e1e87021bc896588bd79e901e2&#39;</span>
 </code></pre>
+  </div>
+</blockquote>
 </div>
 
                 
@@ -737,7 +743,7 @@ optionally initialized with data (which must be a bytes-like object).</p>
                     <div class="attr variable">
             <span class="name">algorithms_guaranteed</span>        =
 <input id="algorithms_guaranteed-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="algorithms_guaranteed-view-value"></label><span class="default_value">{&#39;sha3_512&#39;, &#39;blake2s&#39;, &#39;sha1&#39;, &#39;sha3_384&#39;, &#39;sha384&#39;, &#39;sha3_224&#39;, &#39;blake2b&#39;, &#39;md5&#39;, &#39;sha256&#39;, &#39;shake_256&#39;, &#39;sha3_256&#39;, &#39;shake_128&#39;, &#39;sha512&#39;, &#39;sha224&#39;}</span>
+            <label class="view-value-button pdoc-button" for="algorithms_guaranteed-view-value"></label><span class="default_value">{&#39;sha256&#39;, &#39;sha3_512&#39;, &#39;sha3_256&#39;, &#39;sha512&#39;, &#39;sha224&#39;, &#39;sha1&#39;, &#39;md5&#39;, &#39;blake2b&#39;, &#39;blake2s&#39;, &#39;shake_256&#39;, &#39;sha3_384&#39;, &#39;sha3_224&#39;, &#39;sha384&#39;, &#39;shake_128&#39;}</span>
 
         
     </div>
@@ -750,7 +756,7 @@ optionally initialized with data (which must be a bytes-like object).</p>
                     <div class="attr variable">
             <span class="name">algorithms_available</span>        =
 <input id="algorithms_available-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="algorithms_available-view-value"></label><span class="default_value">{&#39;blake2b&#39;, &#39;blake2s&#39;, &#39;sha512&#39;, &#39;sha224&#39;, &#39;sha1&#39;, &#39;md5&#39;, &#39;sha512_256&#39;, &#39;shake_256&#39;, &#39;shake_128&#39;, &#39;md5-sha1&#39;, &#39;sha3_384&#39;, &#39;sha512_224&#39;, &#39;sha384&#39;, &#39;sha3_224&#39;, &#39;sha256&#39;, &#39;sha3_256&#39;, &#39;sha3_512&#39;, &#39;sm3&#39;}</span>
+            <label class="view-value-button pdoc-button" for="algorithms_available-view-value"></label><span class="default_value">{&#39;md5-sha1&#39;, &#39;md5&#39;, &#39;blake2s&#39;, &#39;sha3_224&#39;, &#39;sha512&#39;, &#39;sha224&#39;, &#39;sha1&#39;, &#39;shake_256&#39;, &#39;sha512_256&#39;, &#39;sm3&#39;, &#39;sha256&#39;, &#39;sha3_512&#39;, &#39;sha3_256&#39;, &#39;blake2b&#39;, &#39;sha512_224&#39;, &#39;sha3_384&#39;, &#39;sha384&#39;, &#39;shake_128&#39;}</span>
 
         
     </div>

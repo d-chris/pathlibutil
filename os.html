@@ -1353,22 +1353,24 @@ os    </h1>
 
                         <div class="docstring"><p>OS routines for NT or Posix depending on what system we're on.</p>
 
-<p>This exports:</p>
+<h6 id="this-exports">This exports:</h6>
 
-<ul>
-<li>all functions from posix or nt, e.g. unlink, stat, etc.</li>
-<li>os.path is either posixpath or ntpath</li>
-<li><a href="#name">os.name</a> is either 'posix' or 'nt'</li>
-<li><a href="#curdir">os.curdir</a> is a string representing the current directory (always '.')</li>
-<li><a href="#pardir">os.pardir</a> is a string representing the parent directory (always '..')</li>
-<li><a href="#sep">os.sep</a> is the (or a most common) pathname separator ('/' or '\')</li>
-<li><a href="#extsep">os.extsep</a> is the extension separator (always '.')</li>
-<li><a href="#altsep">os.altsep</a> is the alternate pathname separator (None or '/')</li>
-<li><a href="#pathsep">os.pathsep</a> is the component separator used in $PATH etc</li>
-<li><a href="#linesep">os.linesep</a> is the line separator in text files ('\r' or '\n' or '\r\n')</li>
-<li><a href="#defpath">os.defpath</a> is the default search path for executables</li>
-<li><a href="#devnull">os.devnull</a> is the file path of the null device ('/dev/null', etc.)</li>
-</ul>
+<blockquote>
+  <ul>
+  <li>all functions from posix or nt, e.g. unlink, stat, etc.</li>
+  <li>os.path is either posixpath or ntpath</li>
+  <li><a href="#name">os.name</a> is either 'posix' or 'nt'</li>
+  <li><a href="#curdir">os.curdir</a> is a string representing the current directory (always '.')</li>
+  <li><a href="#pardir">os.pardir</a> is a string representing the parent directory (always '..')</li>
+  <li><a href="#sep">os.sep</a> is the (or a most common) pathname separator ('/' or '\')</li>
+  <li><a href="#extsep">os.extsep</a> is the extension separator (always '.')</li>
+  <li><a href="#altsep">os.altsep</a> is the alternate pathname separator (None or '/')</li>
+  <li><a href="#pathsep">os.pathsep</a> is the component separator used in $PATH etc</li>
+  <li><a href="#linesep">os.linesep</a> is the line separator in text files ('\r' or '\n' or '\r\n')</li>
+  <li><a href="#defpath">os.defpath</a> is the default search path for executables</li>
+  <li><a href="#devnull">os.devnull</a> is the file path of the null device ('/dev/null', etc.)</li>
+  </ul>
+</blockquote>
 
 <p>Programs that import and use 'os' stand a better chance of being
 portable between different platforms.  Of course, they must then
@@ -4986,8 +4988,11 @@ signals.</p>
     
             <div class="docstring"><p>Create a pipe.</p>
 
-<p>Returns a tuple of two file descriptors:
-  (read_fd, write_fd)</p>
+<h6 id="returns-a-tuple-of-two-file-descriptors">Returns a tuple of two file descriptors:</h6>
+
+<blockquote>
+  <p>(read_fd, write_fd)</p>
+</blockquote>
 </div>
 
 
@@ -5004,8 +5009,11 @@ signals.</p>
     
             <div class="docstring"><p>Create a pipe with flags set atomically.</p>
 
-<p>Returns a tuple of two file descriptors:
-  (read_fd, write_fd)</p>
+<h6 id="returns-a-tuple-of-two-file-descriptors">Returns a tuple of two file descriptors:</h6>
+
+<blockquote>
+  <p>(read_fd, write_fd)</p>
+</blockquote>
 
 <p>flags can be constructed by ORing together one or more of these values:
 O_NONBLOCK, O_CLOEXEC.</p>
@@ -6733,9 +6741,13 @@ dir_fd may not be implemented on your platform.
     
             <div class="docstring"><p>Return a collection containing process timing information.</p>
 
-<p>The object returned behaves like a named tuple with these fields:
-  (utime, stime, cutime, cstime, elapsed_time)
-All fields are floating point numbers.</p>
+<h6 id="the-object-returned-behaves-like-a-named-tuple-with-these-fields">The object returned behaves like a named tuple with these fields:</h6>
+
+<blockquote>
+  <p>(utime, stime, cutime, cstime, elapsed_time)</p>
+</blockquote>
+
+<p>All fields are floating point numbers.</p>
 </div>
 
 
@@ -6936,8 +6948,11 @@ and elapsed.</p>
     
             <div class="docstring"><p>Return an object identifying the current operating system.</p>
 
-<p>The object behaves like a named tuple with the following fields:
-  (sysname, nodename, release, version, machine)</p>
+<h6 id="the-object-behaves-like-a-named-tuple-with-the-following-fields">The object behaves like a named tuple with the following fields:</h6>
+
+<blockquote>
+  <p>(sysname, nodename, release, version, machine)</p>
+</blockquote>
 </div>
 
 
@@ -7173,8 +7188,11 @@ dir_fd and follow_symlinks may not be available on your platform.
     
             <div class="docstring"><p>Wait for completion of a child process.</p>
 
-<p>Returns a tuple of information about the child process:
-    (pid, status)</p>
+<h6 id="returns-a-tuple-of-information-about-the-child-process">Returns a tuple of information about the child process:</h6>
+
+<blockquote>
+  <p>(pid, status)</p>
+</blockquote>
 </div>
 
 
@@ -7191,8 +7209,11 @@ dir_fd and follow_symlinks may not be available on your platform.
     
             <div class="docstring"><p>Wait for completion of a child process.</p>
 
-<p>Returns a tuple of information about the child process:
-  (pid, status, rusage)</p>
+<h6 id="returns-a-tuple-of-information-about-the-child-process">Returns a tuple of information about the child process:</h6>
+
+<blockquote>
+  <p>(pid, status, rusage)</p>
+</blockquote>
 </div>
 
 
@@ -7209,8 +7230,11 @@ dir_fd and follow_symlinks may not be available on your platform.
     
             <div class="docstring"><p>Wait for completion of a specific child process.</p>
 
-<p>Returns a tuple of information about the child process:
-  (pid, status, rusage)</p>
+<h6 id="returns-a-tuple-of-information-about-the-child-process">Returns a tuple of information about the child process:</h6>
+
+<blockquote>
+  <p>(pid, status, rusage)</p>
+</blockquote>
 </div>
 
 
@@ -7375,8 +7399,11 @@ or via the attributes si_pid, si_uid, and so on.</p>
     
             <div class="docstring"><p>Wait for completion of a given child process.</p>
 
-<p>Returns a tuple of information regarding the child process:
-    (pid, status)</p>
+<h6 id="returns-a-tuple-of-information-regarding-the-child-process">Returns a tuple of information regarding the child process:</h6>
+
+<blockquote>
+  <p>(pid, status)</p>
+</blockquote>
 
 <p>The options argument is ignored on Windows.</p>
 </div>

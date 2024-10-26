@@ -32,6 +32,7 @@
     <li><a href="#example-4">Example 4</a></li>
     <li><a href="#example-5">Example 5</a></li>
     <li><a href="#example-6">Example 6</a></li>
+    <li><a href="#example-7">Example 7</a></li>
   </ul></li>
 </ul>
 
@@ -241,7 +242,8 @@ filename: ./README.md
 <ul>
 <li><code><a href="pathlibutil/urlpath.html#UrlPath">pathlibutil.urlpath.UrlPath()</a></code> modify URL and easy access the <code>path</code> of the url like a <code><a href="pathlib.html#PurePosixPath">pathlib.PurePosixPath</a></code> object.</li>
 <li><code><a href="pathlibutil/urlpath.html#UrlNetloc">pathlibutil.urlpath.UrlNetloc()</a></code> to parse and modify the <code>netloc</code> part of a URL.</li>
-<li><code><a href="pathlibutil/urlpath.html#normalize_url">pathlibutil.urlpath.normalize_url()</a></code> to normalize a URL string.</li>
+<li><code><a href="pathlibutil/urlpath.html#normalize">pathlibutil.urlpath.normalize()</a></code> to normalize a URL string.</li>
+<li><code><a href="pathlibutil/urlpath.html#url_from">pathlibutil.urlpath.url_from()</a></code> to create a URL from an UNC path object.</li>
 </ul>
 
 <h2 id="installation">Installation</h2>
@@ -513,6 +515,97 @@ sys.executable is               K:/pathlibutil/examples/example6.exe
 <a href="#Path.cwd">Path.cwd</a>(frozen=False) is       K:/pathlibutil
 <a href="#Path.cwd">Path.cwd</a>(frozen=_MEIPASS) is    C:/Users/CHRIST~1.DOE/AppData/Local/Temp/_MEI106042
 </code></pre>
+
+<h2 id="example-7">Example 7</h2>
+
+<p>Console application to convert UNC paths to intranet URLs.</p>
+
+<p>By default, it checks if the filename and URL are available and copies the
+normalized URL to the clipboard.</p>
+
+<blockquote>
+  <p><code><a href="pathlibutil/urlpath.html#url_from">pathlibutil.urlpath.url_from()</a></code></p>
+</blockquote>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">pyperclip</span>
+
+    <span class="kn">import</span> <span class="nn"><a href="pathlibutil/urlpath.html">pathlibutil.urlpath</a></span> <span class="k">as</span> <span class="nn">up</span>
+<span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pip install </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+
+<span class="k">def</span> <span class="nf">intranet_from</span><span class="p">(</span><span class="n">uncpath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the intranet URL for the given UNC path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">up</span><span class="o">.</span><span class="n">url_from</span><span class="p">(</span>
+        <span class="n">uncpath</span><span class="p">,</span>
+        <span class="n">hostname</span><span class="o">=</span><span class="s2">&quot;http://intranet.example.de&quot;</span><span class="p">,</span>
+        <span class="n">strict</span><span class="o">=</span><span class="n">check</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">url</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">cli</span><span class="p">():</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="n">intranet_from</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentDefaultsHelpFormatter</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;filename&quot;</span><span class="p">,</span>
+        <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The UNC path to the file.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;-c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--no-check&quot;</span><span class="p">,</span>
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_false&quot;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;check&quot;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Don&#39;t check if filename and url is available.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;-s&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--silent&quot;</span><span class="p">,</span>
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Do not print the url to stdout.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;-n&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--no-clip&quot;</span><span class="p">,</span>
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_false&quot;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;clip&quot;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Don&#39;t copy the url to the clipboard.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">intranet_from</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">check</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">silent</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">clip</span><span class="p">:</span>
+        <span class="n">pyperclip</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cli</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre>
+</div>
 </div>
 
                 
