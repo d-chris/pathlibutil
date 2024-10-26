@@ -13,23 +13,54 @@ class UrlNetloc:
     """
     A dataclass to represent the netloc part of a URL.
 
-    >>> url = UrlNetloc.from_netloc("www.example.com:443")
-    >>> url.port = None
-    >>> str(url)
-    'www.example.com'
+    Attributes:
+        hostname (str): The hostname of the URL.
+        port (Optional[int]): The port number of the URL. Defaults to None.
+        username (Optional[str]): The username for authentication. Defaults to None.
+        password (Optional[str]): The password for authentication. Defaults to None.
+
+    Examples:
+        >>> url = UrlNetloc.from_netloc("www.example.com:443")
+        >>> url.port = None
+        >>> str(url)
+        'www.example.com'
     """
 
     hostname: str
+    """
+    The hostname of the URL.
+
+    Examples:
+        'www.example.com'
+    """
     port: Optional[int] = field(default=None)
+    """
+    The port number of the URL. Defaults to None.
+    """
     username: Optional[str] = field(default=None)
+    """
+    The username for authentication. Defaults to None
+    """
     password: Optional[str] = field(default=None)
+    """
+    The password for authentication. Defaults to None.
+    """
 
     def __str__(self) -> str:
         return self.netloc
 
     @property
     def netloc(self) -> str:
-        """netloc string representation of the `dataclass`"""
+        """
+        Return the netloc string representation of the `dataclass`.
+
+        Returns:
+            str: The netloc string representation.
+
+        Examples:
+            >>> UrlNetloc("www.example.de", 433, "user", "pass").netloc
+            'user:pass@www.example.de:433'
+        """
 
         netloc = ""
 
@@ -53,7 +84,19 @@ class UrlNetloc:
 
     @classmethod
     def from_netloc(cls, netloc: str, normalize: bool = False) -> "UrlNetloc":
-        """Parse a netloc string into a `UrlNetloc` object"""
+        """
+        Parse a netloc string into a `UrlNetloc` object.
+
+        Args:
+            netloc (str): The netloc string to parse.
+
+        Returns:
+            `UrlNetloc`: An instance of `UrlNetloc` with the parsed components.
+
+        Examples:
+            >>> UrlNetloc.from_netloc("user:pass@example.de:433")
+            UrlNetloc(hostname='example.de', port=433, username='user', password='pass')
+        """
 
         if not netloc.startswith("//"):
             netloc = f"//{netloc}"
@@ -78,10 +121,23 @@ class UrlNetloc:
 
     def to_dict(self, prune: bool = False) -> Dict[str, Any]:
         """
-        Convert the `UrlNetloc` object to a dictionary
+        Convert the `UrlNetloc` object to a dictionary.
 
-        If `prune` is `True`, remove all key-value pairs from the dict where the value
-        is `None`.
+        Args:
+            prune (bool): If True, removes key-value pairs where the value is `None`.
+                Defaults to False.
+
+        Returns:
+            dict: A dictionary representation of the `UrlNetloc` object.
+
+        Examples:
+            >>> loc = UrlNetloc("example.de", 80, "user")
+
+            >>> loc.to_dict()
+            {'hostname': 'example.de', 'port': 80, 'username': 'user', 'password': None}
+
+            >>> loc.to_dict(prune=True)
+            {'hostname': 'www.example.de', 'port': 80, 'username': 'user'}
         """
 
         data = asdict(self)
