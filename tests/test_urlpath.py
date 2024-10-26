@@ -264,7 +264,6 @@ def test_repr():
 def test_url_from():
     url = url_from("//server/root/path/readme.pdf", "https://www.server.com")
 
-    print(str(url))
     assert str(url) == "https://www.server.com/path/readme.pdf"
 
 

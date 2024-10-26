@@ -113,12 +113,18 @@ class UrlPath(up.ParseResult):
     """
     Class to manipulate URLs to change the scheme, netloc, path, query, and fragment.
 
-    Wrap the `pathlib.PurePosixPath` methods to return a new `UrlPath` object
+    This class wraps `pathlib.PurePosixPath` methods to return a new `UrlPath` object.
+    Attributes and methods from `PurePosixPath`, such as `name` and `with_suffix`,
+    are available.
 
-    >>> url = UrlPath("https://www.example.com/path/to/file").with_suffix(".txt")
-    >>> str(url)
-    'https://www.example.com/path/to/file.txt'
+    Examples:
+        >>> url = UrlPath("https://www.example.com/path/file.txt")
 
+        >>> url.name
+        'file.txt'
+
+        >>> url.with_suffix(".html")
+        UrlPath('https://www.example.com/path/file.html')
     """
 
     _default_ports = {
@@ -139,7 +145,19 @@ class UrlPath(up.ParseResult):
         """
         Initialize the `UrlPath` object with a URL string.
 
-        A `ValueError` is raised if the URL is not valid.
+        Args:
+            url (str): The URL string to initialize the `UrlPath` object.
+            scheme (str, optional): The scheme to use if not present in the URL.
+                Defaults to an empty string.
+            allow_fragments (bool, optional): Whether to allow fragments in the URL.
+                Defaults to True.
+
+        Raises:
+            ValueError: If the URL is not valid.
+
+        Examples:
+            >>> UrlPath("http://example.com/path/file.txt")
+            UrlPath('http://example.com/path/file.txt')
         """
         self._url = url
         self._kwargs = {
@@ -158,8 +176,23 @@ class UrlPath(up.ParseResult):
         """
         Return a re-combined version of the URL.
 
-        If `normalize` is `True` scheme and netloc is converted  to lowercase,
-        default ports are removed and query parameters are sorted.
+        If `normalize` is `True`, the scheme and netloc are converted to lowercase,
+        default ports are removed, and query parameters are sorted.
+
+        Args:
+            normalize (bool): If True, normalizes the URL. Defaults to False.
+
+        Returns:
+            str: The re-combined URL.
+
+        Examples:
+            >>> url = UrlPath("HTTP://Example.COM:80/path/file name.txt?b=2&a=1")
+
+            >>> url.geturl(normalize=True)
+            'http://example.com/path/file%20name.txt?a=1&b=2'
+
+            >>> url.geturl()
+            'http://Example.COM:80/path/file name.txt?b=2&a=1'
         """
         if normalize:
             return self.normalize()
@@ -170,6 +203,18 @@ class UrlPath(up.ParseResult):
         """
         Normalize the URL by converting the scheme and host to lowercase, removing the
         default port if present, and sorting the query parameters.
+
+        Args:
+            sort (bool): If True, sorts the query parameters. Defaults to True.
+            **kwargs: Additional arguments, such as custom port mappings.
+
+        Returns:
+            str: The normalized URL.
+
+        Examples:
+            >>> url = UrlPath("HTTP://Example.COM:80/path/file name.txt?b=2&a=1")
+            >>> url.normalize()
+            'http://example.com/path/file%20name.txt?a=1&b=2'
         """
 
         ports = kwargs.get("ports", self._default_ports)
@@ -220,21 +265,58 @@ class UrlPath(up.ParseResult):
     @urlpath
     def with_scheme(self, scheme: str) -> _UrlPath:
         """
-        Change the scheme of the URL.
+        Add or Change the `UrlPath.scheme` of the URL.
+
+        Args:
+            scheme (str): The new scheme to set in the URL.
+
+        Returns:
+            `UrlPath`: A new URL with the updated scheme.
+
+        Examples:
+            >>> url = UrlPath("http://example.com/path/file.txt")
+            >>> url.with_port(990).with_scheme("ftp")
+            UrlPath('ftp://example.com:990/path/file.txt')
         """
         return self._replace(scheme=scheme)
 
     @urlpath
     def with_netloc(self, netloc: Union[str, UrlNetloc]) -> _UrlPath:
         """
-        Change the netloc of the URL.
+        Add or Change the `UrlPath.netloc` of the URL.
+
+        Args:
+            netloc (Union[str, UrlNetloc]): The new netloc to set in the URL. It can be
+                a string or an instance of `UrlNetloc`.
+
+        Returns:
+            `UrlPath`: A new URL with the updated netloc.
+
+        Examples:
+            >>> url = UrlPath("http://www.oldhost.com/path/file.txt")
+            >>> url.with_netloc("example.com")
+            UrlPath('http://example.com/path/file.txt')
         """
         return self._replace(netloc=str(netloc))
 
     @urlpath
     def with_path(self, path: Union[str, pathlib.PurePosixPath]) -> _UrlPath:
         """
-        Change the path of the URL.
+        Add or Change the `UrlPath.path` of the URL.
+
+        Args:
+            path (Union[str, pathlib.PurePosixPath]): The new path to set in the URL.
+
+        Returns:
+            `UrlPath`: A new URL with the updated path.
+
+        Raises:
+            TypeError: If the provided path is of the wrong type
+
+        Examples:
+            >>> url = UrlPath("http://example.com/oldpath")
+            >>> url.with_path("/path/file.txt")
+            UrlPath('http://example.com/path/file.txt')
         """
 
         try:
@@ -250,29 +332,73 @@ class UrlPath(up.ParseResult):
     @urlpath
     def with_params(self, params: str) -> _UrlPath:
         """
-        Change the parameters of the URL.
+        Change the `UrlPath.params` of the URL.
+
+        Args:
+            params (str): The new parameters to set in the URL.
+
+        Returns:
+            `UrlPath`: A new URL with the updated parameters.
+
+        Examples:
+            >>> url = UrlPath("http://example.com/path")
+            >>> url.with_params("param1=value1;param2=value2")
+            UrlPath('http://example.com/path;param1=value1;param2=value2')
         """
         return self._replace(params=params)
 
     @urlpath
     def with_query(self, query: str) -> _UrlPath:
         """
-        Change the query of the URL.
+        Add or Change the `UrlPath.query` of the URL.
+
+        Args:
+            query (str): The new query string to set in the URL.
+
+        Returns:
+            `UrlPath`: A new URL with the updated query string.
+
+        Examples:
+            >>> url = UrlPath("http://example.com/path")
+            >>> url.with_query("key=value")
+            UrlPath('http://example.com/path?key=value')
         """
         return self._replace(query=query)
 
     @urlpath
     def with_fragment(self, fragment: str) -> _UrlPath:
         """
-        Change the fragment of the URL.
+        Add or Change the `UrlPath.fragment` of the URL.
+
+        Args:
+            fragment (str): The new fragment to set in the URL.
+
+        Returns:
+            `UrlPath`: A new URL with the updated fragment.
+
+        Examples:
+            >>> url = UrlPath("http://example.com/path")
+            >>> url.with_fragment("section1")
+            UrlPath('http://example.com/path#section1')
         """
         return self._replace(fragment=fragment)
 
     def with_port(self, port: int) -> _UrlPath:
         """
-        change the port in the netloc of the URL.
+        Add or Change the `UrlPath.port` in the netloc of the URL.
 
         If `port` is `None`, the port is removed.
+
+        Args:
+            port (int): The new port to set in the URL.
+
+        Returns:
+            `UrlPath`: A new URL with the updated port.
+
+        Examples:
+            >>> url = UrlPath("http://example.de/path/file.txt")
+            >>> url.with_port(8080)
+            UrlPath('http://example.de:8080/path/file.txt')
         """
 
         netloc = UrlNetloc.from_netloc(self.netloc)
@@ -282,7 +408,18 @@ class UrlPath(up.ParseResult):
 
     def with_hostname(self, hostname: str) -> _UrlPath:
         """
-        change the hostname in the netloc of the URL
+        Change the `UrlPath.hostname` in the netloc of the URL.
+
+        Args:
+            hostname (str): The new hostname to set in the URL.
+
+        Returns:
+            `UrlPath`: A new URL with the updated hostname.
+
+        Examples:
+            >>> url = UrlPath("http://example.de/path/file.txt")
+            >>> url.with_hostname("www.server.com")
+            UrlPath('http://www.server.com/path/file.txt')
         """
 
         netloc = UrlNetloc.from_netloc(self.netloc)
@@ -292,11 +429,23 @@ class UrlPath(up.ParseResult):
 
     def with_credentials(self, username: str, password: str = None) -> _UrlPath:
         """
-        change the username and password in the netloc of the URL
+        Add or change the username and password in the netloc of the URL.
 
-        to change only `username` the `password` must also be provided.
-
+        To change only `username`, the `password` must also be provided.
         If `username` is `None`, the credentials are removed.
+
+        Args:
+            username (str): The new username to set in the URL.
+            password (str, optional): The new password to set in the URL.
+                Defaults to None.
+
+        Returns:
+            `UrlPath`: A new URL with the updated credentials.
+
+        Examples:
+            >>> url = UrlPath("ftp://example.com/path")
+            >>> url.with_credentials("user", "pass")
+            UrlPath('ftp://user:pass@example.com/path')
         """
 
         netloc = UrlNetloc.from_netloc(self.netloc)
@@ -308,17 +457,28 @@ class UrlPath(up.ParseResult):
     @cached_property
     def parts(self) -> Tuple[str, ...]:
         """
-        return the parts of the path without any '/'.
+        Returns the parts of the path without any leading '/'.
+
+        Returns:
+            Tuple[str, ...]: A tuple containing the parts of the path.
+
+        Examples:
+            >>> UrlPath("//server/root/path/file.txt").parts
+            ('root', 'path', 'file.txt')
         """
         return tuple(part for part in self._path.parts if not part.startswith("/"))
 
     @property
     def anchor(self) -> str:
         """
-        The concatenation of the netloc and root of the path.
+        Concatenates the netloc and root of the path.
 
-        >>> UrlPath("//server/root/path/file.txt").anchor
-        '//server/root'
+        Returns:
+            str: The combined netloc and root of the path.
+
+        Examples:
+            >>> UrlPath("//server/root/path/file.txt").anchor
+            '//server/root'
         """
         try:
             root = self.parts[0]
@@ -329,13 +489,27 @@ class UrlPath(up.ParseResult):
 
     def with_anchor(self, anchor: str, root: bool = False, **kwargs) -> _UrlPath:
         """
-        Change the anchor of the URL.
+        Change the `UrlPath.anchor` of the URL.
 
         If `root` is `True`, the root of the path will not be removed.
 
-        >>> url = UrlPath("//server/root/path/file.txt")
-        >>> url.with_anchor("https://www.server.com").geturl()
-        'https://www.server.com/path/file.txt'
+        Args:
+            anchor (str): The new anchor to set for the URL.
+            root (bool): If `True`, the root of the path will not be removed.
+                Defaults to `False`.
+            **kwargs: Additional arguments to pass to the UrlPath class constructor.
+
+        Returns:
+            `UrlPath`: A new URL with the updated anchor.
+
+        Examples:
+            >>> url = UrlPath("//server/root/path/file.txt")
+
+            >>> url.with_anchor("https://www.server.com")
+            UrlPath('https://www.server.com/path/file.txt')
+
+            >>> url.with_anchor("https://www.server.com", root=True)
+            UrlPath('https://www.server.com/root/path/file.txt')
         """
         anchor = self.__class__(anchor, **kwargs)
 
@@ -361,11 +535,18 @@ class UrlPath(up.ParseResult):
 
     def exists(self, errors: bool = False, **kwargs) -> bool:
         """
-        Check if the URL returns a 200 status code.
+        Check if the URL exists by making an HTTP request.
 
-        If `errors` is `False`, exceptions are suppressed and `False` is returned.
+        Args:
+            errors (bool): If True, raises a FileNotFoundError when the URL does
+                not exist. Defaults to False.
+            **kwargs: Additional arguments to pass to `urllib.request.urlopen`.
 
-        For `kwargs` see `urllib.request.urlopen`.
+        Returns:
+            bool: True if the URL exists (HTTP status 200), False otherwise.
+
+        Raises:
+            FileNotFoundError: If `errors` is True and the URL does not exist.
         """
         url = self.normalize()
 
@@ -450,7 +631,7 @@ def normalize(
 
 
 def normalize_url(*args, **kwargs) -> str:
-    """@private
+    """
     Deprecated function, use `pathlibutil.urlpath.normalize()` instead.
 
     Will be removed in the future.
