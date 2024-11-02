@@ -8,6 +8,14 @@ def obj(file):
     return [file, {1: file}, "string"]
 
 
+def test_dump_raises():
+    class Base:
+        pass
+
+    with pytest.raises(TypeError):
+        _ = dumps(Base())
+
+
 def test_dumps(obj):
 
     result = dumps(obj)

@@ -31,8 +31,9 @@ def mock_run(mocker):
 
 
 @pytest.fixture
-def path():
-    return Path("file.txt")
+def path(cls):
+
+    yield cls("file.txt")
 
 
 def test_resolve_default(path, mock_resolve, mock_run):
@@ -41,6 +42,13 @@ def test_resolve_default(path, mock_resolve, mock_run):
 
 def test_resolve_unctrue(path, mock_resolve, mock_run):
     assert path.resolve(unc=True) == Path("//server/temp/file.txt")
+
+
+def test_resolve_uncfalse_none(path, mock_run, mocker):
+
+    mocker.patch("re.finditer", side_effect=Exception)
+    mocker.patch("pathlib.Path.resolve", return_value=path)
+    assert path.resolve(unc=False).as_posix() == path.as_posix()
 
 
 @pytest.mark.skipif(os.name != "nt", reason="Windows only")

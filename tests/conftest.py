@@ -16,6 +16,11 @@ def cls() -> Generator[Path, Any, Any]:
     yield Path
     Path.default_hash = hash
 
+    try:
+        del Path._netuse
+    except AttributeError:
+        pass
+
 
 @pytest.fixture
 def file(cls) -> Path:

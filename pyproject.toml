@@ -28,7 +28,7 @@ documentation = "https://d-chris.github.io/pathlibutil"
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
-py7zr = { version = "^0.20.2", optional = true }
+py7zr = { version = ">=0.20.2", optional = true }
 
 [tool.poetry.extras]
 7z = [ "py7zr" ]
@@ -75,4 +75,11 @@ addopts = [
 [tool.coverage.report]
 exclude_lines = [
   "^def normalize_url",
+]
+
+[tool.coverage.run]
+omit = [
+  "*/tests/*",
+  "*/docs/*",
+  "*/examples/*",
 ]
