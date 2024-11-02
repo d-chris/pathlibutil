@@ -142,6 +142,16 @@ def test_urlnetloc_normalize(netlocs):
     assert str(netloc) == result
 
 
+def test_urlnetloc_normalize_patch(mocker):
+
+    url = "www.ExamplE.com:443"
+
+    mocker.patch("re.search", return_value=None)
+    netloc = UrlNetloc.from_netloc(url, normalize=False)
+
+    assert url != str(netloc)
+
+
 def test_urlnetloc_str():
     hostname = "www.example.com"
 
@@ -267,22 +277,45 @@ def test_url_from():
     assert str(url) == "https://www.server.com/path/readme.pdf"
 
 
-def test_anchor():
-    url = UrlPath("//server/root/path/readme.pdf")
+def test_url_from_exist(mocker, mock_openurl):
 
-    assert url.anchor == "//server/root"
+    file = "//server/root/path/readme.pdf"
 
-
-def test_with_anchor():
-    url = UrlPath("//server/root/path/readme.pdf")
-
-    assert (
-        url.with_anchor("//fubar", root=True).__str__()
-        == "//fubar/root/path/readme.pdf"
+    mocker.patch(
+        "pathlib.Path.resolve",
+        return_value=pathlib.Path(file),
     )
+    if mock_openurl == 404:
+        with pytest.raises(FileNotFoundError):
+            _ = url_from(file, "https://www.server.com", strict=True)
+    else:
+        url = url_from(file, "https://www.server.com", strict=True)
+        assert str(url) == "https://www.server.com/path/readme.pdf"
 
 
-def test_fubar_anchor():
-    url = UrlPath("//server/root/path/readme.pdf")
+@pytest.mark.parametrize(
+    "url,result",
+    [
+        ("//server/root/path/readme.pdf", "//server/root"),
+        ("//server/root/", "//server/root"),
+        ("//server/", "//server/"),
+    ],
+)
+def test_anchor(url, result):
 
-    assert url.with_anchor("//fubar").__str__() == "//fubar/path/readme.pdf"
+    assert UrlPath(url).anchor == result
+
+
+@pytest.mark.parametrize(
+    "anchor,root,result",
+    [
+        ("//fubar", False, "//fubar/path/readme.pdf"),
+        ("//fubar", True, "//fubar/root/path/readme.pdf"),
+        ("//fubar/share", False, "//fubar/share/path/readme.pdf"),
+        ("//fubar/share", True, "//fubar/share/root/path/readme.pdf"),
+    ],
+)
+def test_with_anchor(anchor, root, result):
+    url = UrlPath("//server/root/path/readme.pdf").with_anchor(anchor, root)
+
+    assert str(url) == result

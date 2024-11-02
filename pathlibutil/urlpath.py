@@ -6,6 +6,7 @@ import urllib.request
 from dataclasses import asdict, dataclass, field
 from functools import cached_property, wraps
 from typing import Any, Dict, Optional, Tuple, TypeVar, Union
+from urllib.error import HTTPError
 
 
 @dataclass
@@ -612,7 +613,14 @@ class UrlPath(up.ParseResult):
 
         try:
             with urllib.request.urlopen(url, **kwargs) as response:
-                return response.status == 200
+                if response.status == 200:
+                    return True
+
+                raise HTTPError(
+                    url=url,
+                    code=response.status,
+                    message=response.reason,
+                )
         except Exception as e:
             if errors is not False:
                 raise FileNotFoundError(url) from e
