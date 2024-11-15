@@ -44,7 +44,7 @@ jobs:
       - name: Restore all Coverage Reports
         uses: actions/download-artifact@v4
       - name: Upload Coverage Report
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           flags: unittests
           token: ${{ secrets.CODECOV_TOKEN }}
