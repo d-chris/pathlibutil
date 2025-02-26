@@ -9,7 +9,7 @@ import sys
 from datetime import datetime, timedelta
 from typing import Callable, Dict, Generator, List, Literal, Set, Tuple, Union
 
-from pathlibutil.base import BasePath, _Path
+from pathlibutil.base import BasePath
 from pathlibutil.types import ByteInt, StatResult, TimeInt, _stat_result, byteint
 
 
@@ -130,7 +130,7 @@ class Path(BasePath):
 
         return True
 
-    def __enter__(self) -> _Path:
+    def __enter__(self) -> "Path":
         """
         Contextmanager to changes the current working directory.
         """
@@ -175,7 +175,7 @@ class Path(BasePath):
 
         return super().stat(**kwargs).st_size
 
-    def copy(self, dst: str, exist_ok: bool = True, **kwargs) -> _Path:
+    def copy(self, dst: str, exist_ok: bool = True, **kwargs) -> "Path":
         """
         Copies the file or directory to a destination directory, if it is missing it
         will be created.
@@ -227,7 +227,7 @@ class Path(BasePath):
 
             shutil.rmtree(self, **kwargs)
 
-    def move(self, dst: str) -> _Path:
+    def move(self, dst: str) -> "Path":
         """
         Moves the file or directory into the destination directory.
 
@@ -247,7 +247,7 @@ class Path(BasePath):
         return self.__class__(_path)
 
     @staticmethod
-    def _find_archive_format(filename: _Path) -> str:
+    def _find_archive_format(filename: "Path") -> str:
         """
         Searches for a file the correct archive format.
         """
@@ -273,7 +273,7 @@ class Path(BasePath):
 
     def make_archive(
         self, archivename: str, *, exists_ok: bool = False, **kwargs
-    ) -> _Path:
+    ) -> "Path":
         """
         Creates an archive file (eg. zip) and returns the path to the archive.
 
@@ -296,7 +296,7 @@ class Path(BasePath):
         Path('test.zpy')
         """
 
-        def _archive_exists(file: str, exists_ok: bool) -> _Path:
+        def _archive_exists(file: str, exists_ok: bool) -> "Path":
             """
             Returns a `Path` object of the archive file or raises a `FileExistsError`
             If `exists_ok` is `True` the file will be deleted.
@@ -311,7 +311,7 @@ class Path(BasePath):
 
             return file
 
-        def _archive_filename(expect: Path, real: str) -> _Path:
+        def _archive_filename(expect: Path, real: str) -> "Path":
             """
             Check if the expected archive filename matches the real filename.
             If not try to rename the real filename.
@@ -346,7 +346,7 @@ class Path(BasePath):
 
         return _archive_filename(_filename, _archive)
 
-    def unpack_archive(self, extract_dir: str, **kwargs) -> _Path:
+    def unpack_archive(self, extract_dir: str, **kwargs) -> "Path":
         """
         Unpacks an archive file (eg. zip) into a directory and returns the path to the
         extracted files.
@@ -405,7 +405,7 @@ class Path(BasePath):
         """
         return StatResult(super().stat(**kwargs))
 
-    def with_suffix(self, suffix: Union[str, List[str]]) -> _Path:
+    def with_suffix(self, suffix: Union[str, List[str]]) -> "Path":
         """
         Return a new `Path` with changed suffix or remove it when its an empty
         string.
@@ -444,8 +444,8 @@ class Path(BasePath):
             return super(self.__class__, stem).with_suffix(suffix)
 
     def relative_to(
-        self, *other: Union[str, _Path], walk_up: Union[bool, int] = False
-    ) -> _Path:
+        self, *other: Union[str, "Path"], walk_up: Union[bool, int] = False
+    ) -> "Path":
         """
         Return the relative path to another path identified by the passed
         arguments.  If the operation is not possible (because this is not
@@ -485,7 +485,7 @@ class Path(BasePath):
         return relative
 
     @classmethod
-    def cwd(cls, *, frozen: Literal[True, False, "_MEIPASS"] = False) -> _Path:
+    def cwd(cls, *, frozen: Literal[True, False, "_MEIPASS"] = False) -> "Path":
         """
         Return a `Path` object representing the current working directory.
 
@@ -536,7 +536,7 @@ class Path(BasePath):
         except Exception:
             return {}
 
-    def _resolve_unc(self) -> _Path:
+    def _resolve_unc(self) -> "Path":
         """
         Resolve UNC paths to mapped network drives.
         """
@@ -549,7 +549,7 @@ class Path(BasePath):
         except KeyError:
             return self
 
-    def resolve(self, strict: bool = False, unc: bool = True) -> _Path:
+    def resolve(self, strict: bool = False, unc: bool = True) -> "Path":
         """
         Make the path absolute, resolving all symlinks on the way and also normalizing
         it.
@@ -579,7 +579,7 @@ class Path(BasePath):
         top_down: bool = True,
         on_error: Callable[[OSError], object] = None,
         follow_symlinks: bool = False,
-    ) -> Generator[Tuple[_Path, List[str], List[str]], None, None]:
+    ) -> Generator[Tuple["Path", List[str], List[str]], None, None]:
         """
         Walks the directory tree and yields a 3-tuple of (dirpath, dirnames, filenames).
         """
@@ -602,9 +602,9 @@ class Path(BasePath):
         self,
         *,
         recursive: Union[bool, int] = False,
-        exclude_dirs: Callable[[_Path], bool] = None,
+        exclude_dirs: Callable[["Path"], bool] = None,
         **kwargs,
-    ) -> Generator[_Path, None, None]:
+    ) -> Generator["Path", None, None]:
         """
         Iterates over the files in the directory.
 
@@ -616,7 +616,7 @@ class Path(BasePath):
         `exclude_dirs`, e.g.
 
         ```python
-        def exclude_version_control(dirpath: _Path) -> bool:
+        def exclude_version_control(dirpath: "Path") -> bool:
             return dirpath.name in (".git", ".svn", ".hg", ".bzr", "CVS")
         ```
         """
@@ -660,7 +660,7 @@ class Path(BasePath):
         cls,
         *files: str,
         duplicates: bool = True,
-    ) -> Generator[_Path, None, None]:
+    ) -> Generator["Path", None, None]:
         """
         Yields only Path object of file names that exists. Supports glob patterns in
         filename as wildcards.
