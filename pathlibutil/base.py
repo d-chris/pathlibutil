@@ -1,9 +1,7 @@
 import os
 import pathlib
 import sys
-from typing import Generator, TypeVar
-
-_Path = TypeVar("_Path", bound=pathlib.Path)
+from typing import Generator
 
 
 class BasePath(pathlib.Path):
@@ -19,7 +17,7 @@ class BasePath(pathlib.Path):
         )
 
     @classmethod
-    def expand(cls, file: str) -> Generator[_Path, None, None]:
+    def expand(cls, file: str) -> Generator["BasePath", None, None]:
         """
         yields only Path object of file names that exists. Supports glob patterns in
         filename as wildcards.
