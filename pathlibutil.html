@@ -769,7 +769,7 @@ algorithm of the <code>__class__</code>.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">exist_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">exist_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
 
         
     </div>
@@ -817,7 +817,7 @@ directory does not exist.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">move</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+        <span class="name">move</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
 
         
     </div>
@@ -836,7 +836,7 @@ directory does not exist.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">make_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">archivename</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">exists_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+        <span class="name">make_archive</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">archivename</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">exists_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
 
         
     </div>
@@ -878,7 +878,7 @@ creating the new one.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">unpack_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">extract_dir</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+        <span class="name">unpack_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">extract_dir</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
 
         
     </div>
@@ -959,7 +959,7 @@ and all formats registered by subclasse
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">with_suffix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">suffix</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+        <span class="name">with_suffix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">suffix</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
 
         
     </div>
@@ -1002,7 +1002,7 @@ With a empty list all suffixes will be removed.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">relative_to</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="o">*</span><span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">~</span><span class="n">_Path</span><span class="p">]</span>,</span><span class="param">	<span class="n">walk_up</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+        <span class="name">relative_to</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="o">*</span><span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n"><a href="#Path">Path</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">walk_up</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
 
         
     </div>
@@ -1044,7 +1044,7 @@ max is reached a <code>ValueError</code> is raised.</p>
                     <div class="decorator">@classmethod</div>
 
         <span class="def">def</span>
-        <span class="name">cwd</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">frozen</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;_MEIPASS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+        <span class="name">cwd</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">cls</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">frozen</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;_MEIPASS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
 
         
     </div>
@@ -1068,7 +1068,7 @@ executable, e.g. with <code>pyinstaller</code>.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">resolve</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>, </span><span class="param"><span class="n">unc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+        <span class="name">resolve</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>, </span><span class="param"><span class="n">unc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
 
         
     </div>
@@ -1102,7 +1102,7 @@ drives.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">walk</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">top_down</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>,</span><span class="param">	<span class="n">on_error</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="ne">OSError</span><span class="p">],</span> <span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">follow_symlinks</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="o">~</span><span class="n">_Path</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
+        <span class="name">walk</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">top_down</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>,</span><span class="param">	<span class="n">on_error</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="ne">OSError</span><span class="p">],</span> <span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">follow_symlinks</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n"><a href="#Path">Path</a></span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -1117,7 +1117,7 @@ drives.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">iterdir</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">recursive</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">exclude_dirs</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="o">~</span><span class="n">_Path</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="o">~</span><span class="n">_Path</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
+        <span class="name">iterdir</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">recursive</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">exclude_dirs</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n"><a href="#Path">Path</a></span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="n"><a href="#Path">Path</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -1133,7 +1133,7 @@ optional<code>**kwargs</code> are passed to <code><a href="#Path.walk">Path.walk
 <code>exclude_dirs</code>, e.g.</p>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="k">def</span> <span class="nf">exclude_version_control</span><span class="p">(</span><span class="n">dirpath</span><span class="p">:</span> <span class="n">_Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<pre><span></span><code><span class="k">def</span> <span class="nf">exclude_version_control</span><span class="p">(</span><span class="n">dirpath</span><span class="p">:</span> <span class="s2">&quot;Path&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">dirpath</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;.git&quot;</span><span class="p">,</span> <span class="s2">&quot;.svn&quot;</span><span class="p">,</span> <span class="s2">&quot;.hg&quot;</span><span class="p">,</span> <span class="s2">&quot;.bzr&quot;</span><span class="p">,</span> <span class="s2">&quot;CVS&quot;</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -1169,7 +1169,7 @@ optional<code>**kwargs</code> are passed to <code><a href="#Path.walk">Path.walk
                     <div class="decorator">@classmethod</div>
 
         <span class="def">def</span>
-        <span class="name">expand</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">cls</span>,</span><span class="param">	<span class="o">*</span><span class="n">files</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">duplicates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="o">~</span><span class="n">_Path</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
+        <span class="name">expand</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">cls</span>,</span><span class="param">	<span class="o">*</span><span class="n">files</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">duplicates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="n"><a href="#Path">Path</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -1193,18 +1193,30 @@ filename as wildcards.</p>
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt><a href="pathlib.html#Path">pathlib.Path</a></dt>
-                                <dd id="Path.home" class="function"><a href="pathlib.html#Path.home">home</a></dd>
+                                <dd id="Path.__init__" class="function"><a href="pathlib.html#Path.__init__">Path</a></dd>
+                <dd id="Path.lstat" class="function"><a href="pathlib.html#Path.lstat">lstat</a></dd>
+                <dd id="Path.exists" class="function"><a href="pathlib.html#Path.exists">exists</a></dd>
+                <dd id="Path.is_dir" class="function"><a href="pathlib.html#Path.is_dir">is_dir</a></dd>
+                <dd id="Path.is_file" class="function"><a href="pathlib.html#Path.is_file">is_file</a></dd>
+                <dd id="Path.is_mount" class="function"><a href="pathlib.html#Path.is_mount">is_mount</a></dd>
+                <dd id="Path.is_symlink" class="function"><a href="pathlib.html#Path.is_symlink">is_symlink</a></dd>
+                <dd id="Path.is_junction" class="function"><a href="pathlib.html#Path.is_junction">is_junction</a></dd>
+                <dd id="Path.is_block_device" class="function"><a href="pathlib.html#Path.is_block_device">is_block_device</a></dd>
+                <dd id="Path.is_char_device" class="function"><a href="pathlib.html#Path.is_char_device">is_char_device</a></dd>
+                <dd id="Path.is_fifo" class="function"><a href="pathlib.html#Path.is_fifo">is_fifo</a></dd>
+                <dd id="Path.is_socket" class="function"><a href="pathlib.html#Path.is_socket">is_socket</a></dd>
                 <dd id="Path.samefile" class="function"><a href="pathlib.html#Path.samefile">samefile</a></dd>
-                <dd id="Path.glob" class="function"><a href="pathlib.html#Path.glob">glob</a></dd>
-                <dd id="Path.rglob" class="function"><a href="pathlib.html#Path.rglob">rglob</a></dd>
-                <dd id="Path.absolute" class="function"><a href="pathlib.html#Path.absolute">absolute</a></dd>
-                <dd id="Path.owner" class="function"><a href="pathlib.html#Path.owner">owner</a></dd>
-                <dd id="Path.group" class="function"><a href="pathlib.html#Path.group">group</a></dd>
                 <dd id="Path.open" class="function"><a href="pathlib.html#Path.open">open</a></dd>
                 <dd id="Path.read_bytes" class="function"><a href="pathlib.html#Path.read_bytes">read_bytes</a></dd>
                 <dd id="Path.read_text" class="function"><a href="pathlib.html#Path.read_text">read_text</a></dd>
                 <dd id="Path.write_bytes" class="function"><a href="pathlib.html#Path.write_bytes">write_bytes</a></dd>
                 <dd id="Path.write_text" class="function"><a href="pathlib.html#Path.write_text">write_text</a></dd>
+                <dd id="Path.glob" class="function"><a href="pathlib.html#Path.glob">glob</a></dd>
+                <dd id="Path.rglob" class="function"><a href="pathlib.html#Path.rglob">rglob</a></dd>
+                <dd id="Path.home" class="function"><a href="pathlib.html#Path.home">home</a></dd>
+                <dd id="Path.absolute" class="function"><a href="pathlib.html#Path.absolute">absolute</a></dd>
+                <dd id="Path.owner" class="function"><a href="pathlib.html#Path.owner">owner</a></dd>
+                <dd id="Path.group" class="function"><a href="pathlib.html#Path.group">group</a></dd>
                 <dd id="Path.readlink" class="function"><a href="pathlib.html#Path.readlink">readlink</a></dd>
                 <dd id="Path.touch" class="function"><a href="pathlib.html#Path.touch">touch</a></dd>
                 <dd id="Path.mkdir" class="function"><a href="pathlib.html#Path.mkdir">mkdir</a></dd>
@@ -1212,26 +1224,16 @@ filename as wildcards.</p>
                 <dd id="Path.lchmod" class="function"><a href="pathlib.html#Path.lchmod">lchmod</a></dd>
                 <dd id="Path.unlink" class="function"><a href="pathlib.html#Path.unlink">unlink</a></dd>
                 <dd id="Path.rmdir" class="function"><a href="pathlib.html#Path.rmdir">rmdir</a></dd>
-                <dd id="Path.lstat" class="function"><a href="pathlib.html#Path.lstat">lstat</a></dd>
                 <dd id="Path.rename" class="function"><a href="pathlib.html#Path.rename">rename</a></dd>
                 <dd id="Path.replace" class="function"><a href="pathlib.html#Path.replace">replace</a></dd>
                 <dd id="Path.symlink_to" class="function"><a href="pathlib.html#Path.symlink_to">symlink_to</a></dd>
                 <dd id="Path.hardlink_to" class="function"><a href="pathlib.html#Path.hardlink_to">hardlink_to</a></dd>
-                <dd id="Path.link_to" class="function"><a href="pathlib.html#Path.link_to">link_to</a></dd>
-                <dd id="Path.exists" class="function"><a href="pathlib.html#Path.exists">exists</a></dd>
-                <dd id="Path.is_dir" class="function"><a href="pathlib.html#Path.is_dir">is_dir</a></dd>
-                <dd id="Path.is_file" class="function"><a href="pathlib.html#Path.is_file">is_file</a></dd>
-                <dd id="Path.is_mount" class="function"><a href="pathlib.html#Path.is_mount">is_mount</a></dd>
-                <dd id="Path.is_symlink" class="function"><a href="pathlib.html#Path.is_symlink">is_symlink</a></dd>
-                <dd id="Path.is_block_device" class="function"><a href="pathlib.html#Path.is_block_device">is_block_device</a></dd>
-                <dd id="Path.is_char_device" class="function"><a href="pathlib.html#Path.is_char_device">is_char_device</a></dd>
-                <dd id="Path.is_fifo" class="function"><a href="pathlib.html#Path.is_fifo">is_fifo</a></dd>
-                <dd id="Path.is_socket" class="function"><a href="pathlib.html#Path.is_socket">is_socket</a></dd>
                 <dd id="Path.expanduser" class="function"><a href="pathlib.html#Path.expanduser">expanduser</a></dd>
 
             </div>
             <div><dt><a href="pathlib.html#PurePath">pathlib.PurePath</a></dt>
-                                <dd id="Path.as_posix" class="function"><a href="pathlib.html#PurePath.as_posix">as_posix</a></dd>
+                                <dd id="Path.with_segments" class="function"><a href="pathlib.html#PurePath.with_segments">with_segments</a></dd>
+                <dd id="Path.as_posix" class="function"><a href="pathlib.html#PurePath.as_posix">as_posix</a></dd>
                 <dd id="Path.as_uri" class="function"><a href="pathlib.html#PurePath.as_uri">as_uri</a></dd>
                 <dd id="Path.drive" class="variable"><a href="pathlib.html#PurePath.drive">drive</a></dd>
                 <dd id="Path.root" class="variable"><a href="pathlib.html#PurePath.root">root</a></dd>
@@ -1299,7 +1301,46 @@ call of <code><a href="#Register7zFormat.make_archive">make_archive()</a></code>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
-                                    <div><dt><a href="#Path">Path</a></dt>
+                                    <div><dt><a href="pathlib.html#Path">pathlib.Path</a></dt>
+                                <dd id="Register7zFormat.__init__" class="function"><a href="pathlib.html#Path.__init__">Path</a></dd>
+                <dd id="Register7zFormat.lstat" class="function"><a href="pathlib.html#Path.lstat">lstat</a></dd>
+                <dd id="Register7zFormat.exists" class="function"><a href="pathlib.html#Path.exists">exists</a></dd>
+                <dd id="Register7zFormat.is_dir" class="function"><a href="pathlib.html#Path.is_dir">is_dir</a></dd>
+                <dd id="Register7zFormat.is_file" class="function"><a href="pathlib.html#Path.is_file">is_file</a></dd>
+                <dd id="Register7zFormat.is_mount" class="function"><a href="pathlib.html#Path.is_mount">is_mount</a></dd>
+                <dd id="Register7zFormat.is_symlink" class="function"><a href="pathlib.html#Path.is_symlink">is_symlink</a></dd>
+                <dd id="Register7zFormat.is_junction" class="function"><a href="pathlib.html#Path.is_junction">is_junction</a></dd>
+                <dd id="Register7zFormat.is_block_device" class="function"><a href="pathlib.html#Path.is_block_device">is_block_device</a></dd>
+                <dd id="Register7zFormat.is_char_device" class="function"><a href="pathlib.html#Path.is_char_device">is_char_device</a></dd>
+                <dd id="Register7zFormat.is_fifo" class="function"><a href="pathlib.html#Path.is_fifo">is_fifo</a></dd>
+                <dd id="Register7zFormat.is_socket" class="function"><a href="pathlib.html#Path.is_socket">is_socket</a></dd>
+                <dd id="Register7zFormat.samefile" class="function"><a href="pathlib.html#Path.samefile">samefile</a></dd>
+                <dd id="Register7zFormat.open" class="function"><a href="pathlib.html#Path.open">open</a></dd>
+                <dd id="Register7zFormat.read_bytes" class="function"><a href="pathlib.html#Path.read_bytes">read_bytes</a></dd>
+                <dd id="Register7zFormat.read_text" class="function"><a href="pathlib.html#Path.read_text">read_text</a></dd>
+                <dd id="Register7zFormat.write_bytes" class="function"><a href="pathlib.html#Path.write_bytes">write_bytes</a></dd>
+                <dd id="Register7zFormat.write_text" class="function"><a href="pathlib.html#Path.write_text">write_text</a></dd>
+                <dd id="Register7zFormat.glob" class="function"><a href="pathlib.html#Path.glob">glob</a></dd>
+                <dd id="Register7zFormat.rglob" class="function"><a href="pathlib.html#Path.rglob">rglob</a></dd>
+                <dd id="Register7zFormat.home" class="function"><a href="pathlib.html#Path.home">home</a></dd>
+                <dd id="Register7zFormat.absolute" class="function"><a href="pathlib.html#Path.absolute">absolute</a></dd>
+                <dd id="Register7zFormat.owner" class="function"><a href="pathlib.html#Path.owner">owner</a></dd>
+                <dd id="Register7zFormat.group" class="function"><a href="pathlib.html#Path.group">group</a></dd>
+                <dd id="Register7zFormat.readlink" class="function"><a href="pathlib.html#Path.readlink">readlink</a></dd>
+                <dd id="Register7zFormat.touch" class="function"><a href="pathlib.html#Path.touch">touch</a></dd>
+                <dd id="Register7zFormat.mkdir" class="function"><a href="pathlib.html#Path.mkdir">mkdir</a></dd>
+                <dd id="Register7zFormat.chmod" class="function"><a href="pathlib.html#Path.chmod">chmod</a></dd>
+                <dd id="Register7zFormat.lchmod" class="function"><a href="pathlib.html#Path.lchmod">lchmod</a></dd>
+                <dd id="Register7zFormat.unlink" class="function"><a href="pathlib.html#Path.unlink">unlink</a></dd>
+                <dd id="Register7zFormat.rmdir" class="function"><a href="pathlib.html#Path.rmdir">rmdir</a></dd>
+                <dd id="Register7zFormat.rename" class="function"><a href="pathlib.html#Path.rename">rename</a></dd>
+                <dd id="Register7zFormat.replace" class="function"><a href="pathlib.html#Path.replace">replace</a></dd>
+                <dd id="Register7zFormat.symlink_to" class="function"><a href="pathlib.html#Path.symlink_to">symlink_to</a></dd>
+                <dd id="Register7zFormat.hardlink_to" class="function"><a href="pathlib.html#Path.hardlink_to">hardlink_to</a></dd>
+                <dd id="Register7zFormat.expanduser" class="function"><a href="pathlib.html#Path.expanduser">expanduser</a></dd>
+
+            </div>
+            <div><dt><a href="#Path">Path</a></dt>
                                 <dd id="Register7zFormat.default_hash" class="variable"><a href="#Path.default_hash">default_hash</a></dd>
                 <dd id="Register7zFormat.algorithms_available" class="variable"><a href="#Path.algorithms_available">algorithms_available</a></dd>
                 <dd id="Register7zFormat.hexdigest" class="function"><a href="#Path.hexdigest">hexdigest</a></dd>
@@ -1323,46 +1364,9 @@ call of <code><a href="#Register7zFormat.make_archive">make_archive()</a></code>
                 <dd id="Register7zFormat.expand" class="function"><a href="#Path.expand">expand</a></dd>
 
             </div>
-            <div><dt><a href="pathlib.html#Path">pathlib.Path</a></dt>
-                                <dd id="Register7zFormat.home" class="function"><a href="pathlib.html#Path.home">home</a></dd>
-                <dd id="Register7zFormat.samefile" class="function"><a href="pathlib.html#Path.samefile">samefile</a></dd>
-                <dd id="Register7zFormat.glob" class="function"><a href="pathlib.html#Path.glob">glob</a></dd>
-                <dd id="Register7zFormat.rglob" class="function"><a href="pathlib.html#Path.rglob">rglob</a></dd>
-                <dd id="Register7zFormat.absolute" class="function"><a href="pathlib.html#Path.absolute">absolute</a></dd>
-                <dd id="Register7zFormat.owner" class="function"><a href="pathlib.html#Path.owner">owner</a></dd>
-                <dd id="Register7zFormat.group" class="function"><a href="pathlib.html#Path.group">group</a></dd>
-                <dd id="Register7zFormat.open" class="function"><a href="pathlib.html#Path.open">open</a></dd>
-                <dd id="Register7zFormat.read_bytes" class="function"><a href="pathlib.html#Path.read_bytes">read_bytes</a></dd>
-                <dd id="Register7zFormat.read_text" class="function"><a href="pathlib.html#Path.read_text">read_text</a></dd>
-                <dd id="Register7zFormat.write_bytes" class="function"><a href="pathlib.html#Path.write_bytes">write_bytes</a></dd>
-                <dd id="Register7zFormat.write_text" class="function"><a href="pathlib.html#Path.write_text">write_text</a></dd>
-                <dd id="Register7zFormat.readlink" class="function"><a href="pathlib.html#Path.readlink">readlink</a></dd>
-                <dd id="Register7zFormat.touch" class="function"><a href="pathlib.html#Path.touch">touch</a></dd>
-                <dd id="Register7zFormat.mkdir" class="function"><a href="pathlib.html#Path.mkdir">mkdir</a></dd>
-                <dd id="Register7zFormat.chmod" class="function"><a href="pathlib.html#Path.chmod">chmod</a></dd>
-                <dd id="Register7zFormat.lchmod" class="function"><a href="pathlib.html#Path.lchmod">lchmod</a></dd>
-                <dd id="Register7zFormat.unlink" class="function"><a href="pathlib.html#Path.unlink">unlink</a></dd>
-                <dd id="Register7zFormat.rmdir" class="function"><a href="pathlib.html#Path.rmdir">rmdir</a></dd>
-                <dd id="Register7zFormat.lstat" class="function"><a href="pathlib.html#Path.lstat">lstat</a></dd>
-                <dd id="Register7zFormat.rename" class="function"><a href="pathlib.html#Path.rename">rename</a></dd>
-                <dd id="Register7zFormat.replace" class="function"><a href="pathlib.html#Path.replace">replace</a></dd>
-                <dd id="Register7zFormat.symlink_to" class="function"><a href="pathlib.html#Path.symlink_to">symlink_to</a></dd>
-                <dd id="Register7zFormat.hardlink_to" class="function"><a href="pathlib.html#Path.hardlink_to">hardlink_to</a></dd>
-                <dd id="Register7zFormat.link_to" class="function"><a href="pathlib.html#Path.link_to">link_to</a></dd>
-                <dd id="Register7zFormat.exists" class="function"><a href="pathlib.html#Path.exists">exists</a></dd>
-                <dd id="Register7zFormat.is_dir" class="function"><a href="pathlib.html#Path.is_dir">is_dir</a></dd>
-                <dd id="Register7zFormat.is_file" class="function"><a href="pathlib.html#Path.is_file">is_file</a></dd>
-                <dd id="Register7zFormat.is_mount" class="function"><a href="pathlib.html#Path.is_mount">is_mount</a></dd>
-                <dd id="Register7zFormat.is_symlink" class="function"><a href="pathlib.html#Path.is_symlink">is_symlink</a></dd>
-                <dd id="Register7zFormat.is_block_device" class="function"><a href="pathlib.html#Path.is_block_device">is_block_device</a></dd>
-                <dd id="Register7zFormat.is_char_device" class="function"><a href="pathlib.html#Path.is_char_device">is_char_device</a></dd>
-                <dd id="Register7zFormat.is_fifo" class="function"><a href="pathlib.html#Path.is_fifo">is_fifo</a></dd>
-                <dd id="Register7zFormat.is_socket" class="function"><a href="pathlib.html#Path.is_socket">is_socket</a></dd>
-                <dd id="Register7zFormat.expanduser" class="function"><a href="pathlib.html#Path.expanduser">expanduser</a></dd>
-
-            </div>
             <div><dt><a href="pathlib.html#PurePath">pathlib.PurePath</a></dt>
-                                <dd id="Register7zFormat.as_posix" class="function"><a href="pathlib.html#PurePath.as_posix">as_posix</a></dd>
+                                <dd id="Register7zFormat.with_segments" class="function"><a href="pathlib.html#PurePath.with_segments">with_segments</a></dd>
+                <dd id="Register7zFormat.as_posix" class="function"><a href="pathlib.html#PurePath.as_posix">as_posix</a></dd>
                 <dd id="Register7zFormat.as_uri" class="function"><a href="pathlib.html#PurePath.as_uri">as_uri</a></dd>
                 <dd id="Register7zFormat.drive" class="variable"><a href="pathlib.html#PurePath.drive">drive</a></dd>
                 <dd id="Register7zFormat.root" class="variable"><a href="pathlib.html#PurePath.root">root</a></dd>
@@ -1511,6 +1515,7 @@ measuring storage data. These attributes will return a <code>float</code>.</p>
                 <dd id="ByteInt.to_bytes" class="function"><a href="builtins.html#int.to_bytes">to_bytes</a></dd>
                 <dd id="ByteInt.from_bytes" class="function"><a href="builtins.html#int.from_bytes">from_bytes</a></dd>
                 <dd id="ByteInt.as_integer_ratio" class="function"><a href="builtins.html#int.as_integer_ratio">as_integer_ratio</a></dd>
+                <dd id="ByteInt.is_integer" class="function"><a href="builtins.html#int.is_integer">is_integer</a></dd>
                 <dd id="ByteInt.real" class="variable"><a href="builtins.html#int.real">real</a></dd>
                 <dd id="ByteInt.imag" class="variable"><a href="builtins.html#int.imag">imag</a></dd>
                 <dd id="ByteInt.numerator" class="variable"><a href="builtins.html#int.numerator">numerator</a></dd>

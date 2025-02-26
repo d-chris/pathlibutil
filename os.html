@@ -97,6 +97,48 @@
                     <a class="variable" href="#CLD_TRAPPED">CLD_TRAPPED</a>
             </li>
             <li>
+                    <a class="variable" href="#CLONE_FILES">CLONE_FILES</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_FS">CLONE_FS</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_NEWCGROUP">CLONE_NEWCGROUP</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_NEWIPC">CLONE_NEWIPC</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_NEWNET">CLONE_NEWNET</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_NEWNS">CLONE_NEWNS</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_NEWPID">CLONE_NEWPID</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_NEWTIME">CLONE_NEWTIME</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_NEWUSER">CLONE_NEWUSER</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_NEWUTS">CLONE_NEWUTS</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_SIGHAND">CLONE_SIGHAND</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_SYSVSEM">CLONE_SYSVSEM</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_THREAD">CLONE_THREAD</a>
+            </li>
+            <li>
+                    <a class="variable" href="#CLONE_VM">CLONE_VM</a>
+            </li>
+            <li>
                     <a class="class" href="#DirEntry">DirEntry</a>
                             <ul class="memberlist">
                         <li>
@@ -107,6 +149,9 @@
                         </li>
                         <li>
                                 <a class="function" href="#DirEntry.is_symlink">is_symlink</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#DirEntry.is_junction">is_junction</a>
                         </li>
                         <li>
                                 <a class="function" href="#DirEntry.stat">stat</a>
@@ -326,6 +371,9 @@
             </li>
             <li>
                     <a class="variable" href="#O_WRONLY">O_WRONLY</a>
+            </li>
+            <li>
+                    <a class="variable" href="#PIDFD_NONBLOCK">PIDFD_NONBLOCK</a>
             </li>
             <li>
                     <a class="variable" href="#POSIX_FADV_DONTNEED">POSIX_FADV_DONTNEED</a>
@@ -742,6 +790,9 @@
                     <a class="function" href="#lockf">lockf</a>
             </li>
             <li>
+                    <a class="function" href="#login_tty">login_tty</a>
+            </li>
+            <li>
                     <a class="function" href="#lseek">lseek</a>
             </li>
             <li>
@@ -917,6 +968,9 @@
             </li>
             <li>
                     <a class="function" href="#setgroups">setgroups</a>
+            </li>
+            <li>
+                    <a class="function" href="#setns">setns</a>
             </li>
             <li>
                     <a class="function" href="#setpgid">setpgid</a>
@@ -1193,6 +1247,9 @@
             </li>
             <li>
                     <a class="function" href="#unsetenv">unsetenv</a>
+            </li>
+            <li>
+                    <a class="function" href="#unshare">unshare</a>
             </li>
             <li>
                     <a class="function" href="#urandom">urandom</a>
@@ -1694,6 +1751,174 @@ named executable (similar to a shell) when launching a process.</p>
     
 
                 </section>
+                <section id="CLONE_FILES">
+                    <div class="attr variable">
+            <span class="name">CLONE_FILES</span>        =
+<span class="default_value">1024</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_FILES"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_FS">
+                    <div class="attr variable">
+            <span class="name">CLONE_FS</span>        =
+<span class="default_value">512</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_FS"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_NEWCGROUP">
+                    <div class="attr variable">
+            <span class="name">CLONE_NEWCGROUP</span>        =
+<span class="default_value">33554432</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_NEWCGROUP"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_NEWIPC">
+                    <div class="attr variable">
+            <span class="name">CLONE_NEWIPC</span>        =
+<span class="default_value">134217728</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_NEWIPC"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_NEWNET">
+                    <div class="attr variable">
+            <span class="name">CLONE_NEWNET</span>        =
+<span class="default_value">1073741824</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_NEWNET"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_NEWNS">
+                    <div class="attr variable">
+            <span class="name">CLONE_NEWNS</span>        =
+<span class="default_value">131072</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_NEWNS"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_NEWPID">
+                    <div class="attr variable">
+            <span class="name">CLONE_NEWPID</span>        =
+<span class="default_value">536870912</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_NEWPID"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_NEWTIME">
+                    <div class="attr variable">
+            <span class="name">CLONE_NEWTIME</span>        =
+<span class="default_value">128</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_NEWTIME"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_NEWUSER">
+                    <div class="attr variable">
+            <span class="name">CLONE_NEWUSER</span>        =
+<span class="default_value">268435456</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_NEWUSER"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_NEWUTS">
+                    <div class="attr variable">
+            <span class="name">CLONE_NEWUTS</span>        =
+<span class="default_value">67108864</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_NEWUTS"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_SIGHAND">
+                    <div class="attr variable">
+            <span class="name">CLONE_SIGHAND</span>        =
+<span class="default_value">2048</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_SIGHAND"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_SYSVSEM">
+                    <div class="attr variable">
+            <span class="name">CLONE_SYSVSEM</span>        =
+<span class="default_value">262144</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_SYSVSEM"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_THREAD">
+                    <div class="attr variable">
+            <span class="name">CLONE_THREAD</span>        =
+<span class="default_value">65536</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_THREAD"></a>
+    
+    
+
+                </section>
+                <section id="CLONE_VM">
+                    <div class="attr variable">
+            <span class="name">CLONE_VM</span>        =
+<span class="default_value">256</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CLONE_VM"></a>
+    
+    
+
+                </section>
                 <section id="DirEntry">
                     <div class="attr class">
             
@@ -1747,6 +1972,21 @@ named executable (similar to a shell) when launching a process.</p>
     <a class="headerlink" href="#DirEntry.is_symlink"></a>
     
             <div class="docstring"><p>Return True if the entry is a symbolic link; cached per entry.</p>
+</div>
+
+
+                            </div>
+                            <div id="DirEntry.is_junction" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_junction</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirEntry.is_junction"></a>
+    
+            <div class="docstring"><p>Return True if the entry is a junction; cached per entry.</p>
 </div>
 
 
@@ -2159,7 +2399,7 @@ named executable (similar to a shell) when launching a process.</p>
                 <section id="MFD_HUGE_16GB">
                     <div class="attr variable">
             <span class="name">MFD_HUGE_16GB</span>        =
-<span class="default_value">-2013265920</span>
+<span class="default_value">2281701376</span>
 
         
     </div>
@@ -2620,6 +2860,18 @@ named executable (similar to a shell) when launching a process.</p>
         
     </div>
     <a class="headerlink" href="#O_WRONLY"></a>
+    
+    
+
+                </section>
+                <section id="PIDFD_NONBLOCK">
+                    <div class="attr variable">
+            <span class="name">PIDFD_NONBLOCK</span>        =
+<span class="default_value">2048</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PIDFD_NONBLOCK"></a>
     
     
 
@@ -3598,6 +3850,9 @@ On some platforms, path may also be specified as an open file descriptor.
     If this functionality is unavailable, using it raises an exception.
   mode
     Operating-system mode bitfield.
+    Be careful when using number literals for <em>mode</em>. The conventional UNIX notation for
+    numeric modes uses an octal base, which needs to be indicated with a <code>0o</code> prefix in
+    Python.
   dir_fd
     If not None, it should be a file descriptor open to a directory,
     and path should be relative; path will then be relative to that
@@ -3978,6 +4233,14 @@ Equivalent to <a href="#chdir">os.chdir</a>(fd).</p>
     <a class="headerlink" href="#fchmod"></a>
     
             <div class="docstring"><p>Change the access permissions of the file given by file descriptor fd.</p>
+
+<p>fd
+    The file descriptor of the file to be modified.
+  mode
+    Operating-system mode bitfield.
+    Be careful when using number literals for <em>mode</em>. The conventional UNIX notation for
+    numeric modes uses an octal base, which needs to be indicated with a <code>0o</code> prefix in
+    Python.</p>
 
 <p>Equivalent to <a href="#chmod">os.chmod</a>(fd, mode).</p>
 </div>
@@ -4709,11 +4972,30 @@ length
 
 
                 </section>
+                <section id="login_tty">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">login_tty</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#login_tty"></a>
+    
+            <div class="docstring"><p>Prepare the tty of which fd is a file descriptor for a new login session.</p>
+
+<p>Make the calling process a session leader; make the tty the
+controlling tty, the stdin, the stdout, and the stderr of the
+calling process; close fd.</p>
+</div>
+
+
+                </section>
                 <section id="lseek">
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">lseek</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="n">position</span>, </span><span class="param"><span class="n">how</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">lseek</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="n">position</span>, </span><span class="param"><span class="n">whence</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4721,8 +5003,17 @@ length
     
             <div class="docstring"><p>Set the position of a file descriptor.  Return the new position.</p>
 
-<p>Return the new cursor position in number of bytes
-relative to the beginning of the file.</p>
+<p>fd
+    An open file descriptor, as returned by <a href="#open">os.open()</a>.
+  position
+    Position, interpreted relative to 'whence'.
+  whence
+    The relative position to seek from. Valid values are:
+    - SEEK_SET: seek from the start of the file.
+    - SEEK_CUR: seek from the current file position.
+    - SEEK_END: seek from the end of the file.</p>
+
+<p>The return value is the number of bytes relative to the beginning of the file.</p>
 </div>
 
 
@@ -5808,6 +6099,26 @@ clear the O_NONBLOCK flag otherwise.</p>
 
 
                 </section>
+                <section id="setns">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">setns</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="n">nstype</span><span class="o">=</span><span class="mi">0</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#setns"></a>
+    
+            <div class="docstring"><p>Move the calling thread into different namespaces.</p>
+
+<p>fd
+  A file descriptor to a namespace.
+nstype
+  Type of namespace.</p>
+</div>
+
+
+                </section>
                 <section id="setpgid">
                     <div class="attr function">
             
@@ -6588,7 +6899,7 @@ dir_fd may not be implemented on your platform.
                     <div class="attr variable">
             <span class="name">sysconf_names</span>        =
 <input id="sysconf_names-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="sysconf_names-view-value"></label><span class="default_value">{&#39;SC_2_CHAR_TERM&#39;: 95, &#39;SC_2_C_BIND&#39;: 47, &#39;SC_2_C_DEV&#39;: 48, &#39;SC_2_C_VERSION&#39;: 96, &#39;SC_2_FORT_DEV&#39;: 49, &#39;SC_2_FORT_RUN&#39;: 50, &#39;SC_2_LOCALEDEF&#39;: 52, &#39;SC_2_SW_DEV&#39;: 51, &#39;SC_2_UPE&#39;: 97, &#39;SC_2_VERSION&#39;: 46, &#39;SC_AIO_LISTIO_MAX&#39;: 23, &#39;SC_AIO_MAX&#39;: 24, &#39;SC_AIO_PRIO_DELTA_MAX&#39;: 25, &#39;SC_ARG_MAX&#39;: 0, &#39;SC_ASYNCHRONOUS_IO&#39;: 12, &#39;SC_ATEXIT_MAX&#39;: 87, &#39;SC_AVPHYS_PAGES&#39;: 86, &#39;SC_BC_BASE_MAX&#39;: 36, &#39;SC_BC_DIM_MAX&#39;: 37, &#39;SC_BC_SCALE_MAX&#39;: 38, &#39;SC_BC_STRING_MAX&#39;: 39, &#39;SC_CHARCLASS_NAME_MAX&#39;: 45, &#39;SC_CHAR_BIT&#39;: 101, &#39;SC_CHAR_MAX&#39;: 102, &#39;SC_CHAR_MIN&#39;: 103, &#39;SC_CHILD_MAX&#39;: 1, &#39;SC_CLK_TCK&#39;: 2, &#39;SC_COLL_WEIGHTS_MAX&#39;: 40, &#39;SC_DELAYTIMER_MAX&#39;: 26, &#39;SC_EQUIV_CLASS_MAX&#39;: 41, &#39;SC_EXPR_NEST_MAX&#39;: 42, &#39;SC_FSYNC&#39;: 15, &#39;SC_GETGR_R_SIZE_MAX&#39;: 69, &#39;SC_GETPW_R_SIZE_MAX&#39;: 70, &#39;SC_INT_MAX&#39;: 104, &#39;SC_INT_MIN&#39;: 105, &#39;SC_IOV_MAX&#39;: 60, &#39;SC_JOB_CONTROL&#39;: 7, &#39;SC_LINE_MAX&#39;: 43, &#39;SC_LOGIN_NAME_MAX&#39;: 71, &#39;SC_LONG_BIT&#39;: 106, &#39;SC_MAPPED_FILES&#39;: 16, &#39;SC_MB_LEN_MAX&#39;: 108, &#39;SC_MEMLOCK&#39;: 17, &#39;SC_MEMLOCK_RANGE&#39;: 18, &#39;SC_MEMORY_PROTECTION&#39;: 19, &#39;SC_MESSAGE_PASSING&#39;: 20, &#39;SC_MQ_OPEN_MAX&#39;: 27, &#39;SC_MQ_PRIO_MAX&#39;: 28, &#39;SC_NGROUPS_MAX&#39;: 3, &#39;SC_NL_ARGMAX&#39;: 119, &#39;SC_NL_LANGMAX&#39;: 120, &#39;SC_NL_MSGMAX&#39;: 121, &#39;SC_NL_NMAX&#39;: 122, &#39;SC_NL_SETMAX&#39;: 123, &#39;SC_NL_TEXTMAX&#39;: 124, &#39;SC_NPROCESSORS_CONF&#39;: 83, &#39;SC_NPROCESSORS_ONLN&#39;: 84, &#39;SC_NZERO&#39;: 109, &#39;SC_OPEN_MAX&#39;: 4, &#39;SC_PAGESIZE&#39;: 30, &#39;SC_PAGE_SIZE&#39;: 30, &#39;SC_PASS_MAX&#39;: 88, &#39;SC_PHYS_PAGES&#39;: 85, &#39;SC_PII&#39;: 53, &#39;SC_PII_INTERNET&#39;: 56, &#39;SC_PII_INTERNET_DGRAM&#39;: 62, &#39;SC_PII_INTERNET_STREAM&#39;: 61, &#39;SC_PII_OSI&#39;: 57, &#39;SC_PII_OSI_CLTS&#39;: 64, &#39;SC_PII_OSI_COTS&#39;: 63, &#39;SC_PII_OSI_M&#39;: 65, &#39;SC_PII_SOCKET&#39;: 55, &#39;SC_PII_XTI&#39;: 54, &#39;SC_POLL&#39;: 58, &#39;SC_PRIORITIZED_IO&#39;: 13, &#39;SC_PRIORITY_SCHEDULING&#39;: 10, &#39;SC_REALTIME_SIGNALS&#39;: 9, &#39;SC_RE_DUP_MAX&#39;: 44, &#39;SC_RTSIG_MAX&#39;: 31, &#39;SC_SAVED_IDS&#39;: 8, &#39;SC_SCHAR_MAX&#39;: 111, &#39;SC_SCHAR_MIN&#39;: 112, &#39;SC_SELECT&#39;: 59, &#39;SC_SEMAPHORES&#39;: 21, &#39;SC_SEM_NSEMS_MAX&#39;: 32, &#39;SC_SEM_VALUE_MAX&#39;: 33, &#39;SC_SHARED_MEMORY_OBJECTS&#39;: 22, &#39;SC_SHRT_MAX&#39;: 113, &#39;SC_SHRT_MIN&#39;: 114, &#39;SC_SIGQUEUE_MAX&#39;: 34, &#39;SC_SSIZE_MAX&#39;: 110, &#39;SC_STREAM_MAX&#39;: 5, &#39;SC_SYNCHRONIZED_IO&#39;: 14, &#39;SC_THREADS&#39;: 67, &#39;SC_THREAD_ATTR_STACKADDR&#39;: 77, &#39;SC_THREAD_ATTR_STACKSIZE&#39;: 78, &#39;SC_THREAD_DESTRUCTOR_ITERATIONS&#39;: 73, &#39;SC_THREAD_KEYS_MAX&#39;: 74, &#39;SC_THREAD_PRIORITY_SCHEDULING&#39;: 79, &#39;SC_THREAD_PRIO_INHERIT&#39;: 80, &#39;SC_THREAD_PRIO_PROTECT&#39;: 81, &#39;SC_THREAD_PROCESS_SHARED&#39;: 82, &#39;SC_THREAD_SAFE_FUNCTIONS&#39;: 68, &#39;SC_THREAD_STACK_MIN&#39;: 75, &#39;SC_THREAD_THREADS_MAX&#39;: 76, &#39;SC_TIMERS&#39;: 11, &#39;SC_TIMER_MAX&#39;: 35, &#39;SC_TTY_NAME_MAX&#39;: 72, &#39;SC_TZNAME_MAX&#39;: 6, &#39;SC_T_IOV_MAX&#39;: 66, &#39;SC_UCHAR_MAX&#39;: 115, &#39;SC_UINT_MAX&#39;: 116, &#39;SC_UIO_MAXIOV&#39;: 60, &#39;SC_ULONG_MAX&#39;: 117, &#39;SC_USHRT_MAX&#39;: 118, &#39;SC_VERSION&#39;: 29, &#39;SC_WORD_BIT&#39;: 107, &#39;SC_XBS5_ILP32_OFF32&#39;: 125, &#39;SC_XBS5_ILP32_OFFBIG&#39;: 126, &#39;SC_XBS5_LP64_OFF64&#39;: 127, &#39;SC_XBS5_LPBIG_OFFBIG&#39;: 128, &#39;SC_XOPEN_CRYPT&#39;: 92, &#39;SC_XOPEN_ENH_I18N&#39;: 93, &#39;SC_XOPEN_LEGACY&#39;: 129, &#39;SC_XOPEN_REALTIME&#39;: 130, &#39;SC_XOPEN_REALTIME_THREADS&#39;: 131, &#39;SC_XOPEN_SHM&#39;: 94, &#39;SC_XOPEN_UNIX&#39;: 91, &#39;SC_XOPEN_VERSION&#39;: 89, &#39;SC_XOPEN_XCU_VERSION&#39;: 90, &#39;SC_XOPEN_XPG2&#39;: 98, &#39;SC_XOPEN_XPG3&#39;: 99, &#39;SC_XOPEN_XPG4&#39;: 100}</span>
+            <label class="view-value-button pdoc-button" for="sysconf_names-view-value"></label><span class="default_value">{&#39;SC_2_CHAR_TERM&#39;: 95, &#39;SC_2_C_BIND&#39;: 47, &#39;SC_2_C_DEV&#39;: 48, &#39;SC_2_C_VERSION&#39;: 96, &#39;SC_2_FORT_DEV&#39;: 49, &#39;SC_2_FORT_RUN&#39;: 50, &#39;SC_2_LOCALEDEF&#39;: 52, &#39;SC_2_SW_DEV&#39;: 51, &#39;SC_2_UPE&#39;: 97, &#39;SC_2_VERSION&#39;: 46, &#39;SC_AIO_LISTIO_MAX&#39;: 23, &#39;SC_AIO_MAX&#39;: 24, &#39;SC_AIO_PRIO_DELTA_MAX&#39;: 25, &#39;SC_ARG_MAX&#39;: 0, &#39;SC_ASYNCHRONOUS_IO&#39;: 12, &#39;SC_ATEXIT_MAX&#39;: 87, &#39;SC_AVPHYS_PAGES&#39;: 86, &#39;SC_BC_BASE_MAX&#39;: 36, &#39;SC_BC_DIM_MAX&#39;: 37, &#39;SC_BC_SCALE_MAX&#39;: 38, &#39;SC_BC_STRING_MAX&#39;: 39, &#39;SC_CHARCLASS_NAME_MAX&#39;: 45, &#39;SC_CHAR_BIT&#39;: 101, &#39;SC_CHAR_MAX&#39;: 102, &#39;SC_CHAR_MIN&#39;: 103, &#39;SC_CHILD_MAX&#39;: 1, &#39;SC_CLK_TCK&#39;: 2, &#39;SC_COLL_WEIGHTS_MAX&#39;: 40, &#39;SC_DELAYTIMER_MAX&#39;: 26, &#39;SC_EQUIV_CLASS_MAX&#39;: 41, &#39;SC_EXPR_NEST_MAX&#39;: 42, &#39;SC_FSYNC&#39;: 15, &#39;SC_GETGR_R_SIZE_MAX&#39;: 69, &#39;SC_GETPW_R_SIZE_MAX&#39;: 70, &#39;SC_INT_MAX&#39;: 104, &#39;SC_INT_MIN&#39;: 105, &#39;SC_IOV_MAX&#39;: 60, &#39;SC_JOB_CONTROL&#39;: 7, &#39;SC_LINE_MAX&#39;: 43, &#39;SC_LOGIN_NAME_MAX&#39;: 71, &#39;SC_LONG_BIT&#39;: 106, &#39;SC_MAPPED_FILES&#39;: 16, &#39;SC_MB_LEN_MAX&#39;: 108, &#39;SC_MEMLOCK&#39;: 17, &#39;SC_MEMLOCK_RANGE&#39;: 18, &#39;SC_MEMORY_PROTECTION&#39;: 19, &#39;SC_MESSAGE_PASSING&#39;: 20, &#39;SC_MINSIGSTKSZ&#39;: 249, &#39;SC_MQ_OPEN_MAX&#39;: 27, &#39;SC_MQ_PRIO_MAX&#39;: 28, &#39;SC_NGROUPS_MAX&#39;: 3, &#39;SC_NL_ARGMAX&#39;: 119, &#39;SC_NL_LANGMAX&#39;: 120, &#39;SC_NL_MSGMAX&#39;: 121, &#39;SC_NL_NMAX&#39;: 122, &#39;SC_NL_SETMAX&#39;: 123, &#39;SC_NL_TEXTMAX&#39;: 124, &#39;SC_NPROCESSORS_CONF&#39;: 83, &#39;SC_NPROCESSORS_ONLN&#39;: 84, &#39;SC_NZERO&#39;: 109, &#39;SC_OPEN_MAX&#39;: 4, &#39;SC_PAGESIZE&#39;: 30, &#39;SC_PAGE_SIZE&#39;: 30, &#39;SC_PASS_MAX&#39;: 88, &#39;SC_PHYS_PAGES&#39;: 85, &#39;SC_PII&#39;: 53, &#39;SC_PII_INTERNET&#39;: 56, &#39;SC_PII_INTERNET_DGRAM&#39;: 62, &#39;SC_PII_INTERNET_STREAM&#39;: 61, &#39;SC_PII_OSI&#39;: 57, &#39;SC_PII_OSI_CLTS&#39;: 64, &#39;SC_PII_OSI_COTS&#39;: 63, &#39;SC_PII_OSI_M&#39;: 65, &#39;SC_PII_SOCKET&#39;: 55, &#39;SC_PII_XTI&#39;: 54, &#39;SC_POLL&#39;: 58, &#39;SC_PRIORITIZED_IO&#39;: 13, &#39;SC_PRIORITY_SCHEDULING&#39;: 10, &#39;SC_REALTIME_SIGNALS&#39;: 9, &#39;SC_RE_DUP_MAX&#39;: 44, &#39;SC_RTSIG_MAX&#39;: 31, &#39;SC_SAVED_IDS&#39;: 8, &#39;SC_SCHAR_MAX&#39;: 111, &#39;SC_SCHAR_MIN&#39;: 112, &#39;SC_SELECT&#39;: 59, &#39;SC_SEMAPHORES&#39;: 21, &#39;SC_SEM_NSEMS_MAX&#39;: 32, &#39;SC_SEM_VALUE_MAX&#39;: 33, &#39;SC_SHARED_MEMORY_OBJECTS&#39;: 22, &#39;SC_SHRT_MAX&#39;: 113, &#39;SC_SHRT_MIN&#39;: 114, &#39;SC_SIGQUEUE_MAX&#39;: 34, &#39;SC_SSIZE_MAX&#39;: 110, &#39;SC_STREAM_MAX&#39;: 5, &#39;SC_SYNCHRONIZED_IO&#39;: 14, &#39;SC_THREADS&#39;: 67, &#39;SC_THREAD_ATTR_STACKADDR&#39;: 77, &#39;SC_THREAD_ATTR_STACKSIZE&#39;: 78, &#39;SC_THREAD_DESTRUCTOR_ITERATIONS&#39;: 73, &#39;SC_THREAD_KEYS_MAX&#39;: 74, &#39;SC_THREAD_PRIORITY_SCHEDULING&#39;: 79, &#39;SC_THREAD_PRIO_INHERIT&#39;: 80, &#39;SC_THREAD_PRIO_PROTECT&#39;: 81, &#39;SC_THREAD_PROCESS_SHARED&#39;: 82, &#39;SC_THREAD_SAFE_FUNCTIONS&#39;: 68, &#39;SC_THREAD_STACK_MIN&#39;: 75, &#39;SC_THREAD_THREADS_MAX&#39;: 76, &#39;SC_TIMERS&#39;: 11, &#39;SC_TIMER_MAX&#39;: 35, &#39;SC_TTY_NAME_MAX&#39;: 72, &#39;SC_TZNAME_MAX&#39;: 6, &#39;SC_T_IOV_MAX&#39;: 66, &#39;SC_UCHAR_MAX&#39;: 115, &#39;SC_UINT_MAX&#39;: 116, &#39;SC_UIO_MAXIOV&#39;: 60, &#39;SC_ULONG_MAX&#39;: 117, &#39;SC_USHRT_MAX&#39;: 118, &#39;SC_VERSION&#39;: 29, &#39;SC_WORD_BIT&#39;: 107, &#39;SC_XBS5_ILP32_OFF32&#39;: 125, &#39;SC_XBS5_ILP32_OFFBIG&#39;: 126, &#39;SC_XBS5_LP64_OFF64&#39;: 127, &#39;SC_XBS5_LPBIG_OFFBIG&#39;: 128, &#39;SC_XOPEN_CRYPT&#39;: 92, &#39;SC_XOPEN_ENH_I18N&#39;: 93, &#39;SC_XOPEN_LEGACY&#39;: 129, &#39;SC_XOPEN_REALTIME&#39;: 130, &#39;SC_XOPEN_REALTIME_THREADS&#39;: 131, &#39;SC_XOPEN_SHM&#39;: 94, &#39;SC_XOPEN_UNIX&#39;: 91, &#39;SC_XOPEN_VERSION&#39;: 89, &#39;SC_XOPEN_XCU_VERSION&#39;: 90, &#39;SC_XOPEN_XPG2&#39;: 98, &#39;SC_XOPEN_XPG3&#39;: 99, &#39;SC_XOPEN_XPG4&#39;: 100}</span>
 
         
     </div>
@@ -6747,7 +7058,7 @@ dir_fd may not be implemented on your platform.
   <p>(utime, stime, cutime, cstime, elapsed_time)</p>
 </blockquote>
 
-<p>All fields are floating point numbers.</p>
+<p>All fields are floating-point numbers.</p>
 </div>
 
 
@@ -7120,6 +7431,24 @@ dir_fd may not be implemented on your platform.
     <a class="headerlink" href="#unsetenv"></a>
     
             <div class="docstring"><p>Delete an environment variable.</p>
+</div>
+
+
+                </section>
+                <section id="unshare">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">unshare</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">flags</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#unshare"></a>
+    
+            <div class="docstring"><p>Disassociate parts of a process (or thread) execution context.</p>
+
+<p>flags
+  Namespaces to be unshared.</p>
 </div>
 
 
@@ -7604,8 +7933,8 @@ either.</p>
 <p>import os
 from os.path import join, getsize
 for root, dirs, files in <a href="#walk">os.walk</a>('python/Lib/email'):
-    print(root, "consumes", end="")
-    print(sum(getsize(join(root, name)) for name in files), end="")
+    print(root, "consumes ")
+    print(sum(getsize(join(root, name)) for name in files), end=" ")
     print("bytes in", len(files), "non-directory files")
     if 'CVS' in dirs:
         dirs.remove('CVS')  # don't visit CVS directories</p>

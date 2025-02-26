@@ -787,6 +787,7 @@ colno: The column corresponding to pos</p>
                                 <dl>
                                     <div><dt><a href="builtins.html#BaseException">builtins.BaseException</a></dt>
                                 <dd id="JSONDecodeError.with_traceback" class="function"><a href="builtins.html#BaseException.with_traceback">with_traceback</a></dd>
+                <dd id="JSONDecodeError.add_note" class="function"><a href="builtins.html#BaseException.add_note">add_note</a></dd>
                 <dd id="JSONDecodeError.args" class="variable"><a href="builtins.html#BaseException.args">args</a></dd>
 
             </div>
@@ -997,7 +998,7 @@ implement default like this::</p>
     else:
         return list(iterable)
     # Let the base class default method raise the TypeError
-    return <a href="#JSONEncoder.default">JSONEncoder.default</a>(self, o)
+    return super().default(o)
 </code></pre>
 </div>
 

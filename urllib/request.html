@@ -175,6 +175,9 @@
                         <li>
                                 <a class="function" href="#HTTPRedirectHandler.http_error_307">http_error_307</a>
                         </li>
+                        <li>
+                                <a class="function" href="#HTTPRedirectHandler.http_error_308">http_error_308</a>
+                        </li>
                 </ul>
 
             </li>
@@ -253,9 +256,6 @@
             <li>
                     <a class="class" href="#HTTPPasswordMgrWithPriorAuth">HTTPPasswordMgrWithPriorAuth</a>
                             <ul class="memberlist">
-                        <li>
-                                <a class="function" href="#HTTPPasswordMgrWithPriorAuth.__init__">HTTPPasswordMgrWithPriorAuth</a>
-                        </li>
                         <li>
                                 <a class="variable" href="#HTTPPasswordMgrWithPriorAuth.authenticated">authenticated</a>
                         </li>
@@ -650,6 +650,9 @@
                                 <a class="function" href="#FancyURLopener.http_error_307">http_error_307</a>
                         </li>
                         <li>
+                                <a class="function" href="#FancyURLopener.http_error_308">http_error_308</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#FancyURLopener.http_error_401">http_error_401</a>
                         </li>
                         <li>
@@ -720,8 +723,8 @@ option.  The OpenerDirector is a composite object that invokes the
 Handlers needed to open the requested URL.  For example, the
 HTTPHandler performs HTTP GET and POST requests and deals with
 non-error returns.  The HTTPRedirectHandler automatically deals with
-HTTP 301, 302, 303 and 307 redirect errors, and the HTTPDigestAuthHandler
-deals with digest authentication.</p>
+HTTP 301, 302, 303, 307, and 308 redirect errors, and the
+HTTPDigestAuthHandler deals with digest authentication.</p>
 
 <p>urlopen(url, data=None) -- Basic usage is the same as original
 urllib.  pass the url and optionally data to post to an HTTP URL, and
@@ -1348,6 +1351,19 @@ but another Handler might.</p>
     
 
                             </div>
+                            <div id="HTTPRedirectHandler.http_error_308" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">http_error_308</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">req</span>, </span><span class="param"><span class="n">fp</span>, </span><span class="param"><span class="n">code</span>, </span><span class="param"><span class="n">msg</span>, </span><span class="param"><span class="n">headers</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#HTTPRedirectHandler.http_error_308"></a>
+    
+    
+
+                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
@@ -1662,18 +1678,6 @@ but another Handler might.</p>
     
     
 
-                            <div id="HTTPPasswordMgrWithPriorAuth.__init__" class="classattr">
-                                <div class="attr function">
-            
-        <span class="name">HTTPPasswordMgrWithPriorAuth</span><span class="signature pdoc-code condensed">(<span class="param"><span class="o">*</span><span class="n">args</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span>)</span>
-
-        
-    </div>
-    <a class="headerlink" href="#HTTPPasswordMgrWithPriorAuth.__init__"></a>
-    
-    
-
-                            </div>
                             <div id="HTTPPasswordMgrWithPriorAuth.authenticated" class="classattr">
                                 <div class="attr variable">
             <span class="name">authenticated</span>
@@ -3018,7 +3022,7 @@ automatic handling of errors type 302 (relocated) and 401
                             <div id="URLopener.version" class="classattr">
                                 <div class="attr variable">
             <span class="name">version</span>        =
-<span class="default_value">&#39;Python-urllib/3.10&#39;</span>
+<span class="default_value">&#39;Python-urllib/3.12&#39;</span>
 
         
     </div>
@@ -3467,6 +3471,21 @@ named http_error_DDD where DDD is the 3-digit error code.</p>
 
 
                             </div>
+                            <div id="FancyURLopener.http_error_308" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">http_error_308</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">url</span>, </span><span class="param"><span class="n">fp</span>, </span><span class="param"><span class="n">errcode</span>, </span><span class="param"><span class="n">errmsg</span>, </span><span class="param"><span class="n">headers</span>, </span><span class="param"><span class="n">data</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#FancyURLopener.http_error_308"></a>
+    
+            <div class="docstring"><p>Error 308 -- relocated, but turn POST into error.</p>
+</div>
+
+
+                            </div>
                             <div id="FancyURLopener.http_error_401" class="classattr">
                                 <div class="attr function">
             
@@ -3624,7 +3643,7 @@ This function supports Basic authentication only.</p>
                             <div id="HTTPSHandler.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">HTTPSHandler</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">debuglevel</span><span class="o">=</span><span class="mi">0</span>, </span><span class="param"><span class="n">context</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">check_hostname</span><span class="o">=</span><span class="kc">None</span></span>)</span>
+        <span class="name">HTTPSHandler</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">debuglevel</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">context</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">check_hostname</span><span class="o">=</span><span class="kc">None</span></span>)</span>
 
         
     </div>

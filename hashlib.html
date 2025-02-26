@@ -148,6 +148,9 @@
                     <a class="variable" href="#algorithms_available">algorithms_available</a>
             </li>
             <li>
+                    <a class="function" href="#file_digest">file_digest</a>
+            </li>
+            <li>
                     <a class="function" href="#pbkdf2_hmac">pbkdf2_hmac</a>
             </li>
     </ul>
@@ -743,7 +746,7 @@ optionally initialized with data (which must be a bytes-like object).</p>
                     <div class="attr variable">
             <span class="name">algorithms_guaranteed</span>        =
 <input id="algorithms_guaranteed-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="algorithms_guaranteed-view-value"></label><span class="default_value">{&#39;sha256&#39;, &#39;shake_128&#39;, &#39;sha3_512&#39;, &#39;sha384&#39;, &#39;shake_256&#39;, &#39;sha3_224&#39;, &#39;sha1&#39;, &#39;sha224&#39;, &#39;md5&#39;, &#39;blake2s&#39;, &#39;sha3_256&#39;, &#39;sha512&#39;, &#39;blake2b&#39;, &#39;sha3_384&#39;}</span>
+            <label class="view-value-button pdoc-button" for="algorithms_guaranteed-view-value"></label><span class="default_value">{&#39;blake2s&#39;, &#39;sha384&#39;, &#39;sha256&#39;, &#39;sha1&#39;, &#39;sha3_384&#39;, &#39;sha512&#39;, &#39;blake2b&#39;, &#39;shake_256&#39;, &#39;sha3_256&#39;, &#39;sha3_512&#39;, &#39;md5&#39;, &#39;shake_128&#39;, &#39;sha224&#39;, &#39;sha3_224&#39;}</span>
 
         
     </div>
@@ -756,13 +759,36 @@ optionally initialized with data (which must be a bytes-like object).</p>
                     <div class="attr variable">
             <span class="name">algorithms_available</span>        =
 <input id="algorithms_available-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="algorithms_available-view-value"></label><span class="default_value">{&#39;shake_128&#39;, &#39;sha384&#39;, &#39;shake_256&#39;, &#39;sha1&#39;, &#39;md5-sha1&#39;, &#39;md5&#39;, &#39;sha512_224&#39;, &#39;sha512&#39;, &#39;blake2s&#39;, &#39;sha256&#39;, &#39;sha224&#39;, &#39;blake2b&#39;, &#39;sm3&#39;, &#39;sha3_512&#39;, &#39;sha3_224&#39;, &#39;sha3_256&#39;, &#39;sha512_256&#39;, &#39;sha3_384&#39;}</span>
+            <label class="view-value-button pdoc-button" for="algorithms_available-view-value"></label><span class="default_value">{&#39;ripemd160&#39;, &#39;blake2b&#39;, &#39;shake_256&#39;, &#39;sha224&#39;, &#39;sha512_256&#39;, &#39;sha512&#39;, &#39;sha3_512&#39;, &#39;blake2s&#39;, &#39;sha256&#39;, &#39;sha1&#39;, &#39;md5-sha1&#39;, &#39;sm3&#39;, &#39;sha3_224&#39;, &#39;sha384&#39;, &#39;sha3_384&#39;, &#39;sha3_256&#39;, &#39;sha512_224&#39;, &#39;md5&#39;, &#39;shake_128&#39;}</span>
 
         
     </div>
     <a class="headerlink" href="#algorithms_available"></a>
     
     
+
+                </section>
+                <section id="file_digest">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">file_digest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fileobj</span>, </span><span class="param"><span class="n">digest</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">_bufsize</span><span class="o">=</span><span class="mi">262144</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#file_digest"></a>
+    
+            <div class="docstring"><p>Hash the contents of a file-like object. Returns a digest object.</p>
+
+<p><em>fileobj</em> must be a file-like object opened for reading in binary mode.
+It accepts file objects from open(), io.BytesIO(), and SocketIO objects.
+The function may bypass Python's I/O and use the file descriptor <em>fileno</em>
+directly.</p>
+
+<p><em>digest</em> must either be a hash algorithm name as a <em>str</em>, a hash
+constructor, or a callable that returns a hash object.</p>
+</div>
+
 
                 </section>
                 <section id="pbkdf2_hmac">

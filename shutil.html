@@ -278,7 +278,7 @@ resembles GNU's "cp -P src dst".</p>
 <p>If the optional symlinks flag is true, symbolic links in the
 source tree result in symbolic links in the destination tree; if
 it is false, the contents of the files pointed to by symbolic
-links are copied. If the file pointed by the symlink doesn't
+links are copied. If the file pointed to by the symlink doesn't
 exist, an exception will be added in the list of errors raised in
 an Error exception at the end of the copy process.</p>
 
@@ -327,12 +327,12 @@ within the <code>dst</code> tree will be overwritten by corresponding files from
 similar to the Unix "mv" command. Return the file or directory's
 destination.</p>
 
-<p>If the destination is a directory or a symlink to a directory, the source
-is moved inside the directory. The destination path must not already
-exist.</p>
+<p>If dst is an existing directory or a symlink to a directory, then src is
+moved inside that directory. The destination path in that directory must
+not already exist.</p>
 
-<p>If the destination already exists but is not a directory, it may be
-overwritten depending on <a href="os.html#rename">os.rename()</a> semantics.</p>
+<p>If dst already exists but is not a directory, it may be overwritten
+depending on <a href="os.html#rename">os.rename()</a> semantics.</p>
 
 <p>If the destination is on our current filesystem, then rename() is used.
 Otherwise, src is copied to the destination and then removed. Symlinks are
@@ -354,7 +354,7 @@ the issues this implementation glosses over.</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">rmtree</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span>, </span><span class="param"><span class="n">ignore_errors</span><span class="o">=</span><span class="kc">False</span>, </span><span class="param"><span class="n">onerror</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+        <span class="name">rmtree</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span>, </span><span class="param"><span class="n">ignore_errors</span><span class="o">=</span><span class="kc">False</span>, </span><span class="param"><span class="n">onerror</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">onexc</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">dir_fd</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -362,12 +362,22 @@ the issues this implementation glosses over.</p>
     
             <div class="docstring"><p>Recursively delete a directory tree.</p>
 
-<p>If ignore_errors is set, errors are ignored; otherwise, if onerror
-is set, it is called to handle the error with arguments (func,
+<p>If dir_fd is not None, it should be a file descriptor open to a directory;
+path will then be relative to that directory.
+dir_fd may not be implemented on your platform.
+If it is unavailable, using it will raise a NotImplementedError.</p>
+
+<p>If ignore_errors is set, errors are ignored; otherwise, if onexc or
+onerror is set, it is called to handle the error with arguments (func,
 path, exc_info) where func is platform and implementation dependent;
 path is the argument to that function that caused it to fail; and
-exc_info is a tuple returned by sys.exc_info().  If ignore_errors
-is false and onerror is None, an exception is raised.</p>
+the value of exc_info describes the exception. For onexc it is the
+exception instance, and for onerror it is a tuple as returned by
+sys.exc_info().  If ignore_errors is false and both onexc and
+onerror are None, the exception is reraised.</p>
+
+<p>onerror is deprecated and only remains for backwards compatibility.
+If both onerror and onexc are set, onerror is ignored and onexc is used.</p>
 </div>
 
 
@@ -400,6 +410,7 @@ is false and onerror is None, an exception is raised.</p>
             </div>
             <div><dt><a href="builtins.html#BaseException">builtins.BaseException</a></dt>
                                 <dd id="Error.with_traceback" class="function"><a href="builtins.html#BaseException.with_traceback">with_traceback</a></dd>
+                <dd id="Error.add_note" class="function"><a href="builtins.html#BaseException.add_note">add_note</a></dd>
                 <dd id="Error.args" class="variable"><a href="builtins.html#BaseException.args">args</a></dd>
 
             </div>
@@ -435,6 +446,7 @@ not supported on a special file (e.g. a named pipe)</p>
             </div>
             <div><dt><a href="builtins.html#BaseException">builtins.BaseException</a></dt>
                                 <dd id="SpecialFileError.with_traceback" class="function"><a href="builtins.html#BaseException.with_traceback">with_traceback</a></dd>
+                <dd id="SpecialFileError.add_note" class="function"><a href="builtins.html#BaseException.add_note">add_note</a></dd>
                 <dd id="SpecialFileError.args" class="variable"><a href="builtins.html#BaseException.args">args</a></dd>
 
             </div>
@@ -469,6 +481,7 @@ not supported on a special file (e.g. a named pipe)</p>
             </div>
             <div><dt><a href="builtins.html#BaseException">builtins.BaseException</a></dt>
                                 <dd id="ExecError.with_traceback" class="function"><a href="builtins.html#BaseException.with_traceback">with_traceback</a></dd>
+                <dd id="ExecError.add_note" class="function"><a href="builtins.html#BaseException.add_note">add_note</a></dd>
                 <dd id="ExecError.args" class="variable"><a href="builtins.html#BaseException.args">args</a></dd>
 
             </div>
@@ -762,6 +775,7 @@ size used by many terminal emulators.</p>
             </div>
             <div><dt><a href="builtins.html#BaseException">builtins.BaseException</a></dt>
                                 <dd id="SameFileError.with_traceback" class="function"><a href="builtins.html#BaseException.with_traceback">with_traceback</a></dd>
+                <dd id="SameFileError.add_note" class="function"><a href="builtins.html#BaseException.add_note">add_note</a></dd>
                 <dd id="SameFileError.args" class="variable"><a href="builtins.html#BaseException.args">args</a></dd>
 
             </div>
