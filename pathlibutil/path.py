@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import sys
 from datetime import datetime, timedelta
+from functools import lru_cache
 from typing import Callable, Dict, Generator, List, Literal, Set, Tuple, Union
 
 from pathlibutil.base import BasePath
@@ -504,51 +505,6 @@ class Path(BasePath):
 
         return super().cwd()
 
-    @classmethod
-    def _net_use(cls) -> Dict[str, str]:
-        """
-        Return a dictionary of mapped network drives. Keys are UNC paths and values
-        are drive letters.
-        """
-
-        def run(cmd: str) -> str:
-            """execute `command` and return stdout with cp850 encoding."""
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                shell=True,
-                encoding="cp850",
-                check=True,
-            )
-
-            return result.stdout
-
-        try:
-            mapped_drives = re.finditer(
-                r"^OK\s+(?P<drive>[A-Z]):\s+(?P<unc>\S+)",
-                run("net use"),
-                re.IGNORECASE | re.MULTILINE,
-            )
-            return {
-                match.group("unc") + "\\": cls(match.group("drive") + ":\\")
-                for match in mapped_drives
-            }
-        except Exception:
-            return {}
-
-    def _resolve_unc(self) -> "Path":
-        """
-        Resolve UNC paths to mapped network drives.
-        """
-        if not hasattr(self.__class__, "_netuse"):
-            self.__class__._netuse = self._net_use()
-
-        try:
-            drive = self._netuse[self.anchor]
-            return drive.joinpath(self.relative_to(self.anchor))
-        except KeyError:
-            return self
-
     def resolve(self, strict: bool = False, unc: bool = True) -> "Path":
         """
         Make the path absolute, resolving all symlinks on the way and also normalizing
@@ -567,12 +523,10 @@ class Path(BasePath):
         Path("T:\\file.txt")
         """
 
-        p = super().resolve(strict)
-
         if unc is True or os.name != "nt":
-            return p
+            return super().resolve(strict)
 
-        return p._resolve_unc()
+        return self.local(self, strict=strict)
 
     def walk(
         self,
@@ -681,6 +635,90 @@ class Path(BasePath):
                     if item not in seen:
                         seen.add(item)
                         yield item
+
+    @staticmethod
+    @lru_cache(maxsize=1)
+    def netuse() -> Dict[str, str]:
+        """
+        Return a dictionary of network shares and their local drives, using `net use`.
+        """
+        try:
+            stdout = subprocess.check_output(
+                ["net", "use"],
+                encoding="cp850",
+            )
+
+            return {
+                share: f"{drive}\\"
+                for (drive, share) in re.findall(
+                    r"^OK\s+(?P<drive>[A-Z]:)\s+(?P<share>\\{2}\S+)",
+                    stdout,
+                    re.MULTILINE,
+                )
+            }
+        except Exception:
+            return {}
+
+    @classmethod
+    def local(
+        cls,
+        *args,
+        strict: bool = False,
+        cache: bool = True,
+        map: Dict[str, str] = None,
+    ) -> "Path":
+        """
+        Returns a `Path` object with a resolved path to mapped drive.
+
+        If `map` is `None` the network shares are resolved with `net use`, the mapped
+        response is cached`. If `cache` is `False` the `lru_cache` is cleared.
+
+        If `strict` is `False` and the mapped drive does not exists the original path is
+        returned.
+        """
+
+        if map is None:
+            if cache is False:
+                cls.netuse.cache_clear()
+
+            drives = cls.netuse()
+        else:
+            try:
+                drives = {k.rstrip("\\"): v.rstrip("\\") + "\\" for k, v in map.items()}
+            except AttributeError as e:
+                raise ValueError(
+                    "map must be a dictionary with string keys and values"
+                ) from e
+
+        self = cls(*args).resolve()
+
+        drive = drives.get(self.anchor.rstrip("\\"), None)
+
+        if drive is not None:
+            if strict is False:
+                try:
+                    _ = cls(drive).resolve(True)
+                except Exception:
+                    return self
+
+            self = self.with_anchor(drive)
+
+        if strict is True:
+            _ = self.resolve(True)
+
+        return self
+
+    def with_anchor(self, anchor: str) -> "Path":
+        """
+        Return a new Path object with the given anchor.
+
+        >>> Path("D:/file.txt").with_anchor("C:/")
+        Path('C:/file.txt')
+        """
+
+        path = self.relative_to(self.anchor)
+
+        return self.__class__(anchor).joinpath(path)
 
 
 class Register7zFormat(Path, archive="7z"):

@@ -40,6 +40,8 @@ filename: ./README.md
 - `Path.iterdir()` with `recursive` all files from the directory tree will be yielded and `exclude_dirs` via callable.
 - `Path.is_expired()` to check if a file is expired by a given `datetime.timedelta`
 - `Path.expand()` yields file paths for multiple file patterns if they exsits.
+- `Path.with_anchor()` returns a new `Path` object with a new anchor.
+- `Path.local()` resolve an UNC path to a local path.
 
 JSON serialization of `Path` objects is supported in `pathlibutil.json`.
 
@@ -134,4 +136,12 @@ print(f'File size: {readme.size()} Bytes')
 
 ```python
 {% pdoc examples/example7::source.nodoc %}
+```
+
+## Example 8
+
+{% pdoc examples/example8:main:docstring %}
+
+```python
+{% pdoc examples/example8.py:main:code.indent -%}
 ```
