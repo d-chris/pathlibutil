@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 14.7.0"/>
+    <meta name="generator" content="pdoc 15.0.4"/>
     <title>builtins API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
     <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#49483e}.pdoc-code{background:#272822; color:#f8f8f2}.pdoc-code .c{color:#75715e}.pdoc-code .err{color:#960050; background-color:#1e0010}.pdoc-code .esc{color:#f8f8f2}.pdoc-code .g{color:#f8f8f2}.pdoc-code .k{color:#66d9ef}.pdoc-code .l{color:#ae81ff}.pdoc-code .n{color:#f8f8f2}.pdoc-code .o{color:#f92672}.pdoc-code .x{color:#f8f8f2}.pdoc-code .p{color:#f8f8f2}.pdoc-code .ch{color:#75715e}.pdoc-code .cm{color:#75715e}.pdoc-code .cp{color:#75715e}.pdoc-code .cpf{color:#75715e}.pdoc-code .c1{color:#75715e}.pdoc-code .cs{color:#75715e}.pdoc-code .gd{color:#f92672}.pdoc-code .ge{color:#f8f8f2; font-style:italic}.pdoc-code .gr{color:#f8f8f2}.pdoc-code .gh{color:#f8f8f2}.pdoc-code .gi{color:#a6e22e}.pdoc-code .go{color:#66d9ef}.pdoc-code .gp{color:#f92672; font-weight:bold}.pdoc-code .gs{color:#f8f8f2; font-weight:bold}.pdoc-code .gu{color:#75715e}.pdoc-code .gt{color:#f8f8f2}.pdoc-code .kc{color:#66d9ef}.pdoc-code .kd{color:#66d9ef}.pdoc-code .kn{color:#f92672}.pdoc-code .kp{color:#66d9ef}.pdoc-code .kr{color:#66d9ef}.pdoc-code .kt{color:#66d9ef}.pdoc-code .ld{color:#e6db74}.pdoc-code .m{color:#ae81ff}.pdoc-code .s{color:#e6db74}.pdoc-code .na{color:#a6e22e}.pdoc-code .nb{color:#f8f8f2}.pdoc-code .nc{color:#a6e22e}.pdoc-code .no{color:#66d9ef}.pdoc-code .nd{color:#a6e22e}.pdoc-code .ni{color:#f8f8f2}.pdoc-code .ne{color:#a6e22e}.pdoc-code .nf{color:#a6e22e}.pdoc-code .nl{color:#f8f8f2}.pdoc-code .nn{color:#f8f8f2}.pdoc-code .nx{color:#a6e22e}.pdoc-code .py{color:#f8f8f2}.pdoc-code .nt{color:#f92672}.pdoc-code .nv{color:#f8f8f2}.pdoc-code .ow{color:#f92672}.pdoc-code .w{color:#f8f8f2}.pdoc-code .mb{color:#ae81ff}.pdoc-code .mf{color:#ae81ff}.pdoc-code .mh{color:#ae81ff}.pdoc-code .mi{color:#ae81ff}.pdoc-code .mo{color:#ae81ff}.pdoc-code .sa{color:#e6db74}.pdoc-code .sb{color:#e6db74}.pdoc-code .sc{color:#e6db74}.pdoc-code .dl{color:#e6db74}.pdoc-code .sd{color:#e6db74}.pdoc-code .s2{color:#e6db74}.pdoc-code .se{color:#ae81ff}.pdoc-code .sh{color:#e6db74}.pdoc-code .si{color:#e6db74}.pdoc-code .sx{color:#e6db74}.pdoc-code .sr{color:#e6db74}.pdoc-code .s1{color:#e6db74}.pdoc-code .ss{color:#e6db74}.pdoc-code .bp{color:#f8f8f2}.pdoc-code .fm{color:#a6e22e}.pdoc-code .vc{color:#f8f8f2}.pdoc-code .vg{color:#f8f8f2}.pdoc-code .vi{color:#f8f8f2}.pdoc-code .vm{color:#f8f8f2}</style>
     <style>/*! theme.css */:root{--pdoc-background:#212529;}.pdoc{--text:#f7f7f7;--muted:#9d9d9d;--link:#58a6ff;--link-hover:#3989ff;--code:#333;--active:#555;--accent:#343434;--accent2:#555;--nav-hover:rgba(0, 0, 0, 0.1);--name:#77C1FF;--def:#0cdd0c;--annotation:#00c037;}</style>
     <style>/*! layout.css */html, body{width:100%;height:100%;}html, main{scroll-behavior:smooth;}body{background-color:var(--pdoc-background);}@media (max-width:769px){#navtoggle{cursor:pointer;position:absolute;width:50px;height:40px;top:1rem;right:1rem;border-color:var(--text);color:var(--text);display:flex;opacity:0.8;z-index:999;}#navtoggle:hover{opacity:1;}#togglestate + div{display:none;}#togglestate:checked + div{display:inherit;}main, header{padding:2rem 3vw;}header + main{margin-top:-3rem;}.git-button{display:none !important;}nav input[type="search"]{max-width:77%;}nav input[type="search"]:first-child{margin-top:-6px;}nav input[type="search"]:valid ~ *{display:none !important;}}@media (min-width:770px){:root{--sidebar-width:clamp(12.5rem, 28vw, 22rem);}nav{position:fixed;overflow:auto;height:100vh;width:var(--sidebar-width);}main, header{padding:3rem 2rem 3rem calc(var(--sidebar-width) + 3rem);width:calc(54rem + var(--sidebar-width));max-width:100%;}header + main{margin-top:-4rem;}#navtoggle{display:none;}}#togglestate{position:absolute;height:0;opacity:0;}nav.pdoc{--pad:clamp(0.5rem, 2vw, 1.75rem);--indent:1.5rem;background-color:var(--accent);border-right:1px solid var(--accent2);box-shadow:0 0 20px rgba(50, 50, 50, .2) inset;padding:0 0 0 var(--pad);overflow-wrap:anywhere;scrollbar-width:thin; scrollbar-color:var(--accent2) transparent; z-index:1}nav.pdoc::-webkit-scrollbar{width:.4rem; }nav.pdoc::-webkit-scrollbar-thumb{background-color:var(--accent2); }nav.pdoc > div{padding:var(--pad) 0;}nav.pdoc .module-list-button{display:inline-flex;align-items:center;color:var(--text);border-color:var(--muted);margin-bottom:1rem;}nav.pdoc .module-list-button:hover{border-color:var(--text);}nav.pdoc input[type=search]{display:block;outline-offset:0;width:calc(100% - var(--pad));}nav.pdoc .logo{max-width:calc(100% - var(--pad));max-height:35vh;display:block;margin:0 auto 1rem;transform:translate(calc(-.5 * var(--pad)), 0);}nav.pdoc ul{list-style:none;padding-left:0;}nav.pdoc > div > ul{margin-left:calc(0px - var(--pad));}nav.pdoc li a{padding:.2rem 0 .2rem calc(var(--pad) + var(--indent));}nav.pdoc > div > ul > li > a{padding-left:var(--pad);}nav.pdoc li{transition:all 100ms;}nav.pdoc li:hover{background-color:var(--nav-hover);}nav.pdoc a, nav.pdoc a:hover{color:var(--text);}nav.pdoc a{display:block;}nav.pdoc > h2:first-of-type{margin-top:1.5rem;}nav.pdoc .class:before{content:"class ";color:var(--muted);}nav.pdoc .function:after{content:"()";color:var(--muted);}nav.pdoc footer:before{content:"";display:block;width:calc(100% - var(--pad));border-top:solid var(--accent2) 1px;margin-top:1.5rem;padding-top:.5rem;}nav.pdoc footer{font-size:small;}</style>
-    <style>/*! content.css */.pdoc{color:var(--text);box-sizing:border-box;line-height:1.5;background:none;}.pdoc .pdoc-button{cursor:pointer;display:inline-block;border:solid black 1px;border-radius:2px;font-size:.75rem;padding:calc(0.5em - 1px) 1em;transition:100ms all;}.pdoc .alert{padding:1rem 1rem 1rem calc(1.5rem + 24px);border:1px solid transparent;border-radius:.25rem;background-repeat:no-repeat;background-position:.75rem center;margin-bottom:1rem;}.pdoc .alert > em{display:none;}.pdoc .alert > *:last-child{margin-bottom:0;}.pdoc .alert.note {color:#084298;background-color:#cfe2ff;border-color:#b6d4fe;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23084298%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2016A8%208%200%201%200%208%200a8%208%200%200%200%200%2016zm.93-9.412-1%204.705c-.07.34.029.533.304.533.194%200%20.487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703%200-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381%202.29-.287zM8%205.5a1%201%200%201%201%200-2%201%201%200%200%201%200%202z%22/%3E%3C/svg%3E");}.pdoc .alert.warning{color:#664d03;background-color:#fff3cd;border-color:#ffecb5;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23664d03%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8.982%201.566a1.13%201.13%200%200%200-1.96%200L.165%2013.233c-.457.778.091%201.767.98%201.767h13.713c.889%200%201.438-.99.98-1.767L8.982%201.566zM8%205c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%205.995A.905.905%200%200%201%208%205zm.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2z%22/%3E%3C/svg%3E");}.pdoc .alert.danger{color:#842029;background-color:#f8d7da;border-color:#f5c2c7;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23842029%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5.52.359A.5.5%200%200%201%206%200h4a.5.5%200%200%201%20.474.658L8.694%206H12.5a.5.5%200%200%201%20.395.807l-7%209a.5.5%200%200%201-.873-.454L6.823%209.5H3.5a.5.5%200%200%201-.48-.641l2.5-8.5z%22/%3E%3C/svg%3E");}.pdoc .visually-hidden{position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;margin:-1px !important;overflow:hidden !important;clip:rect(0, 0, 0, 0) !important;white-space:nowrap !important;border:0 !important;}.pdoc h1, .pdoc h2, .pdoc h3{font-weight:300;margin:.3em 0;padding:.2em 0;}.pdoc > section:not(.module-info) h1{font-size:1.5rem;font-weight:500;}.pdoc > section:not(.module-info) h2{font-size:1.4rem;font-weight:500;}.pdoc > section:not(.module-info) h3{font-size:1.3rem;font-weight:500;}.pdoc > section:not(.module-info) h4{font-size:1.2rem;}.pdoc > section:not(.module-info) h5{font-size:1.1rem;}.pdoc a{text-decoration:none;color:var(--link);}.pdoc a:hover{color:var(--link-hover);}.pdoc blockquote{margin-left:2rem;}.pdoc pre{border-top:1px solid var(--accent2);border-bottom:1px solid var(--accent2);margin-top:0;margin-bottom:1em;padding:.5rem 0 .5rem .5rem;overflow-x:auto;background-color:var(--code);}.pdoc code{color:var(--text);padding:.2em .4em;margin:0;font-size:85%;background-color:var(--accent);border-radius:6px;}.pdoc a > code{color:inherit;}.pdoc pre > code{display:inline-block;font-size:inherit;background:none;border:none;padding:0;}.pdoc > section:not(.module-info){margin-bottom:1.5rem;}.pdoc .modulename{margin-top:0;font-weight:bold;}.pdoc .modulename a{color:var(--link);transition:100ms all;}.pdoc .git-button{float:right;border:solid var(--link) 1px;}.pdoc .git-button:hover{background-color:var(--link);color:var(--pdoc-background);}.view-source-toggle-state,.view-source-toggle-state ~ .pdoc-code{display:none;}.view-source-toggle-state:checked ~ .pdoc-code{display:block;}.view-source-button{display:inline-block;float:right;font-size:.75rem;line-height:1.5rem;color:var(--muted);padding:0 .4rem 0 1.3rem;cursor:pointer;text-indent:-2px;}.view-source-button > span{visibility:hidden;}.module-info .view-source-button{float:none;display:flex;justify-content:flex-end;margin:-1.2rem .4rem -.2rem 0;}.view-source-button::before{position:absolute;content:"View Source";display:list-item;list-style-type:disclosure-closed;}.view-source-toggle-state:checked ~ .attr .view-source-button::before,.view-source-toggle-state:checked ~ .view-source-button::before{list-style-type:disclosure-open;}.pdoc .docstring{margin-bottom:1.5rem;}.pdoc section:not(.module-info) .docstring{margin-left:clamp(0rem, 5vw - 2rem, 1rem);}.pdoc .docstring .pdoc-code{margin-left:1em;margin-right:1em;}.pdoc h1:target,.pdoc h2:target,.pdoc h3:target,.pdoc h4:target,.pdoc h5:target,.pdoc h6:target,.pdoc .pdoc-code > pre > span:target{background-color:var(--active);box-shadow:-1rem 0 0 0 var(--active);}.pdoc .pdoc-code > pre > span:target{display:block;}.pdoc div:target > .attr,.pdoc section:target > .attr,.pdoc dd:target > a{background-color:var(--active);}.pdoc *{scroll-margin:2rem;}.pdoc .pdoc-code .linenos{user-select:none;}.pdoc .attr:hover{filter:contrast(0.95);}.pdoc section, .pdoc .classattr{position:relative;}.pdoc .headerlink{--width:clamp(1rem, 3vw, 2rem);position:absolute;top:0;left:calc(0rem - var(--width));transition:all 100ms ease-in-out;opacity:0;}.pdoc .headerlink::before{content:"#";display:block;text-align:center;width:var(--width);height:2.3rem;line-height:2.3rem;font-size:1.5rem;}.pdoc .attr:hover ~ .headerlink,.pdoc *:target > .headerlink,.pdoc .headerlink:hover{opacity:1;}.pdoc .attr{display:block;margin:.5rem 0 .5rem;padding:.4rem .4rem .4rem 1rem;background-color:var(--accent);overflow-x:auto;}.pdoc .classattr{margin-left:2rem;}.pdoc .name{color:var(--name);font-weight:bold;}.pdoc .def{color:var(--def);font-weight:bold;}.pdoc .signature{background-color:transparent;}.pdoc .param, .pdoc .return-annotation{white-space:pre;}.pdoc .signature.multiline .param{display:block;}.pdoc .signature.condensed .param{display:inline-block;}.pdoc .annotation{color:var(--annotation);}.pdoc .view-value-toggle-state,.pdoc .view-value-toggle-state ~ .default_value{display:none;}.pdoc .view-value-toggle-state:checked ~ .default_value{display:inherit;}.pdoc .view-value-button{font-size:.5rem;vertical-align:middle;border-style:dashed;margin-top:-0.1rem;}.pdoc .view-value-button:hover{background:white;}.pdoc .view-value-button::before{content:"show";text-align:center;width:2.2em;display:inline-block;}.pdoc .view-value-toggle-state:checked ~ .view-value-button::before{content:"hide";}.pdoc .inherited{margin-left:2rem;}.pdoc .inherited dt{font-weight:700;}.pdoc .inherited dt, .pdoc .inherited dd{display:inline;margin-left:0;margin-bottom:.5rem;}.pdoc .inherited dd:not(:last-child):after{content:", ";}.pdoc .inherited .class:before{content:"class ";}.pdoc .inherited .function a:after{content:"()";}.pdoc .search-result .docstring{overflow:auto;max-height:25vh;}.pdoc .search-result.focused > .attr{background-color:var(--active);}.pdoc .attribution{margin-top:2rem;display:block;opacity:0.5;transition:all 200ms;filter:grayscale(100%);}.pdoc .attribution:hover{opacity:1;filter:grayscale(0%);}.pdoc .attribution img{margin-left:5px;height:35px;vertical-align:middle;width:70px;transition:all 200ms;}.pdoc table{display:block;width:max-content;max-width:100%;overflow:auto;margin-bottom:1rem;}.pdoc table th{font-weight:600;}.pdoc table th, .pdoc table td{padding:6px 13px;border:1px solid var(--accent2);}</style>
+    <style>/*! content.css */.pdoc{color:var(--text);box-sizing:border-box;line-height:1.5;background:none;}.pdoc .pdoc-button{cursor:pointer;display:inline-block;border:solid black 1px;border-radius:2px;font-size:.75rem;padding:calc(0.5em - 1px) 1em;transition:100ms all;}.pdoc .alert{padding:1rem 1rem 1rem calc(1.5rem + 24px);border:1px solid transparent;border-radius:.25rem;background-repeat:no-repeat;background-position:.75rem center;margin-bottom:1rem;}.pdoc .alert > em{display:none;}.pdoc .alert > *:last-child{margin-bottom:0;}.pdoc .alert.note{color:#084298;background-color:#cfe2ff;border-color:#b6d4fe;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23084298%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2016A8%208%200%201%200%208%200a8%208%200%200%200%200%2016zm.93-9.412-1%204.705c-.07.34.029.533.304.533.194%200%20.487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703%200-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381%202.29-.287zM8%205.5a1%201%200%201%201%200-2%201%201%200%200%201%200%202z%22/%3E%3C/svg%3E");}.pdoc .alert.tip{color:#0a3622;background-color:#d1e7dd;border-color:#a3cfbb;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%230a3622%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2%206a6%206%200%201%201%2010.174%204.31c-.203.196-.359.4-.453.619l-.762%201.769A.5.5%200%200%201%2010.5%2013a.5.5%200%200%201%200%201%20.5.5%200%200%201%200%201l-.224.447a1%201%200%200%201-.894.553H6.618a1%201%200%200%201-.894-.553L5.5%2015a.5.5%200%200%201%200-1%20.5.5%200%200%201%200-1%20.5.5%200%200%201-.46-.302l-.761-1.77a2%202%200%200%200-.453-.618A5.98%205.98%200%200%201%202%206m6-5a5%205%200%200%200-3.479%208.592c.263.254.514.564.676.941L5.83%2012h4.342l.632-1.467c.162-.377.413-.687.676-.941A5%205%200%200%200%208%201%22/%3E%3C/svg%3E");}.pdoc .alert.important{color:#055160;background-color:#cff4fc;border-color:#9eeaf9;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23055160%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2%200a2%202%200%200%200-2%202v12a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2V2a2%202%200%200%200-2-2zm6%204c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%204.995A.905.905%200%200%201%208%204m.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E");}.pdoc .alert.warning{color:#664d03;background-color:#fff3cd;border-color:#ffecb5;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23664d03%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8.982%201.566a1.13%201.13%200%200%200-1.96%200L.165%2013.233c-.457.778.091%201.767.98%201.767h13.713c.889%200%201.438-.99.98-1.767L8.982%201.566zM8%205c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%205.995A.905.905%200%200%201%208%205zm.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2z%22/%3E%3C/svg%3E");}.pdoc .alert.caution{color:#842029;background-color:#f8d7da;border-color:#f5c2c7;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23842029%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M11.46.146A.5.5%200%200%200%2011.107%200H4.893a.5.5%200%200%200-.353.146L.146%204.54A.5.5%200%200%200%200%204.893v6.214a.5.5%200%200%200%20.146.353l4.394%204.394a.5.5%200%200%200%20.353.146h6.214a.5.5%200%200%200%20.353-.146l4.394-4.394a.5.5%200%200%200%20.146-.353V4.893a.5.5%200%200%200-.146-.353zM8%204c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%204.995A.905.905%200%200%201%208%204m.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E");}.pdoc .alert.danger{color:#842029;background-color:#f8d7da;border-color:#f5c2c7;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23842029%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5.52.359A.5.5%200%200%201%206%200h4a.5.5%200%200%201%20.474.658L8.694%206H12.5a.5.5%200%200%201%20.395.807l-7%209a.5.5%200%200%201-.873-.454L6.823%209.5H3.5a.5.5%200%200%201-.48-.641l2.5-8.5z%22/%3E%3C/svg%3E");}.pdoc .visually-hidden{position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;margin:-1px !important;overflow:hidden !important;clip:rect(0, 0, 0, 0) !important;white-space:nowrap !important;border:0 !important;}.pdoc h1, .pdoc h2, .pdoc h3{font-weight:300;margin:.3em 0;padding:.2em 0;}.pdoc > section:not(.module-info) h1{font-size:1.5rem;font-weight:500;}.pdoc > section:not(.module-info) h2{font-size:1.4rem;font-weight:500;}.pdoc > section:not(.module-info) h3{font-size:1.3rem;font-weight:500;}.pdoc > section:not(.module-info) h4{font-size:1.2rem;}.pdoc > section:not(.module-info) h5{font-size:1.1rem;}.pdoc a{text-decoration:none;color:var(--link);}.pdoc a:hover{color:var(--link-hover);}.pdoc blockquote{margin-left:2rem;}.pdoc pre{border-top:1px solid var(--accent2);border-bottom:1px solid var(--accent2);margin-top:0;margin-bottom:1em;padding:.5rem 0 .5rem .5rem;overflow-x:auto;background-color:var(--code);}.pdoc code{color:var(--text);padding:.2em .4em;margin:0;font-size:85%;background-color:var(--accent);border-radius:6px;}.pdoc a > code{color:inherit;}.pdoc pre > code{display:inline-block;font-size:inherit;background:none;border:none;padding:0;}.pdoc > section:not(.module-info){margin-bottom:1.5rem;}.pdoc .modulename{margin-top:0;font-weight:bold;}.pdoc .modulename a{color:var(--link);transition:100ms all;}.pdoc .git-button{float:right;border:solid var(--link) 1px;}.pdoc .git-button:hover{background-color:var(--link);color:var(--pdoc-background);}.view-source-toggle-state,.view-source-toggle-state ~ .pdoc-code{display:none;}.view-source-toggle-state:checked ~ .pdoc-code{display:block;}.view-source-button{display:inline-block;float:right;font-size:.75rem;line-height:1.5rem;color:var(--muted);padding:0 .4rem 0 1.3rem;cursor:pointer;text-indent:-2px;}.view-source-button > span{visibility:hidden;}.module-info .view-source-button{float:none;display:flex;justify-content:flex-end;margin:-1.2rem .4rem -.2rem 0;}.view-source-button::before{position:absolute;content:"View Source";display:list-item;list-style-type:disclosure-closed;}.view-source-toggle-state:checked ~ .attr .view-source-button::before,.view-source-toggle-state:checked ~ .view-source-button::before{list-style-type:disclosure-open;}.pdoc .docstring{margin-bottom:1.5rem;}.pdoc section:not(.module-info) .docstring{margin-left:clamp(0rem, 5vw - 2rem, 1rem);}.pdoc .docstring .pdoc-code{margin-left:1em;margin-right:1em;}.pdoc h1:target,.pdoc h2:target,.pdoc h3:target,.pdoc h4:target,.pdoc h5:target,.pdoc h6:target,.pdoc .pdoc-code > pre > span:target{background-color:var(--active);box-shadow:-1rem 0 0 0 var(--active);}.pdoc .pdoc-code > pre > span:target{display:block;}.pdoc div:target > .attr,.pdoc section:target > .attr,.pdoc dd:target > a{background-color:var(--active);}.pdoc *{scroll-margin:2rem;}.pdoc .pdoc-code .linenos{user-select:none;}.pdoc .attr:hover{filter:contrast(0.95);}.pdoc section, .pdoc .classattr{position:relative;}.pdoc .headerlink{--width:clamp(1rem, 3vw, 2rem);position:absolute;top:0;left:calc(0rem - var(--width));transition:all 100ms ease-in-out;opacity:0;}.pdoc .headerlink::before{content:"#";display:block;text-align:center;width:var(--width);height:2.3rem;line-height:2.3rem;font-size:1.5rem;}.pdoc .attr:hover ~ .headerlink,.pdoc *:target > .headerlink,.pdoc .headerlink:hover{opacity:1;}.pdoc .attr{display:block;margin:.5rem 0 .5rem;padding:.4rem .4rem .4rem 1rem;background-color:var(--accent);overflow-x:auto;}.pdoc .classattr{margin-left:2rem;}.pdoc .decorator-deprecated{color:#842029;}.pdoc .decorator-deprecated ~ span{filter:grayscale(1) opacity(0.8);}.pdoc .name{color:var(--name);font-weight:bold;}.pdoc .def{color:var(--def);font-weight:bold;}.pdoc .signature{background-color:transparent;}.pdoc .param, .pdoc .return-annotation{white-space:pre;}.pdoc .signature.multiline .param{display:block;}.pdoc .signature.condensed .param{display:inline-block;}.pdoc .annotation{color:var(--annotation);}.pdoc .view-value-toggle-state,.pdoc .view-value-toggle-state ~ .default_value{display:none;}.pdoc .view-value-toggle-state:checked ~ .default_value{display:inherit;}.pdoc .view-value-button{font-size:.5rem;vertical-align:middle;border-style:dashed;margin-top:-0.1rem;}.pdoc .view-value-button:hover{background:white;}.pdoc .view-value-button::before{content:"show";text-align:center;width:2.2em;display:inline-block;}.pdoc .view-value-toggle-state:checked ~ .view-value-button::before{content:"hide";}.pdoc .inherited{margin-left:2rem;}.pdoc .inherited dt{font-weight:700;}.pdoc .inherited dt, .pdoc .inherited dd{display:inline;margin-left:0;margin-bottom:.5rem;}.pdoc .inherited dd:not(:last-child):after{content:", ";}.pdoc .inherited .class:before{content:"class ";}.pdoc .inherited .function a:after{content:"()";}.pdoc .search-result .docstring{overflow:auto;max-height:25vh;}.pdoc .search-result.focused > .attr{background-color:var(--active);}.pdoc .attribution{margin-top:2rem;display:block;opacity:0.5;transition:all 200ms;filter:grayscale(100%);}.pdoc .attribution:hover{opacity:1;filter:grayscale(0%);}.pdoc .attribution img{margin-left:5px;height:35px;vertical-align:middle;width:70px;transition:all 200ms;}.pdoc table{display:block;width:max-content;max-width:100%;overflow:auto;margin-bottom:1rem;}.pdoc table th{font-weight:600;}.pdoc table th, .pdoc table td{padding:6px 13px;border:1px solid var(--accent2);}</style>
     <style>/*! custom.css */</style></head>
 <body>
     <nav class="pdoc">
@@ -1645,6 +1645,15 @@
 
             </li>
             <li>
+                    <a class="class" href="#PythonFinalizationError">PythonFinalizationError</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#PythonFinalizationError.__init__">PythonFinalizationError</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#RecursionError">RecursionError</a>
                             <ul class="memberlist">
                         <li>
@@ -1926,15 +1935,13 @@ to that returned by repr() in Python 2.</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">breakpoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">breakpoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="o">*</span><span class="n">args</span>, </span><span class="param"><span class="o">**</span><span class="n">kws</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#breakpoint"></a>
     
-            <div class="docstring"><p>breakpoint(<em>args, *</em>kws)</p>
-
-<p>Call sys.breakpointhook(<em>args, *</em>kws).  sys.breakpointhook() must accept
+            <div class="docstring"><p>Call sys.breakpointhook(<em>args, *</em>kws).  sys.breakpointhook() must accept
 whatever arguments are passed.</p>
 
 <p>By default, this drops you into the pdb debugger.</p>
@@ -2028,7 +2035,7 @@ in addition to any features explicitly specified.</p>
     </div>
     <a class="headerlink" href="#dir"></a>
     
-            <div class="docstring"><p>Show attributes of an object.</p>
+            <div class="docstring"><p>dir([object]) -> list of strings</p>
 
 <p>If called without an argument, return the names in the current scope.
 Else, return an alphabetized list of names comprising (some of) the attributes
@@ -2063,7 +2070,7 @@ the default dir() logic is used and returns:
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">eval</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">source</span>, </span><span class="param"><span class="nb">globals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="nb">locals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">eval</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">source</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="nb">globals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="nb">locals</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -2084,7 +2091,7 @@ If only globals is given, locals defaults to it.</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">exec</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">source</span>, </span><span class="param"><span class="nb">globals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="nb">locals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">closure</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+        <span class="name">exec</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">source</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="nb">globals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="nb">locals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">closure</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -2135,9 +2142,9 @@ See also help('SPECIALMETHODS').</p>
     </div>
     <a class="headerlink" href="#getattr"></a>
     
-            <div class="docstring"><p>Get a named attribute from an object.</p>
+            <div class="docstring"><p>getattr(object, name[, default]) -> value</p>
 
-<p>getattr(x, 'y') is equivalent to x.y
+<p>Get a named attribute from an object; getattr(x, 'y') is equivalent to x.y.
 When a default argument is given, it is returned when the attribute doesn't
 exist; without it, an exception is raised in that case.</p>
 </div>
@@ -2305,9 +2312,11 @@ or ...</code>.</p>
     </div>
     <a class="headerlink" href="#iter"></a>
     
-            <div class="docstring"><p>Get an iterator from an object.</p>
+            <div class="docstring"><p>iter(iterable) -> iterator
+iter(callable, sentinel) -> iterator</p>
 
-<p>In the first form, the argument must supply its own iterator, or be a sequence.
+<p>Get an iterator from an object.  In the first form, the argument must
+supply its own iterator, or be a sequence.
 In the second form, the callable is called until it returns the sentinel.</p>
 </div>
 
@@ -2378,7 +2387,7 @@ max(arg1, arg2, *args, *[, key=func]) -> value</p>
 <p>With a single iterable argument, return its biggest item. The
 default keyword-only argument specifies an object to return if
 the provided iterable is empty.
-With two or more arguments, return the largest argument.</p>
+With two or more positional arguments, return the largest argument.</p>
 </div>
 
 
@@ -2399,7 +2408,7 @@ min(arg1, arg2, *args, *[, key=func]) -> value</p>
 <p>With a single iterable argument, return its smallest item. The
 default keyword-only argument specifies an object to return if
 the provided iterable is empty.
-With two or more arguments, return the smallest argument.</p>
+With two or more positional arguments, return the smallest argument.</p>
 </div>
 
 
@@ -2414,10 +2423,10 @@ With two or more arguments, return the smallest argument.</p>
     </div>
     <a class="headerlink" href="#next"></a>
     
-            <div class="docstring"><p>Return the next item from the iterator.</p>
+            <div class="docstring"><p>next(iterator[, default])</p>
 
-<p>If default is given and the iterator is exhausted,
-it is returned instead of raising StopIteration.</p>
+<p>Return the next item from the iterator. If default is given and the iterator
+is exhausted, it is returned instead of raising StopIteration.</p>
 </div>
 
 
@@ -2432,10 +2441,10 @@ it is returned instead of raising StopIteration.</p>
     </div>
     <a class="headerlink" href="#anext"></a>
     
-            <div class="docstring"><p>async anext(aiterator[, default])</p>
+            <div class="docstring"><p>Return the next item from the async iterator.</p>
 
-<p>Return the next item from the async iterator.  If default is given and the async
-iterator is exhausted, it is returned instead of raising StopAsyncIteration.</p>
+<p>If default is given and the async iterator is exhausted,
+it is returned instead of raising StopAsyncIteration.</p>
 </div>
 
 
@@ -2465,13 +2474,19 @@ iterator is exhausted, it is returned instead of raising StopAsyncIteration.</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">ord</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">c</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">ord</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">character</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#ord"></a>
     
-            <div class="docstring"><p>Return the Unicode code point for a one-character string.</p>
+            <div class="docstring"><p>Return the ordinal value of a character.</p>
+
+<p>If the argument is a one-character string, return the Unicode code
+point of that character.</p>
+
+<p>If the argument is a bytes or bytearray object of length 1, return its
+single byte value.</p>
 </div>
 
 
@@ -2617,7 +2632,7 @@ reject non-numeric types.</p>
     </div>
     <a class="headerlink" href="#vars"></a>
     
-            <div class="docstring"><p>Show vars.</p>
+            <div class="docstring"><p>vars([object]) -> dictionary</p>
 
 <p>Without arguments, equivalent to locals().
 With an argument, equivalent to object.__dict__.</p>
@@ -2635,9 +2650,7 @@ With an argument, equivalent to object.__dict__.</p>
     </div>
     <a class="headerlink" href="#bool"></a>
     
-            <div class="docstring"><p>bool(x) -> bool</p>
-
-<p>Returns True when the argument x is true, False otherwise.
+            <div class="docstring"><p>Returns True when the argument is true, False otherwise.
 The builtins True and False are the only two instances of the class bool.
 The class bool is a subclass of the class int, and cannot be subclassed.</p>
 </div>
@@ -3020,7 +3033,7 @@ bytearray() -> empty bytes array</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">capitalize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">capitalize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3091,11 +3104,12 @@ and the rest lower-cased.</p>
     </div>
     <a class="headerlink" href="#bytearray.count"></a>
     
-            <div class="docstring"><p>B.count(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the number of non-overlapping occurrences of subsection 'sub' in bytes B[start:end].</p>
 
-<p>Return the number of non-overlapping occurrences of subsection sub in
-bytes B[start:end].  Optional arguments start and end are interpreted
-as in slice notation.</p>
+<p>start
+  Optional start position. Default: start of the bytes.
+end
+  Optional stop position. Default: end of the bytes.</p>
 </div>
 
 
@@ -3134,12 +3148,14 @@ errors
     </div>
     <a class="headerlink" href="#bytearray.endswith"></a>
     
-            <div class="docstring"><p>B.endswith(suffix[, start[, end]]) -> bool</p>
+            <div class="docstring"><p>Return True if the bytearray ends with the specified suffix, False otherwise.</p>
 
-<p>Return True if B ends with the specified suffix, False otherwise.
-With optional start, test B beginning at that position.
-With optional end, stop comparing B at that position.
-suffix can also be a tuple of bytes to try.</p>
+<p>suffix
+  A bytes or a tuple of bytes to try.
+start
+  Optional start position. Default: start of the bytearray.
+end
+  Optional stop position. Default: end of the bytearray.</p>
 </div>
 
 
@@ -3189,11 +3205,12 @@ suffix can also be a tuple of bytes to try.</p>
     </div>
     <a class="headerlink" href="#bytearray.find"></a>
     
-            <div class="docstring"><p>B.find(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the lowest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start:end].</p>
 
-<p>Return the lowest index in B where subsection sub is found,
-such that sub is contained within B[start,end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
+<p>start
+    Optional start position. Default: start of the bytes.
+  end
+    Optional stop position. Default: end of the bytes.</p>
 
 <p>Return -1 on failure.</p>
 </div>
@@ -3264,13 +3281,14 @@ Example: <a href="#bytearray.fromhex">bytearray.fromhex</a>('B9 01EF') -> bytear
     </div>
     <a class="headerlink" href="#bytearray.index"></a>
     
-            <div class="docstring"><p>B.index(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the lowest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start:end].</p>
 
-<p>Return the lowest index in B where subsection sub is found,
-such that sub is contained within B[start,end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
+<p>start
+    Optional start position. Default: start of the bytes.
+  end
+    Optional stop position. Default: end of the bytes.</p>
 
-<p>Raises ValueError when the subsection is not found.</p>
+<p>Raise ValueError if the subsection is not found.</p>
 </div>
 
 
@@ -3299,7 +3317,7 @@ item
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isalnum</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isalnum</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3317,7 +3335,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isalpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isalpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3335,7 +3353,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isascii</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isascii</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3353,7 +3371,7 @@ False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isdigit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isdigit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3371,7 +3389,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">islower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">islower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3389,7 +3407,7 @@ at least one cased character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isspace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isspace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3407,7 +3425,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">istitle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">istitle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3427,7 +3445,7 @@ otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isupper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isupper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3481,7 +3499,7 @@ at least one cased character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">lower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">lower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3521,7 +3539,7 @@ at least one cased character in B, False otherwise.</p>
     </div>
     <a class="headerlink" href="#bytearray.maketrans"></a>
     
-            <div class="docstring"><p>Return a translation table useable for the bytes or bytearray translate method.</p>
+            <div class="docstring"><p>Return a translation table usable for the bytes or bytearray translate method.</p>
 
 <p>The returned table will be one where each byte in frm is mapped to the byte at
 the same position in to.</p>
@@ -3677,11 +3695,12 @@ the original bytearray.</p>
     </div>
     <a class="headerlink" href="#bytearray.rfind"></a>
     
-            <div class="docstring"><p>B.rfind(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the highest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start:end].</p>
 
-<p>Return the highest index in B where subsection sub is found,
-such that sub is contained within B[start,end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
+<p>start
+    Optional start position. Default: start of the bytes.
+  end
+    Optional stop position. Default: end of the bytes.</p>
 
 <p>Return -1 on failure.</p>
 </div>
@@ -3698,13 +3717,14 @@ arguments start and end are interpreted as in slice notation.</p>
     </div>
     <a class="headerlink" href="#bytearray.rindex"></a>
     
-            <div class="docstring"><p>B.rindex(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the highest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start:end].</p>
 
-<p>Return the highest index in B where subsection sub is found,
-such that sub is contained within B[start,end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
+<p>start
+    Optional start position. Default: start of the bytes.
+  end
+    Optional stop position. Default: end of the bytes.</p>
 
-<p>Raise ValueError when the subsection is not found.</p>
+<p>Raise ValueError if the subsection is not found.</p>
 </div>
 
 
@@ -3842,12 +3862,14 @@ true.</p>
     </div>
     <a class="headerlink" href="#bytearray.startswith"></a>
     
-            <div class="docstring"><p>B.startswith(prefix[, start[, end]]) -> bool</p>
+            <div class="docstring"><p>Return True if the bytearray starts with the specified prefix, False otherwise.</p>
 
-<p>Return True if B starts with the specified prefix, False otherwise.
-With optional start, test B beginning at that position.
-With optional end, stop comparing B at that position.
-prefix can also be a tuple of bytes to try.</p>
+<p>prefix
+  A bytes or a tuple of bytes to try.
+start
+  Optional start position. Default: start of the bytearray.
+end
+  Optional stop position. Default: end of the bytearray.</p>
 </div>
 
 
@@ -3873,7 +3895,7 @@ prefix can also be a tuple of bytes to try.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">swapcase</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">swapcase</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3891,7 +3913,7 @@ to lowercase ASCII and vice versa.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">title</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">title</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3930,7 +3952,7 @@ The remaining characters are mapped through the given translation table.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">upper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">upper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3994,7 +4016,7 @@ bytes() -> empty bytes object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">capitalize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">capitalize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4035,11 +4057,12 @@ and the rest lower-cased.</p>
     </div>
     <a class="headerlink" href="#bytes.count"></a>
     
-            <div class="docstring"><p>B.count(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the number of non-overlapping occurrences of subsection 'sub' in bytes B[start:end].</p>
 
-<p>Return the number of non-overlapping occurrences of subsection sub in
-bytes B[start:end].  Optional arguments start and end are interpreted
-as in slice notation.</p>
+<p>start
+  Optional start position. Default: start of the bytes.
+end
+  Optional stop position. Default: end of the bytes.</p>
 </div>
 
 
@@ -4078,12 +4101,14 @@ errors
     </div>
     <a class="headerlink" href="#bytes.endswith"></a>
     
-            <div class="docstring"><p>B.endswith(suffix[, start[, end]]) -> bool</p>
+            <div class="docstring"><p>Return True if the bytes ends with the specified suffix, False otherwise.</p>
 
-<p>Return True if B ends with the specified suffix, False otherwise.
-With optional start, test B beginning at that position.
-With optional end, stop comparing B at that position.
-suffix can also be a tuple of bytes to try.</p>
+<p>suffix
+  A bytes or a tuple of bytes to try.
+start
+  Optional start position. Default: start of the bytes.
+end
+  Optional stop position. Default: end of the bytes.</p>
 </div>
 
 
@@ -4115,11 +4140,12 @@ suffix can also be a tuple of bytes to try.</p>
     </div>
     <a class="headerlink" href="#bytes.find"></a>
     
-            <div class="docstring"><p>B.find(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the lowest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start,end].</p>
 
-<p>Return the lowest index in B where subsection sub is found,
-such that sub is contained within B[start,end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
+<p>start
+    Optional start position. Default: start of the bytes.
+  end
+    Optional stop position. Default: end of the bytes.</p>
 
 <p>Return -1 on failure.</p>
 </div>
@@ -4190,13 +4216,14 @@ Example: <a href="#bytes.fromhex">bytes.fromhex</a>('B9 01EF') -> b'\xb9\x01\xef
     </div>
     <a class="headerlink" href="#bytes.index"></a>
     
-            <div class="docstring"><p>B.index(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the lowest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start,end].</p>
 
-<p>Return the lowest index in B where subsection sub is found,
-such that sub is contained within B[start,end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
+<p>start
+    Optional start position. Default: start of the bytes.
+  end
+    Optional stop position. Default: end of the bytes.</p>
 
-<p>Raises ValueError when the subsection is not found.</p>
+<p>Raise ValueError if the subsection is not found.</p>
 </div>
 
 
@@ -4205,7 +4232,7 @@ arguments start and end are interpreted as in slice notation.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isalnum</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isalnum</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4223,7 +4250,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isalpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isalpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4241,7 +4268,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isascii</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isascii</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4259,7 +4286,7 @@ False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isdigit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isdigit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4277,7 +4304,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">islower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">islower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4295,7 +4322,7 @@ at least one cased character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isspace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isspace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4313,7 +4340,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">istitle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">istitle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4333,7 +4360,7 @@ otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isupper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isupper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4389,7 +4416,7 @@ at least one cased character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">lower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">lower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4429,7 +4456,7 @@ at least one cased character in B, False otherwise.</p>
     </div>
     <a class="headerlink" href="#bytes.maketrans"></a>
     
-            <div class="docstring"><p>Return a translation table useable for the bytes or bytearray translate method.</p>
+            <div class="docstring"><p>Return a translation table usable for the bytes or bytearray translate method.</p>
 
 <p>The returned table will be one where each byte in frm is mapped to the byte at
 the same position in to.</p>
@@ -4530,11 +4557,12 @@ bytes.</p>
     </div>
     <a class="headerlink" href="#bytes.rfind"></a>
     
-            <div class="docstring"><p>B.rfind(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the highest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start,end].</p>
 
-<p>Return the highest index in B where subsection sub is found,
-such that sub is contained within B[start,end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
+<p>start
+    Optional start position. Default: start of the bytes.
+  end
+    Optional stop position. Default: end of the bytes.</p>
 
 <p>Return -1 on failure.</p>
 </div>
@@ -4551,13 +4579,14 @@ arguments start and end are interpreted as in slice notation.</p>
     </div>
     <a class="headerlink" href="#bytes.rindex"></a>
     
-            <div class="docstring"><p>B.rindex(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the highest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start,end].</p>
 
-<p>Return the highest index in B where subsection sub is found,
-such that sub is contained within B[start,end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
+<p>start
+    Optional start position. Default: start of the bytes.
+  end
+    Optional stop position. Default: end of the bytes.</p>
 
-<p>Raise ValueError when the subsection is not found.</p>
+<p>Raise ValueError if the subsection is not found.</p>
 </div>
 
 
@@ -4694,12 +4723,14 @@ true.</p>
     </div>
     <a class="headerlink" href="#bytes.startswith"></a>
     
-            <div class="docstring"><p>B.startswith(prefix[, start[, end]]) -> bool</p>
+            <div class="docstring"><p>Return True if the bytes starts with the specified prefix, False otherwise.</p>
 
-<p>Return True if B starts with the specified prefix, False otherwise.
-With optional start, test B beginning at that position.
-With optional end, stop comparing B at that position.
-prefix can also be a tuple of bytes to try.</p>
+<p>prefix
+  A bytes or a tuple of bytes to try.
+start
+  Optional start position. Default: start of the bytes.
+end
+  Optional stop position. Default: end of the bytes.</p>
 </div>
 
 
@@ -4725,7 +4756,7 @@ prefix can also be a tuple of bytes to try.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">swapcase</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">swapcase</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4743,7 +4774,7 @@ to lowercase ASCII and vice versa.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">title</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">title</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4782,7 +4813,7 @@ The remaining characters are mapped through the given translation table.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">upper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">upper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4823,9 +4854,7 @@ The remaining characters are mapped through the given translation table.</p>
     </div>
     <a class="headerlink" href="#classmethod"></a>
     
-            <div class="docstring"><p>classmethod(function) -> method</p>
-
-<p>Convert a function to be a class method.</p>
+            <div class="docstring"><p>Convert a function to be a class method.</p>
 
 <p>A class method receives the class as implicit first argument,
 just like an instance method receives the instance.
@@ -5004,13 +5033,13 @@ Raises KeyError if the dict is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">keys</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">keys</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.keys"></a>
     
-            <div class="docstring"><p>D.keys() -> a set-like object providing a view on D's keys</p>
+            <div class="docstring"><p>Return a set-like object providing a view on the dict's keys.</p>
 </div>
 
 
@@ -5019,13 +5048,13 @@ Raises KeyError if the dict is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">items</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">items</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.items"></a>
     
-            <div class="docstring"><p>D.items() -> a set-like object providing a view on D's items</p>
+            <div class="docstring"><p>Return a set-like object providing a view on the dict's items.</p>
 </div>
 
 
@@ -5034,13 +5063,13 @@ Raises KeyError if the dict is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">values</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">values</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.values"></a>
     
-            <div class="docstring"><p>D.values() -> an object providing a view on D's values</p>
+            <div class="docstring"><p>Return an object providing a view on the dict's values.</p>
 </div>
 
 
@@ -5082,13 +5111,13 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">clear</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">clear</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.clear"></a>
     
-            <div class="docstring"><p>D.clear() -> None.  Remove all items from D.</p>
+            <div class="docstring"><p>Remove all items from the dict.</p>
 </div>
 
 
@@ -5097,13 +5126,13 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.copy"></a>
     
-            <div class="docstring"><p>D.copy() -> a shallow copy of D</p>
+            <div class="docstring"><p>Return a shallow copy of the dict.</p>
 </div>
 
 
@@ -5143,9 +5172,7 @@ defaults to zero) and a value yielded by the iterable argument.</p>
     </div>
     <a class="headerlink" href="#filter"></a>
     
-            <div class="docstring"><p>filter(function or None, iterable) --> filter object</p>
-
-<p>Return an iterator yielding those items of iterable for which function(item)
+            <div class="docstring"><p>Return an iterator yielding those items of iterable for which function(item)
 is true. If function is None, return the items that are true.</p>
 </div>
 
@@ -5306,10 +5333,7 @@ OverflowError on infinities and a ValueError on NaNs.</p>
     </div>
     <a class="headerlink" href="#frozenset"></a>
     
-            <div class="docstring"><p>frozenset() -> empty frozenset object
-frozenset(iterable) -> frozenset object</p>
-
-<p>Build an immutable unordered collection of unique elements.</p>
+            <div class="docstring"><p>Build an immutable unordered collection of unique elements.</p>
 </div>
 
 
@@ -5317,7 +5341,7 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5332,15 +5356,13 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.difference"></a>
     
-            <div class="docstring"><p>Return the difference of two or more sets as a new set.</p>
-
-<p>(i.e. all elements that are in this set but not the others.)</p>
+            <div class="docstring"><p>Return a new set with elements in the set that are not in the others.</p>
 </div>
 
 
@@ -5349,15 +5371,13 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">intersection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">intersection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.intersection"></a>
     
-            <div class="docstring"><p>Return the intersection of two sets as a new set.</p>
-
-<p>(i.e. all elements that are in both sets.)</p>
+            <div class="docstring"><p>Return a new set with elements common to the set and all others.</p>
 </div>
 
 
@@ -5366,7 +5386,7 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isdisjoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isdisjoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5387,7 +5407,7 @@ frozenset(iterable) -> frozenset object</p>
     </div>
     <a class="headerlink" href="#frozenset.issubset"></a>
     
-            <div class="docstring"><p>Test whether every element in the set is in other.</p>
+            <div class="docstring"><p>Report whether another set contains this set.</p>
 </div>
 
 
@@ -5402,7 +5422,7 @@ frozenset(iterable) -> frozenset object</p>
     </div>
     <a class="headerlink" href="#frozenset.issuperset"></a>
     
-            <div class="docstring"><p>Test whether every element in other is in the set.</p>
+            <div class="docstring"><p>Report whether this set contains another set.</p>
 </div>
 
 
@@ -5411,15 +5431,13 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">symmetric_difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">symmetric_difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.symmetric_difference"></a>
     
-            <div class="docstring"><p>Return the symmetric difference of two sets as a new set.</p>
-
-<p>(i.e. all elements that are in exactly one of the sets.)</p>
+            <div class="docstring"><p>Return a new set with elements in either the set or other but not both.</p>
 </div>
 
 
@@ -5428,15 +5446,13 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">union</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">union</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.union"></a>
     
-            <div class="docstring"><p>Return the union of sets as a new set.</p>
-
-<p>(i.e. all elements that are in either set.)</p>
+            <div class="docstring"><p>Return a new set with elements from the set and all others.</p>
 </div>
 
 
@@ -5503,7 +5519,7 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">getter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">getter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5518,7 +5534,7 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">setter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">setter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5533,7 +5549,7 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">deleter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">deleter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5613,7 +5629,7 @@ Base 0 means to interpret the base from the string as an integer literal.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">conjugate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">conjugate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5693,7 +5709,7 @@ byteorder
   the most significant byte is at the beginning of the byte array.  If
   byteorder is 'little', the most significant byte is at the end of the
   byte array.  To request the native byte order of the host system, use
-  `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  sys.byteorder as the byte order value.  Default is to use 'big'.
 signed
   Determines whether two's complement is used to represent the integer.
   If signed is False and a negative integer is given, an OverflowError
@@ -5724,7 +5740,7 @@ byteorder
   the most significant byte is at the beginning of the byte array.  If
   byteorder is 'little', the most significant byte is at the end of the
   byte array.  To request the native byte order of the host system, use
-  `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  sys.byteorder as the byte order value.  Default is to use 'big'.
 signed
   Indicates whether two's complement is used to represent the integer.</p>
 </div>
@@ -6045,9 +6061,7 @@ ascending or descending, according to their function values.</p>
     </div>
     <a class="headerlink" href="#map"></a>
     
-            <div class="docstring"><p>map(func, *iterables) --> map object</p>
-
-<p>Make an iterator that computes the function using arguments from
+            <div class="docstring"><p>Make an iterator that computes the function using arguments from
 each of the iterables.  Stops when the shortest iterable is exhausted.</p>
 </div>
 
@@ -6096,7 +6110,7 @@ When step is given, it specifies the increment (or decrement).</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">count</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">count</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6111,7 +6125,7 @@ When step is given, it specifies the increment (or decrement).</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">index</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">index</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6182,10 +6196,7 @@ Raise ValueError if the value is not present.</p>
     </div>
     <a class="headerlink" href="#set"></a>
     
-            <div class="docstring"><p>set() -> new empty set object
-set(iterable) -> new set object</p>
-
-<p>Build an unordered collection of unique elements.</p>
+            <div class="docstring"><p>Build an unordered collection of unique elements.</p>
 </div>
 
 
@@ -6205,7 +6216,7 @@ set(iterable) -> new set object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">add</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">add</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6222,7 +6233,7 @@ set(iterable) -> new set object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">clear</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">clear</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6237,7 +6248,7 @@ set(iterable) -> new set object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6252,7 +6263,7 @@ set(iterable) -> new set object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">discard</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">discard</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6270,15 +6281,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.difference"></a>
     
-            <div class="docstring"><p>Return the difference of two or more sets as a new set.</p>
-
-<p>(i.e. all elements that are in this set but not the others.)</p>
+            <div class="docstring"><p>Return a new set with elements in the set that are not in the others.</p>
 </div>
 
 
@@ -6287,13 +6296,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">difference_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">difference_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.difference_update"></a>
     
-            <div class="docstring"><p>Remove all elements of another set from this set.</p>
+            <div class="docstring"><p>Update the set, removing elements found in others.</p>
 </div>
 
 
@@ -6302,15 +6311,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">intersection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">intersection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.intersection"></a>
     
-            <div class="docstring"><p>Return the intersection of two sets as a new set.</p>
-
-<p>(i.e. all elements that are in both sets.)</p>
+            <div class="docstring"><p>Return a new set with elements common to the set and all others.</p>
 </div>
 
 
@@ -6319,13 +6326,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">intersection_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">intersection_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.intersection_update"></a>
     
-            <div class="docstring"><p>Update a set with the intersection of itself and another.</p>
+            <div class="docstring"><p>Update the set, keeping only elements found in it and all others.</p>
 </div>
 
 
@@ -6334,7 +6341,7 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isdisjoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isdisjoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6355,7 +6362,7 @@ an exception when an element is missing from the set.</p>
     </div>
     <a class="headerlink" href="#set.issubset"></a>
     
-            <div class="docstring"><p>Test whether every element in the set is in other.</p>
+            <div class="docstring"><p>Report whether another set contains this set.</p>
 </div>
 
 
@@ -6370,7 +6377,7 @@ an exception when an element is missing from the set.</p>
     </div>
     <a class="headerlink" href="#set.issuperset"></a>
     
-            <div class="docstring"><p>Test whether every element in other is in the set.</p>
+            <div class="docstring"><p>Report whether this set contains another set.</p>
 </div>
 
 
@@ -6379,14 +6386,15 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">pop</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">pop</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.pop"></a>
     
-            <div class="docstring"><p>Remove and return an arbitrary set element.
-Raises KeyError if the set is empty.</p>
+            <div class="docstring"><p>Remove and return an arbitrary set element.</p>
+
+<p>Raises KeyError if the set is empty.</p>
 </div>
 
 
@@ -6395,7 +6403,7 @@ Raises KeyError if the set is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">remove</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">remove</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6412,15 +6420,13 @@ Raises KeyError if the set is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">symmetric_difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">symmetric_difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.symmetric_difference"></a>
     
-            <div class="docstring"><p>Return the symmetric difference of two sets as a new set.</p>
-
-<p>(i.e. all elements that are in exactly one of the sets.)</p>
+            <div class="docstring"><p>Return a new set with elements in either the set or other but not both.</p>
 </div>
 
 
@@ -6429,13 +6435,13 @@ Raises KeyError if the set is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">symmetric_difference_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">symmetric_difference_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.symmetric_difference_update"></a>
     
-            <div class="docstring"><p>Update a set with the symmetric difference of itself and another.</p>
+            <div class="docstring"><p>Update the set, keeping only elements found in either set, but not in both.</p>
 </div>
 
 
@@ -6444,15 +6450,13 @@ Raises KeyError if the set is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">union</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">union</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.union"></a>
     
-            <div class="docstring"><p>Return the union of sets as a new set.</p>
-
-<p>(i.e. all elements that are in either set.)</p>
+            <div class="docstring"><p>Return a new set with elements from the set and all others.</p>
 </div>
 
 
@@ -6461,13 +6465,13 @@ Raises KeyError if the set is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.update"></a>
     
-            <div class="docstring"><p>Update a set with the union of itself and others.</p>
+            <div class="docstring"><p>Update the set, adding elements from all others.</p>
 </div>
 
 
@@ -6494,7 +6498,7 @@ slice(start, stop[, step])</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">indices</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">indices</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6554,9 +6558,7 @@ handling of normal slices.</p>
     </div>
     <a class="headerlink" href="#staticmethod"></a>
     
-            <div class="docstring"><p>staticmethod(function) -> method</p>
-
-<p>Convert a function to be a static method.</p>
+            <div class="docstring"><p>Convert a function to be a static method.</p>
 
 <p>A static method does not receive an implicit first argument.
 To declare a static method, use this idiom:</p>
@@ -6607,7 +6609,7 @@ errors is specified, then the object must expose a data buffer
 that will be decoded using the given encoding and error handler.
 Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
-encoding defaults to sys.getdefaultencoding().
+encoding defaults to 'utf-8'.
 errors defaults to 'strict'.</p>
 </div>
 
@@ -6640,7 +6642,7 @@ errors
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">replace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">old</span>, </span><span class="param"><span class="n">new</span>, </span><span class="param"><span class="n">count</span><span class="o">=-</span><span class="mi">1</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">replace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">old</span>, </span><span class="param"><span class="n">new</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">count</span><span class="o">=-</span><span class="mi">1</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6818,11 +6820,9 @@ cased characters have lower case.</p>
     </div>
     <a class="headerlink" href="#str.count"></a>
     
-            <div class="docstring"><p>S.count(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the number of non-overlapping occurrences of substring sub in string S[start:end].</p>
 
-<p>Return the number of non-overlapping occurrences of substring sub in
-string S[start:end].  Optional arguments start and end are
-interpreted as in slice notation.</p>
+<p>Optional arguments start and end are interpreted as in slice notation.</p>
 </div>
 
 
@@ -6854,13 +6854,10 @@ interpreted as in slice notation.</p>
     </div>
     <a class="headerlink" href="#str.find"></a>
     
-            <div class="docstring"><p>S.find(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].</p>
 
-<p>Return the lowest index in S where substring sub is found,
-such that sub is contained within S[start:end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
-
-<p>Return -1 on failure.</p>
+<p>Optional arguments start and end are interpreted as in slice notation.
+Return -1 on failure.</p>
 </div>
 
 
@@ -6897,13 +6894,10 @@ and two empty strings.</p>
     </div>
     <a class="headerlink" href="#str.index"></a>
     
-            <div class="docstring"><p>S.index(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].</p>
 
-<p>Return the lowest index in S where substring sub is found,
-such that sub is contained within S[start:end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
-
-<p>Raises ValueError when the substring is not found.</p>
+<p>Optional arguments start and end are interpreted as in slice notation.
+Raises ValueError when the substring is not found.</p>
 </div>
 
 
@@ -6967,13 +6961,10 @@ arguments start and end are interpreted as in slice notation.</p>
     </div>
     <a class="headerlink" href="#str.rfind"></a>
     
-            <div class="docstring"><p>S.rfind(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].</p>
 
-<p>Return the highest index in S where substring sub is found,
-such that sub is contained within S[start:end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
-
-<p>Return -1 on failure.</p>
+<p>Optional arguments start and end are interpreted as in slice notation.
+Return -1 on failure.</p>
 </div>
 
 
@@ -6988,13 +6979,10 @@ arguments start and end are interpreted as in slice notation.</p>
     </div>
     <a class="headerlink" href="#str.rindex"></a>
     
-            <div class="docstring"><p>S.rindex(sub[, start[, end]]) -> int</p>
+            <div class="docstring"><p>Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].</p>
 
-<p>Return the highest index in S where substring sub is found,
-such that sub is contained within S[start:end].  Optional
-arguments start and end are interpreted as in slice notation.</p>
-
-<p>Raises ValueError when the substring is not found.</p>
+<p>Optional arguments start and end are interpreted as in slice notation.
+Raises ValueError when the substring is not found.</p>
 </div>
 
 
@@ -7153,12 +7141,14 @@ left untouched.  Characters mapped to None are deleted.</p>
     </div>
     <a class="headerlink" href="#str.startswith"></a>
     
-            <div class="docstring"><p>S.startswith(prefix[, start[, end]]) -> bool</p>
+            <div class="docstring"><p>Return True if the string starts with the specified prefix, False otherwise.</p>
 
-<p>Return True if S starts with the specified prefix, False otherwise.
-With optional start, test S beginning at that position.
-With optional end, stop comparing S at that position.
-prefix can also be a tuple of strings to try.</p>
+<p>prefix
+  A string or a tuple of strings to try.
+start
+  Optional start position. Default: start of the string.
+end
+  Optional stop position. Default: end of the string.</p>
 </div>
 
 
@@ -7173,12 +7163,14 @@ prefix can also be a tuple of strings to try.</p>
     </div>
     <a class="headerlink" href="#str.endswith"></a>
     
-            <div class="docstring"><p>S.endswith(suffix[, start[, end]]) -> bool</p>
+            <div class="docstring"><p>Return True if the string ends with the specified suffix, False otherwise.</p>
 
-<p>Return True if S ends with the specified suffix, False otherwise.
-With optional start, test S beginning at that position.
-With optional end, stop comparing S at that position.
-suffix can also be a tuple of strings to try.</p>
+<p>suffix
+  A string or a tuple of strings to try.
+start
+  Optional start position. Default: start of the string.
+end
+  Optional stop position. Default: end of the string.</p>
 </div>
 
 
@@ -7428,10 +7420,9 @@ such as "def" or "class".</p>
     </div>
     <a class="headerlink" href="#str.isprintable"></a>
     
-            <div class="docstring"><p>Return True if the string is printable, False otherwise.</p>
+            <div class="docstring"><p>Return True if all characters in the string are printable, False otherwise.</p>
 
-<p>A string is printable if all of its characters are considered printable in
-repr() or if it is empty.</p>
+<p>A character is printable if repr() may use it in its output.</p>
 </div>
 
 
@@ -7457,15 +7448,13 @@ repr() or if it is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">format</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">format</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">args</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#str.format"></a>
     
-            <div class="docstring"><p>S.format(<em>args, *</em>kwargs) -> str</p>
-
-<p>Return a formatted version of S, using substitutions from args and kwargs.
+            <div class="docstring"><p>Return a formatted version of the string, using substitutions from args and kwargs.
 The substitutions are identified by braces ('{' and '}').</p>
 </div>
 
@@ -7475,15 +7464,13 @@ The substitutions are identified by braces ('{' and '}').</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">format_map</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">format_map</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">mapping</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#str.format_map"></a>
     
-            <div class="docstring"><p>S.format_map(mapping) -> str</p>
-
-<p>Return a formatted version of S, using substitutions from mapping.
+            <div class="docstring"><p>Return a formatted version of the string, using substitutions from mapping.
 The substitutions are identified by braces ('{' and '}').</p>
 </div>
 
@@ -7657,21 +7644,19 @@ type(name, bases, dict, **kwds) -> a new type</p>
     </div>
     <a class="headerlink" href="#zip"></a>
     
-            <div class="docstring"><p>zip(*iterables, strict=False) --> Yield tuples until an input is exhausted.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s1">&#39;abcdefg&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span>
-<span class="go">[(&#39;a&#39;, 0, 0), (&#39;b&#39;, 1, 1), (&#39;c&#39;, 2, 2)]</span>
-</code></pre>
-</div>
-
-<p>The zip object yields n-length tuples, where n is the number of iterables
+            <div class="docstring"><p>The zip object yields n-length tuples, where n is the number of iterables
 passed as positional arguments to zip().  The i-th element in every tuple
 comes from the i-th iterable argument to zip().  This continues until the
 shortest argument is exhausted.</p>
 
 <p>If strict is true and one of the arguments is exhausted before the others,
 raise a ValueError.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s1">&#39;abcdefg&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span>
+<span class="go">[(&#39;a&#39;, 0, 0), (&#39;b&#39;, 1, 1), (&#39;c&#39;, 2, 2)]</span>
+</code></pre>
+</div>
 </div>
 
 
@@ -7706,7 +7691,7 @@ raise a ValueError.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">with_traceback</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">with_traceback</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -7722,7 +7707,7 @@ set self.__traceback__ to tb and return self.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">add_note</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">add_note</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -7776,39 +7761,45 @@ add a note to the exception</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">derive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">derive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#BaseExceptionGroup.derive"></a>
     
-    
+            <div class="docstring"><p>The type of the None singleton.</p>
+</div>
+
 
                             </div>
                             <div id="BaseExceptionGroup.split" class="classattr">
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">split</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">split</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#BaseExceptionGroup.split"></a>
     
-    
+            <div class="docstring"><p>The type of the None singleton.</p>
+</div>
+
 
                             </div>
                             <div id="BaseExceptionGroup.subgroup" class="classattr">
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">subgroup</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">subgroup</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#BaseExceptionGroup.subgroup"></a>
     
-    
+            <div class="docstring"><p>The type of the None singleton.</p>
+</div>
+
 
                             </div>
                             <div id="BaseExceptionGroup.message" class="classattr">
@@ -10255,6 +10246,44 @@ related to conversion problems.</p>
                                 <dd id="NotImplementedError.with_traceback" class="function"><a href="#BaseException.with_traceback">with_traceback</a></dd>
                 <dd id="NotImplementedError.add_note" class="function"><a href="#BaseException.add_note">add_note</a></dd>
                 <dd id="NotImplementedError.args" class="variable"><a href="#BaseException.args">args</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="PythonFinalizationError">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">PythonFinalizationError</span><wbr>(<span class="base"><a href="#RuntimeError">RuntimeError</a></span>):
+
+        
+    </div>
+    <a class="headerlink" href="#PythonFinalizationError"></a>
+    
+            <div class="docstring"><p>Operation blocked during Python finalization.</p>
+</div>
+
+
+                            <div id="PythonFinalizationError.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">PythonFinalizationError</span><span class="signature pdoc-code condensed">(<span class="param"><span class="o">*</span><span class="n">args</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PythonFinalizationError.__init__"></a>
+    
+    
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#BaseException">BaseException</a></dt>
+                                <dd id="PythonFinalizationError.with_traceback" class="function"><a href="#BaseException.with_traceback">with_traceback</a></dd>
+                <dd id="PythonFinalizationError.add_note" class="function"><a href="#BaseException.add_note">add_note</a></dd>
+                <dd id="PythonFinalizationError.args" class="variable"><a href="#BaseException.args">args</a></dd>
 
             </div>
                                 </dl>
