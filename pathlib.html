@@ -25,19 +25,19 @@
             <h2>API Documentation</h2>
                 <ul class="memberlist">
             <li>
-                    <a class="class" href="#UnsupportedOperation">UnsupportedOperation</a>
-                            <ul class="memberlist">
-                </ul>
-
-            </li>
-            <li>
                     <a class="class" href="#PurePath">PurePath</a>
                             <ul class="memberlist">
                         <li>
                                 <a class="function" href="#PurePath.__init__">PurePath</a>
                         </li>
                         <li>
-                                <a class="function" href="#PurePath.joinpath">joinpath</a>
+                                <a class="function" href="#PurePath.with_segments">with_segments</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#PurePath.as_posix">as_posix</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#PurePath.as_uri">as_uri</a>
                         </li>
                         <li>
                                 <a class="variable" href="#PurePath.drive">drive</a>
@@ -49,19 +49,25 @@
                                 <a class="variable" href="#PurePath.anchor">anchor</a>
                         </li>
                         <li>
-                                <a class="variable" href="#PurePath.parts">parts</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#PurePath.parent">parent</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#PurePath.parents">parents</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#PurePath.name">name</a>
                         </li>
                         <li>
+                                <a class="variable" href="#PurePath.suffix">suffix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PurePath.suffixes">suffixes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PurePath.stem">stem</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#PurePath.with_name">with_name</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#PurePath.with_stem">with_stem</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#PurePath.with_suffix">with_suffix</a>
                         </li>
                         <li>
                                 <a class="function" href="#PurePath.relative_to">relative_to</a>
@@ -70,13 +76,25 @@
                                 <a class="function" href="#PurePath.is_relative_to">is_relative_to</a>
                         </li>
                         <li>
+                                <a class="variable" href="#PurePath.parts">parts</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#PurePath.joinpath">joinpath</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PurePath.parent">parent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PurePath.parents">parents</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#PurePath.is_absolute">is_absolute</a>
                         </li>
                         <li>
                                 <a class="function" href="#PurePath.is_reserved">is_reserved</a>
                         </li>
                         <li>
-                                <a class="function" href="#PurePath.as_uri">as_uri</a>
+                                <a class="function" href="#PurePath.match">match</a>
                         </li>
                 </ul>
 
@@ -100,22 +118,55 @@
                                 <a class="function" href="#Path.__init__">Path</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.as_uri">as_uri</a>
+                                <a class="function" href="#Path.stat">stat</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.stat">stat</a>
+                                <a class="function" href="#Path.lstat">lstat</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.exists">exists</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.is_dir">is_dir</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.is_file">is_file</a>
                         </li>
                         <li>
                                 <a class="function" href="#Path.is_mount">is_mount</a>
                         </li>
                         <li>
+                                <a class="function" href="#Path.is_symlink">is_symlink</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#Path.is_junction">is_junction</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.is_block_device">is_block_device</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.is_char_device">is_char_device</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.is_fifo">is_fifo</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.is_socket">is_socket</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.samefile">samefile</a>
                         </li>
                         <li>
                                 <a class="function" href="#Path.open">open</a>
                         </li>
                         <li>
+                                <a class="function" href="#Path.read_bytes">read_bytes</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#Path.read_text">read_text</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.write_bytes">write_bytes</a>
                         </li>
                         <li>
                                 <a class="function" href="#Path.write_text">write_text</a>
@@ -133,10 +184,25 @@
                                 <a class="function" href="#Path.walk">walk</a>
                         </li>
                         <li>
+                                <a class="function" href="#Path.cwd">cwd</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.home">home</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#Path.absolute">absolute</a>
                         </li>
                         <li>
                                 <a class="function" href="#Path.resolve">resolve</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.owner">owner</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.group">group</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.readlink">readlink</a>
                         </li>
                         <li>
                                 <a class="function" href="#Path.touch">touch</a>
@@ -146,6 +212,9 @@
                         </li>
                         <li>
                                 <a class="function" href="#Path.chmod">chmod</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.lchmod">lchmod</a>
                         </li>
                         <li>
                                 <a class="function" href="#Path.unlink">unlink</a>
@@ -160,25 +229,13 @@
                                 <a class="function" href="#Path.replace">replace</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.expanduser">expanduser</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#Path.from_uri">from_uri</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#Path.readlink">readlink</a>
-                        </li>
-                        <li>
                                 <a class="function" href="#Path.symlink_to">symlink_to</a>
                         </li>
                         <li>
                                 <a class="function" href="#Path.hardlink_to">hardlink_to</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.owner">owner</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#Path.group">group</a>
+                                <a class="function" href="#Path.expanduser">expanduser</a>
                         </li>
                 </ul>
 
@@ -222,42 +279,11 @@ operating systems.</p>
                 
                 
             </section>
-                <section id="UnsupportedOperation">
-                    <div class="attr class">
-            
-    <span class="def">class</span>
-    <span class="name">UnsupportedOperation</span><wbr>(<span class="base"><a href="builtins.html#NotImplementedError">builtins.NotImplementedError</a></span>):
-
-        
-    </div>
-    <a class="headerlink" href="#UnsupportedOperation"></a>
-    
-            <div class="docstring"><p>An exception that is raised when an unsupported operation is called on
-a path object.</p>
-</div>
-
-
-                            <div class="inherited">
-                                <h5>Inherited Members</h5>
-                                <dl>
-                                    <div><dt><a href="builtins.html#NotImplementedError">builtins.NotImplementedError</a></dt>
-                                <dd id="UnsupportedOperation.__init__" class="function"><a href="builtins.html#NotImplementedError.__init__">NotImplementedError</a></dd>
-
-            </div>
-            <div><dt><a href="builtins.html#BaseException">builtins.BaseException</a></dt>
-                                <dd id="UnsupportedOperation.with_traceback" class="function"><a href="builtins.html#BaseException.with_traceback">with_traceback</a></dd>
-                <dd id="UnsupportedOperation.add_note" class="function"><a href="builtins.html#BaseException.add_note">add_note</a></dd>
-                <dd id="UnsupportedOperation.args" class="variable"><a href="builtins.html#BaseException.args">args</a></dd>
-
-            </div>
-                                </dl>
-                            </div>
-                </section>
                 <section id="PurePath">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">PurePath</span><wbr>(<span class="base">pathlib._abc.PurePathBase</span>):
+    <span class="name">PurePath</span>:
 
         
     </div>
@@ -290,20 +316,50 @@ new PurePath object.</p>
 
 
                             </div>
-                            <div id="PurePath.joinpath" class="classattr">
+                            <div id="PurePath.with_segments" class="classattr">
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">joinpath</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">*</span><span class="n">pathsegments</span></span><span class="return-annotation">):</span></span>
+        <span class="name">with_segments</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">*</span><span class="n">pathsegments</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
-    <a class="headerlink" href="#PurePath.joinpath"></a>
+    <a class="headerlink" href="#PurePath.with_segments"></a>
     
-            <div class="docstring"><p>Combine this path with one or several arguments, and return a
-new path representing either a subpath (if all arguments are relative
-paths) or a totally different path (if one of the arguments is
-anchored).</p>
+            <div class="docstring"><p>Construct a new path object from any number of path-like objects.
+Subclasses may override this method to customize how new path objects
+are created from methods like <code>iterdir()</code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.as_posix" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">as_posix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.as_posix"></a>
+    
+            <div class="docstring"><p>Return the string representation of the path with forward (/)
+slashes.</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.as_uri" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">as_uri</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.as_uri"></a>
+    
+            <div class="docstring"><p>Return the path as a 'file' URI.</p>
 </div>
 
 
@@ -347,46 +403,6 @@ anchored).</p>
 
 
                             </div>
-                            <div id="PurePath.parts" class="classattr">
-                                <div class="attr variable">
-            <span class="name">parts</span>
-
-        
-    </div>
-    <a class="headerlink" href="#PurePath.parts"></a>
-    
-            <div class="docstring"><p>An object providing sequence-like access to the
-components in the filesystem path.</p>
-</div>
-
-
-                            </div>
-                            <div id="PurePath.parent" class="classattr">
-                                <div class="attr variable">
-            <span class="name">parent</span>
-
-        
-    </div>
-    <a class="headerlink" href="#PurePath.parent"></a>
-    
-            <div class="docstring"><p>The logical parent of the path.</p>
-</div>
-
-
-                            </div>
-                            <div id="PurePath.parents" class="classattr">
-                                <div class="attr variable">
-            <span class="name">parents</span>
-
-        
-    </div>
-    <a class="headerlink" href="#PurePath.parents"></a>
-    
-            <div class="docstring"><p>A sequence of this path's logical parents.</p>
-</div>
-
-
-                            </div>
                             <div id="PurePath.name" class="classattr">
                                 <div class="attr variable">
             <span class="name">name</span>
@@ -396,6 +412,49 @@ components in the filesystem path.</p>
     <a class="headerlink" href="#PurePath.name"></a>
     
             <div class="docstring"><p>The final path component, if any.</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.suffix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">suffix</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.suffix"></a>
+    
+            <div class="docstring"><p>The final component's last suffix, if any.</p>
+
+<p>This includes the leading period. For example: '.txt'</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.suffixes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">suffixes</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.suffixes"></a>
+    
+            <div class="docstring"><p>A list of the final component's suffixes, if any.</p>
+
+<p>These include the leading periods. For example: ['.tar', '.gz']</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.stem" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stem</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.stem"></a>
+    
+            <div class="docstring"><p>The final path component, minus its last suffix.</p>
 </div>
 
 
@@ -411,6 +470,38 @@ components in the filesystem path.</p>
     <a class="headerlink" href="#PurePath.with_name"></a>
     
             <div class="docstring"><p>Return a new path with the file name changed.</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.with_stem" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">with_stem</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">stem</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.with_stem"></a>
+    
+            <div class="docstring"><p>Return a new path with the stem changed.</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.with_suffix" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">with_suffix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">suffix</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.with_suffix"></a>
+    
+            <div class="docstring"><p>Return a new path with the file suffix changed.  If the path
+has no suffix, add given suffix.  If the given suffix is an empty
+string, remove the suffix from the path.</p>
 </div>
 
 
@@ -450,6 +541,64 @@ the path.</p>
 
 
                             </div>
+                            <div id="PurePath.parts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">parts</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.parts"></a>
+    
+            <div class="docstring"><p>An object providing sequence-like access to the
+components in the filesystem path.</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.joinpath" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">joinpath</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">*</span><span class="n">pathsegments</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.joinpath"></a>
+    
+            <div class="docstring"><p>Combine this path with one or several arguments, and return a
+new path representing either a subpath (if all arguments are relative
+paths) or a totally different path (if one of the arguments is
+anchored).</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.parent" class="classattr">
+                                <div class="attr variable">
+            <span class="name">parent</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.parent"></a>
+    
+            <div class="docstring"><p>The logical parent of the path.</p>
+</div>
+
+
+                            </div>
+                            <div id="PurePath.parents" class="classattr">
+                                <div class="attr variable">
+            <span class="name">parents</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PurePath.parents"></a>
+    
+            <div class="docstring"><p>A sequence of this path's logical parents.</p>
+</div>
+
+
+                            </div>
                             <div id="PurePath.is_absolute" class="classattr">
                                 <div class="attr function">
             
@@ -482,17 +631,17 @@ by the system, if any.</p>
 
 
                             </div>
-                            <div id="PurePath.as_uri" class="classattr">
+                            <div id="PurePath.match" class="classattr">
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">as_uri</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+        <span class="name">match</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">path_pattern</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">case_sensitive</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
-    <a class="headerlink" href="#PurePath.as_uri"></a>
+    <a class="headerlink" href="#PurePath.match"></a>
     
-            <div class="docstring"><p>Return the path as a URI.</p>
+            <div class="docstring"><p>Return True if this path matches the given pattern.</p>
 </div>
 
 
@@ -502,7 +651,7 @@ by the system, if any.</p>
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">PurePosixPath</span><wbr>(<span class="base"><a href="#PurePath">pathlib.PurePath</a></span>):
+    <span class="name">PurePosixPath</span><wbr>(<span class="base"><a href="#PurePath">PurePath</a></span>):
 
         
     </div>
@@ -515,12 +664,43 @@ However, you can also instantiate it directly on any system.</p>
 </div>
 
 
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#PurePath">PurePath</a></dt>
+                                <dd id="PurePosixPath.__init__" class="function"><a href="#PurePath.__init__">PurePath</a></dd>
+                <dd id="PurePosixPath.with_segments" class="function"><a href="#PurePath.with_segments">with_segments</a></dd>
+                <dd id="PurePosixPath.as_posix" class="function"><a href="#PurePath.as_posix">as_posix</a></dd>
+                <dd id="PurePosixPath.as_uri" class="function"><a href="#PurePath.as_uri">as_uri</a></dd>
+                <dd id="PurePosixPath.drive" class="variable"><a href="#PurePath.drive">drive</a></dd>
+                <dd id="PurePosixPath.root" class="variable"><a href="#PurePath.root">root</a></dd>
+                <dd id="PurePosixPath.anchor" class="variable"><a href="#PurePath.anchor">anchor</a></dd>
+                <dd id="PurePosixPath.name" class="variable"><a href="#PurePath.name">name</a></dd>
+                <dd id="PurePosixPath.suffix" class="variable"><a href="#PurePath.suffix">suffix</a></dd>
+                <dd id="PurePosixPath.suffixes" class="variable"><a href="#PurePath.suffixes">suffixes</a></dd>
+                <dd id="PurePosixPath.stem" class="variable"><a href="#PurePath.stem">stem</a></dd>
+                <dd id="PurePosixPath.with_name" class="function"><a href="#PurePath.with_name">with_name</a></dd>
+                <dd id="PurePosixPath.with_stem" class="function"><a href="#PurePath.with_stem">with_stem</a></dd>
+                <dd id="PurePosixPath.with_suffix" class="function"><a href="#PurePath.with_suffix">with_suffix</a></dd>
+                <dd id="PurePosixPath.relative_to" class="function"><a href="#PurePath.relative_to">relative_to</a></dd>
+                <dd id="PurePosixPath.is_relative_to" class="function"><a href="#PurePath.is_relative_to">is_relative_to</a></dd>
+                <dd id="PurePosixPath.parts" class="variable"><a href="#PurePath.parts">parts</a></dd>
+                <dd id="PurePosixPath.joinpath" class="function"><a href="#PurePath.joinpath">joinpath</a></dd>
+                <dd id="PurePosixPath.parent" class="variable"><a href="#PurePath.parent">parent</a></dd>
+                <dd id="PurePosixPath.parents" class="variable"><a href="#PurePath.parents">parents</a></dd>
+                <dd id="PurePosixPath.is_absolute" class="function"><a href="#PurePath.is_absolute">is_absolute</a></dd>
+                <dd id="PurePosixPath.is_reserved" class="function"><a href="#PurePath.is_reserved">is_reserved</a></dd>
+                <dd id="PurePosixPath.match" class="function"><a href="#PurePath.match">match</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
                 </section>
                 <section id="PureWindowsPath">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">PureWindowsPath</span><wbr>(<span class="base"><a href="#PurePath">pathlib.PurePath</a></span>):
+    <span class="name">PureWindowsPath</span><wbr>(<span class="base"><a href="#PurePath">PurePath</a></span>):
 
         
     </div>
@@ -533,12 +713,43 @@ However, you can also instantiate it directly on any system.</p>
 </div>
 
 
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#PurePath">PurePath</a></dt>
+                                <dd id="PureWindowsPath.__init__" class="function"><a href="#PurePath.__init__">PurePath</a></dd>
+                <dd id="PureWindowsPath.with_segments" class="function"><a href="#PurePath.with_segments">with_segments</a></dd>
+                <dd id="PureWindowsPath.as_posix" class="function"><a href="#PurePath.as_posix">as_posix</a></dd>
+                <dd id="PureWindowsPath.as_uri" class="function"><a href="#PurePath.as_uri">as_uri</a></dd>
+                <dd id="PureWindowsPath.drive" class="variable"><a href="#PurePath.drive">drive</a></dd>
+                <dd id="PureWindowsPath.root" class="variable"><a href="#PurePath.root">root</a></dd>
+                <dd id="PureWindowsPath.anchor" class="variable"><a href="#PurePath.anchor">anchor</a></dd>
+                <dd id="PureWindowsPath.name" class="variable"><a href="#PurePath.name">name</a></dd>
+                <dd id="PureWindowsPath.suffix" class="variable"><a href="#PurePath.suffix">suffix</a></dd>
+                <dd id="PureWindowsPath.suffixes" class="variable"><a href="#PurePath.suffixes">suffixes</a></dd>
+                <dd id="PureWindowsPath.stem" class="variable"><a href="#PurePath.stem">stem</a></dd>
+                <dd id="PureWindowsPath.with_name" class="function"><a href="#PurePath.with_name">with_name</a></dd>
+                <dd id="PureWindowsPath.with_stem" class="function"><a href="#PurePath.with_stem">with_stem</a></dd>
+                <dd id="PureWindowsPath.with_suffix" class="function"><a href="#PurePath.with_suffix">with_suffix</a></dd>
+                <dd id="PureWindowsPath.relative_to" class="function"><a href="#PurePath.relative_to">relative_to</a></dd>
+                <dd id="PureWindowsPath.is_relative_to" class="function"><a href="#PurePath.is_relative_to">is_relative_to</a></dd>
+                <dd id="PureWindowsPath.parts" class="variable"><a href="#PurePath.parts">parts</a></dd>
+                <dd id="PureWindowsPath.joinpath" class="function"><a href="#PurePath.joinpath">joinpath</a></dd>
+                <dd id="PureWindowsPath.parent" class="variable"><a href="#PurePath.parent">parent</a></dd>
+                <dd id="PureWindowsPath.parents" class="variable"><a href="#PurePath.parents">parents</a></dd>
+                <dd id="PureWindowsPath.is_absolute" class="function"><a href="#PurePath.is_absolute">is_absolute</a></dd>
+                <dd id="PureWindowsPath.is_reserved" class="function"><a href="#PurePath.is_reserved">is_reserved</a></dd>
+                <dd id="PureWindowsPath.match" class="function"><a href="#PurePath.match">match</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
                 </section>
                 <section id="Path">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">Path</span><wbr>(<span class="base">pathlib._abc.PathBase</span>, <span class="base"><a href="#PurePath">pathlib.PurePath</a></span>):
+    <span class="name">Path</span><wbr>(<span class="base"><a href="#PurePath">PurePath</a></span>):
 
         
     </div>
@@ -566,21 +777,6 @@ but cannot instantiate a WindowsPath on a POSIX system or vice versa.</p>
     
 
                             </div>
-                            <div id="Path.as_uri" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">as_uri</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.as_uri"></a>
-    
-            <div class="docstring"><p>Return the path as a URI.</p>
-</div>
-
-
-                            </div>
                             <div id="Path.stat" class="classattr">
                                 <div class="attr function">
             
@@ -593,6 +789,71 @@ but cannot instantiate a WindowsPath on a POSIX system or vice versa.</p>
     
             <div class="docstring"><p>Return the result of the stat() system call on this path, like
 <a href="os.html#stat">os.stat()</a> does.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.lstat" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">lstat</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.lstat"></a>
+    
+            <div class="docstring"><p>Like stat(), except if the path points to a symlink, the symlink's
+status information is returned, rather than its target's.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.exists" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">exists</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.exists"></a>
+    
+            <div class="docstring"><p>Whether this path exists.</p>
+
+<p>This method normally follows symlinks; to check whether a symlink exists,
+add the argument follow_symlinks=False.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.is_dir" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_dir</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.is_dir"></a>
+    
+            <div class="docstring"><p>Whether this path is a directory.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.is_file" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_file</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.is_file"></a>
+    
+            <div class="docstring"><p>Whether this path is a regular file (also True for symlinks pointing
+to regular files).</p>
 </div>
 
 
@@ -612,6 +873,21 @@ but cannot instantiate a WindowsPath on a POSIX system or vice versa.</p>
 
 
                             </div>
+                            <div id="Path.is_symlink" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_symlink</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.is_symlink"></a>
+    
+            <div class="docstring"><p>Whether this path is a symbolic link.</p>
+</div>
+
+
+                            </div>
                             <div id="Path.is_junction" class="classattr">
                                 <div class="attr function">
             
@@ -627,6 +903,82 @@ but cannot instantiate a WindowsPath on a POSIX system or vice versa.</p>
 
 
                             </div>
+                            <div id="Path.is_block_device" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_block_device</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.is_block_device"></a>
+    
+            <div class="docstring"><p>Whether this path is a block device.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.is_char_device" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_char_device</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.is_char_device"></a>
+    
+            <div class="docstring"><p>Whether this path is a character device.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.is_fifo" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_fifo</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.is_fifo"></a>
+    
+            <div class="docstring"><p>Whether this path is a FIFO.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.is_socket" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">is_socket</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.is_socket"></a>
+    
+            <div class="docstring"><p>Whether this path is a socket.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.samefile" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">samefile</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other_path</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.samefile"></a>
+    
+            <div class="docstring"><p>Return whether other_path is the same or not as this file
+(as returned by os.path.samefile()).</p>
+</div>
+
+
+                            </div>
                             <div id="Path.open" class="classattr">
                                 <div class="attr function">
             
@@ -637,8 +989,23 @@ but cannot instantiate a WindowsPath on a POSIX system or vice versa.</p>
     </div>
     <a class="headerlink" href="#Path.open"></a>
     
-            <div class="docstring"><p>Open the file pointed to by this path and return a file object, as
+            <div class="docstring"><p>Open the file pointed by this path and return a file object, as
 the built-in open() function does.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.read_bytes" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">read_bytes</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.read_bytes"></a>
+    
+            <div class="docstring"><p>Open the file in bytes mode, read it, and close the file.</p>
 </div>
 
 
@@ -647,13 +1014,28 @@ the built-in open() function does.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">read_text</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">encoding</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">errors</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">newline</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+        <span class="name">read_text</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">encoding</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">errors</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#Path.read_text"></a>
     
             <div class="docstring"><p>Open the file in text mode, read it, and close the file.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.write_bytes" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">write_bytes</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">data</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.write_bytes"></a>
+    
+            <div class="docstring"><p>Open the file in bytes mode, write to it, and close the file.</p>
 </div>
 
 
@@ -695,7 +1077,7 @@ special entries '.' and '..' are not included.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">glob</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">pattern</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">case_sensitive</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">recurse_symlinks</span><span class="o">=</span><span class="kc">False</span></span><span class="return-annotation">):</span></span>
+        <span class="name">glob</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">pattern</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">case_sensitive</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -711,7 +1093,7 @@ kind, including directories) matching the given relative pattern.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">rglob</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">pattern</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">case_sensitive</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">recurse_symlinks</span><span class="o">=</span><span class="kc">False</span></span><span class="return-annotation">):</span></span>
+        <span class="name">rglob</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">pattern</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">case_sensitive</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -739,6 +1121,39 @@ this subtree.</p>
 
 
                             </div>
+                            <div id="Path.cwd" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator decorator-classmethod">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">cwd</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.cwd"></a>
+    
+            <div class="docstring"><p>Return a new path pointing to the current working directory.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.home" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator decorator-classmethod">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">home</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.home"></a>
+    
+            <div class="docstring"><p>Return a new path pointing to the user's home directory (as
+returned by os.path.expanduser('~')).</p>
+</div>
+
+
+                            </div>
                             <div id="Path.absolute" class="classattr">
                                 <div class="attr function">
             
@@ -749,10 +1164,10 @@ this subtree.</p>
     </div>
     <a class="headerlink" href="#Path.absolute"></a>
     
-            <div class="docstring"><p>Return an absolute version of this path
-No normalization or symlink resolution is performed.</p>
+            <div class="docstring"><p>Return an absolute version of this path by prepending the current
+working directory. No normalization or symlink resolution is performed.</p>
 
-<p>Use resolve() to resolve symlinks and remove '..' segments.</p>
+<p>Use resolve() to get the canonical path to a file.</p>
 </div>
 
 
@@ -769,6 +1184,51 @@ No normalization or symlink resolution is performed.</p>
     
             <div class="docstring"><p>Make the path absolute, resolving all symlinks on the way and also
 normalizing it.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.owner" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">owner</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.owner"></a>
+    
+            <div class="docstring"><p>Return the login name of the file owner.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.group" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">group</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.group"></a>
+    
+            <div class="docstring"><p>Return the group name of the file gid.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.readlink" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">readlink</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.readlink"></a>
+    
+            <div class="docstring"><p>Return the path to which the symbolic link points.</p>
 </div>
 
 
@@ -814,6 +1274,22 @@ normalizing it.</p>
     <a class="headerlink" href="#Path.chmod"></a>
     
             <div class="docstring"><p>Change the permissions of the path, like <a href="os.html#chmod">os.chmod()</a>.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.lchmod" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">lchmod</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">mode</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.lchmod"></a>
+    
+            <div class="docstring"><p>Like chmod(), except if the path points to a symlink, the symlink's
+permissions are changed, rather than its target's.</p>
 </div>
 
 
@@ -891,53 +1367,6 @@ directory of the Path object.</p>
 
 
                             </div>
-                            <div id="Path.expanduser" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">expanduser</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.expanduser"></a>
-    
-            <div class="docstring"><p>Return a new path with expanded ~ and ~user constructs
-(as returned by os.path.expanduser)</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.from_uri" class="classattr">
-                                <div class="attr function">
-                    <div class="decorator decorator-classmethod">@classmethod</div>
-
-        <span class="def">def</span>
-        <span class="name">from_uri</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">uri</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.from_uri"></a>
-    
-            <div class="docstring"><p>Return a new path from the given 'file' URI.</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.readlink" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">readlink</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.readlink"></a>
-    
-            <div class="docstring"><p>Return the path to which the symbolic link points.</p>
-</div>
-
-
-                            </div>
                             <div id="Path.symlink_to" class="classattr">
                                 <div class="attr function">
             
@@ -971,42 +1400,58 @@ Note the order of arguments (link, target) is the reverse of <a href="os.html#sy
 
 
                             </div>
-                            <div id="Path.owner" class="classattr">
+                            <div id="Path.expanduser" class="classattr">
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">owner</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+        <span class="name">expanduser</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
-    <a class="headerlink" href="#Path.owner"></a>
+    <a class="headerlink" href="#Path.expanduser"></a>
     
-            <div class="docstring"><p>Return the login name of the file owner.</p>
+            <div class="docstring"><p>Return a new path with expanded ~ and ~user constructs
+(as returned by os.path.expanduser)</p>
 </div>
 
 
                             </div>
-                            <div id="Path.group" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">group</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#PurePath">PurePath</a></dt>
+                                <dd id="Path.with_segments" class="function"><a href="#PurePath.with_segments">with_segments</a></dd>
+                <dd id="Path.as_posix" class="function"><a href="#PurePath.as_posix">as_posix</a></dd>
+                <dd id="Path.as_uri" class="function"><a href="#PurePath.as_uri">as_uri</a></dd>
+                <dd id="Path.drive" class="variable"><a href="#PurePath.drive">drive</a></dd>
+                <dd id="Path.root" class="variable"><a href="#PurePath.root">root</a></dd>
+                <dd id="Path.anchor" class="variable"><a href="#PurePath.anchor">anchor</a></dd>
+                <dd id="Path.name" class="variable"><a href="#PurePath.name">name</a></dd>
+                <dd id="Path.suffix" class="variable"><a href="#PurePath.suffix">suffix</a></dd>
+                <dd id="Path.suffixes" class="variable"><a href="#PurePath.suffixes">suffixes</a></dd>
+                <dd id="Path.stem" class="variable"><a href="#PurePath.stem">stem</a></dd>
+                <dd id="Path.with_name" class="function"><a href="#PurePath.with_name">with_name</a></dd>
+                <dd id="Path.with_stem" class="function"><a href="#PurePath.with_stem">with_stem</a></dd>
+                <dd id="Path.with_suffix" class="function"><a href="#PurePath.with_suffix">with_suffix</a></dd>
+                <dd id="Path.relative_to" class="function"><a href="#PurePath.relative_to">relative_to</a></dd>
+                <dd id="Path.is_relative_to" class="function"><a href="#PurePath.is_relative_to">is_relative_to</a></dd>
+                <dd id="Path.parts" class="variable"><a href="#PurePath.parts">parts</a></dd>
+                <dd id="Path.joinpath" class="function"><a href="#PurePath.joinpath">joinpath</a></dd>
+                <dd id="Path.parent" class="variable"><a href="#PurePath.parent">parent</a></dd>
+                <dd id="Path.parents" class="variable"><a href="#PurePath.parents">parents</a></dd>
+                <dd id="Path.is_absolute" class="function"><a href="#PurePath.is_absolute">is_absolute</a></dd>
+                <dd id="Path.is_reserved" class="function"><a href="#PurePath.is_reserved">is_reserved</a></dd>
+                <dd id="Path.match" class="function"><a href="#PurePath.match">match</a></dd>
 
-        
-    </div>
-    <a class="headerlink" href="#Path.group"></a>
-    
-            <div class="docstring"><p>Return the group name of the file gid.</p>
-</div>
-
-
+            </div>
+                                </dl>
                             </div>
                 </section>
                 <section id="PosixPath">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">PosixPath</span><wbr>(<span class="base"><a href="#Path">pathlib.Path</a></span>, <span class="base"><a href="#PurePosixPath">pathlib.PurePosixPath</a></span>):
+    <span class="name">PosixPath</span><wbr>(<span class="base"><a href="#Path">Path</a></span>, <span class="base"><a href="#PurePosixPath">PurePosixPath</a></span>):
 
         
     </div>
@@ -1018,12 +1463,86 @@ Note the order of arguments (link, target) is the reverse of <a href="os.html#sy
 </div>
 
 
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#Path">Path</a></dt>
+                                <dd id="PosixPath.__init__" class="function"><a href="#Path.__init__">Path</a></dd>
+                <dd id="PosixPath.stat" class="function"><a href="#Path.stat">stat</a></dd>
+                <dd id="PosixPath.lstat" class="function"><a href="#Path.lstat">lstat</a></dd>
+                <dd id="PosixPath.exists" class="function"><a href="#Path.exists">exists</a></dd>
+                <dd id="PosixPath.is_dir" class="function"><a href="#Path.is_dir">is_dir</a></dd>
+                <dd id="PosixPath.is_file" class="function"><a href="#Path.is_file">is_file</a></dd>
+                <dd id="PosixPath.is_mount" class="function"><a href="#Path.is_mount">is_mount</a></dd>
+                <dd id="PosixPath.is_symlink" class="function"><a href="#Path.is_symlink">is_symlink</a></dd>
+                <dd id="PosixPath.is_junction" class="function"><a href="#Path.is_junction">is_junction</a></dd>
+                <dd id="PosixPath.is_block_device" class="function"><a href="#Path.is_block_device">is_block_device</a></dd>
+                <dd id="PosixPath.is_char_device" class="function"><a href="#Path.is_char_device">is_char_device</a></dd>
+                <dd id="PosixPath.is_fifo" class="function"><a href="#Path.is_fifo">is_fifo</a></dd>
+                <dd id="PosixPath.is_socket" class="function"><a href="#Path.is_socket">is_socket</a></dd>
+                <dd id="PosixPath.samefile" class="function"><a href="#Path.samefile">samefile</a></dd>
+                <dd id="PosixPath.open" class="function"><a href="#Path.open">open</a></dd>
+                <dd id="PosixPath.read_bytes" class="function"><a href="#Path.read_bytes">read_bytes</a></dd>
+                <dd id="PosixPath.read_text" class="function"><a href="#Path.read_text">read_text</a></dd>
+                <dd id="PosixPath.write_bytes" class="function"><a href="#Path.write_bytes">write_bytes</a></dd>
+                <dd id="PosixPath.write_text" class="function"><a href="#Path.write_text">write_text</a></dd>
+                <dd id="PosixPath.iterdir" class="function"><a href="#Path.iterdir">iterdir</a></dd>
+                <dd id="PosixPath.glob" class="function"><a href="#Path.glob">glob</a></dd>
+                <dd id="PosixPath.rglob" class="function"><a href="#Path.rglob">rglob</a></dd>
+                <dd id="PosixPath.walk" class="function"><a href="#Path.walk">walk</a></dd>
+                <dd id="PosixPath.cwd" class="function"><a href="#Path.cwd">cwd</a></dd>
+                <dd id="PosixPath.home" class="function"><a href="#Path.home">home</a></dd>
+                <dd id="PosixPath.absolute" class="function"><a href="#Path.absolute">absolute</a></dd>
+                <dd id="PosixPath.resolve" class="function"><a href="#Path.resolve">resolve</a></dd>
+                <dd id="PosixPath.owner" class="function"><a href="#Path.owner">owner</a></dd>
+                <dd id="PosixPath.group" class="function"><a href="#Path.group">group</a></dd>
+                <dd id="PosixPath.readlink" class="function"><a href="#Path.readlink">readlink</a></dd>
+                <dd id="PosixPath.touch" class="function"><a href="#Path.touch">touch</a></dd>
+                <dd id="PosixPath.mkdir" class="function"><a href="#Path.mkdir">mkdir</a></dd>
+                <dd id="PosixPath.chmod" class="function"><a href="#Path.chmod">chmod</a></dd>
+                <dd id="PosixPath.lchmod" class="function"><a href="#Path.lchmod">lchmod</a></dd>
+                <dd id="PosixPath.unlink" class="function"><a href="#Path.unlink">unlink</a></dd>
+                <dd id="PosixPath.rmdir" class="function"><a href="#Path.rmdir">rmdir</a></dd>
+                <dd id="PosixPath.rename" class="function"><a href="#Path.rename">rename</a></dd>
+                <dd id="PosixPath.replace" class="function"><a href="#Path.replace">replace</a></dd>
+                <dd id="PosixPath.symlink_to" class="function"><a href="#Path.symlink_to">symlink_to</a></dd>
+                <dd id="PosixPath.hardlink_to" class="function"><a href="#Path.hardlink_to">hardlink_to</a></dd>
+                <dd id="PosixPath.expanduser" class="function"><a href="#Path.expanduser">expanduser</a></dd>
+
+            </div>
+            <div><dt><a href="#PurePath">PurePath</a></dt>
+                                <dd id="PosixPath.with_segments" class="function"><a href="#PurePath.with_segments">with_segments</a></dd>
+                <dd id="PosixPath.as_posix" class="function"><a href="#PurePath.as_posix">as_posix</a></dd>
+                <dd id="PosixPath.as_uri" class="function"><a href="#PurePath.as_uri">as_uri</a></dd>
+                <dd id="PosixPath.drive" class="variable"><a href="#PurePath.drive">drive</a></dd>
+                <dd id="PosixPath.root" class="variable"><a href="#PurePath.root">root</a></dd>
+                <dd id="PosixPath.anchor" class="variable"><a href="#PurePath.anchor">anchor</a></dd>
+                <dd id="PosixPath.name" class="variable"><a href="#PurePath.name">name</a></dd>
+                <dd id="PosixPath.suffix" class="variable"><a href="#PurePath.suffix">suffix</a></dd>
+                <dd id="PosixPath.suffixes" class="variable"><a href="#PurePath.suffixes">suffixes</a></dd>
+                <dd id="PosixPath.stem" class="variable"><a href="#PurePath.stem">stem</a></dd>
+                <dd id="PosixPath.with_name" class="function"><a href="#PurePath.with_name">with_name</a></dd>
+                <dd id="PosixPath.with_stem" class="function"><a href="#PurePath.with_stem">with_stem</a></dd>
+                <dd id="PosixPath.with_suffix" class="function"><a href="#PurePath.with_suffix">with_suffix</a></dd>
+                <dd id="PosixPath.relative_to" class="function"><a href="#PurePath.relative_to">relative_to</a></dd>
+                <dd id="PosixPath.is_relative_to" class="function"><a href="#PurePath.is_relative_to">is_relative_to</a></dd>
+                <dd id="PosixPath.parts" class="variable"><a href="#PurePath.parts">parts</a></dd>
+                <dd id="PosixPath.joinpath" class="function"><a href="#PurePath.joinpath">joinpath</a></dd>
+                <dd id="PosixPath.parent" class="variable"><a href="#PurePath.parent">parent</a></dd>
+                <dd id="PosixPath.parents" class="variable"><a href="#PurePath.parents">parents</a></dd>
+                <dd id="PosixPath.is_absolute" class="function"><a href="#PurePath.is_absolute">is_absolute</a></dd>
+                <dd id="PosixPath.is_reserved" class="function"><a href="#PurePath.is_reserved">is_reserved</a></dd>
+                <dd id="PosixPath.match" class="function"><a href="#PurePath.match">match</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
                 </section>
                 <section id="WindowsPath">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">WindowsPath</span><wbr>(<span class="base"><a href="#Path">pathlib.Path</a></span>, <span class="base"><a href="#PureWindowsPath">pathlib.PureWindowsPath</a></span>):
+    <span class="name">WindowsPath</span><wbr>(<span class="base"><a href="#Path">Path</a></span>, <span class="base"><a href="#PureWindowsPath">PureWindowsPath</a></span>):
 
         
     </div>
@@ -1035,6 +1554,80 @@ Note the order of arguments (link, target) is the reverse of <a href="os.html#sy
 </div>
 
 
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#Path">Path</a></dt>
+                                <dd id="WindowsPath.__init__" class="function"><a href="#Path.__init__">Path</a></dd>
+                <dd id="WindowsPath.stat" class="function"><a href="#Path.stat">stat</a></dd>
+                <dd id="WindowsPath.lstat" class="function"><a href="#Path.lstat">lstat</a></dd>
+                <dd id="WindowsPath.exists" class="function"><a href="#Path.exists">exists</a></dd>
+                <dd id="WindowsPath.is_dir" class="function"><a href="#Path.is_dir">is_dir</a></dd>
+                <dd id="WindowsPath.is_file" class="function"><a href="#Path.is_file">is_file</a></dd>
+                <dd id="WindowsPath.is_mount" class="function"><a href="#Path.is_mount">is_mount</a></dd>
+                <dd id="WindowsPath.is_symlink" class="function"><a href="#Path.is_symlink">is_symlink</a></dd>
+                <dd id="WindowsPath.is_junction" class="function"><a href="#Path.is_junction">is_junction</a></dd>
+                <dd id="WindowsPath.is_block_device" class="function"><a href="#Path.is_block_device">is_block_device</a></dd>
+                <dd id="WindowsPath.is_char_device" class="function"><a href="#Path.is_char_device">is_char_device</a></dd>
+                <dd id="WindowsPath.is_fifo" class="function"><a href="#Path.is_fifo">is_fifo</a></dd>
+                <dd id="WindowsPath.is_socket" class="function"><a href="#Path.is_socket">is_socket</a></dd>
+                <dd id="WindowsPath.samefile" class="function"><a href="#Path.samefile">samefile</a></dd>
+                <dd id="WindowsPath.open" class="function"><a href="#Path.open">open</a></dd>
+                <dd id="WindowsPath.read_bytes" class="function"><a href="#Path.read_bytes">read_bytes</a></dd>
+                <dd id="WindowsPath.read_text" class="function"><a href="#Path.read_text">read_text</a></dd>
+                <dd id="WindowsPath.write_bytes" class="function"><a href="#Path.write_bytes">write_bytes</a></dd>
+                <dd id="WindowsPath.write_text" class="function"><a href="#Path.write_text">write_text</a></dd>
+                <dd id="WindowsPath.iterdir" class="function"><a href="#Path.iterdir">iterdir</a></dd>
+                <dd id="WindowsPath.glob" class="function"><a href="#Path.glob">glob</a></dd>
+                <dd id="WindowsPath.rglob" class="function"><a href="#Path.rglob">rglob</a></dd>
+                <dd id="WindowsPath.walk" class="function"><a href="#Path.walk">walk</a></dd>
+                <dd id="WindowsPath.cwd" class="function"><a href="#Path.cwd">cwd</a></dd>
+                <dd id="WindowsPath.home" class="function"><a href="#Path.home">home</a></dd>
+                <dd id="WindowsPath.absolute" class="function"><a href="#Path.absolute">absolute</a></dd>
+                <dd id="WindowsPath.resolve" class="function"><a href="#Path.resolve">resolve</a></dd>
+                <dd id="WindowsPath.owner" class="function"><a href="#Path.owner">owner</a></dd>
+                <dd id="WindowsPath.group" class="function"><a href="#Path.group">group</a></dd>
+                <dd id="WindowsPath.readlink" class="function"><a href="#Path.readlink">readlink</a></dd>
+                <dd id="WindowsPath.touch" class="function"><a href="#Path.touch">touch</a></dd>
+                <dd id="WindowsPath.mkdir" class="function"><a href="#Path.mkdir">mkdir</a></dd>
+                <dd id="WindowsPath.chmod" class="function"><a href="#Path.chmod">chmod</a></dd>
+                <dd id="WindowsPath.lchmod" class="function"><a href="#Path.lchmod">lchmod</a></dd>
+                <dd id="WindowsPath.unlink" class="function"><a href="#Path.unlink">unlink</a></dd>
+                <dd id="WindowsPath.rmdir" class="function"><a href="#Path.rmdir">rmdir</a></dd>
+                <dd id="WindowsPath.rename" class="function"><a href="#Path.rename">rename</a></dd>
+                <dd id="WindowsPath.replace" class="function"><a href="#Path.replace">replace</a></dd>
+                <dd id="WindowsPath.symlink_to" class="function"><a href="#Path.symlink_to">symlink_to</a></dd>
+                <dd id="WindowsPath.hardlink_to" class="function"><a href="#Path.hardlink_to">hardlink_to</a></dd>
+                <dd id="WindowsPath.expanduser" class="function"><a href="#Path.expanduser">expanduser</a></dd>
+
+            </div>
+            <div><dt><a href="#PurePath">PurePath</a></dt>
+                                <dd id="WindowsPath.with_segments" class="function"><a href="#PurePath.with_segments">with_segments</a></dd>
+                <dd id="WindowsPath.as_posix" class="function"><a href="#PurePath.as_posix">as_posix</a></dd>
+                <dd id="WindowsPath.as_uri" class="function"><a href="#PurePath.as_uri">as_uri</a></dd>
+                <dd id="WindowsPath.drive" class="variable"><a href="#PurePath.drive">drive</a></dd>
+                <dd id="WindowsPath.root" class="variable"><a href="#PurePath.root">root</a></dd>
+                <dd id="WindowsPath.anchor" class="variable"><a href="#PurePath.anchor">anchor</a></dd>
+                <dd id="WindowsPath.name" class="variable"><a href="#PurePath.name">name</a></dd>
+                <dd id="WindowsPath.suffix" class="variable"><a href="#PurePath.suffix">suffix</a></dd>
+                <dd id="WindowsPath.suffixes" class="variable"><a href="#PurePath.suffixes">suffixes</a></dd>
+                <dd id="WindowsPath.stem" class="variable"><a href="#PurePath.stem">stem</a></dd>
+                <dd id="WindowsPath.with_name" class="function"><a href="#PurePath.with_name">with_name</a></dd>
+                <dd id="WindowsPath.with_stem" class="function"><a href="#PurePath.with_stem">with_stem</a></dd>
+                <dd id="WindowsPath.with_suffix" class="function"><a href="#PurePath.with_suffix">with_suffix</a></dd>
+                <dd id="WindowsPath.relative_to" class="function"><a href="#PurePath.relative_to">relative_to</a></dd>
+                <dd id="WindowsPath.is_relative_to" class="function"><a href="#PurePath.is_relative_to">is_relative_to</a></dd>
+                <dd id="WindowsPath.parts" class="variable"><a href="#PurePath.parts">parts</a></dd>
+                <dd id="WindowsPath.joinpath" class="function"><a href="#PurePath.joinpath">joinpath</a></dd>
+                <dd id="WindowsPath.parent" class="variable"><a href="#PurePath.parent">parent</a></dd>
+                <dd id="WindowsPath.parents" class="variable"><a href="#PurePath.parents">parents</a></dd>
+                <dd id="WindowsPath.is_absolute" class="function"><a href="#PurePath.is_absolute">is_absolute</a></dd>
+                <dd id="WindowsPath.is_reserved" class="function"><a href="#PurePath.is_reserved">is_reserved</a></dd>
+                <dd id="WindowsPath.match" class="function"><a href="#PurePath.match">match</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
                 </section>
     </main>
 </body>

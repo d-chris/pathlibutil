@@ -1645,15 +1645,6 @@
 
             </li>
             <li>
-                    <a class="class" href="#PythonFinalizationError">PythonFinalizationError</a>
-                            <ul class="memberlist">
-                        <li>
-                                <a class="function" href="#PythonFinalizationError.__init__">PythonFinalizationError</a>
-                        </li>
-                </ul>
-
-            </li>
-            <li>
                     <a class="class" href="#RecursionError">RecursionError</a>
                             <ul class="memberlist">
                         <li>
@@ -1935,13 +1926,15 @@ to that returned by repr() in Python 2.</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">breakpoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="o">*</span><span class="n">args</span>, </span><span class="param"><span class="o">**</span><span class="n">kws</span></span><span class="return-annotation">):</span></span>
+        <span class="name">breakpoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#breakpoint"></a>
     
-            <div class="docstring"><p>Call sys.breakpointhook(<em>args, *</em>kws).  sys.breakpointhook() must accept
+            <div class="docstring"><p>breakpoint(<em>args, *</em>kws)</p>
+
+<p>Call sys.breakpointhook(<em>args, *</em>kws).  sys.breakpointhook() must accept
 whatever arguments are passed.</p>
 
 <p>By default, this drops you into the pdb debugger.</p>
@@ -2035,7 +2028,7 @@ in addition to any features explicitly specified.</p>
     </div>
     <a class="headerlink" href="#dir"></a>
     
-            <div class="docstring"><p>dir([object]) -> list of strings</p>
+            <div class="docstring"><p>Show attributes of an object.</p>
 
 <p>If called without an argument, return the names in the current scope.
 Else, return an alphabetized list of names comprising (some of) the attributes
@@ -2070,7 +2063,7 @@ the default dir() logic is used and returns:
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">eval</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">source</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="nb">globals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="nb">locals</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+        <span class="name">eval</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">source</span>, </span><span class="param"><span class="nb">globals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="nb">locals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -2091,7 +2084,7 @@ If only globals is given, locals defaults to it.</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">exec</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">source</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="nb">globals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="nb">locals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">closure</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+        <span class="name">exec</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">source</span>, </span><span class="param"><span class="nb">globals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="nb">locals</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">closure</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -2142,9 +2135,9 @@ See also help('SPECIALMETHODS').</p>
     </div>
     <a class="headerlink" href="#getattr"></a>
     
-            <div class="docstring"><p>getattr(object, name[, default]) -> value</p>
+            <div class="docstring"><p>Get a named attribute from an object.</p>
 
-<p>Get a named attribute from an object; getattr(x, 'y') is equivalent to x.y.
+<p>getattr(x, 'y') is equivalent to x.y
 When a default argument is given, it is returned when the attribute doesn't
 exist; without it, an exception is raised in that case.</p>
 </div>
@@ -2312,11 +2305,9 @@ or ...</code>.</p>
     </div>
     <a class="headerlink" href="#iter"></a>
     
-            <div class="docstring"><p>iter(iterable) -> iterator
-iter(callable, sentinel) -> iterator</p>
+            <div class="docstring"><p>Get an iterator from an object.</p>
 
-<p>Get an iterator from an object.  In the first form, the argument must
-supply its own iterator, or be a sequence.
+<p>In the first form, the argument must supply its own iterator, or be a sequence.
 In the second form, the callable is called until it returns the sentinel.</p>
 </div>
 
@@ -2387,7 +2378,7 @@ max(arg1, arg2, *args, *[, key=func]) -> value</p>
 <p>With a single iterable argument, return its biggest item. The
 default keyword-only argument specifies an object to return if
 the provided iterable is empty.
-With two or more positional arguments, return the largest argument.</p>
+With two or more arguments, return the largest argument.</p>
 </div>
 
 
@@ -2408,7 +2399,7 @@ min(arg1, arg2, *args, *[, key=func]) -> value</p>
 <p>With a single iterable argument, return its smallest item. The
 default keyword-only argument specifies an object to return if
 the provided iterable is empty.
-With two or more positional arguments, return the smallest argument.</p>
+With two or more arguments, return the smallest argument.</p>
 </div>
 
 
@@ -2423,10 +2414,10 @@ With two or more positional arguments, return the smallest argument.</p>
     </div>
     <a class="headerlink" href="#next"></a>
     
-            <div class="docstring"><p>next(iterator[, default])</p>
+            <div class="docstring"><p>Return the next item from the iterator.</p>
 
-<p>Return the next item from the iterator. If default is given and the iterator
-is exhausted, it is returned instead of raising StopIteration.</p>
+<p>If default is given and the iterator is exhausted,
+it is returned instead of raising StopIteration.</p>
 </div>
 
 
@@ -2441,10 +2432,10 @@ is exhausted, it is returned instead of raising StopIteration.</p>
     </div>
     <a class="headerlink" href="#anext"></a>
     
-            <div class="docstring"><p>Return the next item from the async iterator.</p>
+            <div class="docstring"><p>async anext(aiterator[, default])</p>
 
-<p>If default is given and the async iterator is exhausted,
-it is returned instead of raising StopAsyncIteration.</p>
+<p>Return the next item from the async iterator.  If default is given and the async
+iterator is exhausted, it is returned instead of raising StopAsyncIteration.</p>
 </div>
 
 
@@ -2474,19 +2465,13 @@ it is returned instead of raising StopAsyncIteration.</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">ord</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">character</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">ord</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">c</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#ord"></a>
     
-            <div class="docstring"><p>Return the ordinal value of a character.</p>
-
-<p>If the argument is a one-character string, return the Unicode code
-point of that character.</p>
-
-<p>If the argument is a bytes or bytearray object of length 1, return its
-single byte value.</p>
+            <div class="docstring"><p>Return the Unicode code point for a one-character string.</p>
 </div>
 
 
@@ -2632,7 +2617,7 @@ reject non-numeric types.</p>
     </div>
     <a class="headerlink" href="#vars"></a>
     
-            <div class="docstring"><p>vars([object]) -> dictionary</p>
+            <div class="docstring"><p>Show vars.</p>
 
 <p>Without arguments, equivalent to locals().
 With an argument, equivalent to object.__dict__.</p>
@@ -2650,7 +2635,9 @@ With an argument, equivalent to object.__dict__.</p>
     </div>
     <a class="headerlink" href="#bool"></a>
     
-            <div class="docstring"><p>Returns True when the argument is true, False otherwise.
+            <div class="docstring"><p>bool(x) -> bool</p>
+
+<p>Returns True when the argument x is true, False otherwise.
 The builtins True and False are the only two instances of the class bool.
 The class bool is a subclass of the class int, and cannot be subclassed.</p>
 </div>
@@ -3033,7 +3020,7 @@ bytearray() -> empty bytes array</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">capitalize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">capitalize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3104,12 +3091,11 @@ and the rest lower-cased.</p>
     </div>
     <a class="headerlink" href="#bytearray.count"></a>
     
-            <div class="docstring"><p>Return the number of non-overlapping occurrences of subsection 'sub' in bytes B[start:end].</p>
+            <div class="docstring"><p>B.count(sub[, start[, end]]) -> int</p>
 
-<p>start
-  Optional start position. Default: start of the bytes.
-end
-  Optional stop position. Default: end of the bytes.</p>
+<p>Return the number of non-overlapping occurrences of subsection sub in
+bytes B[start:end].  Optional arguments start and end are interpreted
+as in slice notation.</p>
 </div>
 
 
@@ -3148,14 +3134,12 @@ errors
     </div>
     <a class="headerlink" href="#bytearray.endswith"></a>
     
-            <div class="docstring"><p>Return True if the bytearray ends with the specified suffix, False otherwise.</p>
+            <div class="docstring"><p>B.endswith(suffix[, start[, end]]) -> bool</p>
 
-<p>suffix
-  A bytes or a tuple of bytes to try.
-start
-  Optional start position. Default: start of the bytearray.
-end
-  Optional stop position. Default: end of the bytearray.</p>
+<p>Return True if B ends with the specified suffix, False otherwise.
+With optional start, test B beginning at that position.
+With optional end, stop comparing B at that position.
+suffix can also be a tuple of bytes to try.</p>
 </div>
 
 
@@ -3205,12 +3189,11 @@ end
     </div>
     <a class="headerlink" href="#bytearray.find"></a>
     
-            <div class="docstring"><p>Return the lowest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start:end].</p>
+            <div class="docstring"><p>B.find(sub[, start[, end]]) -> int</p>
 
-<p>start
-    Optional start position. Default: start of the bytes.
-  end
-    Optional stop position. Default: end of the bytes.</p>
+<p>Return the lowest index in B where subsection sub is found,
+such that sub is contained within B[start,end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
 
 <p>Return -1 on failure.</p>
 </div>
@@ -3281,14 +3264,13 @@ Example: <a href="#bytearray.fromhex">bytearray.fromhex</a>('B9 01EF') -> bytear
     </div>
     <a class="headerlink" href="#bytearray.index"></a>
     
-            <div class="docstring"><p>Return the lowest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start:end].</p>
+            <div class="docstring"><p>B.index(sub[, start[, end]]) -> int</p>
 
-<p>start
-    Optional start position. Default: start of the bytes.
-  end
-    Optional stop position. Default: end of the bytes.</p>
+<p>Return the lowest index in B where subsection sub is found,
+such that sub is contained within B[start,end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
 
-<p>Raise ValueError if the subsection is not found.</p>
+<p>Raises ValueError when the subsection is not found.</p>
 </div>
 
 
@@ -3317,7 +3299,7 @@ item
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isalnum</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isalnum</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3335,7 +3317,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isalpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isalpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3353,7 +3335,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isascii</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isascii</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3371,7 +3353,7 @@ False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isdigit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isdigit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3389,7 +3371,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">islower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">islower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3407,7 +3389,7 @@ at least one cased character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isspace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isspace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3425,7 +3407,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">istitle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">istitle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3445,7 +3427,7 @@ otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isupper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isupper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3499,7 +3481,7 @@ at least one cased character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">lower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">lower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3539,7 +3521,7 @@ at least one cased character in B, False otherwise.</p>
     </div>
     <a class="headerlink" href="#bytearray.maketrans"></a>
     
-            <div class="docstring"><p>Return a translation table usable for the bytes or bytearray translate method.</p>
+            <div class="docstring"><p>Return a translation table useable for the bytes or bytearray translate method.</p>
 
 <p>The returned table will be one where each byte in frm is mapped to the byte at
 the same position in to.</p>
@@ -3695,12 +3677,11 @@ the original bytearray.</p>
     </div>
     <a class="headerlink" href="#bytearray.rfind"></a>
     
-            <div class="docstring"><p>Return the highest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start:end].</p>
+            <div class="docstring"><p>B.rfind(sub[, start[, end]]) -> int</p>
 
-<p>start
-    Optional start position. Default: start of the bytes.
-  end
-    Optional stop position. Default: end of the bytes.</p>
+<p>Return the highest index in B where subsection sub is found,
+such that sub is contained within B[start,end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
 
 <p>Return -1 on failure.</p>
 </div>
@@ -3717,14 +3698,13 @@ the original bytearray.</p>
     </div>
     <a class="headerlink" href="#bytearray.rindex"></a>
     
-            <div class="docstring"><p>Return the highest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start:end].</p>
+            <div class="docstring"><p>B.rindex(sub[, start[, end]]) -> int</p>
 
-<p>start
-    Optional start position. Default: start of the bytes.
-  end
-    Optional stop position. Default: end of the bytes.</p>
+<p>Return the highest index in B where subsection sub is found,
+such that sub is contained within B[start,end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
 
-<p>Raise ValueError if the subsection is not found.</p>
+<p>Raise ValueError when the subsection is not found.</p>
 </div>
 
 
@@ -3862,14 +3842,12 @@ true.</p>
     </div>
     <a class="headerlink" href="#bytearray.startswith"></a>
     
-            <div class="docstring"><p>Return True if the bytearray starts with the specified prefix, False otherwise.</p>
+            <div class="docstring"><p>B.startswith(prefix[, start[, end]]) -> bool</p>
 
-<p>prefix
-  A bytes or a tuple of bytes to try.
-start
-  Optional start position. Default: start of the bytearray.
-end
-  Optional stop position. Default: end of the bytearray.</p>
+<p>Return True if B starts with the specified prefix, False otherwise.
+With optional start, test B beginning at that position.
+With optional end, stop comparing B at that position.
+prefix can also be a tuple of bytes to try.</p>
 </div>
 
 
@@ -3895,7 +3873,7 @@ end
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">swapcase</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">swapcase</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3913,7 +3891,7 @@ to lowercase ASCII and vice versa.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">title</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">title</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -3952,7 +3930,7 @@ The remaining characters are mapped through the given translation table.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">upper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">upper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4016,7 +3994,7 @@ bytes() -> empty bytes object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">capitalize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">capitalize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4057,12 +4035,11 @@ and the rest lower-cased.</p>
     </div>
     <a class="headerlink" href="#bytes.count"></a>
     
-            <div class="docstring"><p>Return the number of non-overlapping occurrences of subsection 'sub' in bytes B[start:end].</p>
+            <div class="docstring"><p>B.count(sub[, start[, end]]) -> int</p>
 
-<p>start
-  Optional start position. Default: start of the bytes.
-end
-  Optional stop position. Default: end of the bytes.</p>
+<p>Return the number of non-overlapping occurrences of subsection sub in
+bytes B[start:end].  Optional arguments start and end are interpreted
+as in slice notation.</p>
 </div>
 
 
@@ -4101,14 +4078,12 @@ errors
     </div>
     <a class="headerlink" href="#bytes.endswith"></a>
     
-            <div class="docstring"><p>Return True if the bytes ends with the specified suffix, False otherwise.</p>
+            <div class="docstring"><p>B.endswith(suffix[, start[, end]]) -> bool</p>
 
-<p>suffix
-  A bytes or a tuple of bytes to try.
-start
-  Optional start position. Default: start of the bytes.
-end
-  Optional stop position. Default: end of the bytes.</p>
+<p>Return True if B ends with the specified suffix, False otherwise.
+With optional start, test B beginning at that position.
+With optional end, stop comparing B at that position.
+suffix can also be a tuple of bytes to try.</p>
 </div>
 
 
@@ -4140,12 +4115,11 @@ end
     </div>
     <a class="headerlink" href="#bytes.find"></a>
     
-            <div class="docstring"><p>Return the lowest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start,end].</p>
+            <div class="docstring"><p>B.find(sub[, start[, end]]) -> int</p>
 
-<p>start
-    Optional start position. Default: start of the bytes.
-  end
-    Optional stop position. Default: end of the bytes.</p>
+<p>Return the lowest index in B where subsection sub is found,
+such that sub is contained within B[start,end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
 
 <p>Return -1 on failure.</p>
 </div>
@@ -4216,14 +4190,13 @@ Example: <a href="#bytes.fromhex">bytes.fromhex</a>('B9 01EF') -> b'\xb9\x01\xef
     </div>
     <a class="headerlink" href="#bytes.index"></a>
     
-            <div class="docstring"><p>Return the lowest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start,end].</p>
+            <div class="docstring"><p>B.index(sub[, start[, end]]) -> int</p>
 
-<p>start
-    Optional start position. Default: start of the bytes.
-  end
-    Optional stop position. Default: end of the bytes.</p>
+<p>Return the lowest index in B where subsection sub is found,
+such that sub is contained within B[start,end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
 
-<p>Raise ValueError if the subsection is not found.</p>
+<p>Raises ValueError when the subsection is not found.</p>
 </div>
 
 
@@ -4232,7 +4205,7 @@ Example: <a href="#bytes.fromhex">bytes.fromhex</a>('B9 01EF') -> b'\xb9\x01\xef
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isalnum</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isalnum</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4250,7 +4223,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isalpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isalpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4268,7 +4241,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isascii</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isascii</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4286,7 +4259,7 @@ False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isdigit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isdigit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4304,7 +4277,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">islower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">islower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4322,7 +4295,7 @@ at least one cased character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isspace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isspace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4340,7 +4313,7 @@ and there is at least one character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">istitle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">istitle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4360,7 +4333,7 @@ otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isupper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isupper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4416,7 +4389,7 @@ at least one cased character in B, False otherwise.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">lower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">lower</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4456,7 +4429,7 @@ at least one cased character in B, False otherwise.</p>
     </div>
     <a class="headerlink" href="#bytes.maketrans"></a>
     
-            <div class="docstring"><p>Return a translation table usable for the bytes or bytearray translate method.</p>
+            <div class="docstring"><p>Return a translation table useable for the bytes or bytearray translate method.</p>
 
 <p>The returned table will be one where each byte in frm is mapped to the byte at
 the same position in to.</p>
@@ -4557,12 +4530,11 @@ bytes.</p>
     </div>
     <a class="headerlink" href="#bytes.rfind"></a>
     
-            <div class="docstring"><p>Return the highest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start,end].</p>
+            <div class="docstring"><p>B.rfind(sub[, start[, end]]) -> int</p>
 
-<p>start
-    Optional start position. Default: start of the bytes.
-  end
-    Optional stop position. Default: end of the bytes.</p>
+<p>Return the highest index in B where subsection sub is found,
+such that sub is contained within B[start,end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
 
 <p>Return -1 on failure.</p>
 </div>
@@ -4579,14 +4551,13 @@ bytes.</p>
     </div>
     <a class="headerlink" href="#bytes.rindex"></a>
     
-            <div class="docstring"><p>Return the highest index in B where subsection 'sub' is found, such that 'sub' is contained within B[start,end].</p>
+            <div class="docstring"><p>B.rindex(sub[, start[, end]]) -> int</p>
 
-<p>start
-    Optional start position. Default: start of the bytes.
-  end
-    Optional stop position. Default: end of the bytes.</p>
+<p>Return the highest index in B where subsection sub is found,
+such that sub is contained within B[start,end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
 
-<p>Raise ValueError if the subsection is not found.</p>
+<p>Raise ValueError when the subsection is not found.</p>
 </div>
 
 
@@ -4723,14 +4694,12 @@ true.</p>
     </div>
     <a class="headerlink" href="#bytes.startswith"></a>
     
-            <div class="docstring"><p>Return True if the bytes starts with the specified prefix, False otherwise.</p>
+            <div class="docstring"><p>B.startswith(prefix[, start[, end]]) -> bool</p>
 
-<p>prefix
-  A bytes or a tuple of bytes to try.
-start
-  Optional start position. Default: start of the bytes.
-end
-  Optional stop position. Default: end of the bytes.</p>
+<p>Return True if B starts with the specified prefix, False otherwise.
+With optional start, test B beginning at that position.
+With optional end, stop comparing B at that position.
+prefix can also be a tuple of bytes to try.</p>
 </div>
 
 
@@ -4756,7 +4725,7 @@ end
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">swapcase</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">swapcase</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4774,7 +4743,7 @@ to lowercase ASCII and vice versa.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">title</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">title</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4813,7 +4782,7 @@ The remaining characters are mapped through the given translation table.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">upper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">upper</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4854,7 +4823,9 @@ The remaining characters are mapped through the given translation table.</p>
     </div>
     <a class="headerlink" href="#classmethod"></a>
     
-            <div class="docstring"><p>Convert a function to be a class method.</p>
+            <div class="docstring"><p>classmethod(function) -> method</p>
+
+<p>Convert a function to be a class method.</p>
 
 <p>A class method receives the class as implicit first argument,
 just like an instance method receives the instance.
@@ -4898,12 +4869,9 @@ If you want those, see the staticmethod builtin.</p>
     </div>
     <a class="headerlink" href="#complex"></a>
     
-            <div class="docstring"><p>Create a complex number from a string or numbers.</p>
+            <div class="docstring"><p>Create a complex number from a real part and an optional imaginary part.</p>
 
-<p>If a string is given, parse it as a complex number.
-If a single number is given, convert it to a complex number.
-If the 'real' or 'imag' arguments are given, create a complex number
-with the specified real and imaginary components.</p>
+<p>This is equivalent to (real + imag*1j) where imag defaults to 0.</p>
 </div>
 
 
@@ -5033,13 +5001,13 @@ Raises KeyError if the dict is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">keys</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">keys</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.keys"></a>
     
-            <div class="docstring"><p>Return a set-like object providing a view on the dict's keys.</p>
+            <div class="docstring"><p>D.keys() -> a set-like object providing a view on D's keys</p>
 </div>
 
 
@@ -5048,13 +5016,13 @@ Raises KeyError if the dict is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">items</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">items</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.items"></a>
     
-            <div class="docstring"><p>Return a set-like object providing a view on the dict's items.</p>
+            <div class="docstring"><p>D.items() -> a set-like object providing a view on D's items</p>
 </div>
 
 
@@ -5063,13 +5031,13 @@ Raises KeyError if the dict is empty.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">values</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">values</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.values"></a>
     
-            <div class="docstring"><p>Return an object providing a view on the dict's values.</p>
+            <div class="docstring"><p>D.values() -> an object providing a view on D's values</p>
 </div>
 
 
@@ -5084,8 +5052,8 @@ Raises KeyError if the dict is empty.</p>
     </div>
     <a class="headerlink" href="#dict.update"></a>
     
-            <div class="docstring"><p>D.update([E, ]**F) -> None.  Update D from mapping/iterable E and F.
-If E is present and has a .keys() method, then does:  for k in E.keys(): D[k] = E[k]
+            <div class="docstring"><p>D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.
+If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k]
 If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v
 In either case, this is followed by: for k in F:  D[k] = F[k]</p>
 </div>
@@ -5111,13 +5079,13 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">clear</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">clear</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.clear"></a>
     
-            <div class="docstring"><p>Remove all items from the dict.</p>
+            <div class="docstring"><p>D.clear() -> None.  Remove all items from D.</p>
 </div>
 
 
@@ -5126,13 +5094,13 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#dict.copy"></a>
     
-            <div class="docstring"><p>Return a shallow copy of the dict.</p>
+            <div class="docstring"><p>D.copy() -> a shallow copy of D</p>
 </div>
 
 
@@ -5172,7 +5140,9 @@ defaults to zero) and a value yielded by the iterable argument.</p>
     </div>
     <a class="headerlink" href="#filter"></a>
     
-            <div class="docstring"><p>Return an iterator yielding those items of iterable for which function(item)
+            <div class="docstring"><p>filter(function or None, iterable) --> filter object</p>
+
+<p>Return an iterator yielding those items of iterable for which function(item)
 is true. If function is None, return the items that are true.</p>
 </div>
 
@@ -5188,7 +5158,7 @@ is true. If function is None, return the items that are true.</p>
     </div>
     <a class="headerlink" href="#float"></a>
     
-            <div class="docstring"><p>Convert a string or number to a floating-point number, if possible.</p>
+            <div class="docstring"><p>Convert a string or number to a floating point number, if possible.</p>
 </div>
 
 
@@ -5333,7 +5303,10 @@ OverflowError on infinities and a ValueError on NaNs.</p>
     </div>
     <a class="headerlink" href="#frozenset"></a>
     
-            <div class="docstring"><p>Build an immutable unordered collection of unique elements.</p>
+            <div class="docstring"><p>frozenset() -> empty frozenset object
+frozenset(iterable) -> frozenset object</p>
+
+<p>Build an immutable unordered collection of unique elements.</p>
 </div>
 
 
@@ -5341,7 +5314,7 @@ OverflowError on infinities and a ValueError on NaNs.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5356,13 +5329,15 @@ OverflowError on infinities and a ValueError on NaNs.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
+        <span class="name">difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.difference"></a>
     
-            <div class="docstring"><p>Return a new set with elements in the set that are not in the others.</p>
+            <div class="docstring"><p>Return the difference of two or more sets as a new set.</p>
+
+<p>(i.e. all elements that are in this set but not the others.)</p>
 </div>
 
 
@@ -5371,13 +5346,15 @@ OverflowError on infinities and a ValueError on NaNs.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">intersection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
+        <span class="name">intersection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.intersection"></a>
     
-            <div class="docstring"><p>Return a new set with elements common to the set and all others.</p>
+            <div class="docstring"><p>Return the intersection of two sets as a new set.</p>
+
+<p>(i.e. all elements that are in both sets.)</p>
 </div>
 
 
@@ -5386,7 +5363,7 @@ OverflowError on infinities and a ValueError on NaNs.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isdisjoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isdisjoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5407,7 +5384,7 @@ OverflowError on infinities and a ValueError on NaNs.</p>
     </div>
     <a class="headerlink" href="#frozenset.issubset"></a>
     
-            <div class="docstring"><p>Report whether another set contains this set.</p>
+            <div class="docstring"><p>Test whether every element in the set is in other.</p>
 </div>
 
 
@@ -5422,7 +5399,7 @@ OverflowError on infinities and a ValueError on NaNs.</p>
     </div>
     <a class="headerlink" href="#frozenset.issuperset"></a>
     
-            <div class="docstring"><p>Report whether this set contains another set.</p>
+            <div class="docstring"><p>Test whether every element in other is in the set.</p>
 </div>
 
 
@@ -5431,13 +5408,15 @@ OverflowError on infinities and a ValueError on NaNs.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">symmetric_difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">symmetric_difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.symmetric_difference"></a>
     
-            <div class="docstring"><p>Return a new set with elements in either the set or other but not both.</p>
+            <div class="docstring"><p>Return the symmetric difference of two sets as a new set.</p>
+
+<p>(i.e. all elements that are in exactly one of the sets.)</p>
 </div>
 
 
@@ -5446,13 +5425,15 @@ OverflowError on infinities and a ValueError on NaNs.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">union</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
+        <span class="name">union</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.union"></a>
     
-            <div class="docstring"><p>Return a new set with elements from the set and all others.</p>
+            <div class="docstring"><p>Return the union of sets as a new set.</p>
+
+<p>(i.e. all elements that are in either set.)</p>
 </div>
 
 
@@ -5519,7 +5500,7 @@ OverflowError on infinities and a ValueError on NaNs.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">getter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">getter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5534,7 +5515,7 @@ OverflowError on infinities and a ValueError on NaNs.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">setter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">setter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5549,7 +5530,7 @@ OverflowError on infinities and a ValueError on NaNs.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">deleter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">deleter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5608,7 +5589,7 @@ OverflowError on infinities and a ValueError on NaNs.</p>
 int(x, base=10) -> integer</p>
 
 <p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating-point
+are given.  If x is a number, return x.__int__().  For floating point
 numbers, this truncates towards zero.</p>
 
 <p>If x is not a number or if base is given, then x must be a string,
@@ -5629,7 +5610,7 @@ Base 0 means to interpret the base from the string as an integer literal.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">conjugate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">conjugate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -5709,7 +5690,7 @@ byteorder
   the most significant byte is at the beginning of the byte array.  If
   byteorder is 'little', the most significant byte is at the end of the
   byte array.  To request the native byte order of the host system, use
-  sys.byteorder as the byte order value.  Default is to use 'big'.
+  `sys.byteorder' as the byte order value.  Default is to use 'big'.
 signed
   Determines whether two's complement is used to represent the integer.
   If signed is False and a negative integer is given, an OverflowError
@@ -5740,7 +5721,7 @@ byteorder
   the most significant byte is at the beginning of the byte array.  If
   byteorder is 'little', the most significant byte is at the end of the
   byte array.  To request the native byte order of the host system, use
-  sys.byteorder as the byte order value.  Default is to use 'big'.
+  `sys.byteorder' as the byte order value.  Default is to use 'big'.
 signed
   Indicates whether two's complement is used to represent the integer.</p>
 </div>
@@ -6061,7 +6042,9 @@ ascending or descending, according to their function values.</p>
     </div>
     <a class="headerlink" href="#map"></a>
     
-            <div class="docstring"><p>Make an iterator that computes the function using arguments from
+            <div class="docstring"><p>map(func, *iterables) --> map object</p>
+
+<p>Make an iterator that computes the function using arguments from
 each of the iterables.  Stops when the shortest iterable is exhausted.</p>
 </div>
 
@@ -6110,7 +6093,7 @@ When step is given, it specifies the increment (or decrement).</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">count</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">count</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6125,7 +6108,7 @@ When step is given, it specifies the increment (or decrement).</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">index</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">index</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6196,7 +6179,10 @@ Raise ValueError if the value is not present.</p>
     </div>
     <a class="headerlink" href="#set"></a>
     
-            <div class="docstring"><p>Build an unordered collection of unique elements.</p>
+            <div class="docstring"><p>set() -> new empty set object
+set(iterable) -> new set object</p>
+
+<p>Build an unordered collection of unique elements.</p>
 </div>
 
 
@@ -6216,7 +6202,7 @@ Raise ValueError if the value is not present.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">add</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">add</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6233,7 +6219,7 @@ Raise ValueError if the value is not present.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">clear</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">clear</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6248,7 +6234,7 @@ Raise ValueError if the value is not present.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6263,7 +6249,7 @@ Raise ValueError if the value is not present.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">discard</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">discard</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6281,13 +6267,15 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
+        <span class="name">difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.difference"></a>
     
-            <div class="docstring"><p>Return a new set with elements in the set that are not in the others.</p>
+            <div class="docstring"><p>Return the difference of two or more sets as a new set.</p>
+
+<p>(i.e. all elements that are in this set but not the others.)</p>
 </div>
 
 
@@ -6296,13 +6284,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">difference_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
+        <span class="name">difference_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.difference_update"></a>
     
-            <div class="docstring"><p>Update the set, removing elements found in others.</p>
+            <div class="docstring"><p>Remove all elements of another set from this set.</p>
 </div>
 
 
@@ -6311,13 +6299,15 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">intersection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
+        <span class="name">intersection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.intersection"></a>
     
-            <div class="docstring"><p>Return a new set with elements common to the set and all others.</p>
+            <div class="docstring"><p>Return the intersection of two sets as a new set.</p>
+
+<p>(i.e. all elements that are in both sets.)</p>
 </div>
 
 
@@ -6326,13 +6316,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">intersection_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
+        <span class="name">intersection_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.intersection_update"></a>
     
-            <div class="docstring"><p>Update the set, keeping only elements found in it and all others.</p>
+            <div class="docstring"><p>Update a set with the intersection of itself and another.</p>
 </div>
 
 
@@ -6341,7 +6331,7 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">isdisjoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">isdisjoint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6362,7 +6352,7 @@ an exception when an element is missing from the set.</p>
     </div>
     <a class="headerlink" href="#set.issubset"></a>
     
-            <div class="docstring"><p>Report whether another set contains this set.</p>
+            <div class="docstring"><p>Test whether every element in the set is in other.</p>
 </div>
 
 
@@ -6377,7 +6367,7 @@ an exception when an element is missing from the set.</p>
     </div>
     <a class="headerlink" href="#set.issuperset"></a>
     
-            <div class="docstring"><p>Report whether this set contains another set.</p>
+            <div class="docstring"><p>Test whether every element in other is in the set.</p>
 </div>
 
 
@@ -6386,15 +6376,14 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">pop</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">pop</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.pop"></a>
     
-            <div class="docstring"><p>Remove and return an arbitrary set element.</p>
-
-<p>Raises KeyError if the set is empty.</p>
+            <div class="docstring"><p>Remove and return an arbitrary set element.
+Raises KeyError if the set is empty.</p>
 </div>
 
 
@@ -6403,7 +6392,7 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">remove</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">remove</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6420,13 +6409,15 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">symmetric_difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">symmetric_difference</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.symmetric_difference"></a>
     
-            <div class="docstring"><p>Return a new set with elements in either the set or other but not both.</p>
+            <div class="docstring"><p>Return the symmetric difference of two sets as a new set.</p>
+
+<p>(i.e. all elements that are in exactly one of the sets.)</p>
 </div>
 
 
@@ -6435,13 +6426,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">symmetric_difference_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">symmetric_difference_update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.symmetric_difference_update"></a>
     
-            <div class="docstring"><p>Update the set, keeping only elements found in either set, but not in both.</p>
+            <div class="docstring"><p>Update a set with the symmetric difference of itself and another.</p>
 </div>
 
 
@@ -6450,13 +6441,15 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">union</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
+        <span class="name">union</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.union"></a>
     
-            <div class="docstring"><p>Return a new set with elements from the set and all others.</p>
+            <div class="docstring"><p>Return the union of sets as a new set.</p>
+
+<p>(i.e. all elements that are in either set.)</p>
 </div>
 
 
@@ -6465,13 +6458,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">others</span></span><span class="return-annotation">):</span></span>
+        <span class="name">update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.update"></a>
     
-            <div class="docstring"><p>Update the set, adding elements from all others.</p>
+            <div class="docstring"><p>Update a set with the union of itself and others.</p>
 </div>
 
 
@@ -6498,7 +6491,7 @@ slice(start, stop[, step])</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">indices</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">indices</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6558,7 +6551,9 @@ handling of normal slices.</p>
     </div>
     <a class="headerlink" href="#staticmethod"></a>
     
-            <div class="docstring"><p>Convert a function to be a static method.</p>
+            <div class="docstring"><p>staticmethod(function) -> method</p>
+
+<p>Convert a function to be a static method.</p>
 
 <p>A static method does not receive an implicit first argument.
 To declare a static method, use this idiom:</p>
@@ -6609,7 +6604,7 @@ errors is specified, then the object must expose a data buffer
 that will be decoded using the given encoding and error handler.
 Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
-encoding defaults to 'utf-8'.
+encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.</p>
 </div>
 
@@ -6642,7 +6637,7 @@ errors
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">replace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">old</span>, </span><span class="param"><span class="n">new</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">count</span><span class="o">=-</span><span class="mi">1</span></span><span class="return-annotation">):</span></span>
+        <span class="name">replace</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">old</span>, </span><span class="param"><span class="n">new</span>, </span><span class="param"><span class="n">count</span><span class="o">=-</span><span class="mi">1</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -6820,9 +6815,11 @@ cased characters have lower case.</p>
     </div>
     <a class="headerlink" href="#str.count"></a>
     
-            <div class="docstring"><p>Return the number of non-overlapping occurrences of substring sub in string S[start:end].</p>
+            <div class="docstring"><p>S.count(sub[, start[, end]]) -> int</p>
 
-<p>Optional arguments start and end are interpreted as in slice notation.</p>
+<p>Return the number of non-overlapping occurrences of substring sub in
+string S[start:end].  Optional arguments start and end are
+interpreted as in slice notation.</p>
 </div>
 
 
@@ -6854,10 +6851,13 @@ cased characters have lower case.</p>
     </div>
     <a class="headerlink" href="#str.find"></a>
     
-            <div class="docstring"><p>Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].</p>
+            <div class="docstring"><p>S.find(sub[, start[, end]]) -> int</p>
 
-<p>Optional arguments start and end are interpreted as in slice notation.
-Return -1 on failure.</p>
+<p>Return the lowest index in S where substring sub is found,
+such that sub is contained within S[start:end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
+
+<p>Return -1 on failure.</p>
 </div>
 
 
@@ -6894,10 +6894,13 @@ and two empty strings.</p>
     </div>
     <a class="headerlink" href="#str.index"></a>
     
-            <div class="docstring"><p>Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].</p>
+            <div class="docstring"><p>S.index(sub[, start[, end]]) -> int</p>
 
-<p>Optional arguments start and end are interpreted as in slice notation.
-Raises ValueError when the substring is not found.</p>
+<p>Return the lowest index in S where substring sub is found,
+such that sub is contained within S[start:end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
+
+<p>Raises ValueError when the substring is not found.</p>
 </div>
 
 
@@ -6961,10 +6964,13 @@ Raises ValueError when the substring is not found.</p>
     </div>
     <a class="headerlink" href="#str.rfind"></a>
     
-            <div class="docstring"><p>Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].</p>
+            <div class="docstring"><p>S.rfind(sub[, start[, end]]) -> int</p>
 
-<p>Optional arguments start and end are interpreted as in slice notation.
-Return -1 on failure.</p>
+<p>Return the highest index in S where substring sub is found,
+such that sub is contained within S[start:end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
+
+<p>Return -1 on failure.</p>
 </div>
 
 
@@ -6979,10 +6985,13 @@ Return -1 on failure.</p>
     </div>
     <a class="headerlink" href="#str.rindex"></a>
     
-            <div class="docstring"><p>Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].</p>
+            <div class="docstring"><p>S.rindex(sub[, start[, end]]) -> int</p>
 
-<p>Optional arguments start and end are interpreted as in slice notation.
-Raises ValueError when the substring is not found.</p>
+<p>Return the highest index in S where substring sub is found,
+such that sub is contained within S[start:end].  Optional
+arguments start and end are interpreted as in slice notation.</p>
+
+<p>Raises ValueError when the substring is not found.</p>
 </div>
 
 
@@ -7141,14 +7150,12 @@ left untouched.  Characters mapped to None are deleted.</p>
     </div>
     <a class="headerlink" href="#str.startswith"></a>
     
-            <div class="docstring"><p>Return True if the string starts with the specified prefix, False otherwise.</p>
+            <div class="docstring"><p>S.startswith(prefix[, start[, end]]) -> bool</p>
 
-<p>prefix
-  A string or a tuple of strings to try.
-start
-  Optional start position. Default: start of the string.
-end
-  Optional stop position. Default: end of the string.</p>
+<p>Return True if S starts with the specified prefix, False otherwise.
+With optional start, test S beginning at that position.
+With optional end, stop comparing S at that position.
+prefix can also be a tuple of strings to try.</p>
 </div>
 
 
@@ -7163,14 +7170,12 @@ end
     </div>
     <a class="headerlink" href="#str.endswith"></a>
     
-            <div class="docstring"><p>Return True if the string ends with the specified suffix, False otherwise.</p>
+            <div class="docstring"><p>S.endswith(suffix[, start[, end]]) -> bool</p>
 
-<p>suffix
-  A string or a tuple of strings to try.
-start
-  Optional start position. Default: start of the string.
-end
-  Optional stop position. Default: end of the string.</p>
+<p>Return True if S ends with the specified suffix, False otherwise.
+With optional start, test S beginning at that position.
+With optional end, stop comparing S at that position.
+suffix can also be a tuple of strings to try.</p>
 </div>
 
 
@@ -7420,9 +7425,10 @@ such as "def" or "class".</p>
     </div>
     <a class="headerlink" href="#str.isprintable"></a>
     
-            <div class="docstring"><p>Return True if all characters in the string are printable, False otherwise.</p>
+            <div class="docstring"><p>Return True if the string is printable, False otherwise.</p>
 
-<p>A character is printable if repr() may use it in its output.</p>
+<p>A string is printable if all of its characters are considered printable in
+repr() or if it is empty.</p>
 </div>
 
 
@@ -7448,13 +7454,15 @@ such as "def" or "class".</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">format</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span><span class="n">args</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">):</span></span>
+        <span class="name">format</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#str.format"></a>
     
-            <div class="docstring"><p>Return a formatted version of the string, using substitutions from args and kwargs.
+            <div class="docstring"><p>S.format(<em>args, *</em>kwargs) -> str</p>
+
+<p>Return a formatted version of S, using substitutions from args and kwargs.
 The substitutions are identified by braces ('{' and '}').</p>
 </div>
 
@@ -7464,13 +7472,15 @@ The substitutions are identified by braces ('{' and '}').</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">format_map</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">mapping</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">format_map</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#str.format_map"></a>
     
-            <div class="docstring"><p>Return a formatted version of the string, using substitutions from mapping.
+            <div class="docstring"><p>S.format_map(mapping) -> str</p>
+
+<p>Return a formatted version of S, using substitutions from mapping.
 The substitutions are identified by braces ('{' and '}').</p>
 </div>
 
@@ -7644,19 +7654,21 @@ type(name, bases, dict, **kwds) -> a new type</p>
     </div>
     <a class="headerlink" href="#zip"></a>
     
-            <div class="docstring"><p>The zip object yields n-length tuples, where n is the number of iterables
-passed as positional arguments to zip().  The i-th element in every tuple
-comes from the i-th iterable argument to zip().  This continues until the
-shortest argument is exhausted.</p>
-
-<p>If strict is true and one of the arguments is exhausted before the others,
-raise a ValueError.</p>
+            <div class="docstring"><p>zip(*iterables, strict=False) --> Yield tuples until an input is exhausted.</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s1">&#39;abcdefg&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span>
 <span class="go">[(&#39;a&#39;, 0, 0), (&#39;b&#39;, 1, 1), (&#39;c&#39;, 2, 2)]</span>
 </code></pre>
 </div>
+
+<p>The zip object yields n-length tuples, where n is the number of iterables
+passed as positional arguments to zip().  The i-th element in every tuple
+comes from the i-th iterable argument to zip().  This continues until the
+shortest argument is exhausted.</p>
+
+<p>If strict is true and one of the arguments is exhausted before the others,
+raise a ValueError.</p>
 </div>
 
 
@@ -7691,7 +7703,7 @@ raise a ValueError.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">with_traceback</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">with_traceback</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -7707,7 +7719,7 @@ set self.__traceback__ to tb and return self.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">add_note</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">add_note</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -7761,45 +7773,39 @@ add a note to the exception</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">derive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">derive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#BaseExceptionGroup.derive"></a>
     
-            <div class="docstring"><p>The type of the None singleton.</p>
-</div>
-
+    
 
                             </div>
                             <div id="BaseExceptionGroup.split" class="classattr">
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">split</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">split</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#BaseExceptionGroup.split"></a>
     
-            <div class="docstring"><p>The type of the None singleton.</p>
-</div>
-
+    
 
                             </div>
                             <div id="BaseExceptionGroup.subgroup" class="classattr">
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">subgroup</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="nb">object</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">subgroup</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#BaseExceptionGroup.subgroup"></a>
     
-            <div class="docstring"><p>The type of the None singleton.</p>
-</div>
-
+    
 
                             </div>
                             <div id="BaseExceptionGroup.message" class="classattr">
@@ -9011,7 +9017,7 @@ the Python version, and the hardware/OS platform and version.</p>
     </div>
     <a class="headerlink" href="#FloatingPointError"></a>
     
-            <div class="docstring"><p>Floating-point operation failed.</p>
+            <div class="docstring"><p>Floating point operation failed.</p>
 </div>
 
 
@@ -10246,44 +10252,6 @@ related to conversion problems.</p>
                                 <dd id="NotImplementedError.with_traceback" class="function"><a href="#BaseException.with_traceback">with_traceback</a></dd>
                 <dd id="NotImplementedError.add_note" class="function"><a href="#BaseException.add_note">add_note</a></dd>
                 <dd id="NotImplementedError.args" class="variable"><a href="#BaseException.args">args</a></dd>
-
-            </div>
-                                </dl>
-                            </div>
-                </section>
-                <section id="PythonFinalizationError">
-                    <div class="attr class">
-            
-    <span class="def">class</span>
-    <span class="name">PythonFinalizationError</span><wbr>(<span class="base"><a href="#RuntimeError">RuntimeError</a></span>):
-
-        
-    </div>
-    <a class="headerlink" href="#PythonFinalizationError"></a>
-    
-            <div class="docstring"><p>Operation blocked during Python finalization.</p>
-</div>
-
-
-                            <div id="PythonFinalizationError.__init__" class="classattr">
-                                <div class="attr function">
-            
-        <span class="name">PythonFinalizationError</span><span class="signature pdoc-code condensed">(<span class="param"><span class="o">*</span><span class="n">args</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span>)</span>
-
-        
-    </div>
-    <a class="headerlink" href="#PythonFinalizationError.__init__"></a>
-    
-    
-
-                            </div>
-                            <div class="inherited">
-                                <h5>Inherited Members</h5>
-                                <dl>
-                                    <div><dt><a href="#BaseException">BaseException</a></dt>
-                                <dd id="PythonFinalizationError.with_traceback" class="function"><a href="#BaseException.with_traceback">with_traceback</a></dd>
-                <dd id="PythonFinalizationError.add_note" class="function"><a href="#BaseException.add_note">add_note</a></dd>
-                <dd id="PythonFinalizationError.args" class="variable"><a href="#BaseException.args">args</a></dd>
 
             </div>
                                 </dl>

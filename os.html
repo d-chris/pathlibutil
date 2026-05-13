@@ -373,9 +373,6 @@
                     <a class="variable" href="#O_WRONLY">O_WRONLY</a>
             </li>
             <li>
-                    <a class="variable" href="#PIDFD_NONBLOCK">PIDFD_NONBLOCK</a>
-            </li>
-            <li>
                     <a class="variable" href="#POSIX_FADV_DONTNEED">POSIX_FADV_DONTNEED</a>
             </li>
             <li>
@@ -395,9 +392,6 @@
             </li>
             <li>
                     <a class="variable" href="#POSIX_SPAWN_CLOSE">POSIX_SPAWN_CLOSE</a>
-            </li>
-            <li>
-                    <a class="variable" href="#POSIX_SPAWN_CLOSEFROM">POSIX_SPAWN_CLOSEFROM</a>
             </li>
             <li>
                     <a class="variable" href="#POSIX_SPAWN_DUP2">POSIX_SPAWN_DUP2</a>
@@ -530,18 +524,6 @@
             </li>
             <li>
                     <a class="variable" href="#ST_WRITE">ST_WRITE</a>
-            </li>
-            <li>
-                    <a class="variable" href="#TFD_CLOEXEC">TFD_CLOEXEC</a>
-            </li>
-            <li>
-                    <a class="variable" href="#TFD_NONBLOCK">TFD_NONBLOCK</a>
-            </li>
-            <li>
-                    <a class="variable" href="#TFD_TIMER_ABSTIME">TFD_TIMER_ABSTIME</a>
-            </li>
-            <li>
-                    <a class="variable" href="#TFD_TIMER_CANCEL_ON_SET">TFD_TIMER_CANCEL_ON_SET</a>
             </li>
             <li>
                     <a class="variable" href="#TMP_MAX">TMP_MAX</a>
@@ -778,9 +760,6 @@
                     <a class="function" href="#getxattr">getxattr</a>
             </li>
             <li>
-                    <a class="function" href="#grantpt">grantpt</a>
-            </li>
-            <li>
                     <a class="function" href="#initgroups">initgroups</a>
             </li>
             <li>
@@ -868,9 +847,6 @@
                     <a class="function" href="#posix_fallocate">posix_fallocate</a>
             </li>
             <li>
-                    <a class="function" href="#posix_openpt">posix_openpt</a>
-            </li>
-            <li>
                     <a class="function" href="#posix_spawn">posix_spawn</a>
             </li>
             <li>
@@ -881,9 +857,6 @@
             </li>
             <li>
                     <a class="function" href="#preadv">preadv</a>
-            </li>
-            <li>
-                    <a class="function" href="#ptsname">ptsname</a>
             </li>
             <li>
                     <a class="function" href="#putenv">putenv</a>
@@ -1192,21 +1165,6 @@
 
             </li>
             <li>
-                    <a class="function" href="#timerfd_create">timerfd_create</a>
-            </li>
-            <li>
-                    <a class="function" href="#timerfd_gettime">timerfd_gettime</a>
-            </li>
-            <li>
-                    <a class="function" href="#timerfd_gettime_ns">timerfd_gettime_ns</a>
-            </li>
-            <li>
-                    <a class="function" href="#timerfd_settime">timerfd_settime</a>
-            </li>
-            <li>
-                    <a class="function" href="#timerfd_settime_ns">timerfd_settime_ns</a>
-            </li>
-            <li>
                     <a class="function" href="#times">times</a>
             </li>
             <li>
@@ -1283,9 +1241,6 @@
             </li>
             <li>
                     <a class="function" href="#unlink">unlink</a>
-            </li>
-            <li>
-                    <a class="function" href="#unlockpt">unlockpt</a>
             </li>
             <li>
                     <a class="function" href="#unsetenv">unsetenv</a>
@@ -1465,7 +1420,7 @@ os    </h1>
   <li><a href="#extsep">os.extsep</a> is the extension separator (always '.')</li>
   <li><a href="#altsep">os.altsep</a> is the alternate pathname separator (None or '/')</li>
   <li><a href="#pathsep">os.pathsep</a> is the component separator used in $PATH etc</li>
-  <li><a href="#linesep">os.linesep</a> is the line separator in text files ('\n' or '\r\n')</li>
+  <li><a href="#linesep">os.linesep</a> is the line separator in text files ('\r' or '\n' or '\r\n')</li>
   <li><a href="#defpath">os.defpath</a> is the default search path for executables</li>
   <li><a href="#devnull">os.devnull</a> is the file path of the null device ('/dev/null', etc.)</li>
   </ul>
@@ -2906,18 +2861,6 @@ named executable (similar to a shell) when launching a process.</p>
     
 
                 </section>
-                <section id="PIDFD_NONBLOCK">
-                    <div class="attr variable">
-            <span class="name">PIDFD_NONBLOCK</span>        =
-<span class="default_value">2048</span>
-
-        
-    </div>
-    <a class="headerlink" href="#PIDFD_NONBLOCK"></a>
-    
-    
-
-                </section>
                 <section id="POSIX_FADV_DONTNEED">
                     <div class="attr variable">
             <span class="name">POSIX_FADV_DONTNEED</span>        =
@@ -2998,18 +2941,6 @@ named executable (similar to a shell) when launching a process.</p>
         
     </div>
     <a class="headerlink" href="#POSIX_SPAWN_CLOSE"></a>
-    
-    
-
-                </section>
-                <section id="POSIX_SPAWN_CLOSEFROM">
-                    <div class="attr variable">
-            <span class="name">POSIX_SPAWN_CLOSEFROM</span>        =
-<span class="default_value">3</span>
-
-        
-    </div>
-    <a class="headerlink" href="#POSIX_SPAWN_CLOSEFROM"></a>
     
     
 
@@ -3542,54 +3473,6 @@ named executable (similar to a shell) when launching a process.</p>
     
 
                 </section>
-                <section id="TFD_CLOEXEC">
-                    <div class="attr variable">
-            <span class="name">TFD_CLOEXEC</span>        =
-<span class="default_value">524288</span>
-
-        
-    </div>
-    <a class="headerlink" href="#TFD_CLOEXEC"></a>
-    
-    
-
-                </section>
-                <section id="TFD_NONBLOCK">
-                    <div class="attr variable">
-            <span class="name">TFD_NONBLOCK</span>        =
-<span class="default_value">2048</span>
-
-        
-    </div>
-    <a class="headerlink" href="#TFD_NONBLOCK"></a>
-    
-    
-
-                </section>
-                <section id="TFD_TIMER_ABSTIME">
-                    <div class="attr variable">
-            <span class="name">TFD_TIMER_ABSTIME</span>        =
-<span class="default_value">1</span>
-
-        
-    </div>
-    <a class="headerlink" href="#TFD_TIMER_ABSTIME"></a>
-    
-    
-
-                </section>
-                <section id="TFD_TIMER_CANCEL_ON_SET">
-                    <div class="attr variable">
-            <span class="name">TFD_TIMER_CANCEL_ON_SET</span>        =
-<span class="default_value">2</span>
-
-        
-    </div>
-    <a class="headerlink" href="#TFD_TIMER_CANCEL_ON_SET"></a>
-    
-    
-
-                </section>
                 <section id="TMP_MAX">
                     <div class="attr variable">
             <span class="name">TMP_MAX</span>        =
@@ -3929,7 +3812,7 @@ on the hosting operating system.  This function never returns.</p>
 
 <p>path may always be specified as a string.
 On some platforms, path may also be specified as an open file descriptor.
-If this functionality is unavailable, using it raises an exception.</p>
+  If this functionality is unavailable, using it raises an exception.</p>
 </div>
 
 
@@ -3938,7 +3821,7 @@ If this functionality is unavailable, using it raises an exception.</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">chmod</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">chmod</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span>, </span><span class="param"><span class="n">mode</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">dir_fd</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -4123,9 +4006,11 @@ respectively for offset_dst.</p>
     </div>
     <a class="headerlink" href="#cpu_count"></a>
     
-            <div class="docstring"><p>Return the number of logical CPUs in the system.</p>
+            <div class="docstring"><p>Return the number of CPUs in the system; return None if indeterminable.</p>
 
-<p>Return None if indeterminable.</p>
+<p>This number is not equivalent to the number of CPUs the current process can
+use.  The number of usable CPUs can be obtained with
+<code>len(<a href="#sched_getaffinity">os.sched_getaffinity</a>(0))</code></p>
 </div>
 
 
@@ -4893,26 +4778,6 @@ If follow_symlinks is False, and the last element of the path is a symbolic
 
 
                 </section>
-                <section id="grantpt">
-                    <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">grantpt</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#grantpt"></a>
-    
-            <div class="docstring"><p>Grant access to the slave pseudo-terminal device.</p>
-
-<p>fd
-    File descriptor of a master pseudo-terminal device.</p>
-
-<p>Performs a grantpt() C function call.</p>
-</div>
-
-
-                </section>
                 <section id="initgroups">
                     <div class="attr function">
             
@@ -5360,7 +5225,7 @@ On some platforms, path may also be specified as an open file descriptor.
                     <div class="attr variable">
             <span class="name">pathconf_names</span>        =
 <input id="pathconf_names-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="pathconf_names-view-value"></label><span class="default_value">{&#39;PC_ASYNC_IO&#39;: 10, &#39;PC_CHOWN_RESTRICTED&#39;: 6, &#39;PC_FILESIZEBITS&#39;: 13, &#39;PC_LINK_MAX&#39;: 0, &#39;PC_MAX_CANON&#39;: 1, &#39;PC_MAX_INPUT&#39;: 2, &#39;PC_NAME_MAX&#39;: 3, &#39;PC_NO_TRUNC&#39;: 7, &#39;PC_PATH_MAX&#39;: 4, &#39;PC_PIPE_BUF&#39;: 5, &#39;PC_PRIO_IO&#39;: 11, &#39;PC_SOCK_MAXBUF&#39;: 12, &#39;PC_SYNC_IO&#39;: 9, &#39;PC_VDISABLE&#39;: 8, &#39;PC_ALLOC_SIZE_MIN&#39;: 18, &#39;PC_REC_INCR_XFER_SIZE&#39;: 14, &#39;PC_REC_MAX_XFER_SIZE&#39;: 15, &#39;PC_REC_MIN_XFER_SIZE&#39;: 16, &#39;PC_REC_XFER_ALIGN&#39;: 17, &#39;PC_SYMLINK_MAX&#39;: 19}</span>
+            <label class="view-value-button pdoc-button" for="pathconf_names-view-value"></label><span class="default_value">{&#39;PC_ALLOC_SIZE_MIN&#39;: 18, &#39;PC_ASYNC_IO&#39;: 10, &#39;PC_CHOWN_RESTRICTED&#39;: 6, &#39;PC_FILESIZEBITS&#39;: 13, &#39;PC_LINK_MAX&#39;: 0, &#39;PC_MAX_CANON&#39;: 1, &#39;PC_MAX_INPUT&#39;: 2, &#39;PC_NAME_MAX&#39;: 3, &#39;PC_NO_TRUNC&#39;: 7, &#39;PC_PATH_MAX&#39;: 4, &#39;PC_PIPE_BUF&#39;: 5, &#39;PC_PRIO_IO&#39;: 11, &#39;PC_REC_INCR_XFER_SIZE&#39;: 14, &#39;PC_REC_MAX_XFER_SIZE&#39;: 15, &#39;PC_REC_MIN_XFER_SIZE&#39;: 16, &#39;PC_REC_XFER_ALIGN&#39;: 17, &#39;PC_SOCK_MAXBUF&#39;: 12, &#39;PC_SYMLINK_MAX&#39;: 19, &#39;PC_SYNC_IO&#39;: 9, &#39;PC_VDISABLE&#39;: 8}</span>
 
         
     </div>
@@ -5469,25 +5334,6 @@ POSIX_FADV_DONTNEED.</p>
 
 <p>Ensure that the file specified by fd encompasses a range of bytes
 starting at offset bytes from the beginning and continuing for length bytes.</p>
-</div>
-
-
-                </section>
-                <section id="posix_openpt">
-                    <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">posix_openpt</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">oflag</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#posix_openpt"></a>
-    
-            <div class="docstring"><p>Open and return a file descriptor for a master pseudo-terminal device.</p>
-
-<p>Performs a posix_openpt() C function call. The oflag argument is used to
-set file status flags and file access modes as specified in the manual page
-of posix_openpt() of your system.</p>
 </div>
 
 
@@ -5613,27 +5459,6 @@ capacity of all the objects).</p>
 
 
                 </section>
-                <section id="ptsname">
-                    <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">ptsname</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#ptsname"></a>
-    
-            <div class="docstring"><p>Return the name of the slave pseudo-terminal device.</p>
-
-<p>fd
-    File descriptor of a master pseudo-terminal device.</p>
-
-<p>If the ptsname_r() C function is available, it is called;
-otherwise, performs a ptsname() C function call.</p>
-</div>
-
-
-                </section>
                 <section id="putenv">
                     <div class="attr function">
             
@@ -5662,7 +5487,7 @@ otherwise, performs a ptsname() C function call.</p>
             <div class="docstring"><p>Write bytes to a file descriptor starting at a particular offset.</p>
 
 <p>Write buffer to fd, starting at offset bytes from the beginning of
-the file.  Returns the number of bytes written.  Does not change the
+the file.  Returns the number of bytes writte.  Does not change the
 current file offset.</p>
 </div>
 
@@ -7059,7 +6884,7 @@ dir_fd may not be implemented on your platform.
                     <div class="attr variable">
             <span class="name">sysconf_names</span>        =
 <input id="sysconf_names-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="sysconf_names-view-value"></label><span class="default_value">{&#39;SC_2_CHAR_TERM&#39;: 95, &#39;SC_2_C_BIND&#39;: 47, &#39;SC_2_C_DEV&#39;: 48, &#39;SC_2_C_VERSION&#39;: 96, &#39;SC_2_FORT_DEV&#39;: 49, &#39;SC_2_FORT_RUN&#39;: 50, &#39;SC_2_LOCALEDEF&#39;: 52, &#39;SC_2_SW_DEV&#39;: 51, &#39;SC_2_UPE&#39;: 97, &#39;SC_2_VERSION&#39;: 46, &#39;SC_AIO_LISTIO_MAX&#39;: 23, &#39;SC_AIO_MAX&#39;: 24, &#39;SC_AIO_PRIO_DELTA_MAX&#39;: 25, &#39;SC_ARG_MAX&#39;: 0, &#39;SC_ASYNCHRONOUS_IO&#39;: 12, &#39;SC_ATEXIT_MAX&#39;: 87, &#39;SC_AVPHYS_PAGES&#39;: 86, &#39;SC_BC_BASE_MAX&#39;: 36, &#39;SC_BC_DIM_MAX&#39;: 37, &#39;SC_BC_SCALE_MAX&#39;: 38, &#39;SC_BC_STRING_MAX&#39;: 39, &#39;SC_CHARCLASS_NAME_MAX&#39;: 45, &#39;SC_CHAR_BIT&#39;: 101, &#39;SC_CHAR_MAX&#39;: 102, &#39;SC_CHAR_MIN&#39;: 103, &#39;SC_CHILD_MAX&#39;: 1, &#39;SC_CLK_TCK&#39;: 2, &#39;SC_COLL_WEIGHTS_MAX&#39;: 40, &#39;SC_DELAYTIMER_MAX&#39;: 26, &#39;SC_EQUIV_CLASS_MAX&#39;: 41, &#39;SC_EXPR_NEST_MAX&#39;: 42, &#39;SC_FSYNC&#39;: 15, &#39;SC_GETGR_R_SIZE_MAX&#39;: 69, &#39;SC_GETPW_R_SIZE_MAX&#39;: 70, &#39;SC_INT_MAX&#39;: 104, &#39;SC_INT_MIN&#39;: 105, &#39;SC_IOV_MAX&#39;: 60, &#39;SC_JOB_CONTROL&#39;: 7, &#39;SC_LINE_MAX&#39;: 43, &#39;SC_LOGIN_NAME_MAX&#39;: 71, &#39;SC_LONG_BIT&#39;: 106, &#39;SC_MAPPED_FILES&#39;: 16, &#39;SC_MB_LEN_MAX&#39;: 108, &#39;SC_MEMLOCK&#39;: 17, &#39;SC_MEMLOCK_RANGE&#39;: 18, &#39;SC_MEMORY_PROTECTION&#39;: 19, &#39;SC_MESSAGE_PASSING&#39;: 20, &#39;SC_MQ_OPEN_MAX&#39;: 27, &#39;SC_MQ_PRIO_MAX&#39;: 28, &#39;SC_NGROUPS_MAX&#39;: 3, &#39;SC_NL_ARGMAX&#39;: 119, &#39;SC_NL_LANGMAX&#39;: 120, &#39;SC_NL_MSGMAX&#39;: 121, &#39;SC_NL_NMAX&#39;: 122, &#39;SC_NL_SETMAX&#39;: 123, &#39;SC_NL_TEXTMAX&#39;: 124, &#39;SC_NPROCESSORS_CONF&#39;: 83, &#39;SC_NPROCESSORS_ONLN&#39;: 84, &#39;SC_NZERO&#39;: 109, &#39;SC_OPEN_MAX&#39;: 4, &#39;SC_PAGESIZE&#39;: 30, &#39;SC_PAGE_SIZE&#39;: 30, &#39;SC_PASS_MAX&#39;: 88, &#39;SC_PHYS_PAGES&#39;: 85, &#39;SC_PII&#39;: 53, &#39;SC_PII_INTERNET&#39;: 56, &#39;SC_PII_INTERNET_DGRAM&#39;: 62, &#39;SC_PII_INTERNET_STREAM&#39;: 61, &#39;SC_PII_OSI&#39;: 57, &#39;SC_PII_OSI_CLTS&#39;: 64, &#39;SC_PII_OSI_COTS&#39;: 63, &#39;SC_PII_OSI_M&#39;: 65, &#39;SC_PII_SOCKET&#39;: 55, &#39;SC_PII_XTI&#39;: 54, &#39;SC_POLL&#39;: 58, &#39;SC_PRIORITIZED_IO&#39;: 13, &#39;SC_PRIORITY_SCHEDULING&#39;: 10, &#39;SC_REALTIME_SIGNALS&#39;: 9, &#39;SC_RE_DUP_MAX&#39;: 44, &#39;SC_RTSIG_MAX&#39;: 31, &#39;SC_SAVED_IDS&#39;: 8, &#39;SC_SCHAR_MAX&#39;: 111, &#39;SC_SCHAR_MIN&#39;: 112, &#39;SC_SELECT&#39;: 59, &#39;SC_SEMAPHORES&#39;: 21, &#39;SC_SEM_NSEMS_MAX&#39;: 32, &#39;SC_SEM_VALUE_MAX&#39;: 33, &#39;SC_SHARED_MEMORY_OBJECTS&#39;: 22, &#39;SC_SHRT_MAX&#39;: 113, &#39;SC_SHRT_MIN&#39;: 114, &#39;SC_SIGQUEUE_MAX&#39;: 34, &#39;SC_SSIZE_MAX&#39;: 110, &#39;SC_STREAM_MAX&#39;: 5, &#39;SC_SYNCHRONIZED_IO&#39;: 14, &#39;SC_THREADS&#39;: 67, &#39;SC_THREAD_ATTR_STACKADDR&#39;: 77, &#39;SC_THREAD_ATTR_STACKSIZE&#39;: 78, &#39;SC_THREAD_DESTRUCTOR_ITERATIONS&#39;: 73, &#39;SC_THREAD_KEYS_MAX&#39;: 74, &#39;SC_THREAD_PRIORITY_SCHEDULING&#39;: 79, &#39;SC_THREAD_PRIO_INHERIT&#39;: 80, &#39;SC_THREAD_PRIO_PROTECT&#39;: 81, &#39;SC_THREAD_PROCESS_SHARED&#39;: 82, &#39;SC_THREAD_SAFE_FUNCTIONS&#39;: 68, &#39;SC_THREAD_STACK_MIN&#39;: 75, &#39;SC_THREAD_THREADS_MAX&#39;: 76, &#39;SC_TIMERS&#39;: 11, &#39;SC_TIMER_MAX&#39;: 35, &#39;SC_TTY_NAME_MAX&#39;: 72, &#39;SC_TZNAME_MAX&#39;: 6, &#39;SC_T_IOV_MAX&#39;: 66, &#39;SC_UCHAR_MAX&#39;: 115, &#39;SC_UINT_MAX&#39;: 116, &#39;SC_UIO_MAXIOV&#39;: 60, &#39;SC_ULONG_MAX&#39;: 117, &#39;SC_USHRT_MAX&#39;: 118, &#39;SC_VERSION&#39;: 29, &#39;SC_WORD_BIT&#39;: 107, &#39;SC_XBS5_ILP32_OFF32&#39;: 125, &#39;SC_XBS5_ILP32_OFFBIG&#39;: 126, &#39;SC_XBS5_LP64_OFF64&#39;: 127, &#39;SC_XBS5_LPBIG_OFFBIG&#39;: 128, &#39;SC_XOPEN_CRYPT&#39;: 92, &#39;SC_XOPEN_ENH_I18N&#39;: 93, &#39;SC_XOPEN_LEGACY&#39;: 129, &#39;SC_XOPEN_REALTIME&#39;: 130, &#39;SC_XOPEN_REALTIME_THREADS&#39;: 131, &#39;SC_XOPEN_SHM&#39;: 94, &#39;SC_XOPEN_UNIX&#39;: 91, &#39;SC_XOPEN_VERSION&#39;: 89, &#39;SC_XOPEN_XCU_VERSION&#39;: 90, &#39;SC_XOPEN_XPG2&#39;: 98, &#39;SC_XOPEN_XPG3&#39;: 99, &#39;SC_XOPEN_XPG4&#39;: 100, &#39;SC_MINSIGSTKSZ&#39;: 249}</span>
+            <label class="view-value-button pdoc-button" for="sysconf_names-view-value"></label><span class="default_value">{&#39;SC_2_CHAR_TERM&#39;: 95, &#39;SC_2_C_BIND&#39;: 47, &#39;SC_2_C_DEV&#39;: 48, &#39;SC_2_C_VERSION&#39;: 96, &#39;SC_2_FORT_DEV&#39;: 49, &#39;SC_2_FORT_RUN&#39;: 50, &#39;SC_2_LOCALEDEF&#39;: 52, &#39;SC_2_SW_DEV&#39;: 51, &#39;SC_2_UPE&#39;: 97, &#39;SC_2_VERSION&#39;: 46, &#39;SC_AIO_LISTIO_MAX&#39;: 23, &#39;SC_AIO_MAX&#39;: 24, &#39;SC_AIO_PRIO_DELTA_MAX&#39;: 25, &#39;SC_ARG_MAX&#39;: 0, &#39;SC_ASYNCHRONOUS_IO&#39;: 12, &#39;SC_ATEXIT_MAX&#39;: 87, &#39;SC_AVPHYS_PAGES&#39;: 86, &#39;SC_BC_BASE_MAX&#39;: 36, &#39;SC_BC_DIM_MAX&#39;: 37, &#39;SC_BC_SCALE_MAX&#39;: 38, &#39;SC_BC_STRING_MAX&#39;: 39, &#39;SC_CHARCLASS_NAME_MAX&#39;: 45, &#39;SC_CHAR_BIT&#39;: 101, &#39;SC_CHAR_MAX&#39;: 102, &#39;SC_CHAR_MIN&#39;: 103, &#39;SC_CHILD_MAX&#39;: 1, &#39;SC_CLK_TCK&#39;: 2, &#39;SC_COLL_WEIGHTS_MAX&#39;: 40, &#39;SC_DELAYTIMER_MAX&#39;: 26, &#39;SC_EQUIV_CLASS_MAX&#39;: 41, &#39;SC_EXPR_NEST_MAX&#39;: 42, &#39;SC_FSYNC&#39;: 15, &#39;SC_GETGR_R_SIZE_MAX&#39;: 69, &#39;SC_GETPW_R_SIZE_MAX&#39;: 70, &#39;SC_INT_MAX&#39;: 104, &#39;SC_INT_MIN&#39;: 105, &#39;SC_IOV_MAX&#39;: 60, &#39;SC_JOB_CONTROL&#39;: 7, &#39;SC_LINE_MAX&#39;: 43, &#39;SC_LOGIN_NAME_MAX&#39;: 71, &#39;SC_LONG_BIT&#39;: 106, &#39;SC_MAPPED_FILES&#39;: 16, &#39;SC_MB_LEN_MAX&#39;: 108, &#39;SC_MEMLOCK&#39;: 17, &#39;SC_MEMLOCK_RANGE&#39;: 18, &#39;SC_MEMORY_PROTECTION&#39;: 19, &#39;SC_MESSAGE_PASSING&#39;: 20, &#39;SC_MINSIGSTKSZ&#39;: 249, &#39;SC_MQ_OPEN_MAX&#39;: 27, &#39;SC_MQ_PRIO_MAX&#39;: 28, &#39;SC_NGROUPS_MAX&#39;: 3, &#39;SC_NL_ARGMAX&#39;: 119, &#39;SC_NL_LANGMAX&#39;: 120, &#39;SC_NL_MSGMAX&#39;: 121, &#39;SC_NL_NMAX&#39;: 122, &#39;SC_NL_SETMAX&#39;: 123, &#39;SC_NL_TEXTMAX&#39;: 124, &#39;SC_NPROCESSORS_CONF&#39;: 83, &#39;SC_NPROCESSORS_ONLN&#39;: 84, &#39;SC_NZERO&#39;: 109, &#39;SC_OPEN_MAX&#39;: 4, &#39;SC_PAGESIZE&#39;: 30, &#39;SC_PAGE_SIZE&#39;: 30, &#39;SC_PASS_MAX&#39;: 88, &#39;SC_PHYS_PAGES&#39;: 85, &#39;SC_PII&#39;: 53, &#39;SC_PII_INTERNET&#39;: 56, &#39;SC_PII_INTERNET_DGRAM&#39;: 62, &#39;SC_PII_INTERNET_STREAM&#39;: 61, &#39;SC_PII_OSI&#39;: 57, &#39;SC_PII_OSI_CLTS&#39;: 64, &#39;SC_PII_OSI_COTS&#39;: 63, &#39;SC_PII_OSI_M&#39;: 65, &#39;SC_PII_SOCKET&#39;: 55, &#39;SC_PII_XTI&#39;: 54, &#39;SC_POLL&#39;: 58, &#39;SC_PRIORITIZED_IO&#39;: 13, &#39;SC_PRIORITY_SCHEDULING&#39;: 10, &#39;SC_REALTIME_SIGNALS&#39;: 9, &#39;SC_RE_DUP_MAX&#39;: 44, &#39;SC_RTSIG_MAX&#39;: 31, &#39;SC_SAVED_IDS&#39;: 8, &#39;SC_SCHAR_MAX&#39;: 111, &#39;SC_SCHAR_MIN&#39;: 112, &#39;SC_SELECT&#39;: 59, &#39;SC_SEMAPHORES&#39;: 21, &#39;SC_SEM_NSEMS_MAX&#39;: 32, &#39;SC_SEM_VALUE_MAX&#39;: 33, &#39;SC_SHARED_MEMORY_OBJECTS&#39;: 22, &#39;SC_SHRT_MAX&#39;: 113, &#39;SC_SHRT_MIN&#39;: 114, &#39;SC_SIGQUEUE_MAX&#39;: 34, &#39;SC_SSIZE_MAX&#39;: 110, &#39;SC_STREAM_MAX&#39;: 5, &#39;SC_SYNCHRONIZED_IO&#39;: 14, &#39;SC_THREADS&#39;: 67, &#39;SC_THREAD_ATTR_STACKADDR&#39;: 77, &#39;SC_THREAD_ATTR_STACKSIZE&#39;: 78, &#39;SC_THREAD_DESTRUCTOR_ITERATIONS&#39;: 73, &#39;SC_THREAD_KEYS_MAX&#39;: 74, &#39;SC_THREAD_PRIORITY_SCHEDULING&#39;: 79, &#39;SC_THREAD_PRIO_INHERIT&#39;: 80, &#39;SC_THREAD_PRIO_PROTECT&#39;: 81, &#39;SC_THREAD_PROCESS_SHARED&#39;: 82, &#39;SC_THREAD_SAFE_FUNCTIONS&#39;: 68, &#39;SC_THREAD_STACK_MIN&#39;: 75, &#39;SC_THREAD_THREADS_MAX&#39;: 76, &#39;SC_TIMERS&#39;: 11, &#39;SC_TIMER_MAX&#39;: 35, &#39;SC_TTY_NAME_MAX&#39;: 72, &#39;SC_TZNAME_MAX&#39;: 6, &#39;SC_T_IOV_MAX&#39;: 66, &#39;SC_UCHAR_MAX&#39;: 115, &#39;SC_UINT_MAX&#39;: 116, &#39;SC_UIO_MAXIOV&#39;: 60, &#39;SC_ULONG_MAX&#39;: 117, &#39;SC_USHRT_MAX&#39;: 118, &#39;SC_VERSION&#39;: 29, &#39;SC_WORD_BIT&#39;: 107, &#39;SC_XBS5_ILP32_OFF32&#39;: 125, &#39;SC_XBS5_ILP32_OFFBIG&#39;: 126, &#39;SC_XBS5_LP64_OFF64&#39;: 127, &#39;SC_XBS5_LPBIG_OFFBIG&#39;: 128, &#39;SC_XOPEN_CRYPT&#39;: 92, &#39;SC_XOPEN_ENH_I18N&#39;: 93, &#39;SC_XOPEN_LEGACY&#39;: 129, &#39;SC_XOPEN_REALTIME&#39;: 130, &#39;SC_XOPEN_REALTIME_THREADS&#39;: 131, &#39;SC_XOPEN_SHM&#39;: 94, &#39;SC_XOPEN_UNIX&#39;: 91, &#39;SC_XOPEN_VERSION&#39;: 89, &#39;SC_XOPEN_XCU_VERSION&#39;: 90, &#39;SC_XOPEN_XPG2&#39;: 98, &#39;SC_XOPEN_XPG3&#39;: 99, &#39;SC_XOPEN_XPG4&#39;: 100}</span>
 
         
     </div>
@@ -7200,121 +7025,6 @@ dir_fd may not be implemented on your platform.
                                 </dl>
                             </div>
                 </section>
-                <section id="timerfd_create">
-                    <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">timerfd_create</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">clockid</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">flags</span><span class="o">=</span><span class="mi">0</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#timerfd_create"></a>
-    
-            <div class="docstring"><p>Create and return a timer file descriptor.</p>
-
-<p>clockid
-  A valid clock ID constant as timer file descriptor.</p>
-
-<p>time.CLOCK_REALTIME
-  time.CLOCK_MONOTONIC
-  time.CLOCK_BOOTTIME
-flags
-  0 or a bit mask of <a href="#TFD_NONBLOCK">os.TFD_NONBLOCK</a> or <a href="#TFD_CLOEXEC">os.TFD_CLOEXEC</a>.</p>
-
-<p><a href="#TFD_NONBLOCK">os.TFD_NONBLOCK</a>
-      If *TFD_NONBLOCK* is set as a flag, read doesn't blocks.
-      If <em>TFD_NONBLOCK</em> is not set as a flag, read block until the timer fires.</p>
-
-<p><a href="#TFD_CLOEXEC">os.TFD_CLOEXEC</a>
-      If *TFD_CLOEXEC* is set as a flag, enable the close-on-exec flag</p>
-</div>
-
-
-                </section>
-                <section id="timerfd_gettime">
-                    <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">timerfd_gettime</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#timerfd_gettime"></a>
-    
-            <div class="docstring"><p>Return a tuple of a timer file descriptor's (interval, next expiration) in float seconds.</p>
-
-<p>fd
-  A timer file descriptor.</p>
-</div>
-
-
-                </section>
-                <section id="timerfd_gettime_ns">
-                    <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">timerfd_gettime_ns</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#timerfd_gettime_ns"></a>
-    
-            <div class="docstring"><p>Return a tuple of a timer file descriptor's (interval, next expiration) in nanoseconds.</p>
-
-<p>fd
-  A timer file descriptor.</p>
-</div>
-
-
-                </section>
-                <section id="timerfd_settime">
-                    <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">timerfd_settime</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">flags</span><span class="o">=</span><span class="mi">0</span>, </span><span class="param"><span class="n">initial</span><span class="o">=</span><span class="mf">0.0</span>, </span><span class="param"><span class="n">interval</span><span class="o">=</span><span class="mf">0.0</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#timerfd_settime"></a>
-    
-            <div class="docstring"><p>Alter a timer file descriptor's internal timer in seconds.</p>
-
-<p>fd
-  A timer file descriptor.
-flags
-  0 or a bit mask of TFD_TIMER_ABSTIME or TFD_TIMER_CANCEL_ON_SET.
-initial
-  The initial expiration time, in seconds.
-interval
-  The timer's interval, in seconds.</p>
-</div>
-
-
-                </section>
-                <section id="timerfd_settime_ns">
-                    <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">timerfd_settime_ns</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">flags</span><span class="o">=</span><span class="mi">0</span>, </span><span class="param"><span class="n">initial</span><span class="o">=</span><span class="mi">0</span>, </span><span class="param"><span class="n">interval</span><span class="o">=</span><span class="mi">0</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#timerfd_settime_ns"></a>
-    
-            <div class="docstring"><p>Alter a timer file descriptor's internal timer in nanoseconds.</p>
-
-<p>fd
-  A timer file descriptor.
-flags
-  0 or a bit mask of TFD_TIMER_ABSTIME or TFD_TIMER_CANCEL_ON_SET.
-initial
-  initial expiration timing in seconds.
-interval
-  interval for the timer in seconds.</p>
-</div>
-
-
-                </section>
                 <section id="times">
                     <div class="attr function">
             
@@ -7333,7 +7043,7 @@ interval
   <p>(utime, stime, cutime, cstime, elapsed_time)</p>
 </blockquote>
 
-<p>All fields are floating-point numbers.</p>
+<p>All fields are floating point numbers.</p>
 </div>
 
 
@@ -7691,26 +7401,6 @@ or via the attributes sysname, nodename, release, version, and machine.</p>
   and path should be relative; path will then be relative to that directory.
 dir_fd may not be implemented on your platform.
   If it is unavailable, using it will raise a NotImplementedError.</p>
-</div>
-
-
-                </section>
-                <section id="unlockpt">
-                    <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">unlockpt</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fd</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#unlockpt"></a>
-    
-            <div class="docstring"><p>Unlock a pseudo-terminal master/slave pair.</p>
-
-<p>fd
-    File descriptor of a master pseudo-terminal device.</p>
-
-<p>Performs an unlockpt() C function call.</p>
 </div>
 
 
@@ -8227,12 +7917,12 @@ either.</p>
 
 <p>import os
 from os.path import join, getsize
-for root, dirs, files in <a href="#walk">os.walk</a>('python/Lib/xml'):
+for root, dirs, files in <a href="#walk">os.walk</a>('python/Lib/email'):
     print(root, "consumes ")
     print(sum(getsize(join(root, name)) for name in files), end=" ")
     print("bytes in", len(files), "non-directory files")
-    if '__pycache__' in dirs:
-        dirs.remove('__pycache__')  # don't visit __pycache__ directories</p>
+    if 'CVS' in dirs:
+        dirs.remove('CVS')  # don't visit CVS directories</p>
 </div>
 
 
@@ -8272,13 +7962,13 @@ for a longer period.</p>
 <p>Example:</p>
 
 <p>import os
-for root, dirs, files, rootfd in <a href="#fwalk">os.fwalk</a>('python/Lib/xml'):
+for root, dirs, files, rootfd in <a href="#fwalk">os.fwalk</a>('python/Lib/email'):
     print(root, "consumes", end="")
     print(sum(<a href="#stat">os.stat</a>(name, dir_fd=rootfd).st_size for name in files),
           end="")
     print("bytes in", len(files), "non-directory files")
-    if '__pycache__' in dirs:
-        dirs.remove('__pycache__')  # don't visit __pycache__ directories</p>
+    if 'CVS' in dirs:
+        dirs.remove('CVS')  # don't visit CVS directories</p>
 </div>
 
 

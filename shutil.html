@@ -278,7 +278,7 @@ resembles GNU's "cp -P src dst".</p>
 <p>If the optional symlinks flag is true, symbolic links in the
 source tree result in symbolic links in the destination tree; if
 it is false, the contents of the files pointed to by symbolic
-links are copied. If the file pointed to by the symlink doesn't
+links are copied. If the file pointed by the symlink doesn't
 exist, an exception will be added in the list of errors raised in
 an Error exception at the end of the copy process.</p>
 
@@ -681,7 +681,7 @@ that are used to exclude files</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">chown</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span>, </span><span class="param"><span class="n">user</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">group</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">dir_fd</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">follow_symlinks</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+        <span class="name">chown</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span>, </span><span class="param"><span class="n">user</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">group</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -691,13 +691,6 @@ that are used to exclude files</p>
 
 <p>user and group can be the uid/gid or the user/group names, and in that case,
 they are converted to their respective uid/gid.</p>
-
-<p>If dir_fd is set, it should be an open file descriptor to the directory to
-be used as the root of <em>path</em> if it is relative.</p>
-
-<p>If follow_symlinks is set to False and the last element of the path is a
-symbolic link, chown will modify the link itself and not the file being
-referenced by the link.</p>
 </div>
 
 

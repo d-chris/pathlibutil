@@ -257,6 +257,9 @@
                     <a class="class" href="#HTTPPasswordMgrWithPriorAuth">HTTPPasswordMgrWithPriorAuth</a>
                             <ul class="memberlist">
                         <li>
+                                <a class="function" href="#HTTPPasswordMgrWithPriorAuth.__init__">HTTPPasswordMgrWithPriorAuth</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#HTTPPasswordMgrWithPriorAuth.authenticated">authenticated</a>
                         </li>
                         <li>
@@ -1678,6 +1681,18 @@ but another Handler might.</p>
     
     
 
+                            <div id="HTTPPasswordMgrWithPriorAuth.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">HTTPPasswordMgrWithPriorAuth</span><span class="signature pdoc-code condensed">(<span class="param"><span class="o">*</span><span class="n">args</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HTTPPasswordMgrWithPriorAuth.__init__"></a>
+    
+    
+
+                            </div>
                             <div id="HTTPPasswordMgrWithPriorAuth.authenticated" class="classattr">
                                 <div class="attr variable">
             <span class="name">authenticated</span>
@@ -2368,9 +2383,7 @@ does not transmit passwords in the clear.</p>
     </div>
     <a class="headerlink" href="#HTTPHandler.http_request"></a>
     
-            <div class="docstring"><p>The type of the None singleton.</p>
-</div>
-
+    
 
                             </div>
                             <div class="inherited">
@@ -2806,7 +2819,7 @@ does not transmit passwords in the clear.</p>
                     <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">urlopen</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">url</span>, </span><span class="param"><span class="n">data</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">timeout</span><span class="o">=&lt;</span><span class="nb">object</span> <span class="nb">object</span><span class="o">&gt;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">context</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+        <span class="name">urlopen</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">url</span>,</span><span class="param">	<span class="n">data</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">timeout</span><span class="o">=&lt;</span><span class="nb">object</span> <span class="nb">object</span><span class="o">&gt;</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">cafile</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">capath</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">cadefault</span><span class="o">=</span><span class="kc">False</span>,</span><span class="param">	<span class="n">context</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -2828,6 +2841,14 @@ HTTPS and FTP connections.</p>
 
 <p>If <em>context</em> is specified, it must be a ssl.SSLContext instance describing
 the various SSL options. See HTTPSConnection for more details.</p>
+
+<p>The optional <em>cafile</em> and <em>capath</em> parameters specify a set of trusted CA
+certificates for HTTPS requests. cafile should point to a single file
+containing a bundle of CA certificates, whereas capath should point to a
+directory of hashed certificate files. More information can be found in
+ssl.SSLContext.load_verify_locations().</p>
+
+<p>The <em>cadefault</em> parameter is ignored.</p>
 
 <p>This function always returns an object which can work as a
 context manager and has the properties url, headers, and status.
@@ -3016,7 +3037,7 @@ automatic handling of errors type 302 (relocated) and 401
                             <div id="URLopener.version" class="classattr">
                                 <div class="attr variable">
             <span class="name">version</span>        =
-<span class="default_value">&#39;Python-urllib/3.13&#39;</span>
+<span class="default_value">&#39;Python-urllib/3.12&#39;</span>
 
         
     </div>
@@ -3669,9 +3690,7 @@ This function supports Basic authentication only.</p>
     </div>
     <a class="headerlink" href="#HTTPSHandler.https_request"></a>
     
-            <div class="docstring"><p>The type of the None singleton.</p>
-</div>
-
+    
 
                             </div>
                             <div class="inherited">
