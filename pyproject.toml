@@ -23,10 +23,6 @@ classifiers = [
 ]
 keywords = [ "pathlib", "hashlib", "shutil", "urllib.parse", "json", "urlpath" ]
 
-[tool.poetry.urls]
-repository = "https://github.com/d-chris/pathlibutil"
-documentation = "https://d-chris.github.io/pathlibutil"
-
 [tool.poetry.dependencies]
 python = "^3.8.1"
 py7zr = { version = ">=0.20.2", optional = true }
@@ -34,9 +30,9 @@ py7zr = { version = ">=0.20.2", optional = true }
 [tool.poetry.extras]
 7z = [ "py7zr" ]
 
-[tool.poetry.group.dev.dependencies]
-tox = ">=4.11.4"
-pyinstaller = { version = ">=6.10.0", python = "<3.15" }
+[tool.poetry.group.docs.dependencies]
+jinja2-pdoc = "^1.1.0"
+pyperclip = "^1.9.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = ">=8.3.3"
@@ -44,10 +40,6 @@ pytest-random-order = ">=1.1.0"
 pytest-cov = ">=4.1.0"
 pytest-mock = ">=3.12.0"
 exrex = ">=0.12.0"
-
-[tool.poetry.group.docs.dependencies]
-jinja2-pdoc = ">=1.1.0"
-pyperclip = ">=1.9.0"
 
 [[tool.poetry.source]]
 name = "PyPI"
@@ -57,6 +49,10 @@ priority = "primary"
 name = "testpypi"
 url = "https://test.pypi.org/legacy/"
 priority = "explicit"
+
+[tool.poetry.urls]
+repository = "https://github.com/d-chris/pathlibutil"
+documentation = "https://d-chris.github.io/pathlibutil"
 
 [tool.isort]
 profile = "black"
