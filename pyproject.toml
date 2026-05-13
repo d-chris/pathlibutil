@@ -30,10 +30,6 @@ py7zr = { version = ">=0.20.2", optional = true }
 [tool.poetry.extras]
 7z = [ "py7zr" ]
 
-[tool.poetry.group.dev.dependencies]
-tox = "^4.11.4"
-pyinstaller = { version = "^6.10.0", python = "<3.14" }
-
 [tool.poetry.group.docs.dependencies]
 jinja2-pdoc = "^1.1.0"
 pyperclip = "^1.9.0"
