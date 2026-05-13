@@ -8,14 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install poetry
-        run: pipx install poetry
+        run: pipx install poetry==1.8.5
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.11
       - name: Install dependencies
         run: |
-          poetry install --only-root
+          poetry install --no-interaction --only-root
       - name: Build and publish
         env:
           POETRY_PYPI_TOKEN_TESTPYPI: ${{ secrets.TESTPYPI_TOKEN }}
