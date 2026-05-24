@@ -1,6 +1,5 @@
 [build-system]
 build-backend = "poetry.core.masonry.api"
-
 requires = [ "poetry-core" ]
 
 [tool.poetry]
@@ -57,10 +56,14 @@ documentation = "https://d-chris.github.io/pathlibutil"
 [tool.isort]
 profile = "black"
 
-[tool.pytest.ini_options]
-minversion = "6.0"
-testpaths = "tests"
-addopts = [
+[tool.pyproject-fmt]
+tool_format = "short"
+expand_tables = [ "tool.poetry" ]
+
+[tool.pytest]
+ini_options.minversion = "6.0"
+ini_options.testpaths = "tests"
+ini_options.addopts = [
   "--random-order",
   "--color=yes",
   "-s",
@@ -69,14 +72,12 @@ addopts = [
   "--cov-report=xml",
 ]
 
-[tool.coverage.report]
-exclude_lines = [
-  "^def normalize_url",
-]
-
-[tool.coverage.run]
-omit = [
-  "*/tests/*",
+[tool.coverage]
+run.omit = [
   "*/docs/*",
   "*/examples/*",
+  "*/tests/*",
+]
+report.exclude_lines = [
+  "^def normalize_url",
 ]
