@@ -1,11 +1,16 @@
+from __future__ import annotations
+
 import functools
 import os
 import re
+import typing as t
 from datetime import datetime, tzinfo
-from typing import Iterable, Set, Tuple, TypeVar
 
-_ByteInt = TypeVar("_ByteInt", bound="ByteInt")
-_stat_result = TypeVar("_stat_result", bound="os.stat_result")
+if t.TYPE_CHECKING:
+    from typing_extensions import Self
+
+_ByteInt = t.TypeVar("_ByteInt", bound="ByteInt")
+_stat_result = t.TypeVar("_stat_result", bound="os.stat_result")
 
 
 class ByteInt(int):
@@ -49,7 +54,7 @@ class ByteInt(int):
     }
 
     @property
-    def units(self) -> Set[str]:
+    def units(self) -> t.Set[str]:
         """
         `decimal` and `binary` units for measuring storage data.
 
@@ -73,7 +78,7 @@ class ByteInt(int):
     def __str__(self) -> str:
         return self.string()
 
-    def string(self, decimal=True) -> str:
+    def string(self, decimal: bool = True) -> str:
         """
         Return a string representation of `self` in the most appropriate unit.
 
@@ -101,7 +106,7 @@ class ByteInt(int):
         return f"{int(self)} b"
 
     @classmethod
-    def info(cls, unit: str) -> Tuple[int, str]:
+    def info(cls, unit: str) -> t.Tuple[int, str]:
         """
         Return a tuple containing `bytes` and `name` for a given `unit`
 
@@ -137,61 +142,61 @@ class ByteInt(int):
 
             return value.__format__(self.__regex.sub("f", __format_spec, 1))
 
-    def __add__(self, other: int) -> _ByteInt:
+    def __add__(self, other: int) -> Self:
         """
         b + 1
         """
         return self.__class__(super().__add__(other))
 
-    def __iadd__(self, other: int) -> _ByteInt:
+    def __iadd__(self, other: int) -> Self:
         """
         b += 1
         """
         return self.__add__(other)
 
-    def __sub__(self, other: int) -> _ByteInt:
+    def __sub__(self, other: int) -> Self:
         """
         b - 1
         """
         return self.__class__(super().__sub__(other))
 
-    def __isub__(self, other: int) -> _ByteInt:
+    def __isub__(self, other: int) -> Self:
         """
         b -=1
         """
         return self.__sub__(other)
 
-    def __mul__(self, other: int) -> _ByteInt:
+    def __mul__(self, other: int) -> Self:
         """
         b * 1
         """
         return self.__class__(super().__mul__(other))
 
-    def __imul__(self, other: int) -> _ByteInt:
+    def __imul__(self, other: int) -> Self:
         """
         b *= 1
         """
         return self.__mul__(other)
 
-    def __floordiv__(self, other: int) -> _ByteInt:
+    def __floordiv__(self, other: int) -> Self:
         """
         b // 1
         """
         return self.__class__(super().__floordiv__(other))
 
-    def __ifloordiv__(self, other: int) -> _ByteInt:
+    def __ifloordiv__(self, other: int) -> Self:
         """
         b //= 1
         """
         return self.__floordiv__(other)
 
-    def __mod__(self, other: int) -> _ByteInt:
+    def __mod__(self, other: int) -> Self:
         """
         b % 1
         """
         return self.__class__(super().__mod__(other))
 
-    def __imod__(self, other: int) -> _ByteInt:
+    def __imod__(self, other: int) -> Self:
         """
         b %= 1
         """
@@ -247,19 +252,27 @@ class TimeInt(float):
     '1970-01-01 00:00:00'
     """
 
-    format = "%Y-%m-%d %H:%M:%S"
+    format: str = "%Y-%m-%d %H:%M:%S"
     """
     Format string to which is uesed to convert `self` to a string. Default: 'isoformat'.
     For more information see `datetime.datetime.strftime`.
     """
 
-    def __new__(cls, value: int, tz: tzinfo = None) -> float:
+    def __new__(
+        cls,
+        value: int,
+        tz: t.Optional[tzinfo] = None,
+    ) -> float:
         """
         Create a new instance from baseclass `int`.
         """
         return super().__new__(cls, value)
 
-    def __init__(self, value: int, tz: tzinfo = None) -> None:
+    def __init__(
+        self,
+        value: int,
+        tz: t.Optional[tzinfo] = None,
+    ) -> None:
         """
         Create a new instance from baseclass `int` with optional `timezone` info.
         """
@@ -283,7 +296,7 @@ class TimeInt(float):
         """
         return self.string()
 
-    def string(self, format_string: str = None) -> str:
+    def string(self, format_string: t.Optional[str] = None) -> str:
         """
         Return a string representation of `datetime` using the `format_string`.
 
@@ -301,13 +314,13 @@ class StatResult:
     to prevent subclassing.
     """
 
-    def __init__(self, stat):
+    def __init__(self, stat: os.stat_result) -> None:
         """
         Wrapper for `os.stat_result`.
         """
         self._obj = stat
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> t.Any:
         """
         Forward all unknown attributes to `self._obj`.
         """
@@ -334,7 +347,7 @@ class StatResult:
         """
         return repr(self._obj)
 
-    def __dir__(self) -> Iterable[str]:
+    def __dir__(self) -> t.Iterator[str]:
         """
         Return a list of attributes of `os.stat_result` object.
         """

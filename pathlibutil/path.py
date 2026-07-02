@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import errno
 import hashlib
 import itertools
@@ -10,7 +12,12 @@ import typing as t
 from datetime import datetime, timedelta
 
 from pathlibutil.base import BasePath
-from pathlibutil.types import ByteInt, StatResult, TimeInt, _stat_result, byteint
+from pathlibutil.types import ByteInt, StatResult, TimeInt, byteint
+
+if t.TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from pathlibutil.types import _stat_result
 
 
 class Path(BasePath):
@@ -72,7 +79,12 @@ class Path(BasePath):
         """
         return hashlib.algorithms_available
 
-    def hexdigest(self, algorithm: str = None, /, **kwargs) -> str:
+    def hexdigest(
+        self,
+        algorithm: t.Optional[str] = None,
+        /,
+        **kwargs,
+    ) -> str:
         """
         Returns the hexdigest of the file using the named algorithm (default:
         `default_hash`).
@@ -101,7 +113,12 @@ class Path(BasePath):
         return hash.hexdigest(length)
 
     def verify(
-        self, digest: str, algorithm: str = None, *, strict: bool = True, **kwargs
+        self,
+        digest: str,
+        algorithm: t.Optional[str] = None,
+        *,
+        strict: bool = True,
+        **kwargs,
     ) -> bool:
         """
         Verifies the hash of the file using the named algorithm (default:
@@ -130,7 +147,7 @@ class Path(BasePath):
 
         return True
 
-    def __enter__(self) -> "Path":
+    def __enter__(self) -> Self:
         """
         Contextmanager to changes the current working directory.
         """
@@ -175,7 +192,12 @@ class Path(BasePath):
 
         return super().stat(**kwargs).st_size
 
-    def copy(self, dst: str, exist_ok: bool = True, **kwargs) -> "Path":
+    def copy(
+        self,
+        dst: str,
+        exist_ok: bool = True,
+        **kwargs,
+    ) -> Self:
         """
         Copies the file or directory to a destination directory, if it is missing it
         will be created.
@@ -200,7 +222,11 @@ class Path(BasePath):
         return self.__class__(_path)
 
     def delete(
-        self, *, recursive: bool = False, missing_ok: bool = False, **kwargs
+        self,
+        *,
+        recursive: bool = False,
+        missing_ok: bool = False,
+        **kwargs,
     ) -> None:
         """
         Deletes the file or directory.
@@ -227,7 +253,7 @@ class Path(BasePath):
 
             shutil.rmtree(self, **kwargs)
 
-    def move(self, dst: str) -> "Path":
+    def move(self, dst: str) -> Self:
         """
         Moves the file or directory into the destination directory.
 
@@ -247,7 +273,7 @@ class Path(BasePath):
         return self.__class__(_path)
 
     @staticmethod
-    def _find_archive_format(filename: "Path") -> str:
+    def _find_archive_format(filename: Path) -> str:
         """
         Searches for a file the correct archive format.
         """
@@ -272,8 +298,12 @@ class Path(BasePath):
             register_format()
 
     def make_archive(
-        self, archivename: str, *, exists_ok: bool = False, **kwargs
-    ) -> "Path":
+        self,
+        archivename: str,
+        *,
+        exists_ok: bool = False,
+        **kwargs,
+    ) -> Self:
         """
         Creates an archive file (eg. zip) and returns the path to the archive.
 
@@ -296,7 +326,10 @@ class Path(BasePath):
         Path('test.zpy')
         """
 
-        def _archive_exists(file: str, exists_ok: bool) -> "Path":
+        def _archive_exists(
+            file: str,
+            exists_ok: bool,
+        ) -> Self:
             """
             Returns a `Path` object of the archive file or raises a `FileExistsError`
             If `exists_ok` is `True` the file will be deleted.
@@ -311,7 +344,10 @@ class Path(BasePath):
 
             return file
 
-        def _archive_filename(expect: Path, real: str) -> "Path":
+        def _archive_filename(
+            expect: Path,
+            real: str,
+        ) -> Self:
             """
             Check if the expected archive filename matches the real filename.
             If not try to rename the real filename.
@@ -346,7 +382,7 @@ class Path(BasePath):
 
         return _archive_filename(_filename, _archive)
 
-    def unpack_archive(self, extract_dir: str, **kwargs) -> "Path":
+    def unpack_archive(self, extract_dir: str, **kwargs) -> Self:
         """
         Unpacks an archive file (eg. zip) into a directory and returns the path to the
         extracted files.
@@ -405,7 +441,7 @@ class Path(BasePath):
         """
         return StatResult(super().stat(**kwargs))
 
-    def with_suffix(self, suffix: t.Union[str, t.List[str]]) -> "Path":
+    def with_suffix(self, suffix: t.Union[str, t.List[str]]) -> Self:
         """
         Return a new `Path` with changed suffix or remove it when its an empty
         string.
@@ -444,8 +480,10 @@ class Path(BasePath):
             return super(self.__class__, stem).with_suffix(suffix)
 
     def relative_to(
-        self, *other: t.Union[str, "Path"], walk_up: t.Union[bool, int] = False
-    ) -> "Path":
+        self,
+        *other: t.Union[str, Path],
+        walk_up: t.Union[bool, int] = False,
+    ) -> Self:
         """
         Return the relative path to another path identified by the passed
         arguments.  If the operation is not possible (because this is not
@@ -485,7 +523,11 @@ class Path(BasePath):
         return relative
 
     @classmethod
-    def cwd(cls, *, frozen: t.Literal[True, False, "_MEIPASS"] = False) -> "Path":
+    def cwd(
+        cls,
+        *,
+        frozen: t.Literal[True, False, "_MEIPASS"] = False,
+    ) -> Self:
         """
         Return a `Path` object representing the current working directory.
 
@@ -536,7 +578,7 @@ class Path(BasePath):
         except Exception:
             return {}
 
-    def _resolve_unc(self) -> "Path":
+    def _resolve_unc(self) -> Self:
         """
         Resolve UNC paths to mapped network drives.
         """
@@ -549,7 +591,11 @@ class Path(BasePath):
         except KeyError:
             return self
 
-    def resolve(self, strict: bool = False, unc: bool = True) -> "Path":
+    def resolve(
+        self,
+        strict: bool = False,
+        unc: bool = True,
+    ) -> Self:
         """
         Make the path absolute, resolving all symlinks on the way and also normalizing
         it.
@@ -579,7 +625,7 @@ class Path(BasePath):
         top_down: bool = True,
         on_error: t.Callable[[OSError], object] = None,
         follow_symlinks: bool = False,
-    ) -> t.Generator[t.Tuple["Path", t.List[str], t.List[str]], None, None]:
+    ) -> t.Generator[t.Tuple[Self, t.List[str], t.List[str]], None, None]:
         """
         Walks the directory tree and yields a 3-tuple of (dirpath, dirnames, filenames).
         """
@@ -602,9 +648,9 @@ class Path(BasePath):
         self,
         *,
         recursive: t.Union[bool, int] = False,
-        exclude_dirs: t.Callable[["Path"], bool] = None,
+        exclude_dirs: t.Callable[[Path], bool] = None,
         **kwargs,
-    ) -> t.Generator["Path", None, None]:
+    ) -> t.Generator[Self, None, None]:
         """
         Iterates over the files in the directory.
 
@@ -636,7 +682,12 @@ class Path(BasePath):
         else:
             yield from super().iterdir()
 
-    def is_expired(self, *, stat="st_mtime", **kwargs) -> bool:
+    def is_expired(
+        self,
+        *,
+        stat: str = "st_mtime",
+        **kwargs,
+    ) -> bool:
         """
         Returns `True` if the time of the file is greater than a given threshold.
 
@@ -660,7 +711,7 @@ class Path(BasePath):
         cls,
         *files: str,
         duplicates: bool = True,
-    ) -> t.Generator["Path", None, None]:
+    ) -> t.Generator[Self, None, None]:
         """
         Yields only Path object of file names that exists. Supports glob patterns in
         filename as wildcards.

@@ -25,6 +25,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.8"
 py7zr = { version = ">=0.20.2", optional = true }
+typing-extensions = ">=4.13.2"
 
 [tool.poetry.extras]
 7z = [ "py7zr" ]

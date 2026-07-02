@@ -1,7 +1,12 @@
+from __future__ import annotations
+
 import os
 import pathlib
 import sys
-from typing import Generator
+import typing as t
+
+if t.TYPE_CHECKING:
+    from typing_extensions import Self
 
 
 class BasePath(pathlib.Path):
@@ -17,7 +22,7 @@ class BasePath(pathlib.Path):
         )
 
     @classmethod
-    def expand(cls, file: str) -> Generator["BasePath", None, None]:
+    def expand(cls, file: str) -> t.Generator[Self, None, None]:
         """
         yields only Path object of file names that exists. Supports glob patterns in
         filename as wildcards.
@@ -31,7 +36,7 @@ class BasePath(pathlib.Path):
         BasePath('pathlibutil/__init__.py')]
         """
 
-        file = cls(file)
+        file = cls(file)  # type: Self
         try:
             file.resolve(True)
         except (OSError, FileNotFoundError):
