@@ -6,8 +6,8 @@ import re
 import shutil
 import subprocess
 import sys
+import typing as t
 from datetime import datetime, timedelta
-from typing import Callable, Dict, Generator, List, Literal, Set, Tuple, Union
 
 from pathlibutil.base import BasePath
 from pathlibutil.types import ByteInt, StatResult, TimeInt, _stat_result, byteint
@@ -28,7 +28,7 @@ class Path(BasePath):
     ```
     """
 
-    _archive_formats: Dict[str, Callable] = {}
+    _archive_formats: t.Dict[str, t.Callable] = {}
     """
     Dict holding function to register shutil archive formats.
     """
@@ -57,7 +57,7 @@ class Path(BasePath):
             pass
 
     @property
-    def algorithms_available(self) -> Set[str]:
+    def algorithms_available(self) -> t.Set[str]:
         """
         Set of `hashlib.algorithms_available` that can be passed to `hexdigest()`,
         `verify()` method as `algorithm` parameter or to set the `default_hash`
@@ -154,7 +154,7 @@ class Path(BasePath):
         finally:
             del self.__stack
 
-    def read_lines(self, **kwargs) -> Generator[str, None, None]:
+    def read_lines(self, **kwargs) -> t.Generator[str, None, None]:
         """
         Iterates over all lines of the file until EOF is reached.
 
@@ -376,7 +376,7 @@ class Path(BasePath):
                 self._register_format(_format)
 
     @property
-    def archive_formats(self) -> Set[str]:
+    def archive_formats(self) -> t.Set[str]:
         """
         Returns a set with names of the supported archive formats.
 
@@ -405,7 +405,7 @@ class Path(BasePath):
         """
         return StatResult(super().stat(**kwargs))
 
-    def with_suffix(self, suffix: Union[str, List[str]]) -> "Path":
+    def with_suffix(self, suffix: t.Union[str, t.List[str]]) -> "Path":
         """
         Return a new `Path` with changed suffix or remove it when its an empty
         string.
@@ -444,7 +444,7 @@ class Path(BasePath):
             return super(self.__class__, stem).with_suffix(suffix)
 
     def relative_to(
-        self, *other: Union[str, "Path"], walk_up: Union[bool, int] = False
+        self, *other: t.Union[str, "Path"], walk_up: t.Union[bool, int] = False
     ) -> "Path":
         """
         Return the relative path to another path identified by the passed
@@ -485,7 +485,7 @@ class Path(BasePath):
         return relative
 
     @classmethod
-    def cwd(cls, *, frozen: Literal[True, False, "_MEIPASS"] = False) -> "Path":
+    def cwd(cls, *, frozen: t.Literal[True, False, "_MEIPASS"] = False) -> "Path":
         """
         Return a `Path` object representing the current working directory.
 
@@ -505,7 +505,7 @@ class Path(BasePath):
         return super().cwd()
 
     @classmethod
-    def _net_use(cls) -> Dict[str, str]:
+    def _net_use(cls) -> t.Dict[str, str]:
         """
         Return a dictionary of mapped network drives. Keys are UNC paths and values
         are drive letters.
@@ -577,9 +577,9 @@ class Path(BasePath):
     def walk(
         self,
         top_down: bool = True,
-        on_error: Callable[[OSError], object] = None,
+        on_error: t.Callable[[OSError], object] = None,
         follow_symlinks: bool = False,
-    ) -> Generator[Tuple["Path", List[str], List[str]], None, None]:
+    ) -> t.Generator[t.Tuple["Path", t.List[str], t.List[str]], None, None]:
         """
         Walks the directory tree and yields a 3-tuple of (dirpath, dirnames, filenames).
         """
@@ -601,10 +601,10 @@ class Path(BasePath):
     def iterdir(
         self,
         *,
-        recursive: Union[bool, int] = False,
-        exclude_dirs: Callable[["Path"], bool] = None,
+        recursive: t.Union[bool, int] = False,
+        exclude_dirs: t.Callable[["Path"], bool] = None,
         **kwargs,
-    ) -> Generator["Path", None, None]:
+    ) -> t.Generator["Path", None, None]:
         """
         Iterates over the files in the directory.
 
@@ -660,7 +660,7 @@ class Path(BasePath):
         cls,
         *files: str,
         duplicates: bool = True,
-    ) -> Generator["Path", None, None]:
+    ) -> t.Generator["Path", None, None]:
         """
         Yields only Path object of file names that exists. Supports glob patterns in
         filename as wildcards.
