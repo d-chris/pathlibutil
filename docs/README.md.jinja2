@@ -40,6 +40,7 @@ filename: ./README.md
 - `Path.iterdir()` with `recursive` all files from the directory tree will be yielded and `exclude_dirs` via callable.
 - `Path.is_expired()` to check if a file is expired by a given `datetime.timedelta`
 - `Path.expand()` yields file paths for multiple file patterns if they exsits.
+- `Path.with_anchor()` to change the anchor of a path object, e.g. for UNC paths on Windows.
 
 JSON serialization of `Path` objects is supported in `pathlibutil.json`.
 

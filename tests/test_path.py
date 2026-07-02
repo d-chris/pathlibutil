@@ -231,3 +231,13 @@ def test_inheritance(cls):
         pass
 
     assert issubclass(PathB, cls)
+
+
+def test_with_anchor():
+    p = Path(__file__)
+
+    assert p.anchor != "fubar"
+
+    p = p.with_anchor("fubar")
+
+    assert str(p).startswith("fubar")

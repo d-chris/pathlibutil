@@ -733,6 +733,17 @@ class Path(BasePath):
                         seen.add(item)
                         yield item
 
+    def with_anchor(self, anchor: t.Union[str, os.PathLike]) -> Self:
+        """
+        Returns a new `Path` object with the given anchor.
+
+        >>> Path("README.md").with_anchor("C:\\")
+        Path('C:/README.md')
+        """
+        relpath = self.relative_to(self.anchor)
+
+        return self.__class__(anchor).joinpath(relpath)
+
 
 class Register7zFormat(Path, archive="7z"):
     """
