@@ -7,11 +7,11 @@ repos:
       - id: trailing-whitespace
       - id: check-toml
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: v2.25.1
+    rev: v2.28.1
     hooks:
       - id: pyproject-fmt
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: 1.7.1
+    rev: 1.9.0
     hooks:
       - id: tox-ini-fmt
   - repo: https://github.com/rhysd/actionlint
@@ -28,7 +28,7 @@ repos:
       - id: blacken-docs
         files: pathlibutil/
   - repo: https://github.com/pycqa/isort
-    rev: 9.0.0a3
+    rev: 9.0.1
     hooks:
       - id: isort
   - repo: https://github.com/python-poetry/poetry
