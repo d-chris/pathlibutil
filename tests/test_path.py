@@ -241,3 +241,39 @@ def test_with_anchor():
     p = p.with_anchor("fubar")
 
     assert str(p).startswith("fubar")
+
+
+def test_tempdir():
+
+    with Path.tempdir() as tmp:
+        assert tmp.is_dir()
+
+    assert not tmp.exists()
+
+
+def test_tempfile():
+    with Path.tempfile() as tmp:
+        assert tmp.is_file()
+
+    assert not tmp.exists()
+
+
+def test_tempdir_file(tmp_path: pathlib.Path):
+
+    with Path.tempdir(dir=tmp_path, prefix="test_") as dir:
+        assert dir.stem.startswith("test_")
+        assert dir.parent == tmp_path
+
+        with Path.tempfile(suffix=".txt", dir=dir) as file:
+            file.write_text("hello world!")
+
+            assert file.parent == dir
+            assert file.suffix == ".txt"
+            assert "hello world!" == file.read_text()
+
+        assert not file.exists()
+        file.touch()
+        assert file.exists()
+
+    assert not dir.exists()
+    assert not file.exists()
