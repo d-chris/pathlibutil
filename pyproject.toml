@@ -70,7 +70,7 @@ ini_options.addopts = [
   "--color=yes",
   "-s",
   "--cov=pathlibutil",
-  "--cov-report=term-missing:skip-covered",
+  "--cov-report=term-missing",
   "--cov-report=xml",
 ]
 
@@ -82,4 +82,6 @@ run.omit = [
 ]
 report.exclude_lines = [
   "^def normalize_url",
+  "if (\\w+\\.)?TYPE_CHECKING:",
+  "if sys.version_info",
 ]
