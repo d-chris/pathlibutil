@@ -20,15 +20,13 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
 ]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 py7zr = { version = ">=0.20.2", optional = true }
 typing-extensions = ">=4.13.2"
-
-[tool.poetry.extras]
-7z = [ "py7zr" ]
 
 [tool.poetry.group.docs.dependencies]
 jinja2-pdoc = { version = "^1.3.0", python = ">=3.8.1" }
@@ -41,6 +39,13 @@ pytest-cov = ">=4.1.0"
 pytest-mock = ">=3.12.0"
 pytest-random-order = ">=1.1.0"
 
+[tool.poetry.extras]
+7z = [ "py7zr" ]
+
+[tool.poetry.urls]
+documentation = "https://d-chris.github.io/pathlibutil"
+repository = "https://github.com/d-chris/pathlibutil"
+
 [[tool.poetry.source]]
 name = "PyPI"
 priority = "primary"
@@ -50,16 +55,12 @@ name = "testpypi"
 url = "https://test.pypi.org/legacy/"
 priority = "explicit"
 
-[tool.poetry.urls]
-documentation = "https://d-chris.github.io/pathlibutil"
-repository = "https://github.com/d-chris/pathlibutil"
-
 [tool.isort]
 profile = "black"
 
 [tool.pyproject-fmt]
-tool_format = "short"
 expand_tables = [ "tool.poetry" ]
+tool_format = "short"
 
 [tool.pytest]
 ini_options.minversion = "6.0"
@@ -69,7 +70,7 @@ ini_options.addopts = [
   "--color=yes",
   "-s",
   "--cov=pathlibutil",
-  "--cov-report=term-missing:skip-covered",
+  "--cov-report=term-missing",
   "--cov-report=xml",
 ]
 
@@ -81,4 +82,6 @@ run.omit = [
 ]
 report.exclude_lines = [
   "^def normalize_url",
+  "if (\\w+\\.)?TYPE_CHECKING:",
+  "if sys.version_info",
 ]

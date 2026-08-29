@@ -305,6 +305,11 @@ class UrlPath(up.ParseResult):
 
     def __getattr__(self, attr: str) -> Any:
 
+        if attr == "_keep_empty":
+            raise AttributeError(
+                f"'{self.__class__.__name__}' object has no attribute '{attr}'"
+            )
+
         try:
             attr = getattr(self._path, attr)
         except AttributeError as e:

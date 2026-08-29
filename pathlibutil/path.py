@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import contextlib
 import errno
 import hashlib
 import itertools
@@ -8,6 +9,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import typing as t
 from datetime import datetime, timedelta
 
@@ -743,6 +745,57 @@ class Path(BasePath):
         relpath = self.relative_to(self.anchor)
 
         return self.__class__(anchor).joinpath(relpath)
+
+    @classmethod
+    @contextlib.contextmanager
+    def tempdir(
+        cls,
+        suffix: str | None = None,
+        prefix: str | None = None,
+        dir: os.StrPath | None = None,
+    ) -> t.Generator[Self, None, None]:
+        """
+        Context manager to a unique temporary directory.
+
+        >>> with Path.tempdir() as temp:
+        ...     print(temp.is_dir())
+        True
+        """
+
+        dirname = tempfile.mkdtemp(suffix=suffix, prefix=prefix, dir=dir)
+
+        dirpath = cls(dirname)
+
+        try:
+            yield dirpath
+        finally:
+            dirpath.delete(recursive=True, missing_ok=True)
+
+    @classmethod
+    @contextlib.contextmanager
+    def tempfile(
+        cls,
+        suffix: str | None = None,
+        prefix: str | None = None,
+        dir: os.StrPath | None = None,
+    ) -> t.Generator[Self, None, None]:
+        """
+        Context manager to create a unique temporary file.
+        to it.
+
+        >>> with Path.tempfile() as temp:
+        ...     print(temp.is_file())
+        True
+        """
+
+        fd, filename = tempfile.mkstemp(suffix=suffix, prefix=prefix, dir=dir)
+        os.close(fd)
+
+        filepath = cls(filename)
+        try:
+            yield filepath
+        finally:
+            filepath.unlink(missing_ok=True)
 
 
 class Register7zFormat(Path, archive="7z"):
