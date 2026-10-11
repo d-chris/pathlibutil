@@ -296,7 +296,7 @@ def test_uri():
     [
         "file.txt",
         "ftp:///file.txt",
-        "file:///file.txt",
+        "file://./file.txt",
     ],
 )
 def test_fromuri_raises(filepath: str):
