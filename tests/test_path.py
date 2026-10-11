@@ -292,16 +292,24 @@ def test_uri():
 
 
 @pytest.mark.parametrize(
-    "filepath, err",
+    "filepath",
     [
-        ("file.txt", ValueError),
-        (
-            "ftp:///file.txt",
-            ValueError,
-        ),
+        "file.txt",
+        "ftp:///file.txt",
+        "file:///file.txt",
     ],
 )
-def test_as_uri_raises(filepath: str, err: type[Exception]):
+def test_fromuri_raises(filepath: str):
 
-    with pytest.raises(err):
-        Path(filepath).as_uri()
+    with pytest.raises(ValueError):
+        Path.from_uri(filepath)
+
+
+def test_fromuri_urlerror(mocker):
+    import urllib.request
+    from urllib.error import URLError
+
+    mocker.patch.object(urllib.request, "url2pathname", side_effect=URLError(""))
+
+    with pytest.raises(ValueError):
+        Path.from_uri(Path(__file__).as_uri())
