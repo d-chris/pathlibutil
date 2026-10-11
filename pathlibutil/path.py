@@ -797,6 +797,35 @@ class Path(BasePath):
         finally:
             filepath.unlink(missing_ok=True)
 
+    @classmethod
+    def from_uri(cls, uri: str) -> Self:
+        """
+        Returns a new `Path` object from a URI.
+
+        >>> Path.from_uri("file:///C:/pathlibutil/README.md")
+        Path('C:/pathlibutil/README.md')
+        """
+
+        try:
+            return super().from_uri(uri)
+        except AttributeError:
+            pass
+
+        if not str(uri).startswith("file://"):
+            raise ValueError(f"Invalid URI: {uri}")
+
+        from urllib.error import URLError
+        from urllib.request import url2pathname
+
+        try:
+            path = cls(url2pathname(uri[7:]))
+        except URLError as exc:
+            raise ValueError(exc.reason) from None
+        if not path.is_absolute():
+            raise ValueError(f"URI is not absolute: {uri!r}")
+
+        return path
+
 
 class Register7zFormat(Path, archive="7z"):
     """
