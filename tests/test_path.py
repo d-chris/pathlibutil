@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import hashlib
 import os
 import pathlib
@@ -277,3 +279,29 @@ def test_tempdir_file(tmp_path: pathlib.Path):
 
     assert not dir.exists()
     assert not file.exists()
+
+
+def test_uri():
+
+    file = Path(__file__)
+
+    uri = file.as_uri()
+    path = Path.from_uri(uri)
+
+    assert path == file
+
+
+@pytest.mark.parametrize(
+    "filepath, err",
+    [
+        ("file.txt", ValueError),
+        (
+            "ftp:///file.txt",
+            ValueError,
+        ),
+    ],
+)
+def test_as_uri_raises(filepath: str, err: type[Exception]):
+
+    with pytest.raises(err):
+        Path(filepath).as_uri()
