@@ -109,6 +109,15 @@
                         <li>
                                 <a class="function" href="#Path.with_anchor">with_anchor</a>
                         </li>
+                        <li>
+                                <a class="function" href="#Path.tempdir">tempdir</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.tempfile">tempfile</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.from_uri">from_uri</a>
+                        </li>
                 </ul>
 
             </li>
@@ -233,6 +242,8 @@ filename: ./README.md
 <li><code><a href="#Path.is_expired">Path.is_expired()</a></code> to check if a file is expired by a given <code><a href="datetime.html#timedelta">datetime.timedelta</a></code></li>
 <li><code><a href="#Path.expand">Path.expand()</a></code> yields file paths for multiple file patterns if they exsits.</li>
 <li><code><a href="#Path.with_anchor">Path.with_anchor()</a></code> to change the anchor of a path object, e.g. for UNC paths on Windows.</li>
+<li>Context Manager <code><a href="#Path.tempfile">Path.tempfile()</a></code> and <code><a href="#Path.tempdir">Path.tempdir()</a></code> to create a temporary file and directory, respectively.</li>
+<li><code><a href="#Path.from_uri">Path.from_uri()</a></code> creates a <code><a href="#Path">Path</a></code> object from a file URI, with compatibility support for Python &lt; 3.13.</li>
 </ul>
 
 <p>JSON serialization of <code><a href="#Path">Path</a></code> objects is supported in <code><a href="pathlibutil/json.html">pathlibutil.json</a></code>.</p>
@@ -1214,6 +1225,77 @@ filename as wildcards.</p>
 
 
                             </div>
+                            <div id="Path.tempdir" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator decorator-classmethod">@classmethod</div>
+        <div class="decorator decorator-contextlib.contextmanager">@contextlib.contextmanager</div>
+
+        <span class="def">def</span>
+        <span class="name">tempdir</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">cls</span>,</span><span class="param">	<span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="nb">dir</span><span class="p">:</span> <span class="s1">&#39;os.StrPath | None&#39;</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="n">Self</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.tempdir"></a>
+    
+            <div class="docstring"><p>Context manager to a unique temporary directory.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n"><a href="#Path.tempdir">Path.tempdir</a></span><span class="p">()</span> <span class="k">as</span> <span class="n">temp</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">is_dir</span><span class="p">())</span>
+<span class="go">True</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.tempfile" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator decorator-classmethod">@classmethod</div>
+        <div class="decorator decorator-contextlib.contextmanager">@contextlib.contextmanager</div>
+
+        <span class="def">def</span>
+        <span class="name">tempfile</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">cls</span>,</span><span class="param">	<span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="nb">dir</span><span class="p">:</span> <span class="s1">&#39;os.StrPath | None&#39;</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="n">Self</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.tempfile"></a>
+    
+            <div class="docstring"><p>Context manager to create a unique temporary file.
+to it.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n"><a href="#Path.tempfile">Path.tempfile</a></span><span class="p">()</span> <span class="k">as</span> <span class="n">temp</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">is_file</span><span class="p">())</span>
+<span class="go">True</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="Path.from_uri" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator decorator-classmethod">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">from_uri</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">uri</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.from_uri"></a>
+    
+            <div class="docstring"><p>Returns a new <code><a href="#Path">Path</a></code> object from a URI.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n"><a href="#Path.from_uri">Path.from_uri</a></span><span class="p">(</span><span class="s2">&quot;file:///C:/pathlibutil/README.md&quot;</span><span class="p">)</span>
+<span class="go">Path(&#39;C:/pathlibutil/README.md&#39;)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
@@ -1644,7 +1726,7 @@ timezone is <code>None</code> then the local timezone is used.</p>
                             </div>
                             <div id="TimeInt.datetime" class="classattr">
                                 <div class="attr variable">
-            <span class="name">datetime</span><span class="annotation">: &lt;functools.cached_property object at 0x7f5ecb0303b0&gt;</span>
+            <span class="name">datetime</span><span class="annotation">: &lt;functools.cached_property object at 0x7f0a15238410&gt;</span>
 
         
     </div>
