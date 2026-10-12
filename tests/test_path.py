@@ -294,9 +294,9 @@ def test_uri():
 @pytest.mark.parametrize(
     "filepath",
     [
-        "file.txt",
-        "ftp:///file.txt",
-        "file://./file.txt",
+        Path(__file__).as_posix(),
+        Path(__file__).relative_to(Path.cwd()).as_posix(),
+        f"ftp://{Path(__file__).as_posix()}",
     ],
 )
 def test_fromuri_raises(filepath: str):
@@ -305,6 +305,9 @@ def test_fromuri_raises(filepath: str):
         Path.from_uri(filepath)
 
 
+@pytest.mark.skipif(
+    hasattr(pathlib.Path, "from_uri"), reason="from_uri is available in pathlib"
+)
 def test_fromuri_urlerror(mocker):
     import urllib.request
     from urllib.error import URLError
