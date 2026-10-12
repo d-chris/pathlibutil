@@ -42,6 +42,7 @@ filename: ./README.md
 - `Path.expand()` yields file paths for multiple file patterns if they exsits.
 - `Path.with_anchor()` to change the anchor of a path object, e.g. for UNC paths on Windows.
 - Context Manager `Path.tempfile()` and `Path.tempdir()` to create a temporary file and directory, respectively.
+- `Path.from_uri()` creates a `Path` object from a file URI, with compatibility support for Python < 3.13.
 
 JSON serialization of `Path` objects is supported in `pathlibutil.json`.
 
